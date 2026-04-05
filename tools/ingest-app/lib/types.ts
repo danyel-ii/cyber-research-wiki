@@ -50,4 +50,9 @@ export type ArticleProposal = {
   rationale: string
   files: ProposalFile[]
   warnings: string[]
+  appliedAt?: string
+  applyResult?: {
+    commitSha: string | null
+    paths: string[]
+  }
 }

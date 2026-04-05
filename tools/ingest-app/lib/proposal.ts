@@ -13,6 +13,7 @@ const execFileAsync = promisify(execFile)
 
 const repoRoot = process.cwd()
 const proposalDir = path.join(repoRoot, ".quartz-cache", "article-app", "proposals")
+const applyLocks = new Set<string>()
 
 function stringifyFrontmatter(data: Record<string, string | string[]>): string {
   const lines = ["---"]
@@ -428,7 +429,17 @@ export async function loadProposal(id: string): Promise<ArticleProposal> {
 }
 
 export async function applyProposal(id: string, commit: boolean): Promise<{ commitSha: string | null; paths: string[] }> {
+  if (applyLocks.has(id)) {
+    throw new Error("This proposal is already being applied. Wait for the current write to finish.")
+  }
+
+  applyLocks.add(id)
+  try {
   const proposal = await loadProposal(id)
+
+  if (proposal.appliedAt && proposal.applyResult) {
+    return proposal.applyResult
+  }
 
   for (const file of proposal.files) {
     const absolutePath = path.join(repoRoot, file.path)
@@ -439,13 +450,42 @@ export async function applyProposal(id: string, commit: boolean): Promise<{ comm
   let commitSha: string | null = null
   if (commit) {
     await execFileAsync("git", ["add", ...proposal.files.map((file) => file.path)], { cwd: repoRoot })
-    await execFileAsync("git", ["commit", "-m", proposal.commitMessage], { cwd: repoRoot })
-    const { stdout } = await execFileAsync("git", ["rev-parse", "HEAD"], { cwd: repoRoot })
-    commitSha = stdout.trim()
+    try {
+      await execFileAsync("git", ["commit", "-m", proposal.commitMessage], { cwd: repoRoot })
+      const { stdout } = await execFileAsync("git", ["rev-parse", "HEAD"], { cwd: repoRoot })
+      commitSha = stdout.trim()
+    } catch (error) {
+      const gitError = error as { stdout?: string; stderr?: string }
+      const details = `${gitError.stdout ?? ""}\n${gitError.stderr ?? ""}`
+      if (/nothing to commit|no changes added to commit/i.test(details)) {
+        const { stdout } = await execFileAsync("git", ["rev-parse", "HEAD"], { cwd: repoRoot })
+        commitSha = stdout.trim()
+      } else {
+        throw error
+      }
+    }
   }
 
-  return {
+  const result = {
     commitSha,
     paths: proposal.files.map((file) => file.path),
+  }
+  await writeFile(
+    path.join(proposalDir, `${proposal.id}.json`),
+    JSON.stringify(
+      {
+        ...proposal,
+        appliedAt: new Date().toISOString(),
+        applyResult: result,
+      },
+      null,
+      2,
+    ),
+    "utf8",
+  )
+
+  return result
+  } finally {
+    applyLocks.delete(id)
   }
 }
