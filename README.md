@@ -40,12 +40,12 @@ npm run ingest-ui
 Then open:
 
 ```text
-http://localhost:4318/new-article
+http://localhost:4318/admin/new-article
 ```
 
 ### Workflow
 
-1. Click `Add New Article` or open `/new-article`.
+1. Click `Add New Article` or open `/admin/new-article`.
 2. Enter the article title, summary, body, categories, and optional references.
 3. Review the proposed file diffs.
 4. Approve the proposal.
@@ -56,6 +56,7 @@ The app is intentionally constrained:
 - it does not create new categories
 - it writes new content into `wiki/articles/`
 - it keeps cross-references attached to the existing eight-category map
+- it is meant to stay private and local rather than publicly writable
 
 ## Quartz site
 
@@ -71,6 +72,8 @@ The site chrome is now intentionally minimal:
 - top header with navigation and `Add New Article`
 - left sidebar with the eight categories
 - right sidebar with related articles
+
+The header action points to the private local authoring route. The public site and private authoring flow now share the same visual shell, but only the local route can write content.
 
 ## Repo layout
 

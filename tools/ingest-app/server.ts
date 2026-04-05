@@ -51,7 +51,10 @@ const server = createServer(async (request: IncomingMessage, response: ServerRes
 
     const url = new URL(request.url, `http://${request.headers.host ?? `localhost:${port}`}`)
 
-    if ((request.method === "GET" || request.method === "HEAD") && (url.pathname === "/" || url.pathname === "/new-article")) {
+    if (
+      (request.method === "GET" || request.method === "HEAD") &&
+      (url.pathname === "/" || url.pathname === "/new-article" || url.pathname === "/admin" || url.pathname === "/admin/new-article")
+    ) {
       const file = await serveStatic("index.html")
       response.writeHead(200, { "Content-Type": file.contentType })
       response.end(request.method === "HEAD" ? undefined : file.body)
@@ -129,5 +132,5 @@ const server = createServer(async (request: IncomingMessage, response: ServerRes
 })
 
 server.listen(port, () => {
-  console.log(`Article app running at http://localhost:${port}/new-article`)
+  console.log(`Article app running at http://localhost:${port}/admin/new-article`)
 })
