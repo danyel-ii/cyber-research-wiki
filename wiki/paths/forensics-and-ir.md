@@ -21,7 +21,8 @@ This path covers digital forensics and incident response as a distinct learning 
 1. [[paths/foundations]]
 2. [[paths/evidence-and-synthesis]]
 3. [[topics/lab-safety-and-rules-of-engagement]]
-4. [[analyses/certification-to-learning-path-map]]
+4. [[sources/certification-training-corpus-2026-04-05]]
+5. [[analyses/certification-to-learning-path-map]]
 
 ## Certification alignment
 - CHFI
@@ -29,6 +30,7 @@ This path covers digital forensics and incident response as a distinct learning 
 ## What to notice
 - this path is adjacent to the rest of the wiki but not identical in goals
 - evidence handling and chain-of-custody style reasoning should become more prominent here as the wiki grows
+- the current strengthening here comes from evidence-handling concepts, not yet from direct CHFI vendor-primary material
 
 ## Good next paths
 - none yet; this is a future expansion lane

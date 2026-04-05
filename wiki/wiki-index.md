@@ -36,6 +36,7 @@
 
 ## Sources
 - [[sources/kali-linux-website-corpus-2026-04-05]] — Corpus-level summary of Kali Linux and related OffSec web pages staged externally on 2026-04-05.
+- [[sources/certification-training-corpus-2026-04-05]] — Mixed certification-training corpus summary used to strengthen certification-aligned learning paths.
 
 ## Entities
 - [[entities/kali-linux]] — Security-focused Linux distribution used as an assessment environment.
@@ -44,6 +45,7 @@
 ## Analyses
 - `wiki/analyses/` stores durable answers, comparisons, timelines, and synthesis pages created from research questions.
 - [[analyses/certification-to-learning-path-map]] — Maps listed certifications to the current learning-path families.
+- [[analyses/certification-corpus-ingest-audit-2026-04-05]] — Audit of how the certification corpus changed the wiki and the curriculum.
 
 ## Templates
 - [[templates/source-summary-template]] — Template for source pages.

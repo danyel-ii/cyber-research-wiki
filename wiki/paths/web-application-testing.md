@@ -21,8 +21,9 @@ This path is for web-focused offensive assessment and is the best current alignm
 1. [[paths/methodology-core]]
 2. [[topics/penetration-testing]]
 3. [[frameworks/owasp-wstg]]
-4. [[topics/attack-mapping]]
-5. [[analyses/certification-to-learning-path-map]]
+4. [[sources/certification-training-corpus-2026-04-05]]
+5. [[topics/attack-mapping]]
+6. [[analyses/certification-to-learning-path-map]]
 
 ## Certification alignment
 - BSCP
@@ -34,6 +35,7 @@ This path is for web-focused offensive assessment and is the best current alignm
 ## What to notice
 - this path is framework-anchored today and should become more domain-specific over time
 - tool-specific skill should remain subordinate to testing logic and evidence quality
+- Burp documentation usefully reinforces the wiki's authorization-first stance for web testing
 
 ## Good next paths
 - [[paths/practical-pentest-labs]]

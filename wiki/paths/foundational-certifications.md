@@ -23,7 +23,8 @@ This path is for broad, early-stage offensive-security learning that mixes termi
 4. [[topics/lab-safety-and-rules-of-engagement]]
 5. [[topics/attack-mapping]]
 6. [[frameworks/nist-sp-800-115]]
-7. [[analyses/certification-to-learning-path-map]]
+7. [[sources/certification-training-corpus-2026-04-05]]
+8. [[analyses/certification-to-learning-path-map]]
 
 ## Certification alignment
 - CEH
@@ -32,6 +33,7 @@ This path is for broad, early-stage offensive-security learning that mixes termi
 ## What to notice
 - these certifications span many topics but are not the deepest route into any single one
 - this path should stay breadth-oriented and method-first
+- current source support is strongest for CEH-style breadth and CompTIA-style study structure, not for every certification in this family equally
 
 ## Good next paths
 - [[paths/network-and-internal-testing]]

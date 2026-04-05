@@ -1,5 +1,17 @@
 # Log
 
+## [2026-04-05] ingest | Certification training corpus
+- Created: [[sources/certification-training-corpus-2026-04-05]]
+- Created: [[analyses/certification-corpus-ingest-audit-2026-04-05]]
+- Updated: [[analyses/certification-to-learning-path-map]]
+- Updated: [[paths/foundational-certifications]], [[paths/network-and-internal-testing]], [[paths/web-application-testing]], [[paths/forensics-and-ir]], [[paths/evidence-and-synthesis]]
+- Updated: [[home]], [[wiki-index]]
+- Notes: Incorporated a mixed external certification corpus from `/Users/danyel-ii/IngestionEngine/controlled-ingestion-codex-kit/data/projects/certs/pages`; strongest gains were CEH-style breadth, CompTIA-style study structure, Burp authorization framing, and evidence-handling concepts, while OSCP/GPEN/CPTS/OSEE/CHFI remained under-evidenced.
+
+## [2026-04-05] lint | Post-certification-ingest health check
+- Updated: [[log]]
+- Notes: Audited the ingest outcome and found the curriculum stronger but still uneven; no major structural breakage found, but the corpus quality was heterogeneous and supports adding a future pre-ingest filter for empty or marketing-only pages.
+
 ## [2026-04-05] curriculum | Certification mapping
 - Created: [[analyses/certification-to-learning-path-map]]
 - Created: [[paths/foundational-certifications]], [[paths/practical-pentest-labs]], [[paths/network-and-internal-testing]]

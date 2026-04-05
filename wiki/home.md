@@ -31,6 +31,7 @@ This vault is a persistent research wiki for authorized cybersecurity work. It s
 
 ## Recent ingest
 - [[sources/kali-linux-website-corpus-2026-04-05]]
+- [[sources/certification-training-corpus-2026-04-05]]
 - [[entities/kali-linux]]
 - [[topics/penetration-testing-distributions]]
 

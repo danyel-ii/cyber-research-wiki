@@ -22,7 +22,8 @@ This path is for network-oriented and internal-assessment methodology. It is the
 2. [[topics/penetration-testing]]
 3. [[topics/lab-safety-and-rules-of-engagement]]
 4. [[frameworks/nist-sp-800-115]]
-5. [[analyses/certification-to-learning-path-map]]
+5. [[sources/certification-training-corpus-2026-04-05]]
+6. [[analyses/certification-to-learning-path-map]]
 
 ## Certification alignment
 - GPEN
@@ -32,6 +33,7 @@ This path is for network-oriented and internal-assessment methodology. It is the
 
 ## What to notice
 - the current wiki has the methodology frame for this path, but not yet the deep domain pages
+- the current source support is stronger for Network+-style study structure than for GPEN itself
 - this path should grow by adding internal-assessment concepts, not by becoming a certification checklist
 
 ## Good next paths

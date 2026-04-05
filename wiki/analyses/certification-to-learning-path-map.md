@@ -16,6 +16,7 @@ The cleanest model is to map certifications to curriculum paths by learning doma
 - [[paths/web-application-testing]]
 - [[paths/exploit-development]]
 - [[paths/forensics-and-ir]]
+- [[sources/certification-training-corpus-2026-04-05]]
 
 ## Comparison / reasoning
 The certifications provided cluster into a small number of durable learning domains:
@@ -42,11 +43,13 @@ The wiki should not overfit itself to vendor exam names too early. A better appr
 
 This keeps the curriculum useful even as certifications change over time.
 
+The current evidence base is uneven. After incorporating [[sources/certification-training-corpus-2026-04-05]], the wiki has better direct support for CEH-style training breadth, CompTIA-style objective-driven study ecosystems, Burp-centered web-testing safety framing, and evidence-handling concepts. It still lacks equally strong direct vendor-primary support for OSCP, GPEN, HTB CPTS, OSEE, and CHFI specifics, so those parts of the map remain partly inferential.
+
 ## Mapping
 - Certified Ethical Hacker (CEH):
   - Primary: [[paths/foundational-certifications]]
   - Supporting: [[paths/foundations]], [[paths/methodology-core]]
-  - Rationale: broad introductory offensive-security coverage spanning scanning, system hacking, and web vulnerabilities.
+  - Rationale: broad introductory offensive-security coverage spanning scanning, system hacking, and web vulnerabilities; this is now supported by the Cybrary CEH-prep style source in [[sources/certification-training-corpus-2026-04-05]].
 
 - Offensive Security Certified Professional (OSCP):
   - Primary: [[paths/practical-pentest-labs]]
@@ -56,7 +59,7 @@ This keeps the curriculum useful even as certifications change over time.
 - CompTIA PenTest+:
   - Primary: [[paths/foundational-certifications]]
   - Supporting: [[paths/methodology-core]], [[paths/network-and-internal-testing]]
-  - Rationale: intermediate assessment framing with both conceptual and practical elements.
+  - Rationale: intermediate assessment framing with both conceptual and practical elements; still partly inferential here, but better aligned with the CompTIA-style objective and study-structure material in [[sources/certification-training-corpus-2026-04-05]].
 
 - GIAC Penetration Tester (GPEN):
   - Primary: [[paths/network-and-internal-testing]]
@@ -71,7 +74,7 @@ This keeps the curriculum useful even as certifications change over time.
 - Computer Hacking Forensic Investigator (CHFI):
   - Primary: [[paths/forensics-and-ir]]
   - Supporting: [[paths/evidence-and-synthesis]]
-  - Rationale: shifts away from offensive assessment into evidence handling, investigation, and response.
+  - Rationale: shifts away from offensive assessment into evidence handling, investigation, and response; evidence-handling support improved through the chain-of-custody material in [[sources/certification-training-corpus-2026-04-05]], though CHFI itself is not directly evidenced by this corpus.
 
 - OffSec Exploitation Expert (OSEE):
   - Primary: [[paths/exploit-development]]
@@ -81,7 +84,7 @@ This keeps the curriculum useful even as certifications change over time.
 - Burp Suite Certified Practitioner (BSCP):
   - Primary: [[paths/web-application-testing]]
   - Supporting: [[paths/methodology-core]]
-  - Rationale: tool-centered but fundamentally web-assessment focused.
+  - Rationale: tool-centered but fundamentally web-assessment focused; strengthened by PortSwigger Burp documentation and its explicit authorization warning in [[sources/certification-training-corpus-2026-04-05]].
 
 ## Bottom line
 The right curriculum model is a path family model:
