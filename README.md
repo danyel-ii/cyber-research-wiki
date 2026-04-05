@@ -97,6 +97,7 @@ This repo now also includes a local ingestion app for controlled article updates
 Start it with:
 
 ```bash
+npm ci
 npm run ingest-ui
 ```
 
