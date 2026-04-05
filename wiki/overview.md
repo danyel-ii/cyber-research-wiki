@@ -18,6 +18,7 @@ This wiki is a persistent, markdown-based research layer for cybersecurity mater
 - [[home]]
 - [[scope]]
 - [[taxonomy]]
+- [[paths/index]]
 - [[topics/authorized-security-research]]
 - [[topics/penetration-testing]]
 - [[topics/red-teaming]]

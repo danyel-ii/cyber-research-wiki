@@ -7,6 +7,7 @@ This vault is a persistent research wiki for authorized cybersecurity work. It s
 - [[overview]] for the high-level map
 - [[scope]] for boundaries and inclusion rules
 - [[taxonomy]] for organizing principles and terminology choices
+- [[paths/index]] for guided learning tracks
 - [[log]] for recent changes
 
 ## Current research lanes
@@ -22,6 +23,12 @@ This vault is a persistent research wiki for authorized cybersecurity work. It s
 - [[frameworks/owasp-wstg]]
 - [[frameworks/mitre-attack]]
 
+## Learning paths
+- [[paths/foundations]] for the best first route through the wiki
+- [[paths/methodology-core]] for core authorized-assessment concepts
+- [[paths/evidence-and-synthesis]] for contributor and research practice
+- [[analyses/certification-to-learning-path-map]] for certification-aligned routing into the curriculum
+
 ## Recent ingest
 - [[sources/kali-linux-website-corpus-2026-04-05]]
 - [[entities/kali-linux]]
@@ -35,6 +42,7 @@ This vault is a persistent research wiki for authorized cybersecurity work. It s
 
 ## Suggested next actions
 - Open [[wiki-index]] when you want the full page map.
+- Open [[paths/index]] when you want an ordered curriculum instead of free navigation.
 - Open a page in `wiki/sources/` when you are ingesting a new source.
 - Create reusable answers in `wiki/analyses/` when a research question produces durable synthesis.
 

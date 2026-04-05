@@ -1,5 +1,18 @@
 # Log
 
+## [2026-04-05] curriculum | Certification mapping
+- Created: [[analyses/certification-to-learning-path-map]]
+- Created: [[paths/foundational-certifications]], [[paths/practical-pentest-labs]], [[paths/network-and-internal-testing]]
+- Created: [[paths/web-application-testing]], [[paths/exploit-development]], [[paths/forensics-and-ir]]
+- Updated: [[paths/index]], [[home]], [[wiki-index]]
+- Notes: Added certification-aligned path families and mapped CEH, OSCP, PenTest+, GPEN, CPTS, CHFI, OSEE, and BSCP onto the curriculum without collapsing the wiki into vendor-specific exam prep.
+
+## [2026-04-05] structure | Curriculum layer
+- Created: [[paths/index]], [[paths/foundations]], [[paths/methodology-core]], [[paths/evidence-and-synthesis]]
+- Created: [[templates/path-template]]
+- Updated: [[home]], [[wiki-index]], [[overview]]
+- Notes: Added a first-class curriculum layer with ordered learning tracks and explicit maintenance rules so paths can be extended incrementally as the wiki grows.
+
 ## [2026-04-05] structure | Obsidian homepage
 - Created: [[home]]
 - Updated: [[index]], [[overview]]
