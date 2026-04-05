@@ -1,13 +1,13 @@
 ---
-title: Kali as an Assessment Environment
-summary: > **Scope note:** This article is about Kali as a controlled operator workspace. It does **not** grant permission, define scope, or replace testing methodology. Those belong to [Penetration Testing](./penetration-testing.md), [Pentest Workflow](./pentest-workflow.md), and [Rules of Engagement](./rules-of-engagement.md). For step-by-step lab usage, see [Practical Kali Linux](./practical-kali-linux.md).
-pageKind: article
+title: "Kali as an Assessment Environment"
+summary: "> **Scope note:** This article is about Kali as a controlled operator workspace. It does **not** grant permission, define scope, or replace testing methodology. Those belong to [Penetration Testing](./penetration-testing.md), [Pentest Workflow](./pentest-workflow.md), and [Rules of Engagement](./rules-of-engagement.md). For step-by-step lab usage, see [Practical Kali Linux](./practical-kali-linux.md)."
+pageKind: "article"
 categories:
-  - kali-as-an-assessment-environment
+  - "kali-as-an-assessment-environment"
 related:
-  - articles/kali-linux
-created: 2026-04-05
-updated: 2026-04-05
+  - "articles/kali-linux"
+created: "2026-04-05"
+updated: "2026-04-05"
 ---
 Kali Linux becomes an **assessment environment** when it is treated as more than a tool catalog. In professional work, the important question is not merely whether a given binary exists on disk. The real question is whether the operating system, packages, network path, browser state, notes, captured artifacts, and update history form a workspace that is **safe to use, easy to reproduce, and defensible when findings are challenged later**.[^downloading][^download-secure][^repos]
 

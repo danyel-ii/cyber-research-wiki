@@ -1,13 +1,13 @@
 ---
-title: Kali Linux
-summary: > **Scope note:** Kali Linux is a platform, not a permission model and not a testing methodology. It does not authorize activity, define scope, or replace evidence handling and reporting. Those belong to [Penetration Testing](./penetration-testing.md), [Pentest Workflow](./pentest-workflow.md), and [Rules of Engagement](./rules-of-engagement.md).
-pageKind: article
+title: "Kali Linux"
+summary: "> **Scope note:** Kali Linux is a platform, not a permission model and not a testing methodology. It does not authorize activity, define scope, or replace evidence handling and reporting. Those belong to [Penetration Testing](./penetration-testing.md), [Pentest Workflow](./pentest-workflow.md), and [Rules of Engagement](./rules-of-engagement.md)."
+pageKind: "article"
 categories:
-  - kali-linux
+  - "kali-linux"
 related:
-  - articles/kali-as-an-assessment-environment
-created: 2026-04-05
-updated: 2026-04-05
+  - "articles/kali-as-an-assessment-environment"
+created: "2026-04-05"
+updated: "2026-04-05"
 ---
 Kali Linux is an open-source, Debian-based Linux distribution built for professional penetration testing, security auditing, computer forensics, and reverse engineering.[^what-is][^home] In practice, it is best understood as a curated security workstation: a distribution that combines a large tool catalog, security-specific defaults, tested packages, and multiple deployment options that make authorized assessment work easier to prepare, standardize, and reproduce.[^what-is][^features]
 

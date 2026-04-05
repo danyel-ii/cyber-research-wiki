@@ -15,14 +15,30 @@ const repoRoot = process.cwd()
 const proposalDir = path.join(repoRoot, ".quartz-cache", "article-app", "proposals")
 const applyLocks = new Set<string>()
 
+function encodeScalar(value: string): string {
+  return JSON.stringify(value)
+}
+
+function decodeScalar(value: string): string {
+  if (value.startsWith("\"") && value.endsWith("\"")) {
+    try {
+      return JSON.parse(value) as string
+    } catch {
+      return value
+    }
+  }
+
+  return value
+}
+
 function stringifyFrontmatter(data: Record<string, string | string[]>): string {
   const lines = ["---"]
   for (const [key, value] of Object.entries(data)) {
     if (Array.isArray(value)) {
       lines.push(`${key}:`)
-      for (const item of value) lines.push(`  - ${item}`)
+      for (const item of value) lines.push(`  - ${encodeScalar(item)}`)
     } else {
-      lines.push(`${key}: ${value}`)
+      lines.push(`${key}: ${encodeScalar(value)}`)
     }
   }
   lines.push("---", "")
@@ -47,7 +63,7 @@ function parseFrontmatter(raw: string): { data: Record<string, string | string[]
   for (const line of frontmatter.split("\n")) {
     if (line.startsWith("  - ") && currentArrayKey) {
       const array = Array.isArray(data[currentArrayKey]) ? (data[currentArrayKey] as string[]) : []
-      array.push(line.slice(4).trim())
+      array.push(decodeScalar(line.slice(4).trim()))
       data[currentArrayKey] = array
       continue
     }
@@ -62,7 +78,7 @@ function parseFrontmatter(raw: string): { data: Record<string, string | string[]
       data[key] = []
     } else {
       currentArrayKey = null
-      data[key] = value
+      data[key] = decodeScalar(value)
     }
   }
 
