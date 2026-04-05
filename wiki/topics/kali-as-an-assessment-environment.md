@@ -8,7 +8,6 @@ related:
   - topics/practical-kali-linux
   - topics/pentest-workflow
 ---
-
 # Kali as an Assessment Environment
 
 This category exists to enforce an important distinction: Kali Linux is an assessment environment, not a methodology. Use it for articles that explain why that distinction matters and how environment design supports, but does not define, authorized security work.

@@ -8,7 +8,6 @@ related:
   - topics/pentest-workflow
   - topics/penetration-testing
 ---
-
 # OWASP WSTG
 
 OWASP WSTG is the framework anchor for the web-testing side of the wiki. Use it for articles that explain, extend, compare, or apply the OWASP Web Security Testing Guide as a structured approach to web application testing.

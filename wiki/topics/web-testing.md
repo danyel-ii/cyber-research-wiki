@@ -8,7 +8,6 @@ related:
   - topics/pentest-workflow
   - frameworks/owasp-wstg
 ---
-
 # Web Testing
 
 Web testing is the main domain-specific branch in the current wiki. Use it for articles about how penetration-testing logic applies to web applications, APIs, identity flows, sessions, input handling, and application behavior.

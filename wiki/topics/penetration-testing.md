@@ -8,7 +8,6 @@ related:
   - topics/rules-of-engagement
   - topics/web-testing
 ---
-
 # Penetration Testing
 
 Penetration testing is the top-level entry point for this wiki. Use it for articles that explain what penetration testing is for, how it differs from adjacent practices, what kinds of questions a pentest answers, and how owners should think about validated security exposure.

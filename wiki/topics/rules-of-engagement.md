@@ -8,7 +8,6 @@ related:
   - topics/pentest-workflow
   - topics/kali-linux
 ---
-
 # Rules of Engagement
 
 Rules of engagement define the boundaries that make authorized testing safe, reviewable, and professionally useful. Use this category for articles about scope, exclusions, communications, incident handling, evidence handling, and operational risk constraints.
@@ -21,7 +20,7 @@ Rules of engagement define the boundaries that make authorized testing safe, rev
 - boundary-setting articles that keep testing distinguishable from uncontrolled intrusion
 
 ## How this category is positioned
-This is the boundary category of the eight-topic map. It sits between abstract methodology and real operational execution.
+This is the boundary category of the eight-category map. It sits between abstract methodology and real operational execution.
 
 ## Articles in this category
 <!-- ARTICLE-LIST:START -->

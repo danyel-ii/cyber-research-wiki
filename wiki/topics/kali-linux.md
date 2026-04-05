@@ -8,7 +8,6 @@ related:
   - topics/kali-as-an-assessment-environment
   - topics/pentest-workflow
 ---
-
 # Kali Linux
 
 Kali Linux is the main environment-focused category in this wiki. Use it for articles that explain what Kali Linux is, why it matters in authorized testing and labs, how it is packaged, and how it should be understood within the broader assessment workflow.
@@ -24,5 +23,5 @@ This is the main environment category. It branches into a practical learner view
 
 ## Articles in this category
 <!-- ARTICLE-LIST:START -->
-_No articles yet._
+- [[articles/kali-linux]] — > **Scope note:** Kali Linux is a platform, not a permission model and not a testing methodology. It does not authorize activity, define scope, or replace evidence handling and reporting. Those belong to [Penetration Testing](./penetration-testing.md), [Pentest Workflow](./pentest-workflow.md), and [Rules of Engagement](./rules-of-engagement.md).
 <!-- ARTICLE-LIST:END -->

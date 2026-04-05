@@ -8,7 +8,6 @@ related:
   - topics/kali-as-an-assessment-environment
   - topics/rules-of-engagement
 ---
-
 # Practical Kali Linux
 
 Practical Kali Linux is the applied branch of the Kali cluster. Use it for articles that help a learner or practitioner make concrete environment decisions without turning the environment itself into the main intellectual subject.
