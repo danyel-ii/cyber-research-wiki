@@ -1,52 +1,28 @@
 # Home
 
-## Purpose
-This vault is a persistent research wiki for authorized cybersecurity work. It sits between raw source collection and future analysis so that claims, contradictions, and reusable summaries accumulate over time instead of being rebuilt from scratch.
+## Learn from the wiki
+This wiki should help you learn cybersecurity topics, not mainly how the wiki works. Start with a topic path and read forward.
 
-## Start here
-- [[overview]] for the high-level map
-- [[scope]] for boundaries and inclusion rules
-- [[taxonomy]] for organizing principles and terminology choices
-- [[paths/index]] for guided learning tracks
-- [[log]] for recent changes
+## Best starting paths
+- [[paths/learn-penetration-testing]] — the cleanest first path if you want to understand pentesting as a practice
+- [[paths/learn-kali-linux]] — learn where Kali fits, what it helps with, and where its limits are
+- [[paths/learn-web-testing]] — learn how web testing fits into pentesting and where OWASP WSTG and Burp belong
 
-## Current research lanes
-- [[topics/authorized-security-research]] for legal and ethical framing
-- [[topics/penetration-testing]] for active security testing methodology
-- [[topics/red-teaming]] for adversary-emulation work
-- [[topics/threat-modeling]] for planning and prioritization
-- [[topics/attack-mapping]] for ATT&CK-aligned interpretation
-- [[topics/lab-safety-and-rules-of-engagement]] for execution constraints and safety
-
-## Framework anchors
+## Core subjects
+- [[topics/penetration-testing]]
+- [[topics/pentest-workflow]]
+- [[topics/kali-linux-for-pentesting]]
+- [[entities/kali-linux]]
+- [[topics/lab-safety-and-rules-of-engagement]]
 - [[frameworks/nist-sp-800-115]]
 - [[frameworks/owasp-wstg]]
-- [[frameworks/mitre-attack]]
 
-## Learning paths
-- [[paths/foundations]] for the best first route through the wiki
-- [[paths/methodology-core]] for core authorized-assessment concepts
-- [[paths/evidence-and-synthesis]] for contributor and research practice
-- [[analyses/certification-to-learning-path-map]] for certification-aligned routing into the curriculum
+## If you want the full map
+- [[paths/index]] for all learning paths
+- [[wiki-index]] for the full page map
 
-## Recent ingest
-- [[sources/kali-linux-website-corpus-2026-04-05]]
-- [[sources/certification-training-corpus-2026-04-05]]
-- [[entities/kali-linux]]
-- [[topics/penetration-testing-distributions]]
-
-## Working rules
-- Treat `wiki/` as the compiled knowledge layer.
-- Preserve contradictions and uncertainty instead of smoothing them away.
-- Favor methodology, evidence quality, and defensive implications over hype or "hat" labels.
-- Keep the repo focused on authorized research, assessment, and defense-relevant synthesis.
-
-## Suggested next actions
-- Open [[wiki-index]] when you want the full page map.
-- Open [[paths/index]] when you want an ordered curriculum instead of free navigation.
-- Open a page in `wiki/sources/` when you are ingesting a new source.
-- Create reusable answers in `wiki/analyses/` when a research question produces durable synthesis.
-
-## Open questions
-- Which domain pages should become first-class next: web, cloud, identity, endpoint, or network?
-- Should the next ingest focus on Kali release history, NetHunter, or a standards-heavy source set from NIST, CISA, or OWASP?
+## For maintainers and contributors
+- [[overview]]
+- [[scope]]
+- [[taxonomy]]
+- [[log]]

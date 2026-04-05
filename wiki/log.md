@@ -1,5 +1,11 @@
 # Log
 
+## [2026-04-05] structure | Learner-first reframe
+- Created: [[topics/pentest-workflow]], [[topics/kali-linux-for-pentesting]]
+- Created: [[paths/learn-penetration-testing]], [[paths/learn-kali-linux]], [[paths/learn-web-testing]], [[paths/learn-certification-routes]]
+- Updated: [[topics/penetration-testing]], [[home]], [[paths/index]], [[wiki-index]], [[overview]]
+- Notes: Reframed the wiki around learner-facing subject paths so readers can study penetration testing and Kali Linux directly without being forced through wiki-maintenance material.
+
 ## [2026-04-05] ingest | Certification training corpus
 - Created: [[sources/certification-training-corpus-2026-04-05]]
 - Created: [[analyses/certification-corpus-ingest-audit-2026-04-05]]

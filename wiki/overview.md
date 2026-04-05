@@ -16,6 +16,8 @@ This wiki is a persistent, markdown-based research layer for cybersecurity mater
 
 ## Main navigation
 - [[home]]
+- [[paths/learn-penetration-testing]]
+- [[paths/learn-kali-linux]]
 - [[scope]]
 - [[taxonomy]]
 - [[paths/index]]

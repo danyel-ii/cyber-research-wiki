@@ -7,10 +7,14 @@
 - [[taxonomy]] — Preferred organizing axes, tags, and terminology decisions.
 
 ## Curriculum
-- [[paths/index]] — Hub for ordered learning tracks that grow with the wiki.
-- [[paths/foundations]] — Best first path for most readers.
-- [[paths/methodology-core]] — Core authorized-assessment methodology path.
-- [[paths/evidence-and-synthesis]] — How to read and extend the wiki as a research system.
+- [[paths/index]] — Main learning-path hub.
+- [[paths/learn-penetration-testing]] — Best first path for learning pentesting.
+- [[paths/learn-kali-linux]] — Learn where Kali Linux fits in authorized assessment work.
+- [[paths/learn-web-testing]] — Learn how web testing fits into pentesting.
+- [[paths/learn-certification-routes]] — Certification routes after the subject basics.
+- [[paths/foundations]] — Background orientation path.
+- [[paths/methodology-core]] — Deeper methodology path.
+- [[paths/evidence-and-synthesis]] — Contributor and evidence-reading path.
 - [[paths/foundational-certifications]] — Breadth-first route aligned to CEH and PenTest+ style learning.
 - [[paths/practical-pentest-labs]] — Hands-on lab route aligned to OSCP and CPTS style learning.
 - [[paths/network-and-internal-testing]] — Network- and internal-assessment route aligned to GPEN-style learning.
@@ -21,6 +25,8 @@
 ## Topics
 - [[topics/authorized-security-research]] — Legal and ethical frame for this wiki.
 - [[topics/penetration-testing]] — What penetration testing is, where it fits, and how it differs from adjacent practices.
+- [[topics/pentest-workflow]] — A simple phase-based model for learning pentesting without overfocusing on tools.
+- [[topics/kali-linux-for-pentesting]] — How Kali Linux fits into pentesting as an environment.
 - [[topics/penetration-testing-distributions]] — Purpose-built operating-system environments for authorized assessment work.
 - [[topics/red-teaming]] — Goal-based adversary emulation and defensive validation.
 - [[topics/gray-hat]] — Notes on the informal gray/grey-hat label and why it is not a primary taxonomy.
