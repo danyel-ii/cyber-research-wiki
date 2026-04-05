@@ -4,6 +4,7 @@ import { resolveRelative } from "../util/path"
 interface Options {
   title?: string
   links: Array<{ text: string; href: string }>
+  action?: { text: string; href: string }
 }
 
 export default ((opts: Options) => {
@@ -23,6 +24,11 @@ export default ((opts: Options) => {
               </li>
             ))}
           </ul>
+          {opts.action ? (
+            <a class="site-nav-action" href={opts.action.href}>
+              {opts.action.text}
+            </a>
+          ) : null}
         </div>
       </nav>
     )
@@ -65,10 +71,21 @@ export default ((opts: Options) => {
       border-bottom: 1px solid transparent;
     }
 
+    .site-nav-action {
+      text-decoration: none;
+      padding: 0.55rem 0.9rem;
+      border-radius: 999px;
+      background: color-mix(in srgb, var(--secondary) 16%, transparent);
+      border: 1px solid color-mix(in srgb, var(--secondary) 32%, transparent);
+      font-weight: 700;
+    }
+
     .site-nav-links a:hover,
     .site-nav-links a:focus-visible,
     .site-nav-brand:hover,
-    .site-nav-brand:focus-visible {
+    .site-nav-brand:focus-visible,
+    .site-nav-action:hover,
+    .site-nav-action:focus-visible {
       color: var(--secondary);
       border-bottom-color: var(--secondary);
     }

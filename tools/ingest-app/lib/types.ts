@@ -3,25 +3,31 @@ export type CanonicalTopic = {
   title: string
   filePath: string
   summary: string
+  description: string
+  role: string
+  includes: string[]
+  relatedIds: string[]
   keywords: string[]
+  kind: "topic" | "framework"
 }
 
-export type SourceExtract = {
-  url: string
+export type ArticleInput = {
   title: string
-  contentType: string
-  text: string
-  excerpt: string
+  slug?: string
+  summary: string
+  body: string
+  categories: string[]
+  references?: string
 }
 
-export type TopicSelection = {
-  topicIds: string[]
-  rationale: string
-}
-
-export type TopicUpdate = {
-  topicId: string
-  markdown: string
+export type ArticleRecord = {
+  slug: string
+  filePath: string
+  title: string
+  summary: string
+  categories: string[]
+  related: string[]
+  body: string
 }
 
 export type ProposalFile = {
@@ -32,16 +38,16 @@ export type ProposalFile = {
   changeType: "create" | "update"
 }
 
-export type IngestProposal = {
+export type ArticleProposal = {
   id: string
   createdAt: string
-  urls: string[]
-  sourceTitle: string
-  sourceSlug: string
+  title: string
+  articleSlug: string
   summary: string
-  selectedTopicIds: string[]
-  rationale: string
+  categoryIds: string[]
+  relatedArticleSlugs: string[]
   commitMessage: string
+  rationale: string
   files: ProposalFile[]
   warnings: string[]
 }

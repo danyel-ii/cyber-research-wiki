@@ -4,6 +4,7 @@ import path from "node:path"
 
 import { applyProposal, createProposal } from "./lib/proposal"
 import { canonicalTopics } from "./lib/canonical-topics"
+import type { ArticleInput } from "./lib/types"
 
 const publicDir = path.join(process.cwd(), "tools", "ingest-app", "public")
 const port = Number(process.env.INGEST_UI_PORT ?? 4318)
@@ -18,7 +19,7 @@ function json(body: unknown, status = 200): ResponseInit & { body: string } {
   }
 }
 
-async function serveStatic(relativePath: string): Promise<{ body: string | Buffer; contentType: string }> {
+async function serveStatic(relativePath: string): Promise<{ body: Buffer; contentType: string }> {
   const filePath = path.join(publicDir, relativePath)
   const body = await readFile(filePath)
   const ext = path.extname(filePath)
@@ -58,8 +59,7 @@ const server = createServer(async (request: IncomingMessage, response: ServerRes
     }
 
     if ((request.method === "GET" || request.method === "HEAD") && url.pathname.startsWith("/assets/")) {
-      const assetPath = url.pathname.replace("/assets/", "")
-      const file = await serveStatic(assetPath)
+      const file = await serveStatic(url.pathname.replace("/assets/", ""))
       response.writeHead(200, { "Content-Type": file.contentType })
       response.end(request.method === "HEAD" ? undefined : file.body)
       return
@@ -71,6 +71,7 @@ const server = createServer(async (request: IncomingMessage, response: ServerRes
           id: topic.id,
           title: topic.title,
           summary: topic.summary,
+          role: topic.role,
           filePath: topic.filePath,
         })),
       })
@@ -79,17 +80,22 @@ const server = createServer(async (request: IncomingMessage, response: ServerRes
       return
     }
 
-    if (request.method === "POST" && url.pathname === "/api/analyze") {
-      const body = await readJsonBody<{ urls?: string[] }>(request)
-      const urls = body.urls?.filter(Boolean) ?? []
-      if (urls.length === 0) {
-        const result = json({ error: "Provide at least one URL." }, 400)
+    if (request.method === "POST" && url.pathname === "/api/propose") {
+      const body = await readJsonBody<ArticleInput>(request)
+      if (!body.title?.trim() || !body.body?.trim() || !Array.isArray(body.categories) || body.categories.length === 0) {
+        const result = json({ error: "Title, body, and at least one category are required." }, 400)
         response.writeHead(result.status, result.headers)
         response.end(result.body)
         return
       }
 
-      const proposal = await createProposal(urls)
+      const proposal = await createProposal({
+        ...body,
+        title: body.title.trim(),
+        summary: body.summary?.trim() || body.body.trim().split("\n")[0].slice(0, 180),
+        body: body.body.trim(),
+        references: body.references?.trim() ?? "",
+      })
       const result = json({ proposal })
       response.writeHead(result.status, result.headers)
       response.end(result.body)
@@ -116,17 +122,12 @@ const server = createServer(async (request: IncomingMessage, response: ServerRes
     response.writeHead(result.status, result.headers)
     response.end(result.body)
   } catch (error) {
-    const result = json(
-      {
-        error: error instanceof Error ? error.message : "Unknown server error",
-      },
-      500,
-    )
+    const result = json({ error: error instanceof Error ? error.message : "Unknown server error" }, 500)
     response.writeHead(result.status, result.headers)
     response.end(result.body)
   }
 })
 
 server.listen(port, () => {
-  console.log(`Ingest UI running at http://localhost:${port}/new-article`)
+  console.log(`Article app running at http://localhost:${port}/new-article`)
 })

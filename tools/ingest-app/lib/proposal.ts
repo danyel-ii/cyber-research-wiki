@@ -1,233 +1,86 @@
-import { mkdtemp, mkdir, readFile, rm, writeFile } from "node:fs/promises"
+import { mkdir, readFile, readdir, rm, writeFile, mkdtemp } from "node:fs/promises"
 import path from "node:path"
 import os from "node:os"
 import { execFile } from "node:child_process"
 import { promisify } from "node:util"
 
 import { canonicalTopics, getCanonicalTopic } from "./canonical-topics"
-import { fetchSources } from "./fetch-sources"
 import { callOpenAiJson, openAiEnabled } from "./openai"
-import type {
-  CanonicalTopic,
-  IngestProposal,
-  ProposalFile,
-  SourceExtract,
-  TopicSelection,
-  TopicUpdate,
-} from "./types"
-import { hashShort, nowIsoDate, proposalId, slugify, trimLength } from "./utils"
+import type { ArticleInput, ArticleProposal, ArticleRecord, CanonicalTopic, ProposalFile } from "./types"
+import { nowIsoDate, proposalId, slugify, trimLength } from "./utils"
 
 const execFileAsync = promisify(execFile)
 
 const repoRoot = process.cwd()
-const proposalDir = path.join(repoRoot, ".quartz-cache", "ingest-ui", "proposals")
+const proposalDir = path.join(repoRoot, ".quartz-cache", "article-app", "proposals")
 
-function titleFromSources(sources: SourceExtract[]): string {
-  const hosts = [...new Set(sources.map((source) => new URL(source.url).hostname.replace(/^www\./, "")))]
-  if (hosts.length === 1) {
-    return `${hosts[0]} reference ingest`
+function stringifyFrontmatter(data: Record<string, string | string[]>): string {
+  const lines = ["---"]
+  for (const [key, value] of Object.entries(data)) {
+    if (Array.isArray(value)) {
+      lines.push(`${key}:`)
+      for (const item of value) lines.push(`  - ${item}`)
+    } else {
+      lines.push(`${key}: ${value}`)
+    }
   }
-  return "mixed reference ingest"
+  lines.push("---", "")
+  return lines.join("\n")
 }
 
-function sourceSlugFromSources(sources: SourceExtract[]): string {
-  const base = titleFromSources(sources)
-  return `${slugify(base)}-${nowIsoDate()}-${hashShort(sources.map((source) => source.url).join("|"))}`
-}
-
-function heuristicTopicSelection(sources: SourceExtract[]): TopicSelection {
-  const haystack = sources.map((source) => `${source.title}\n${source.text}`.toLowerCase()).join("\n\n")
-  const scored = canonicalTopics
-    .map((topic) => {
-      const score = topic.keywords.reduce((total, keyword) => {
-        return total + (haystack.includes(keyword.toLowerCase()) ? 1 : 0)
-      }, 0)
-      return { topic, score }
-    })
-    .filter((entry) => entry.score > 0)
-    .sort((a, b) => b.score - a.score)
-
-  const topicIds = scored.slice(0, 3).map((entry) => entry.topic.id)
-  return {
-    topicIds: topicIds.length > 0 ? topicIds : ["penetration-testing"],
-    rationale: topicIds.length > 0
-      ? `Selected by keyword overlap across the fetched references: ${topicIds.join(", ")}.`
-      : "No strong keyword overlap found, so the ingest falls back to penetration-testing for review.",
-  }
-}
-
-async function selectTopicsWithAi(sources: SourceExtract[]): Promise<TopicSelection> {
-  return callOpenAiJson<TopicSelection>({
-    schemaName: "topic_selection",
-    schema: {
-      type: "object",
-      additionalProperties: false,
-      properties: {
-        topicIds: {
-          type: "array",
-          items: {
-            type: "string",
-            enum: canonicalTopics.map((topic) => topic.id),
-          },
-          minItems: 1,
-          maxItems: 4,
-        },
-        rationale: { type: "string" },
-      },
-      required: ["topicIds", "rationale"],
-    },
-    system: `
-      You classify newly ingested cybersecurity reference material into a fixed set of canonical wiki topics.
-      Use only the provided canonical topic ids.
-      Prefer the smallest relevant set.
-      Do not invent new topics.
-    `,
-    user: JSON.stringify(
-      {
-        canonicalTopics: canonicalTopics.map((topic) => ({
-          id: topic.id,
-          title: topic.title,
-          summary: topic.summary,
-          keywords: topic.keywords,
-        })),
-        sources: sources.map((source) => ({
-          url: source.url,
-          title: source.title,
-          excerpt: source.excerpt,
-          text: trimLength(source.text, 5000),
-        })),
-      },
-      null,
-      2,
-    ),
-  })
-}
-
-async function loadCurrentTopicMarkdown(topic: CanonicalTopic): Promise<string> {
-  return readFile(path.join(repoRoot, topic.filePath), "utf8")
-}
-
-function fallbackSourceMarkdown(sourceTitle: string, sourceSlug: string, sources: SourceExtract[], selectedTopics: CanonicalTopic[]): string {
-  const points = sources.map((source) => `- ${source.title}: ${source.excerpt}`).join("\n")
-  const affects = selectedTopics.map((topic) => `- Affects: [[${topic.filePath.replace(/^wiki\//, "").replace(/\.md$/, "")}]]`).join("\n")
-
-  return `# ${sourceTitle}\n\n## Overview\nThis source page summarizes a reference ingest captured on ${nowIsoDate()}. It is a staging summary for material brought in through the ingestion app and should be reviewed before further synthesis.\n\n## Bibliographic details\n- Title: ${sourceTitle}\n- Source type: web reference ingest\n- Ingest slug: \`${sourceSlug}\`\n- URLs:\n${sources.map((source) => `  - ${source.url}`).join("\n")}\n\n## Key points\n${points}\n\n## Relevance to the wiki\n${affects}\n`
-}
-
-function fallbackTopicMarkdown(currentMarkdown: string, sources: SourceExtract[]): string {
-  const sectionTitle = `Recent reference ingest (${nowIsoDate()})`
-  const notes = sources.map((source) => `- ${source.title}: ${source.excerpt}`).join("\n")
-
-  if (currentMarkdown.includes(`## ${sectionTitle}`)) {
-    return currentMarkdown
+function parseFrontmatter(raw: string): { data: Record<string, string | string[]>; content: string } {
+  if (!raw.startsWith("---\n")) {
+    return { data: {}, content: raw }
   }
 
-  return `${currentMarkdown.trim()}\n\n## ${sectionTitle}\n${notes}\n`
-}
-
-async function draftWithAi(args: {
-  sourceTitle: string
-  sourceSlug: string
-  sources: SourceExtract[]
-  topics: CanonicalTopic[]
-  currentTopicMarkdown: Record<string, string>
-}): Promise<{
-  summary: string
-  sourcePageMarkdown: string
-  topicUpdates: TopicUpdate[]
-  logSummary: string
-  commitMessage: string
-}> {
-  return callOpenAiJson({
-    schemaName: "ingest_draft",
-    schema: {
-      type: "object",
-      additionalProperties: false,
-      properties: {
-        summary: { type: "string" },
-        sourcePageMarkdown: { type: "string" },
-        topicUpdates: {
-          type: "array",
-          minItems: 1,
-          items: {
-            type: "object",
-            additionalProperties: false,
-            properties: {
-              topicId: {
-                type: "string",
-                enum: args.topics.map((topic) => topic.id),
-              },
-              markdown: { type: "string" },
-            },
-            required: ["topicId", "markdown"],
-          },
-        },
-        logSummary: { type: "string" },
-        commitMessage: { type: "string" },
-      },
-      required: ["summary", "sourcePageMarkdown", "topicUpdates", "logSummary", "commitMessage"],
-    },
-    system: `
-      You update a cybersecurity research wiki.
-      The public layer is article-first.
-      Rules:
-      - Only update the provided canonical topics.
-      - Do not create stub pages.
-      - Keep articles non-repetitive and readable for humans.
-      - Preserve learner flow inside the articles with "Read next" and "Related topics" when those sections already exist.
-      - Keep the wiki focused on authorized research, methodology, evidence, and frameworks.
-      - The source page should summarize provenance and extracted claims behind the public articles.
-      - Return full markdown for each updated topic file, not patches.
-    `,
-    user: JSON.stringify(
-      {
-        sourceTitle: args.sourceTitle,
-        sourceSlug: args.sourceSlug,
-        topics: args.topics.map((topic) => ({
-          id: topic.id,
-          title: topic.title,
-          filePath: topic.filePath,
-          summary: topic.summary,
-          currentMarkdown: args.currentTopicMarkdown[topic.id],
-        })),
-        sources: args.sources.map((source) => ({
-          url: source.url,
-          title: source.title,
-          excerpt: source.excerpt,
-          text: trimLength(source.text, 7000),
-        })),
-      },
-      null,
-      2,
-    ),
-  })
-}
-
-async function buildDiff(previousMarkdown: string | null, nextMarkdown: string, filePath: string): Promise<string> {
-  const tempDir = await mkdtemp(path.join(os.tmpdir(), "ingest-diff-"))
-  const beforePath = path.join(tempDir, "before.md")
-  const afterPath = path.join(tempDir, "after.md")
-
-  await writeFile(beforePath, previousMarkdown ?? "", "utf8")
-  await writeFile(afterPath, nextMarkdown, "utf8")
-
-  try {
-    await execFileAsync("diff", [
-      "-u",
-      "--label",
-      `a/${filePath}`,
-      "--label",
-      `b/${filePath}`,
-      beforePath,
-      afterPath,
-    ])
-    return ""
-  } catch (error) {
-    const diffOutput = error as { stdout?: string; stderr?: string }
-    return diffOutput.stdout ?? diffOutput.stderr ?? ""
-  } finally {
-    await rm(tempDir, { recursive: true, force: true })
+  const endIndex = raw.indexOf("\n---\n", 4)
+  if (endIndex === -1) {
+    return { data: {}, content: raw }
   }
+
+  const frontmatter = raw.slice(4, endIndex)
+  const content = raw.slice(endIndex + 5).trimStart()
+  const data: Record<string, string | string[]> = {}
+  let currentArrayKey: string | null = null
+
+  for (const line of frontmatter.split("\n")) {
+    if (line.startsWith("  - ") && currentArrayKey) {
+      const array = Array.isArray(data[currentArrayKey]) ? (data[currentArrayKey] as string[]) : []
+      array.push(line.slice(4).trim())
+      data[currentArrayKey] = array
+      continue
+    }
+
+    const separatorIndex = line.indexOf(":")
+    if (separatorIndex === -1) continue
+    const key = line.slice(0, separatorIndex).trim()
+    const value = line.slice(separatorIndex + 1).trim()
+
+    if (value === "") {
+      currentArrayKey = key
+      data[key] = []
+    } else {
+      currentArrayKey = null
+      data[key] = value
+    }
+  }
+
+  return { data, content }
+}
+const articlesDir = path.join(repoRoot, "wiki", "articles")
+
+function extractKeywords(text: string): Set<string> {
+  const stopwords = new Set([
+    "about", "after", "against", "between", "cannot", "could", "their", "there", "these", "those",
+    "which", "while", "where", "when", "into", "from", "this", "that", "with", "have", "will",
+    "should", "would", "been", "being", "were", "what", "than", "them", "they", "your", "ours",
+  ])
+
+  return new Set(
+    text
+      .toLowerCase()
+      .match(/[a-z0-9-]{4,}/g)?.filter((word) => !stopwords.has(word)) ?? [],
+  )
 }
 
 async function readOptionalFile(relativePath: string): Promise<string | null> {
@@ -238,131 +91,306 @@ async function readOptionalFile(relativePath: string): Promise<string | null> {
   }
 }
 
-function ensureBulletPresent(markdown: string, bullet: string): string {
-  if (markdown.includes(bullet)) return markdown
-  return `${markdown.trim()}\n- ${bullet}\n`
+async function loadExistingArticles(): Promise<ArticleRecord[]> {
+  await mkdir(articlesDir, { recursive: true })
+  const entries = await readdir(articlesDir, { withFileTypes: true })
+  const articleFiles = entries
+    .filter((entry) => entry.isFile() && entry.name.endsWith(".md") && entry.name !== "index.md")
+    .map((entry) => entry.name)
+
+  return Promise.all(
+    articleFiles.map(async (fileName) => {
+      const filePath = path.join(articlesDir, fileName)
+      const raw = await readFile(filePath, "utf8")
+      const parsed = parseFrontmatter(raw)
+      const slug = `articles/${fileName.replace(/\.md$/, "")}`
+      return {
+        slug,
+        filePath: path.join("wiki", "articles", fileName),
+        title: (parsed.data.title as string | undefined) ?? slug,
+        summary: (parsed.data.summary as string | undefined) ?? "",
+        categories: Array.isArray(parsed.data.categories) ? (parsed.data.categories as string[]) : [],
+        related: Array.isArray(parsed.data.related) ? (parsed.data.related as string[]) : [],
+        body: parsed.content.trim(),
+      }
+    }),
+  )
 }
 
-function insertBulletUnderSection(markdown: string, sectionHeading: string, bullet: string): string {
-  if (markdown.includes(bullet)) return markdown
+function scoreArticleRelation(input: ArticleInput, existing: ArticleRecord): number {
+  const categoryOverlap = existing.categories.filter((category) => input.categories.includes(category)).length
+  const inputKeywords = extractKeywords(`${input.title}\n${input.summary}\n${input.body}`)
+  const existingKeywords = extractKeywords(`${existing.title}\n${existing.summary}\n${existing.body}`)
+  const keywordOverlap = [...inputKeywords].filter((keyword) => existingKeywords.has(keyword)).length
+  return categoryOverlap * 6 + keywordOverlap
+}
 
-  const headingIndex = markdown.indexOf(sectionHeading)
-  if (headingIndex === -1) {
-    return ensureBulletPresent(markdown, bullet)
+async function chooseRelatedWithAi(input: ArticleInput, existingArticles: ArticleRecord[]): Promise<string[]> {
+  const candidates = existingArticles.map((article) => ({
+    slug: article.slug,
+    title: article.title,
+    summary: article.summary,
+    categories: article.categories,
+  }))
+
+  const result = await callOpenAiJson<{ relatedArticleSlugs: string[] }>({
+    schemaName: "related_articles",
+    schema: {
+      type: "object",
+      additionalProperties: false,
+      properties: {
+        relatedArticleSlugs: {
+          type: "array",
+          items: { type: "string", enum: existingArticles.map((article) => article.slug) },
+          maxItems: 5,
+        },
+      },
+      required: ["relatedArticleSlugs"],
+    },
+    system: `
+      Select related wiki articles for a new article in a cybersecurity wiki.
+      Prefer direct conceptual adjacency, category overlap, and useful reader navigation.
+      Return a small relevant set. Do not invent slugs.
+    `,
+    user: JSON.stringify(
+      {
+        newArticle: {
+          title: input.title,
+          summary: input.summary,
+          categories: input.categories,
+          body: trimLength(input.body, 5000),
+        },
+        candidates,
+      },
+      null,
+      2,
+    ),
+  })
+
+  return result.relatedArticleSlugs
+}
+
+async function chooseRelatedArticles(input: ArticleInput, existingArticles: ArticleRecord[]): Promise<string[]> {
+  if (existingArticles.length === 0) return []
+  if (openAiEnabled()) {
+    try {
+      return await chooseRelatedWithAi(input, existingArticles)
+    } catch {
+      // fall back to heuristic scoring
+    }
   }
 
-  const sectionStart = headingIndex + sectionHeading.length
-  const nextHeadingMatch = markdown.slice(sectionStart).match(/\n## /)
-  const sectionEnd = nextHeadingMatch ? sectionStart + (nextHeadingMatch.index ?? 0) : markdown.length
-  const sectionBody = markdown.slice(sectionStart, sectionEnd).trimEnd()
-  const updatedSectionBody = `${sectionBody}\n- ${bullet}\n`
-
-  return `${markdown.slice(0, sectionStart)}${updatedSectionBody}${markdown.slice(sectionEnd)}`
+  return existingArticles
+    .map((article) => ({ article, score: scoreArticleRelation(input, article) }))
+    .filter((entry) => entry.score > 0)
+    .sort((a, b) => b.score - a.score)
+    .slice(0, 5)
+    .map((entry) => entry.article.slug)
 }
 
-function appendLogEntry(logMarkdown: string, sourceTitle: string, sourcePageSlug: string, topicIds: string[], summary: string): string {
-  const topicLinks = topicIds.map((topicId) => {
-    const topic = getCanonicalTopic(topicId)
-    return topic ? `[[${topic.filePath.replace(/^wiki\//, "").replace(/\.md$/, "")}]]` : topicId
+function referencesSection(references: string | undefined): string {
+  const entries = references
+    ?.split("\n")
+    .map((line) => line.trim())
+    .filter(Boolean) ?? []
+
+  if (entries.length === 0) return ""
+
+  return `\n\n## References\n${entries.map((entry) => `- ${entry}`).join("\n")}\n`
+}
+
+function renderArticleMarkdown(input: ArticleInput, articleSlug: string, relatedArticleSlugs: string[]): string {
+  const body = `${input.body.trim()}${referencesSection(input.references)}`.trim()
+  return `${stringifyFrontmatter({
+    title: input.title,
+    summary: input.summary,
+    pageKind: "article",
+    categories: input.categories,
+    related: relatedArticleSlugs,
+    created: nowIsoDate(),
+    updated: nowIsoDate(),
+  })}${body}\n`
+}
+
+function renderCategoryPage(topic: CanonicalTopic, articles: ArticleRecord[]): string {
+  const relatedSlugs = topic.relatedIds
+    .map((id) => getCanonicalTopic(id)?.filePath.replace(/^wiki\//, "").replace(/\.md$/, ""))
+    .filter((slug): slug is string => Boolean(slug))
+
+  const articleList =
+    articles.length > 0
+      ? articles
+          .sort((a, b) => a.title.localeCompare(b.title))
+          .map((article) => `- [[${article.slug}]] — ${article.summary}`)
+          .join("\n")
+      : "_No articles yet._"
+
+  return `${stringifyFrontmatter({
+      title: topic.title,
+      pageKind: "category",
+      categoryId: topic.id,
+      summary: topic.summary,
+      related: relatedSlugs,
+    })}# ${topic.title}\n\n${topic.description}\n\n## What belongs here\n${topic.includes.map((item) => `- ${item}`).join("\n")}\n\n## How this category is positioned\n${topic.role}\n\n## Articles in this category\n<!-- ARTICLE-LIST:START -->\n${articleList}\n<!-- ARTICLE-LIST:END -->\n`
+}
+
+function renderHomePage(): string {
+  return `---\ntitle: Home\naliases:\n  - home\n---\n\n# Cybersecurity Research Wiki\n\nThis wiki has been reset to a clean category-first structure. The public backbone is eight categories, and new articles are added manually through the authoring app. When a new article is created, the app updates category pages, the article index, and related-article metadata automatically.\n\n## Start with the categories\n- [[topics/penetration-testing]]\n- [[topics/pentest-workflow]]\n- [[topics/rules-of-engagement]]\n- [[topics/kali-linux]]\n- [[topics/practical-kali-linux]]\n- [[topics/kali-as-an-assessment-environment]]\n- [[topics/web-testing]]\n- [[frameworks/owasp-wstg]]\n\n## Browse\n- [[topics/index]]\n- [[articles/index]]\n`
+}
+
+function renderTopicsIndex(): string {
+  return `# Categories\n\nThe wiki now starts from a clean eight-category backbone. New articles are written manually, then the app updates category pages, related-article links, and the article index automatically.\n\n## The eight categories\n- [[topics/penetration-testing]]\n- [[topics/pentest-workflow]]\n- [[topics/rules-of-engagement]]\n- [[topics/kali-linux]]\n- [[topics/practical-kali-linux]]\n- [[topics/kali-as-an-assessment-environment]]\n- [[topics/web-testing]]\n- [[frameworks/owasp-wstg]]\n`
+}
+
+function renderArticlesIndex(articles: ArticleRecord[]): string {
+  const articleList =
+    articles.length > 0
+      ? articles
+          .sort((a, b) => a.title.localeCompare(b.title))
+          .map((article) => `- [[${article.slug}]] — ${article.summary}`)
+          .join("\n")
+      : "_No articles yet._"
+
+  return `# Articles\n\nThis section holds manually authored wiki articles. The article app updates this page automatically when a new article is added.\n\n## All articles\n<!-- ARTICLE-INDEX:START -->\n${articleList}\n<!-- ARTICLE-INDEX:END -->\n`
+}
+
+function appendLogEntry(existingLog: string, input: ArticleInput, articleSlug: string, relatedArticleSlugs: string[]): string {
+  const categories = input.categories
+    .map((categoryId) => getCanonicalTopic(categoryId)?.filePath.replace(/^wiki\//, "").replace(/\.md$/, ""))
+    .filter((slug): slug is string => Boolean(slug))
+
+  const lines = [
+    `## [${nowIsoDate()}] article | ${input.title}`,
+    `- Created: [[${articleSlug}]]`,
+    `- Categorized under: ${categories.map((slug) => `[[${slug}]]`).join(", ")}`,
+    `- Related: ${relatedArticleSlugs.length > 0 ? relatedArticleSlugs.map((slug) => `[[${slug}]]`).join(", ") : "none yet"}`,
+    `- Notes: Added through the article app and propagated into category indexes and related-article metadata.`,
+    "",
+  ]
+
+  return `${existingLog.trim()}\n\n${lines.join("\n")}`
+}
+
+async function buildDiff(previousMarkdown: string | null, nextMarkdown: string, filePath: string): Promise<string> {
+  const tempDir = await mkdtemp(path.join(os.tmpdir(), "article-diff-"))
+  const beforePath = path.join(tempDir, "before.md")
+  const afterPath = path.join(tempDir, "after.md")
+
+  await writeFile(beforePath, previousMarkdown ?? "", "utf8")
+  await writeFile(afterPath, nextMarkdown, "utf8")
+
+  try {
+    await execFileAsync("diff", ["-u", "--label", `a/${filePath}`, "--label", `b/${filePath}`, beforePath, afterPath])
+    return ""
+  } catch (error) {
+    const diffOutput = error as { stdout?: string; stderr?: string }
+    return diffOutput.stdout ?? diffOutput.stderr ?? ""
+  } finally {
+    await rm(tempDir, { recursive: true, force: true })
+  }
+}
+
+export async function createProposal(input: ArticleInput): Promise<ArticleProposal> {
+  const articleSlugBase = input.slug && input.slug.trim().length > 0 ? slugify(input.slug) : slugify(input.title)
+  const articleSlug = `articles/${articleSlugBase}`
+  const articlePath = `wiki/articles/${articleSlugBase}.md`
+  const existingArticles = await loadExistingArticles()
+  const relatedArticleSlugs = await chooseRelatedArticles(input, existingArticles)
+  const relatedSet = new Set(relatedArticleSlugs)
+
+  const updatedArticles = existingArticles.map((article) => {
+    if (!relatedSet.has(article.slug)) return article
+    return {
+      ...article,
+      related: [...new Set([...article.related, articleSlug])].sort(),
+    }
   })
 
-  const newEntry = [
-    `## [${nowIsoDate()}] ingest | ${sourceTitle}`,
-    `- Created: [[sources/${sourcePageSlug}]]`,
-    `- Updated: ${topicLinks.join(", ")}`,
-    `- Notes: ${summary}`,
-    "",
-  ].join("\n")
+  const newArticle: ArticleRecord = {
+    slug: articleSlug,
+    filePath: articlePath,
+    title: input.title,
+    summary: input.summary,
+    categories: input.categories,
+    related: relatedArticleSlugs,
+    body: input.body.trim(),
+  }
 
-  return `${logMarkdown.trim()}\n\n${newEntry}`
-}
-
-export async function createProposal(urls: string[]): Promise<IngestProposal> {
-  const sources = await fetchSources(urls)
-  const sourceTitle = titleFromSources(sources)
-  const sourceSlug = sourceSlugFromSources(sources)
-  const selection = openAiEnabled() ? await selectTopicsWithAi(sources) : heuristicTopicSelection(sources)
-  const selectedTopics = selection.topicIds
-    .map((topicId) => getCanonicalTopic(topicId))
-    .filter((topic): topic is CanonicalTopic => Boolean(topic))
-
-  const currentTopicMarkdownEntries = await Promise.all(
-    selectedTopics.map(async (topic) => [topic.id, await loadCurrentTopicMarkdown(topic)] as const),
-  )
-  const currentTopicMarkdown = Object.fromEntries(currentTopicMarkdownEntries)
-
-  const drafted = openAiEnabled()
-    ? await draftWithAi({
-        sourceTitle,
-        sourceSlug,
-        sources,
-        topics: selectedTopics,
-        currentTopicMarkdown,
-      })
-    : {
-        summary: `Drafted from ${sources.length} fetched reference link(s) and mapped onto ${selectedTopics
-          .map((topic) => topic.title)
-          .join(", ")}.`,
-        sourcePageMarkdown: fallbackSourceMarkdown(sourceTitle, sourceSlug, sources, selectedTopics),
-        topicUpdates: selectedTopics.map((topic) => ({
-          topicId: topic.id,
-          markdown: fallbackTopicMarkdown(currentTopicMarkdown[topic.id], sources),
-        })),
-        logSummary: `Drafted a source summary and updated ${selectedTopics.length} canonical topic article(s).`,
-        commitMessage: `Ingest references into ${selectedTopics.map((topic) => topic.id).join(", ")}`,
-      }
-
+  const allArticles = [...updatedArticles, newArticle]
   const files: ProposalFile[] = []
 
-  const sourcePath = `wiki/sources/${sourceSlug}.md`
+  const articleMarkdown = renderArticleMarkdown(input, articleSlug, relatedArticleSlugs)
   files.push({
-    path: sourcePath,
-    markdown: drafted.sourcePageMarkdown,
-    previousMarkdown: await readOptionalFile(sourcePath),
+    path: articlePath,
+    markdown: articleMarkdown,
+    previousMarkdown: await readOptionalFile(articlePath),
     diff: "",
-    changeType: (await readOptionalFile(sourcePath)) ? "update" : "create",
+    changeType: (await readOptionalFile(articlePath)) ? "update" : "create",
   })
 
-  for (const topicUpdate of drafted.topicUpdates) {
-    const topic = getCanonicalTopic(topicUpdate.topicId)
-    if (!topic) continue
+  for (const updatedArticle of updatedArticles.filter((article) => relatedSet.has(article.slug))) {
+    const existingMarkdown = await readOptionalFile(updatedArticle.filePath)
+    const existingParsed = existingMarkdown ? parseFrontmatter(existingMarkdown) : null
+    const created = (existingParsed?.data.created as string | undefined) ?? nowIsoDate()
+    const relatedMarkdown = `${stringifyFrontmatter({
+      title: updatedArticle.title,
+      summary: updatedArticle.summary,
+      pageKind: "article",
+      categories: updatedArticle.categories,
+      related: updatedArticle.related,
+      created,
+      updated: nowIsoDate(),
+    })}${updatedArticle.body}\n`
     files.push({
-      path: topic.filePath,
-      markdown: topicUpdate.markdown,
-      previousMarkdown: currentTopicMarkdown[topic.id] ?? null,
+      path: updatedArticle.filePath,
+      markdown: relatedMarkdown,
+      previousMarkdown: existingMarkdown,
       diff: "",
-      changeType: currentTopicMarkdown[topic.id] ? "update" : "create",
+      changeType: "update",
     })
   }
 
-  const sourceIndexPath = "wiki/sources/index.md"
-  const existingSourceIndex = (await readOptionalFile(sourceIndexPath)) ?? "# Sources\n"
-  const sourceBullet = `[[sources/${sourceSlug}]]`
+  for (const topic of canonicalTopics) {
+    const articlesForTopic = allArticles.filter((article) => article.categories.includes(topic.id))
+    const rendered = renderCategoryPage(topic, articlesForTopic)
+    files.push({
+      path: topic.filePath,
+      markdown: rendered,
+      previousMarkdown: await readOptionalFile(topic.filePath),
+      diff: "",
+      changeType: "update",
+    })
+  }
+
   files.push({
-    path: sourceIndexPath,
-    previousMarkdown: existingSourceIndex,
-    markdown: insertBulletUnderSection(existingSourceIndex, "## Current source set", sourceBullet),
+    path: "wiki/index.md",
+    markdown: renderHomePage(),
+    previousMarkdown: await readOptionalFile("wiki/index.md"),
     diff: "",
     changeType: "update",
   })
 
-  const homeIndexPath = "wiki/index.md"
-  const existingIndex = (await readOptionalFile(homeIndexPath)) ?? ""
-  const supportBullet = `[[sources/${sourceSlug}]]`
   files.push({
-    path: homeIndexPath,
-    previousMarkdown: existingIndex,
-    markdown: insertBulletUnderSection(existingIndex, "## Support layer", supportBullet),
+    path: "wiki/topics/index.md",
+    markdown: renderTopicsIndex(),
+    previousMarkdown: await readOptionalFile("wiki/topics/index.md"),
     diff: "",
     changeType: "update",
   })
 
-  const logPath = "wiki/log.md"
-  const existingLog = (await readOptionalFile(logPath)) ?? "# Log\n"
   files.push({
-    path: logPath,
+    path: "wiki/articles/index.md",
+    markdown: renderArticlesIndex(allArticles),
+    previousMarkdown: await readOptionalFile("wiki/articles/index.md"),
+    diff: "",
+    changeType: "update",
+  })
+
+  const existingLog = (await readOptionalFile("wiki/log.md")) ?? "# Log\n"
+  files.push({
+    path: "wiki/log.md",
+    markdown: appendLogEntry(existingLog, input, articleSlug, relatedArticleSlugs),
     previousMarkdown: existingLog,
-    markdown: appendLogEntry(existingLog, sourceTitle, sourceSlug, selection.topicIds, drafted.logSummary),
     diff: "",
     changeType: "update",
   })
@@ -374,20 +402,18 @@ export async function createProposal(urls: string[]): Promise<IngestProposal> {
     })),
   )
 
-  const proposal: IngestProposal = {
+  const proposal: ArticleProposal = {
     id: proposalId(),
     createdAt: new Date().toISOString(),
-    urls,
-    sourceTitle,
-    sourceSlug,
-    summary: drafted.summary,
-    selectedTopicIds: selection.topicIds,
-    rationale: selection.rationale,
-    commitMessage: drafted.commitMessage,
+    title: input.title,
+    articleSlug,
+    summary: input.summary,
+    categoryIds: input.categories,
+    relatedArticleSlugs,
+    commitMessage: `Add article: ${input.title}`,
+    rationale: `The article is placed in ${input.categories.length} categor${input.categories.length === 1 ? "y" : "ies"} and linked to ${relatedArticleSlugs.length} related article${relatedArticleSlugs.length === 1 ? "" : "s"}.`,
     files: filesWithDiffs,
-    warnings: openAiEnabled()
-      ? []
-      : ["OPENAI_API_KEY is not set, so the app used heuristic topic matching and conservative fallback drafting."],
+    warnings: openAiEnabled() ? [] : ["OPENAI_API_KEY is not set, so related-article selection used deterministic category and keyword overlap."],
   }
 
   await mkdir(proposalDir, { recursive: true })
@@ -396,14 +422,14 @@ export async function createProposal(urls: string[]): Promise<IngestProposal> {
   return proposal
 }
 
-export async function loadProposal(id: string): Promise<IngestProposal> {
-  const proposalPath = path.join(proposalDir, `${id}.json`)
-  const data = await readFile(proposalPath, "utf8")
-  return JSON.parse(data) as IngestProposal
+export async function loadProposal(id: string): Promise<ArticleProposal> {
+  const data = await readFile(path.join(proposalDir, `${id}.json`), "utf8")
+  return JSON.parse(data) as ArticleProposal
 }
 
 export async function applyProposal(id: string, commit: boolean): Promise<{ commitSha: string | null; paths: string[] }> {
   const proposal = await loadProposal(id)
+
   for (const file of proposal.files) {
     const absolutePath = path.join(repoRoot, file.path)
     await mkdir(path.dirname(absolutePath), { recursive: true })

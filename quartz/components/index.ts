@@ -24,7 +24,9 @@ import Comments from "./Comments"
 import Flex from "./Flex"
 import ConditionalRender from "./ConditionalRender"
 import SiteNav from "./SiteNav"
-import ReadNext from "./ReadNext"
+import CategoriesPanel from "./CategoriesPanel"
+import RelatedArticles from "./RelatedArticles"
+import MinimalFooter from "./MinimalFooter"
 
 export {
   ArticleTitle,
@@ -53,5 +55,7 @@ export {
   Flex,
   ConditionalRender,
   SiteNav,
-  ReadNext,
+  CategoriesPanel,
+  RelatedArticles,
+  MinimalFooter,
 }

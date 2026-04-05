@@ -10,22 +10,13 @@ export const sharedPageComponents: SharedLayout = {
       links: [
         { text: "Home", href: "index" },
         { text: "Topics", href: "topics/index" },
-        { text: "Start Here", href: "topics/penetration-testing" },
-        { text: "Sources", href: "sources/index" },
-        { text: "Frameworks", href: "frameworks/index" },
+        { text: "Articles", href: "articles/index" },
       ],
+      action: { text: "Add New Article", href: "http://localhost:4318/new-article" },
     }),
   ],
   afterBody: [],
-  footer: Component.Footer({
-    links: {
-      Home: "index",
-      "Start Here": "topics/penetration-testing",
-      Topics: "topics/index",
-      Sources: "sources/index",
-      Frameworks: "frameworks/index",
-    },
-  }),
+  footer: Component.MinimalFooter(),
 }
 
 // components for pages that display a single page (e.g. a single note)
@@ -51,26 +42,10 @@ export const defaultContentPageLayout: PageLayout = {
         { Component: Component.ReaderMode() },
       ],
     }),
-    Component.Explorer({
-      filterFn: (node) =>
-        ![
-          "tags",
-          "paths",
-          "templates",
-          "analyses",
-          "entities",
-          "overview",
-          "scope",
-          "taxonomy",
-          "log",
-        ].includes(node.slugSegment),
-    }),
+    Component.CategoriesPanel(),
   ],
   right: [
-    Component.DesktopOnly(Component.ReadNext()),
-    Component.Graph(),
-    Component.DesktopOnly(Component.TableOfContents()),
-    Component.Backlinks(),
+    Component.RelatedArticles(),
   ],
 }
 
@@ -89,20 +64,7 @@ export const defaultListPageLayout: PageLayout = {
         { Component: Component.Darkmode() },
       ],
     }),
-    Component.Explorer({
-      filterFn: (node) =>
-        ![
-          "tags",
-          "paths",
-          "templates",
-          "analyses",
-          "entities",
-          "overview",
-          "scope",
-          "taxonomy",
-          "log",
-        ].includes(node.slugSegment),
-    }),
+    Component.CategoriesPanel(),
   ],
-  right: [],
+  right: [Component.RelatedArticles()],
 }
