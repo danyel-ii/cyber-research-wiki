@@ -64,7 +64,7 @@ This repo now includes [Quartz](https://quartz.jzhao.xyz/) for publishing the `w
 
 - Obsidian source of truth: `wiki/`
 - Website content directory: `wiki/`
-- Website landing page: `wiki/home.md`, rendered at `/` through `wiki/index.md`
+- Website landing page: `wiki/index.md`
 - Full page map: `wiki/wiki-index.md`
 
 ### Local commands
@@ -86,9 +86,63 @@ The GitHub Pages workflow lives at `.github/workflows/deploy.yml` and builds wit
 
 Quartz now includes:
 
-- a top navigation bar for `Home`, `Wiki Index`, `Topics`, `Sources`, `Frameworks`, and `Log`
+- a top navigation bar for `Home`, `Topics`, `Start Here`, `Sources`, and `Frameworks`
 - project-specific footer links instead of Quartz defaults
 - optional custom-domain support via environment variables
+
+## Ingestion UI
+
+This repo now also includes a local ingestion app for controlled article updates.
+
+Start it with:
+
+```bash
+npm run ingest-ui
+```
+
+Then open:
+
+```text
+http://localhost:4318/new-article
+```
+
+### Workflow
+
+1. Paste one or more reference URLs.
+2. The app fetches and extracts the source pages.
+3. It classifies them against the canonical topic set:
+   - `penetration-testing`
+   - `pentest-workflow`
+   - `rules-of-engagement`
+   - `kali-linux`
+   - `practical-kali-linux`
+   - `kali-as-an-assessment-environment`
+   - `web-testing`
+   - `owasp-wstg`
+4. It drafts a proposal:
+   - create a new `wiki/sources/...` page
+   - update related canonical topic articles
+   - update `wiki/sources/index.md`
+   - update `wiki/index.md`
+   - append an entry to `wiki/log.md`
+5. You review the proposed diff in the browser.
+6. You approve the proposal.
+7. The app writes the files and can create a git commit immediately.
+
+### OpenAI integration
+
+If `OPENAI_API_KEY` is set, the app uses the OpenAI Responses API to classify sources and draft article updates.
+
+Optional environment variables:
+
+- `OPENAI_API_KEY`
+- `OPENAI_MODEL`
+- `INGEST_UI_PORT`
+
+If no API key is present, the app still works in a conservative fallback mode:
+
+- topic matching falls back to keyword overlap
+- article drafting falls back to a basic append-only update strategy
 
 ### Custom domain
 

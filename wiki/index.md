@@ -4,28 +4,25 @@ aliases:
   - home
 ---
 
-This wiki should help you learn cybersecurity topics, not mainly how the wiki works. Start with a topic path and read forward.
+This wiki is being refocused into a small public encyclopedia about the subjects supported by the current source material. Start with the main topic articles and read forward.
 
-## Best starting paths
-- [[paths/learn-penetration-testing]] — the cleanest first path if you want to understand pentesting as a practice
-- [[paths/learn-kali-linux]] — learn where Kali fits, what it helps with, and where its limits are
-- [[paths/learn-web-testing]] — learn how web testing fits into pentesting and where OWASP WSTG and Burp belong
+## Start here
+1. [[topics/penetration-testing]]
+2. [[topics/pentest-workflow]]
+3. [[topics/kali-linux]]
+4. [[topics/web-testing]]
 
-## Core subjects
+## Topic cluster
 - [[topics/penetration-testing]]
 - [[topics/pentest-workflow]]
-- [[topics/kali-linux-for-pentesting]]
-- [[entities/kali-linux]]
-- [[topics/lab-safety-and-rules-of-engagement]]
-- [[frameworks/nist-sp-800-115]]
+- [[topics/rules-of-engagement]]
+- [[topics/kali-linux]]
+- [[topics/practical-kali-linux]]
+- [[topics/kali-as-an-assessment-environment]]
+- [[topics/web-testing]]
 - [[frameworks/owasp-wstg]]
 
-## If you want the full map
-- [[paths/index]] for all learning paths
-- [[wiki-index]] for the full page map
-
-## For maintainers and contributors
-- [[overview]]
-- [[scope]]
-- [[taxonomy]]
-- [[log]]
+## Support layer
+- [[sources/kali-linux-website-corpus-2026-04-05]]
+- [[sources/certification-training-corpus-2026-04-05]]
+- [[wiki-index]]

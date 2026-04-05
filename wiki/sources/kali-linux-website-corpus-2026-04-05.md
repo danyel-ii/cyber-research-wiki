@@ -43,9 +43,10 @@ This source page summarizes a staged corpus of Kali Linux and related OffSec web
 
 ## Relevance to the wiki
 - Affects: [[topics/penetration-testing]]
-- Affects: [[topics/penetration-testing-distributions]]
-- Affects: [[topics/lab-safety-and-rules-of-engagement]]
-- Affects: [[entities/kali-linux]]
+- Affects: [[topics/rules-of-engagement]]
+- Affects: [[topics/kali-linux]]
+- Affects: [[topics/practical-kali-linux]]
+- Affects: [[topics/kali-as-an-assessment-environment]]
 - Affects: [[entities/offsec]]
 
 ## Tensions / contradictions
@@ -60,7 +61,8 @@ This source page summarizes a staged corpus of Kali Linux and related OffSec web
 
 ## Suggested follow-up pages to update
 - [[topics/penetration-testing]]
-- [[topics/penetration-testing-distributions]]
-- [[topics/lab-safety-and-rules-of-engagement]]
-- [[entities/kali-linux]]
+- [[topics/rules-of-engagement]]
+- [[topics/kali-linux]]
+- [[topics/practical-kali-linux]]
+- [[topics/kali-as-an-assessment-environment]]
 - [[entities/offsec]]

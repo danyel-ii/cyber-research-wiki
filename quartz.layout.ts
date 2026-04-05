@@ -9,11 +9,10 @@ export const sharedPageComponents: SharedLayout = {
       title: "Cybersecurity Research Wiki",
       links: [
         { text: "Home", href: "index" },
-        { text: "Wiki Index", href: "wiki-index" },
-        { text: "Topics", href: "topics" },
-        { text: "Sources", href: "sources" },
-        { text: "Frameworks", href: "frameworks" },
-        { text: "Log", href: "log" },
+        { text: "Topics", href: "topics/index" },
+        { text: "Start Here", href: "topics/penetration-testing" },
+        { text: "Sources", href: "sources/index" },
+        { text: "Frameworks", href: "frameworks/index" },
       ],
     }),
   ],
@@ -21,11 +20,10 @@ export const sharedPageComponents: SharedLayout = {
   footer: Component.Footer({
     links: {
       Home: "index",
-      "Wiki Index": "wiki-index",
-      Topics: "topics",
-      Sources: "sources",
-      Frameworks: "frameworks",
-      Log: "log",
+      "Start Here": "topics/penetration-testing",
+      Topics: "topics/index",
+      Sources: "sources/index",
+      Frameworks: "frameworks/index",
     },
   }),
 }
@@ -37,7 +35,6 @@ export const defaultContentPageLayout: PageLayout = {
       component: Component.Breadcrumbs(),
       condition: (page) => page.fileData.slug !== "index",
     }),
-    Component.ArticleTitle(),
     Component.ContentMeta(),
     Component.TagList(),
   ],
@@ -54,7 +51,20 @@ export const defaultContentPageLayout: PageLayout = {
         { Component: Component.ReaderMode() },
       ],
     }),
-    Component.Explorer(),
+    Component.Explorer({
+      filterFn: (node) =>
+        ![
+          "tags",
+          "paths",
+          "templates",
+          "analyses",
+          "entities",
+          "overview",
+          "scope",
+          "taxonomy",
+          "log",
+        ].includes(node.slugSegment),
+    }),
   ],
   right: [
     Component.Graph(),
@@ -65,7 +75,7 @@ export const defaultContentPageLayout: PageLayout = {
 
 // components for pages that display lists of pages  (e.g. tags or folders)
 export const defaultListPageLayout: PageLayout = {
-  beforeBody: [Component.Breadcrumbs(), Component.ArticleTitle(), Component.ContentMeta()],
+  beforeBody: [Component.Breadcrumbs(), Component.ContentMeta()],
   left: [
     Component.PageTitle(),
     Component.MobileOnly(Component.Spacer()),
@@ -78,7 +88,20 @@ export const defaultListPageLayout: PageLayout = {
         { Component: Component.Darkmode() },
       ],
     }),
-    Component.Explorer(),
+    Component.Explorer({
+      filterFn: (node) =>
+        ![
+          "tags",
+          "paths",
+          "templates",
+          "analyses",
+          "entities",
+          "overview",
+          "scope",
+          "taxonomy",
+          "log",
+        ].includes(node.slugSegment),
+    }),
   ],
   right: [],
 }

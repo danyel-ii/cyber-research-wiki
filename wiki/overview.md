@@ -1,35 +1,34 @@
 # Overview
 
 ## Overview
-This wiki is a persistent, markdown-based research layer for cybersecurity material. It is designed to sit between raw sources and future questions, so that synthesis accumulates over time instead of being recreated from scratch for every query.
+This wiki is a small encyclopedia about the subjects currently supported by the ingested source material. Its public layer is topic-first, while source summaries and analyses stay behind the articles as support material.
 
 ## What this wiki is for
 - organizing research on authorized security testing
-- comparing methodologies and frameworks
-- tracking evidence, claims, and contradictions across sources
-- saving durable analyses that should outlive chat sessions
+- teaching the current topic cluster in a readable order
+- comparing methodology and framework anchors where they clarify the main articles
+- keeping evidence and provenance available behind the articles
 
 ## What this wiki is not for
 - storing malware, exploit code, or unauthorized intrusion playbooks
 - replacing primary sources
-- acting as a flat bookmark list without synthesis
+- putting process pages in front of the subjects themselves
 
 ## Main navigation
 - [[index]]
-- [[paths/learn-penetration-testing]]
-- [[paths/learn-kali-linux]]
-- [[scope]]
-- [[taxonomy]]
-- [[paths/index]]
-- [[topics/authorized-security-research]]
+- [[topics/index]]
 - [[topics/penetration-testing]]
-- [[topics/red-teaming]]
-- [[topics/attack-mapping]]
-- [[frameworks/nist-sp-800-115]]
+- [[topics/pentest-workflow]]
+- [[topics/kali-linux]]
+- [[topics/web-testing]]
 - [[frameworks/owasp-wstg]]
-- [[frameworks/mitre-attack]]
+- [[sources/index]]
+- [[frameworks/index]]
+- [[wiki-index]]
 
-## Open questions
-- Which subdomains should become first-class sections first: web, cloud, identity, endpoint, or network?
-- How much metadata should be standardized before it becomes annoying?
-- At what scale does this repo need local search beyond `index.md`?
+## Support and maintenance
+- [[sources/kali-linux-website-corpus-2026-04-05]]
+- [[sources/certification-training-corpus-2026-04-05]]
+- [[frameworks/nist-sp-800-115]]
+- [[analyses/certification-corpus-ingest-audit-2026-04-05]]
+- [[log]]

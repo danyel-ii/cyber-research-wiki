@@ -12,7 +12,7 @@ Authorized research is not merely about technical skill. It also depends on scop
 - It affects how findings should be documented and escalated.
 
 ## Related pages
-- [[topics/lab-safety-and-rules-of-engagement]]
+- [[topics/rules-of-engagement]]
 - [[topics/penetration-testing]]
 - [[topics/red-teaming]]
 - [[scope]]
@@ -20,4 +20,3 @@ Authorized research is not merely about technical skill. It also depends on scop
 ## Open questions
 - Which authorization artifacts should be standardized in source summaries: customer approval, scope statement, ROE, reporting chain?
 - Should this wiki include a dedicated page for disclosure programs and safe-harbor language?
-

@@ -1,5 +1,12 @@
 # Log
 
+## [2026-04-05] structure | Encyclopedia refactor
+- Created: [[topics/kali-linux]], [[topics/practical-kali-linux]], [[topics/kali-as-an-assessment-environment]], [[topics/rules-of-engagement]], [[topics/web-testing]]
+- Deleted: [[entities/kali-linux]], [[topics/kali-linux-for-pentesting]], [[topics/lab-safety-and-rules-of-engagement]], [[topics/penetration-testing-distributions]]
+- Updated: [[topics/penetration-testing]], [[topics/pentest-workflow]], [[frameworks/owasp-wstg]], [[index]], [[wiki-index]], [[overview]]
+- Updated: [[topics/index]], [[sources/index]], [[frameworks/index]], [[sources/kali-linux-website-corpus-2026-04-05]], [[sources/certification-training-corpus-2026-04-05]]
+- Notes: Refocused the public layer around a small set of substantial encyclopedia-style topic articles, added strong portal pages for topics, sources, and frameworks, and demoted the path/meta layer to support material.
+
 ## [2026-04-05] structure | Learner-first reframe
 - Created: [[topics/pentest-workflow]], [[topics/kali-linux-for-pentesting]]
 - Created: [[paths/learn-penetration-testing]], [[paths/learn-kali-linux]], [[paths/learn-web-testing]], [[paths/learn-certification-routes]]

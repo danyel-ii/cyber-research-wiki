@@ -1,47 +1,52 @@
 # Penetration Testing
 
 ## Overview
-Penetration testing is a form of active security testing used to verify how well a system resists compromise attempts within an authorized scope.
+Penetration testing is an authorized form of active security testing used to find out whether real weaknesses in a system, application, or environment can actually be validated in practice. It sits between high-level security review and full adversary-emulation work: more active than a simple assessment, narrower than a red-team exercise.
 
-## Core idea
-The point of a pentest is not to "hack for its own sake." It is to produce credible evidence about where defenses fail, how weaknesses can be validated, and what should be fixed inside an authorized scope.
+## What penetration testing is for
+The purpose of a pentest is not to show off tools or collect dramatic screenshots. Its purpose is to produce credible evidence about:
+- where a defense or control actually fails
+- which weaknesses are exploitable enough to matter
+- what defenders or owners should change next
+
+A good pentest helps a system owner make better decisions.
 
 ## Read next
 - Next page: [[topics/pentest-workflow]]
-- After that: [[topics/lab-safety-and-rules-of-engagement]]
-- If you want the environment side next: [[topics/kali-linux-for-pentesting]]
+- After that: [[topics/rules-of-engagement]]
+- If you want the environment side next: [[topics/kali-linux]]
 
 ## Distinguish from adjacent practices
 - Vulnerability assessment emphasizes identification and prioritization.
 - Penetration testing adds active validation of exploitability or control weakness.
 - Red teaming typically broadens the objective toward realistic adversary emulation and defensive response measurement.
 
-## Learn it as a workflow
-The easiest way to learn pentesting is to treat it as a workflow: scope the work, prepare the environment, gather information, validate weaknesses, record evidence, and report clearly. See [[topics/pentest-workflow]].
+## How to learn penetration testing
+The best way to learn pentesting is to think in terms of workflow rather than tools:
+1. define scope and authorization
+2. prepare the environment
+3. gather information
+4. validate weaknesses carefully
+5. collect evidence
+6. report clearly
+
+This is why the next page to read is [[topics/pentest-workflow]].
 
 ## Assessment environments
-Penetration testing also depends on the operator environment used to conduct authorized work. Purpose-built distributions such as [[entities/kali-linux]] can reduce setup time and improve portability, but they are enabling platforms rather than methodologies. See [[topics/penetration-testing-distributions]] and [[topics/kali-linux-for-pentesting]].
+Assessment environments matter because they shape repeatability, portability, and tool availability. Kali Linux is a common example, but it remains an environment for pentesting, not the definition of pentesting itself. See [[topics/kali-linux]] and [[topics/kali-as-an-assessment-environment]].
 
-## Continue this path
-If you are learning this topic in order:
-1. [[topics/pentest-workflow]]
-2. [[topics/lab-safety-and-rules-of-engagement]]
-3. [[topics/kali-linux-for-pentesting]]
-4. [[frameworks/nist-sp-800-115]]
-5. [[frameworks/owasp-wstg]]
+## Where web testing fits
+Web testing is one of the most common and most visible parts of pentesting, but it should still be learned as part of the same overall workflow and rules-of-engagement model. See [[topics/web-testing]].
 
-## Related pages
+## Related topics
 - [[topics/pentest-workflow]]
-- [[topics/kali-linux-for-pentesting]]
+- [[topics/rules-of-engagement]]
+- [[topics/kali-linux]]
+- [[topics/kali-as-an-assessment-environment]]
+- [[topics/web-testing]]
 - [[topics/red-teaming]]
-- [[topics/threat-modeling]]
-- [[topics/penetration-testing-distributions]]
 - [[frameworks/nist-sp-800-115]]
 - [[frameworks/owasp-wstg]]
 
-## Evidence and sources
+## Sources
 - [[sources/kali-linux-website-corpus-2026-04-05]]
-
-## Open questions
-- Which pentest phases should become their own pages first?
-- Should reporting templates live in this repo or a separate delivery repo?

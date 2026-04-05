@@ -36,10 +36,10 @@ This source page summarizes an external corpus of certification-oriented trainin
   - Notes: TryHackMe path pages in this corpus snapshot appear empty and should not be treated as evidence.
 
 ## Relevance to the wiki
-- Affects: [[paths/foundational-certifications]]
-- Affects: [[paths/network-and-internal-testing]]
-- Affects: [[paths/web-application-testing]]
-- Affects: [[paths/forensics-and-ir]]
+- Affects: [[topics/penetration-testing]]
+- Affects: [[topics/web-testing]]
+- Affects: [[frameworks/owasp-wstg]]
+- Affects: [[topics/rules-of-engagement]]
 - Affects: [[analyses/certification-to-learning-path-map]]
 
 ## Tensions / contradictions
@@ -53,8 +53,8 @@ This source page summarizes an external corpus of certification-oriented trainin
 - Which certification claims should be backed by official exam-objective or exam-guide sources rather than training-provider summaries?
 
 ## Suggested follow-up pages to update
-- [[paths/foundational-certifications]]
-- [[paths/network-and-internal-testing]]
-- [[paths/web-application-testing]]
-- [[paths/forensics-and-ir]]
+- [[topics/penetration-testing]]
+- [[topics/web-testing]]
+- [[frameworks/owasp-wstg]]
+- [[topics/rules-of-engagement]]
 - [[analyses/certification-to-learning-path-map]]

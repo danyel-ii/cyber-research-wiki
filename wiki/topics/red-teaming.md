@@ -17,7 +17,7 @@ This page should become the hub for:
 ## Related pages
 - [[topics/penetration-testing]]
 - [[topics/attack-mapping]]
-- [[topics/lab-safety-and-rules-of-engagement]]
+- [[topics/rules-of-engagement]]
 - [[frameworks/mitre-attack]]
 
 ## Evidence and sources
@@ -26,4 +26,3 @@ This page should become the hub for:
 ## Open questions
 - Should purple teaming get its own page early, or live here first as a section?
 - How should this wiki represent exercise objectives, assumptions, and outcomes consistently?
-
