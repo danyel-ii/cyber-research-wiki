@@ -1,5 +1,12 @@
 # Log
 
+## [2026-04-05] structure | Eight-topic backbone refinement
+- Updated: [[index]], [[topics/index]], [[wiki-index]]
+- Updated: [[topics/penetration-testing]], [[topics/pentest-workflow]], [[topics/rules-of-engagement]]
+- Updated: [[topics/kali-linux]], [[topics/practical-kali-linux]], [[topics/kali-as-an-assessment-environment]]
+- Updated: [[topics/web-testing]], [[frameworks/owasp-wstg]]
+- Notes: Expanded the eight public backbone articles into more substantial, consistently positioned pages so the wiki is explorable through the topic cluster rather than through maintenance structure alone.
+
 ## [2026-04-05] structure | Encyclopedia refactor
 - Created: [[topics/kali-linux]], [[topics/practical-kali-linux]], [[topics/kali-as-an-assessment-environment]], [[topics/rules-of-engagement]], [[topics/web-testing]]
 - Deleted: [[entities/kali-linux]], [[topics/kali-linux-for-pentesting]], [[topics/lab-safety-and-rules-of-engagement]], [[topics/penetration-testing-distributions]]

@@ -1,12 +1,6 @@
 # Wiki Index
 
-## Main reading sequence
-- [[topics/penetration-testing]]
-- [[topics/pentest-workflow]]
-- [[topics/kali-linux]]
-- [[topics/web-testing]]
-
-## Main topics
+## Backbone sequence
 - [[topics/penetration-testing]]
 - [[topics/pentest-workflow]]
 - [[topics/rules-of-engagement]]
@@ -14,16 +8,17 @@
 - [[topics/practical-kali-linux]]
 - [[topics/kali-as-an-assessment-environment]]
 - [[topics/web-testing]]
+- [[frameworks/owasp-wstg]]
 
-## Topics
-- [[topics/penetration-testing]] — Main article on pentesting as an authorized testing practice.
-- [[topics/pentest-workflow]] — Main article on the sequence of pentest work.
-- [[topics/rules-of-engagement]] — Main article on practical testing boundaries.
-- [[topics/kali-linux]] — Main article on Kali Linux.
-- [[topics/practical-kali-linux]] — Applied use of Kali Linux for learning and labs.
-- [[topics/kali-as-an-assessment-environment]] — Kali understood as an environment rather than a method.
-- [[topics/web-testing]] — Main article on web testing inside pentesting.
-- [[frameworks/owasp-wstg]] — Main web-testing framework anchor.
+## Backbone roles
+- [[topics/penetration-testing]] — explains what the discipline is for
+- [[topics/pentest-workflow]] — explains the sequence of work
+- [[topics/rules-of-engagement]] — explains authorization, scope, and boundaries
+- [[topics/kali-linux]] — explains the main assessment environment in the current corpus
+- [[topics/practical-kali-linux]] — explains practical learner use of that environment
+- [[topics/kali-as-an-assessment-environment]] — explains the environment-versus-method distinction
+- [[topics/web-testing]] — explains one major domain branch
+- [[frameworks/owasp-wstg]] — explains the framework anchor behind the web branch
 
 ## Supporting topics
 - [[topics/authorized-security-research]]
