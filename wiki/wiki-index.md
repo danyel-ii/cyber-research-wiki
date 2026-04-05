@@ -1,7 +1,7 @@
 # Wiki Index
 
 ## Orientation
-- [[home]] — Obsidian landing page for navigation, priorities, and current research lanes.
+- [[index]] — Main landing page for learners.
 - [[overview]] — Top-level map of the cybersecurity research wiki.
 - [[scope]] — Scope, boundaries, and what belongs in this repo.
 - [[taxonomy]] — Preferred organizing axes, tags, and terminology decisions.

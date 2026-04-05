@@ -18,7 +18,7 @@ This path is the best entry point for someone who wants to understand what this 
 - understand why ATT&CK and formal frameworks matter in this repo
 
 ## Reading sequence
-1. [[home]] — understand the purpose of the wiki and how to navigate it
+1. [[index]] — understand the purpose of the wiki and how to navigate it
 2. [[overview]] — get the top-level map
 3. [[scope]] — learn what belongs here and what does not
 4. [[taxonomy]] — see the organizing axes used throughout the wiki

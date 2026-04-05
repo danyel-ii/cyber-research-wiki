@@ -6,6 +6,11 @@ Penetration testing is a form of active security testing used to verify how well
 ## Core idea
 The point of a pentest is not to "hack for its own sake." It is to produce credible evidence about where defenses fail, how weaknesses can be validated, and what should be fixed inside an authorized scope.
 
+## Read next
+- Next page: [[topics/pentest-workflow]]
+- After that: [[topics/lab-safety-and-rules-of-engagement]]
+- If you want the environment side next: [[topics/kali-linux-for-pentesting]]
+
 ## Distinguish from adjacent practices
 - Vulnerability assessment emphasizes identification and prioritization.
 - Penetration testing adds active validation of exploitability or control weakness.
@@ -17,7 +22,7 @@ The easiest way to learn pentesting is to treat it as a workflow: scope the work
 ## Assessment environments
 Penetration testing also depends on the operator environment used to conduct authorized work. Purpose-built distributions such as [[entities/kali-linux]] can reduce setup time and improve portability, but they are enabling platforms rather than methodologies. See [[topics/penetration-testing-distributions]] and [[topics/kali-linux-for-pentesting]].
 
-## What a beginner should read next
+## Continue this path
 If you are learning this topic in order:
 1. [[topics/pentest-workflow]]
 2. [[topics/lab-safety-and-rules-of-engagement]]

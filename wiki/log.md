@@ -3,7 +3,7 @@
 ## [2026-04-05] structure | Learner-first reframe
 - Created: [[topics/pentest-workflow]], [[topics/kali-linux-for-pentesting]]
 - Created: [[paths/learn-penetration-testing]], [[paths/learn-kali-linux]], [[paths/learn-web-testing]], [[paths/learn-certification-routes]]
-- Updated: [[topics/penetration-testing]], [[home]], [[paths/index]], [[wiki-index]], [[overview]]
+- Updated: [[topics/penetration-testing]], [[index]], [[paths/index]], [[wiki-index]], [[overview]]
 - Notes: Reframed the wiki around learner-facing subject paths so readers can study penetration testing and Kali Linux directly without being forced through wiki-maintenance material.
 
 ## [2026-04-05] ingest | Certification training corpus
@@ -11,7 +11,7 @@
 - Created: [[analyses/certification-corpus-ingest-audit-2026-04-05]]
 - Updated: [[analyses/certification-to-learning-path-map]]
 - Updated: [[paths/foundational-certifications]], [[paths/network-and-internal-testing]], [[paths/web-application-testing]], [[paths/forensics-and-ir]], [[paths/evidence-and-synthesis]]
-- Updated: [[home]], [[wiki-index]]
+- Updated: [[index]], [[wiki-index]]
 - Notes: Incorporated a mixed external certification corpus from `/Users/danyel-ii/IngestionEngine/controlled-ingestion-codex-kit/data/projects/certs/pages`; strongest gains were CEH-style breadth, CompTIA-style study structure, Burp authorization framing, and evidence-handling concepts, while OSCP/GPEN/CPTS/OSEE/CHFI remained under-evidenced.
 
 ## [2026-04-05] lint | Post-certification-ingest health check
@@ -22,13 +22,13 @@
 - Created: [[analyses/certification-to-learning-path-map]]
 - Created: [[paths/foundational-certifications]], [[paths/practical-pentest-labs]], [[paths/network-and-internal-testing]]
 - Created: [[paths/web-application-testing]], [[paths/exploit-development]], [[paths/forensics-and-ir]]
-- Updated: [[paths/index]], [[home]], [[wiki-index]]
+- Updated: [[paths/index]], [[index]], [[wiki-index]]
 - Notes: Added certification-aligned path families and mapped CEH, OSCP, PenTest+, GPEN, CPTS, CHFI, OSEE, and BSCP onto the curriculum without collapsing the wiki into vendor-specific exam prep.
 
 ## [2026-04-05] structure | Curriculum layer
 - Created: [[paths/index]], [[paths/foundations]], [[paths/methodology-core]], [[paths/evidence-and-synthesis]]
 - Created: [[templates/path-template]]
-- Updated: [[home]], [[wiki-index]], [[overview]]
+- Updated: [[index]], [[wiki-index]], [[overview]]
 - Notes: Added a first-class curriculum layer with ordered learning tracks and explicit maintenance rules so paths can be extended incrementally as the wiki grows.
 
 ## [2026-04-05] structure | Obsidian homepage
@@ -42,7 +42,7 @@
 - Notes: Reassigned `[[index]]` to be the Quartz root homepage so `home.md` can render at `/`; moved the full page map to `[[wiki-index]]`.
 
 ## [2026-04-05] structure | Quartz nav and domain path
-- Updated: [[home]], [[wiki-index]]
+- Updated: [[index]], [[wiki-index]]
 - Notes: Added a Quartz top nav and custom footer links; configured optional custom-domain publishing through `QUARTZ_CUSTOM_DOMAIN` and `QUARTZ_BASE_URL` with automatic `CNAME` generation when enabled.
 
 ## [2026-04-05] ingest | Kali Linux website corpus

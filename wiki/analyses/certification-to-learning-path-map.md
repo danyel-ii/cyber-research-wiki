@@ -99,5 +99,5 @@ Certifications should map onto these families. As the wiki grows, new pages shou
 
 ## Follow-up updates suggested
 - [[paths/index]]
-- [[home]]
+- [[index]]
 - [[wiki-index]]
