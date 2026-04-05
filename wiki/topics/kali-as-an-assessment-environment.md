@@ -23,5 +23,5 @@ This is the conceptual branch of the Kali cluster. It keeps the wiki from collap
 
 ## Articles in this category
 <!-- ARTICLE-LIST:START -->
-_No articles yet._
+- [[articles/kali-as-an-assessment-environment]] — > **Scope note:** This article is about Kali as a controlled operator workspace. It does **not** grant permission, define scope, or replace testing methodology. Those belong to [Penetration Testing](./penetration-testing.md), [Pentest Workflow](./pentest-workflow.md), and [Rules of Engagement](./rules-of-engagement.md). For step-by-step lab usage, see [Practical Kali Linux](./practical-kali-linux.md).
 <!-- ARTICLE-LIST:END -->

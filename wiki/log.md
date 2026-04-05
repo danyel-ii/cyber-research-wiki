@@ -12,3 +12,9 @@
 - Categorized under: [[topics/kali-linux]]
 - Related: none yet
 - Notes: Added through the article app and propagated into category indexes and related-article metadata.
+
+## [2026-04-05] article | Kali as an Assessment Environment
+- Created: [[articles/kali-as-an-assessment-environment]]
+- Categorized under: [[topics/kali-as-an-assessment-environment]]
+- Related: [[articles/kali-linux]]
+- Notes: Added through the article app and propagated into category indexes and related-article metadata.
