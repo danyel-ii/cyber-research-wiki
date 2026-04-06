@@ -1,12 +1,12 @@
 ---
-title: Kali Linux
-pageKind: category
-categoryId: kali-linux
-summary: Main category for Kali Linux as the primary assessment-environment subject in the current wiki.
+title: "Kali Linux"
+pageKind: "category"
+categoryId: "kali-linux"
+summary: "Main category for Kali Linux as the primary assessment-environment subject in the current wiki."
 related:
-  - topics/practical-kali-linux
-  - topics/kali-as-an-assessment-environment
-  - topics/pentest-workflow
+  - "topics/practical-kali-linux"
+  - "topics/kali-as-an-assessment-environment"
+  - "topics/pentest-workflow"
 ---
 # Kali Linux
 

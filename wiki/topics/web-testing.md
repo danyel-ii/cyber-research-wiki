@@ -1,12 +1,12 @@
 ---
-title: Web Testing
-pageKind: category
-categoryId: web-testing
-summary: Domain-specific category for web application and API testing within the larger pentest model.
+title: "Web Testing"
+pageKind: "category"
+categoryId: "web-testing"
+summary: "Domain-specific category for web application and API testing within the larger pentest model."
 related:
-  - topics/penetration-testing
-  - topics/pentest-workflow
-  - frameworks/owasp-wstg
+  - "topics/penetration-testing"
+  - "topics/pentest-workflow"
+  - "frameworks/owasp-wstg"
 ---
 # Web Testing
 

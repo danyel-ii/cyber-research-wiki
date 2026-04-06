@@ -1,12 +1,12 @@
 ---
-title: Kali as an Assessment Environment
-pageKind: category
-categoryId: kali-as-an-assessment-environment
-summary: Conceptual category for treating Kali Linux as an environment rather than a testing methodology.
+title: "Kali as an Assessment Environment"
+pageKind: "category"
+categoryId: "kali-as-an-assessment-environment"
+summary: "Conceptual category for treating Kali Linux as an environment rather than a testing methodology."
 related:
-  - topics/kali-linux
-  - topics/practical-kali-linux
-  - topics/pentest-workflow
+  - "topics/kali-linux"
+  - "topics/practical-kali-linux"
+  - "topics/pentest-workflow"
 ---
 # Kali as an Assessment Environment
 

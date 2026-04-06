@@ -1,12 +1,12 @@
 ---
-title: Penetration Testing
-pageKind: category
-categoryId: penetration-testing
-summary: Core category for authorized penetration testing as a practice, purpose, and assessment type.
+title: "Penetration Testing"
+pageKind: "category"
+categoryId: "penetration-testing"
+summary: "Core category for authorized penetration testing as a practice, purpose, and assessment type."
 related:
-  - topics/pentest-workflow
-  - topics/rules-of-engagement
-  - topics/web-testing
+  - "topics/pentest-workflow"
+  - "topics/rules-of-engagement"
+  - "topics/web-testing"
 ---
 # Penetration Testing
 

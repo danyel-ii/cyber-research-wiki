@@ -18,3 +18,9 @@
 - Categorized under: [[topics/kali-as-an-assessment-environment]]
 - Related: [[articles/kali-linux]]
 - Notes: Added through the article app and propagated into category indexes and related-article metadata.
+
+## [2026-04-06] article | Practical Kali Linux
+- Created: [[articles/practical-kali-linux]]
+- Categorized under: [[topics/practical-kali-linux]]
+- Related: [[articles/kali-as-an-assessment-environment]], [[articles/kali-linux]]
+- Notes: Added through the article app and propagated into category indexes and related-article metadata.

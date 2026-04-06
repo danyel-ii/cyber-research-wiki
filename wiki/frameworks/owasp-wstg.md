@@ -1,12 +1,12 @@
 ---
-title: OWASP WSTG
-pageKind: category
-categoryId: owasp-wstg
-summary: Framework-anchor category for articles that use the OWASP Web Security Testing Guide to structure web-testing work.
+title: "OWASP WSTG"
+pageKind: "category"
+categoryId: "owasp-wstg"
+summary: "Framework-anchor category for articles that use the OWASP Web Security Testing Guide to structure web-testing work."
 related:
-  - topics/web-testing
-  - topics/pentest-workflow
-  - topics/penetration-testing
+  - "topics/web-testing"
+  - "topics/pentest-workflow"
+  - "topics/penetration-testing"
 ---
 # OWASP WSTG
 

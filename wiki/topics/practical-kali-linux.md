@@ -1,12 +1,12 @@
 ---
-title: Practical Kali Linux
-pageKind: category
-categoryId: practical-kali-linux
-summary: Applied learner-facing category for using Kali Linux in labs, practice, and repeatable assessment setups.
+title: "Practical Kali Linux"
+pageKind: "category"
+categoryId: "practical-kali-linux"
+summary: "Applied learner-facing category for using Kali Linux in labs, practice, and repeatable assessment setups."
 related:
-  - topics/kali-linux
-  - topics/kali-as-an-assessment-environment
-  - topics/rules-of-engagement
+  - "topics/kali-linux"
+  - "topics/kali-as-an-assessment-environment"
+  - "topics/rules-of-engagement"
 ---
 # Practical Kali Linux
 
@@ -24,5 +24,5 @@ This category narrows Kali Linux into real usage decisions. It is more applied t
 
 ## Articles in this category
 <!-- ARTICLE-LIST:START -->
-_No articles yet._
+- [[articles/practical-kali-linux]] — Practical Kali Linux is not about collecting the longest possible tool list. It is about turning Kali into a **repeatable lab workstation** for learning, rehearsing, documenting, and resetting security exercises safely.
 <!-- ARTICLE-LIST:END -->

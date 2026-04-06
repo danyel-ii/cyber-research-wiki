@@ -6,8 +6,9 @@ categories:
   - "kali-as-an-assessment-environment"
 related:
   - "articles/kali-linux"
+  - "articles/practical-kali-linux"
 created: "2026-04-05"
-updated: "2026-04-05"
+updated: "2026-04-06"
 ---
 Kali Linux becomes an **assessment environment** when it is treated as more than a tool catalog. In professional work, the important question is not merely whether a given binary exists on disk. The real question is whether the operating system, packages, network path, browser state, notes, captured artifacts, and update history form a workspace that is **safe to use, easy to reproduce, and defensible when findings are challenged later**.[^downloading][^download-secure][^repos]
 

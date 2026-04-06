@@ -1,12 +1,12 @@
 ---
-title: Rules of Engagement
-pageKind: category
-categoryId: rules-of-engagement
-summary: Category for scope, exclusions, communication paths, risk boundaries, and authorization conditions.
+title: "Rules of Engagement"
+pageKind: "category"
+categoryId: "rules-of-engagement"
+summary: "Category for scope, exclusions, communication paths, risk boundaries, and authorization conditions."
 related:
-  - topics/penetration-testing
-  - topics/pentest-workflow
-  - topics/kali-linux
+  - "topics/penetration-testing"
+  - "topics/pentest-workflow"
+  - "topics/kali-linux"
 ---
 # Rules of Engagement
 

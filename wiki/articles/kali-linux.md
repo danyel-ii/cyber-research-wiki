@@ -6,8 +6,9 @@ categories:
   - "kali-linux"
 related:
   - "articles/kali-as-an-assessment-environment"
+  - "articles/practical-kali-linux"
 created: "2026-04-05"
-updated: "2026-04-05"
+updated: "2026-04-06"
 ---
 Kali Linux is an open-source, Debian-based Linux distribution built for professional penetration testing, security auditing, computer forensics, and reverse engineering.[^what-is][^home] In practice, it is best understood as a curated security workstation: a distribution that combines a large tool catalog, security-specific defaults, tested packages, and multiple deployment options that make authorized assessment work easier to prepare, standardize, and reproduce.[^what-is][^features]
 
