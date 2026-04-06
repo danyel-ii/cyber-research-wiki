@@ -9,6 +9,39 @@ import type { ArticleInput } from "./lib/types"
 const publicDir = path.join(process.cwd(), "tools", "ingest-app", "public")
 const port = Number(process.env.INGEST_UI_PORT ?? 4318)
 
+function stripFrontmatter(markdown: string): string {
+  if (!markdown.startsWith("---\n")) return markdown
+  const endIndex = markdown.indexOf("\n---\n", 4)
+  if (endIndex === -1) return markdown
+  return markdown.slice(endIndex + 5).trimStart()
+}
+
+function filenameToTitle(filePath: string): string {
+  return path
+    .basename(filePath, path.extname(filePath))
+    .split(/[-_]+/)
+    .filter(Boolean)
+    .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+    .join(" ")
+}
+
+function deriveArticleDraft(filePath: string, markdown: string): { title: string; summary: string; body: string } {
+  const body = stripFrontmatter(markdown).trim()
+  const lines = body.split("\n")
+  const headingLine = lines.find((line) => /^#\s+/.test(line.trim()))
+  const title = headingLine ? headingLine.replace(/^#\s+/, "").trim() : filenameToTitle(filePath)
+
+  const summaryLine = lines
+    .map((line) => line.trim())
+    .find((line) => line.length > 0 && !line.startsWith("#") && !line.startsWith("- ") && !line.startsWith(">"))
+
+  return {
+    title,
+    summary: (summaryLine ?? "").slice(0, 220),
+    body,
+  }
+}
+
 function json(body: unknown, status = 200): ResponseInit & { body: string } {
   return {
     status,
@@ -77,6 +110,29 @@ const server = createServer(async (request: IncomingMessage, response: ServerRes
           role: topic.role,
           filePath: topic.filePath,
         })),
+      })
+      response.writeHead(result.status, result.headers)
+      response.end(result.body)
+      return
+    }
+
+    if (request.method === "POST" && url.pathname === "/api/load-file") {
+      const body = await readJsonBody<{ filePath?: string }>(request)
+      if (!body.filePath?.trim()) {
+        const result = json({ error: "filePath is required." }, 400)
+        response.writeHead(result.status, result.headers)
+        response.end(result.body)
+        return
+      }
+
+      const requestedPath = body.filePath.trim()
+      const resolvedPath = path.isAbsolute(requestedPath) ? requestedPath : path.resolve(process.cwd(), requestedPath)
+      const markdown = await readFile(resolvedPath, "utf8")
+      const draft = deriveArticleDraft(resolvedPath, markdown)
+
+      const result = json({
+        filePath: resolvedPath,
+        ...draft,
       })
       response.writeHead(result.status, result.headers)
       response.end(result.body)
