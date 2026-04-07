@@ -6,7 +6,7 @@ aliases:
 
 # Cybersecurity Research Wiki
 
-This wiki is organized around six operational categories: Recon, Web, Exploit, Creds, Post, and Pivot. New articles are written manually, then the app updates category pages, related-article links, and the article index automatically.
+This wiki is organized around six operational categories: Recon, Web, Exploit, Creds, Post, and Pivot. Use the category cards in the sidebar as the main orientation layer: each one gives a flash-intro before you move into the fuller category hub.
 
 ## Start here
 - [[topics/recon]]

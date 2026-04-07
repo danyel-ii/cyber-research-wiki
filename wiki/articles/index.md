@@ -1,6 +1,6 @@
 # Articles
 
-This section holds manually authored wiki articles. The article app updates this page automatically when a new article is added.
+This section holds the current wiki articles.
 
 ## All articles
 <!-- ARTICLE-INDEX:START -->

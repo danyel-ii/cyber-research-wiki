@@ -1,5 +1,11 @@
 # Log
 
+## [2026-04-07] structure | Removed in-repo authoring surface
+- Removed: the `Add New Article` feature from the site chrome and the obsolete local authoring app from this repo
+- Moved: category metadata into the Quartz layer so the public wiki no longer depends on deleted app code
+- Updated: sidebar categories to render as cards with short flash intros for each phase
+- Notes: the repo is now a read-only publishing surface again; content changes should be made directly to the markdown source.
+
 ## [2026-04-07] structure | Reorganized wiki into six-phase schema
 - Replaced: previous public category backbone with [[topics/recon]], [[topics/web]], [[topics/exploit]], [[topics/creds]], [[topics/post]], and [[topics/pivot]]
 - Removed: legacy topic and framework category pages that no longer fit the phase model

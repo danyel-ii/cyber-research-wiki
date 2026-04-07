@@ -1,9 +1,8 @@
 # Cybersecurity Research Wiki
 
-This repo now has two distinct layers:
+This repo now centers on a single public layer:
 
 - `wiki/` is the published wiki
-- `tools/ingest-app/` is the local authoring app
 
 The content model has been reset. The public wiki now uses a six-phase backbone, and all substantive content is expected to be added as manually written articles under `wiki/articles/`.
 
@@ -18,43 +17,7 @@ The stable backbone is:
 - `post`
 - `pivot`
 
-Those category pages are the reader-facing map. New articles can belong to multiple categories. When a new article is added, the app updates:
-
-- the article file in `wiki/articles/`
-- the selected category pages
-- the article index at `wiki/articles/index.md`
-- related-article links
-- `wiki/log.md`
-
-## Local authoring app
-
-Start the app with:
-
-```bash
-npm ci
-npm run ingest-ui
-```
-
-Then open:
-
-```text
-http://localhost:4318/admin/new-article
-```
-
-### Workflow
-
-1. Click `Add New Article` or open `/admin/new-article`.
-2. Enter the article title, summary, body, categories, and optional references.
-3. Review the proposed file diffs.
-4. Approve the proposal.
-5. Let the app write the files and optionally create a git commit.
-
-The app is intentionally constrained:
-
-- it does not create new categories
-- it writes new content into `wiki/articles/`
-- it keeps cross-references attached to the existing six-phase map
-- it is meant to stay private and local rather than publicly writable
+Those category pages are the reader-facing map. Articles can belong to multiple categories, and the category cards in the site chrome provide a quick flash-intro for what each phase covers.
 
 ## Quartz site
 
@@ -65,13 +28,13 @@ npm run build
 npm run serve
 ```
 
-The site chrome is now intentionally minimal:
+The site chrome is intentionally minimal:
 
-- top header with navigation and `Add New Article`
+- top header with navigation only
 - left sidebar with the six categories
 - right sidebar with related articles
 
-The header action points to the private local authoring route. The public site and private authoring flow now share the same visual shell, but only the local route can write content.
+Each category in the sidebar is shown as a card with a short intro so readers can understand the phase before clicking into it.
 
 ## Repo layout
 
@@ -86,12 +49,10 @@ cyber-research-wiki/
     articles/
     topics/
     frameworks/
-  tools/
-    ingest-app/
 ```
 
 ## Notes
 
 - `raw/` remains immutable source storage.
 - `wiki/` remains the compiled knowledge layer.
-- The current authoring app is local-first. The public Quartz site is read-only.
+- The published site is read-only.

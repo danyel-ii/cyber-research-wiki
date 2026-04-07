@@ -12,7 +12,6 @@ export const sharedPageComponents: SharedLayout = {
         { text: "Categories", href: "topics/index" },
         { text: "Articles", href: "articles/index" },
       ],
-      action: { text: "Add New Article", href: "http://localhost:4318/admin/new-article" },
     }),
   ],
   afterBody: [],
