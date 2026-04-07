@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Pypi JSON API | Cyber Research Wiki</title>
+    <meta name="description" content="Pypi JSON API encyclopedia entry." />
+    <link rel="canonical" href="https://danyel-ii.github.io/cyber-research-wiki/tools/pypi-json-api/" />
+    <link rel="stylesheet" href="/cyber-research-wiki/assets/wiki.css" />
+  </head>
+  <body>
+    <header class="site-shell">
+      <div class="shell-inner">
+        <a class="brand" href="/cyber-research-wiki/">Cyber Research Wiki</a>
+        <nav class="nav">
+          <a href="/cyber-research-wiki/">Index</a>
+          <a href="https://danyel-ii.github.io/WikiCompanion/">Pocket Atlas</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page-shell">
+      <article class="article">
+  <h1>Pypi JSON API</h1>
+<h2>Overview</h2>
+<p>Pypi JSON API is a supply chain security tool that appears across supply chain security workflows in this knowledge base. It is referenced as part of higher-level security analysis, investigation, monitoring, or validation activity rather than as an end in itself.</p>
+<h2>What It Is</h2>
+<p>Pypi JSON API is best understood as a supply-chain-security tool in this knowledge base. Its role is conceptual and system-facing rather than procedural: it gives analysts or defenders a structured way to examine evidence, model system behavior, or reason about security state.</p>
+<h2>How It Works</h2>
+<p>Pypi JSON API works by turning technical inputs into more interpretable outputs at the system level. Across the source skills, it appears as part of larger analysis, investigation, monitoring, or validation loops rather than as a standalone end state.</p>
+<h2>Core Concepts</h2>
+<ul><li>typosquatting</li><li>npm</li><li>pypi</li><li>supply chain</li><li>package security</li><li>Levenshtein</li><li>dependency confusion</li><li>malicious packages</li><li>supply chain security</li></ul>
+<h2>Typical Workflow</h2>
+<ul><li><strong>Extract project dependencies</strong>: Parse <code>requirements.txt</code>, <code>Pipfile.lock</code>, <code>package.json</code>, or <code>package-lock.json</code> to extract all direct and transitive dependency names</li><li><strong>Include popular packages</strong>: Supplement with high-value targets from the top 1000 PyPI downloads (available from <code>https://hugovk.github.io/top-pypi-packages/</code>) or top npm packages by download count</li><li><strong>Add organization packages</strong>: Include any packages published by your organization that attackers might target with typosquats to intercept internal installations</li><li><strong>Normalize names</strong>: PyPI treats hyphens, underscores, and periods as equivalent (PEP 503 normalization: <code>re.sub(r&quot;[-_.]+&quot;, &quot;-&quot;, name).lower()</code>). npm package names are case-sensitive but scoped packages use <code>@scope/name</code> format. Normalize before comparison.</li><li><strong>Character omission</strong>: Remove each character one at a time (<code>requests</code> -&gt; <code>rquests</code>, <code>requets</code>, <code>reqests</code>)</li><li><strong>Character transposition</strong>: Swap adjacent characters (<code>requests</code> -&gt; <code>erquests</code>, <code>rqeuests</code>, <code>reques ts</code>)</li><li><strong>Character substitution</strong>: Replace characters with keyboard-adjacent keys using a QWERTY distance map (<code>requests</code> -&gt; <code>rrquests</code>, <code>requesta</code>)</li><li><strong>Character insertion</strong>: Insert common characters at each position (<code>requests</code> -&gt; <code>rrequests</code>, <code>reqquests</code>)</li><li><strong>Common prefix/suffix attacks</strong>: Prepend or append common strings (<code>python-requests</code>, <code>requests-python</code>, <code>requests2</code>, <code>requests-lib</code>)</li></ul>
+<h2>Use Cases</h2>
+<ul><li>Auditing project dependencies to identify packages whose names are suspiciously similar to popular libraries</li><li>Proactively scanning package registries for newly published packages that may be typosquats of your organization&#39;s packages</li><li>Investigating a suspected supply chain compromise where a developer installed a misspelled package name</li><li>Building automated monitoring that alerts when new packages appear with names close to critical dependencies</li><li>Assessing the risk profile of unfamiliar packages before adding them to a project&#39;s dependency tree</li><li>Setting the Levenshtein distance threshold too low (only 1) and missing typosquats at distance 2 that use double substitutions</li><li>Relying solely on name similarity without checking metadata signals, leading to high false positive rates on legitimately similar package names</li></ul>
+<h2>Limitations</h2>
+<ul><li>Output still depends on context, data quality, and surrounding analysis.</li><li>The tool should be interpreted as part of a broader workflow, not as a complete answer by itself.</li><li>Capabilities and visibility vary depending on environment, integrations, and available inputs.</li></ul>
+<h2>Related Tools</h2>
+<ul><li>And Distribution Info, And Other Similarity Metrics, And Project URLs, Author, Creation Timestamps, Damerau Levenshtein, Enabling Download Count Comparison Between Suspected Typosquats And Their Targets, Jaro Winkler</li></ul>
+<h2>Sources</h2>
+<ul><li>detecting-typosquatting-packages-in-npm-pypi</li></ul>
+  <div class="footer-space"></div>
+</article>
+    </main>
+  </body>
+</html>

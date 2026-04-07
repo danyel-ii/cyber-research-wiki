@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Haveibeenpwned | Cyber Research Wiki</title>
+    <meta name="description" content="Haveibeenpwned encyclopedia entry." />
+    <link rel="canonical" href="https://danyel-ii.github.io/cyber-research-wiki/tools/haveibeenpwned/" />
+    <link rel="stylesheet" href="/cyber-research-wiki/assets/wiki.css" />
+  </head>
+  <body>
+    <header class="site-shell">
+      <div class="shell-inner">
+        <a class="brand" href="/cyber-research-wiki/">Cyber Research Wiki</a>
+        <nav class="nav">
+          <a href="/cyber-research-wiki/">Index</a>
+          <a href="https://danyel-ii.github.io/WikiCompanion/">Pocket Atlas</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page-shell">
+      <article class="article">
+  <h1>Haveibeenpwned</h1>
+<h2>Overview</h2>
+<p>Haveibeenpwned is a link analysis tool that appears across threat intelligence workflows in this knowledge base. It is referenced as part of higher-level security analysis, investigation, monitoring, or validation activity rather than as an end in itself.</p>
+<h2>What It Is</h2>
+<p>Haveibeenpwned is best understood as a threat-intelligence tool in this knowledge base. Its role is conceptual and system-facing rather than procedural: it gives analysts or defenders a structured way to examine evidence, model system behavior, or reason about security state.</p>
+<h2>How It Works</h2>
+<p>Haveibeenpwned works by turning technical inputs into more interpretable outputs at the system level. Across the source skills, it appears as part of larger analysis, investigation, monitoring, or validation loops rather than as a standalone end state.</p>
+<h2>Core Concepts</h2>
+<ul><li>osint</li><li>ai correlation</li><li>threat intelligence</li><li>reconnaissance</li><li>link analysis</li><li>target profiling</li><li>sherlock</li><li>theharvester</li><li>spiderfoot</li><li>maltego</li></ul>
+<h2>Typical Workflow</h2>
+<ul><li>Obtain documented written authorization before any investigation</li><li>Establish lawful basis for data processing (law enforcement, corporate policy, etc.)</li><li>Define PII retention limits and data handling procedures</li><li>Comply with local privacy regulations (GDPR, CCPA, etc.)</li><li>0. <strong>Create the working directory for all OSINT outputs:</strong></li><li>1. <strong>Enumerate usernames across platforms with Sherlock:</strong></li><li>sherlock &quot;targetusername&quot; --output /tmp/osint/sherlock-results.txt --csv</li><li>2. <strong>Harvest emails, subdomains, and hosts with theHarvester:</strong></li><li>theHarvester -d targetdomain.com -b all -f /tmp/osint/harvester-results.json</li></ul>
+<h2>Use Cases</h2>
+<ul><li>You have collected raw OSINT data from multiple tools and sources but need to identify connections, contradictions, and patterns across them.</li><li>You need to build a unified intelligence profile for a target entity (person, organization, or infrastructure) from fragmented data.</li><li>Traditional manual correlation is too slow or error-prone for the volume of data collected.</li><li>You want confidence-scored assessments of identity linkage across platforms rather than simple keyword matching.</li><li><strong>Threat Actor Attribution:</strong> Correlate a suspicious username found in a phishing campaign with social media profiles, domain registrations, and breach data to build an attribution profile.</li><li><strong>Attack Surface Mapping:</strong> Link discovered subdomains, emails, and employee social accounts to understand an organization&#39;s full external exposure.</li><li><strong>Insider Threat Investigation:</strong> Cross-reference an employee&#39;s known accounts with dark web marketplace activity and breach databases.</li><li><strong>Brand Impersonation Detection:</strong> Identify accounts across platforms mimicking a target brand by correlating registration patterns, naming conventions, and temporal signals.</li></ul>
+<h2>Limitations</h2>
+<ul><li>Output still depends on context, data quality, and surrounding analysis.</li><li>The tool should be interpreted as part of a broader workflow, not as a complete answer by itself.</li><li>Capabilities and visibility vary depending on environment, integrations, and available inputs.</li></ul>
+<h2>Related Tools</h2>
+<ul><li>Claude, LLM API (GPT 4, Maltego, Ollama), Sherlock, SpiderFoot, TheHarvester</li></ul>
+<h2>Sources</h2>
+<ul><li>performing-ai-driven-osint-correlation</li></ul>
+  <div class="footer-space"></div>
+</article>
+    </main>
+  </body>
+</html>

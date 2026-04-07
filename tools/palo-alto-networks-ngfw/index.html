@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Palo Alto Networks Ngfw | Cyber Research Wiki</title>
+    <meta name="description" content="Palo Alto Networks Ngfw encyclopedia entry." />
+    <link rel="canonical" href="https://danyel-ii.github.io/cyber-research-wiki/tools/palo-alto-networks-ngfw/" />
+    <link rel="stylesheet" href="/cyber-research-wiki/assets/wiki.css" />
+  </head>
+  <body>
+    <header class="site-shell">
+      <div class="shell-inner">
+        <a class="brand" href="/cyber-research-wiki/">Cyber Research Wiki</a>
+        <nav class="nav">
+          <a href="/cyber-research-wiki/">Index</a>
+          <a href="https://danyel-ii.github.io/WikiCompanion/">Pocket Atlas</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page-shell">
+      <article class="article">
+  <h1>Palo Alto Networks Ngfw</h1>
+<h2>Overview</h2>
+<p>Palo Alto Networks Ngfw is a network isolation tool that appears across incident response workflows in this knowledge base. It is referenced as part of higher-level security analysis, investigation, monitoring, or validation activity rather than as an end in itself.</p>
+<h2>What It Is</h2>
+<p>Palo Alto Networks Ngfw is best understood as a incident-response tool in this knowledge base. Its role is conceptual and system-facing rather than procedural: it gives analysts or defenders a structured way to examine evidence, model system behavior, or reason about security state.</p>
+<h2>How It Works</h2>
+<p>Palo Alto Networks Ngfw works by turning technical inputs into more interpretable outputs at the system level. Across the source skills, it appears as part of larger analysis, investigation, monitoring, or validation loops rather than as a standalone end state.</p>
+<h2>Core Concepts</h2>
+<ul><li>breach containment</li><li>lateral movement</li><li>network isolation</li><li>credential revocation</li><li>live response</li><li>incident response</li></ul>
+<h2>Typical Workflow</h2>
+<ul><li>Identify all confirmed compromised hosts via EDR telemetry and SIEM correlation</li><li>Map lateral movement paths using authentication logs (Windows Event ID 4624 Type 3 and Type 10)</li><li>Identify all compromised credentials (check for pass-the-hash, Kerberoasting, DCSync activity)</li><li>Determine C2 channels (beacon intervals, domains, IPs, protocols)</li><li>Assess whether the adversary has domain admin or equivalent privileges</li><li>━━━━━━━━━━━━━━━━━━━━━━━━━━━━</li><li>Compromised Hosts:     5 (WKSTN-042, WKSTN-087, SRV-FILE01, SRV-DC02, WKSTN-103)</li><li>Compromised Accounts:  3 (jsmith, svc-backup, admin-tier0)</li><li>C2 Channels:           HTTPS beacon to 185.220.x.x every 60s ± 15% jitter</li></ul>
+<h2>Use Cases</h2>
+<ul><li>A confirmed intrusion is in progress with an active adversary on the network</li><li>Malware is spreading laterally across endpoints or servers</li><li>A compromised account is being used for unauthorized access to systems</li><li>Ransomware encryption has been detected and is actively propagating</li><li>An attacker has established command-and-control communications from internal hosts</li><li>Shutting down servers immediately, destroying volatile memory evidence</li><li>Only disabling the known compromised account without checking for other persistence mechanisms</li><li>Restoring from backup before confirming the adversary&#39;s access has been fully revoked</li></ul>
+<h2>Limitations</h2>
+<ul><li>Output still depends on context, data quality, and surrounding analysis.</li><li>The tool should be interpreted as part of a broader workflow, not as a complete answer by itself.</li><li>Capabilities and visibility vary depending on environment, integrations, and available inputs.</li></ul>
+<h2>Related Tools</h2>
+<ul><li>BloodHound, CrowdStrike Falcon, Microsoft Defender For Endpoint, Velociraptor</li></ul>
+<h2>Sources</h2>
+<ul><li>containing-active-breach</li></ul>
+  <div class="footer-space"></div>
+</article>
+    </main>
+  </body>
+</html>

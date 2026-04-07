@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>GCP Audit Logs | Cyber Research Wiki</title>
+    <meta name="description" content="GCP Audit Logs encyclopedia entry." />
+    <link rel="canonical" href="https://danyel-ii.github.io/cyber-research-wiki/tools/gcp-audit-logs/" />
+    <link rel="stylesheet" href="/cyber-research-wiki/assets/wiki.css" />
+  </head>
+  <body>
+    <header class="site-shell">
+      <div class="shell-inner">
+        <a class="brand" href="/cyber-research-wiki/">Cyber Research Wiki</a>
+        <nav class="nav">
+          <a href="/cyber-research-wiki/">Index</a>
+          <a href="https://danyel-ii.github.io/WikiCompanion/">Pocket Atlas</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page-shell">
+      <article class="article">
+  <h1>GCP Audit Logs</h1>
+<h2>Overview</h2>
+<p>GCP Audit Logs is a aws forensics tool that appears across incident response workflows in this knowledge base. It is referenced as part of higher-level security analysis, investigation, monitoring, or validation activity rather than as an end in itself.</p>
+<h2>What It Is</h2>
+<p>GCP Audit Logs is best understood as a incident-response tool in this knowledge base. Its role is conceptual and system-facing rather than procedural: it gives analysts or defenders a structured way to examine evidence, model system behavior, or reason about security state.</p>
+<h2>How It Works</h2>
+<p>GCP Audit Logs works by turning technical inputs into more interpretable outputs at the system level. Across the source skills, it appears as part of larger analysis, investigation, monitoring, or validation loops rather than as a standalone end state.</p>
+<h2>Core Concepts</h2>
+<ul><li>cloud IR</li><li>AWS forensics</li><li>Azure incident response</li><li>GCP security</li><li>identity containment</li><li>incident response</li></ul>
+<h2>Typical Workflow</h2>
+<ul><li>ConsoleLogin from unexpected geolocation or IP</li><li>CreateAccessKey for existing IAM user (persistence)</li><li>PutBucketPolicy making S3 bucket public</li><li>AssumeRole to cross-account roles</li><li>DeleteTrail or StopLogging (defense evasion)</li><li>CreateUser or AttachUserPolicy (privilege escalation)</li><li><strong>Azure Indicators:</strong></li></ul>
+<h2>Use Cases</h2>
+<ul><li>Cloud security posture management (CSPM) alerts on unauthorized resource changes</li><li>CloudTrail, Azure Activity Logs, or GCP Audit Logs show suspicious API calls</li><li>Cloud access keys or service principal credentials are suspected compromised</li><li>Unauthorized compute instances, storage buckets, or IAM changes are detected</li><li>A cloud-hosted application is breached and attacker activity spans cloud services</li><li>Only disabling the access key without checking for new access keys or IAM users created as persistence</li><li>Forgetting to revoke temporary credentials from assumed roles (STS tokens remain valid until expiry)</li></ul>
+<h2>Limitations</h2>
+<ul><li>Output still depends on context, data quality, and surrounding analysis.</li><li>The tool should be interpreted as part of a broader workflow, not as a complete answer by itself.</li><li>Capabilities and visibility vary depending on environment, integrations, and available inputs.</li></ul>
+<h2>Related Tools</h2>
+<ul><li>And GCP, AWS CloudTrail, Azure, Azure Activity Logs, Cado Response, Cartography, Prowler, ScoutSuite</li></ul>
+<h2>Sources</h2>
+<ul><li>conducting-cloud-incident-response</li></ul>
+  <div class="footer-space"></div>
+</article>
+    </main>
+  </body>
+</html>

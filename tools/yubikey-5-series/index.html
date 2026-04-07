@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Yubikey 5 Series | Cyber Research Wiki</title>
+    <meta name="description" content="Yubikey 5 Series encyclopedia entry." />
+    <link rel="canonical" href="https://danyel-ii.github.io/cyber-research-wiki/tools/yubikey-5-series/" />
+    <link rel="stylesheet" href="/cyber-research-wiki/assets/wiki.css" />
+  </head>
+  <body>
+    <header class="site-shell">
+      <div class="shell-inner">
+        <a class="brand" href="/cyber-research-wiki/">Cyber Research Wiki</a>
+        <nav class="nav">
+          <a href="/cyber-research-wiki/">Index</a>
+          <a href="https://danyel-ii.github.io/WikiCompanion/">Pocket Atlas</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page-shell">
+      <article class="article">
+  <h1>Yubikey 5 Series</h1>
+<h2>Overview</h2>
+<p>Yubikey 5 Series is a identity and access management tool that appears across identity and access management workflows in this knowledge base. It is referenced as part of higher-level security analysis, investigation, monitoring, or validation activity rather than as an end in itself.</p>
+<h2>What It Is</h2>
+<p>Yubikey 5 Series is best understood as a identity-and-access-management tool in this knowledge base. Its role is conceptual and system-facing rather than procedural: it gives analysts or defenders a structured way to examine evidence, model system behavior, or reason about security state.</p>
+<h2>How It Works</h2>
+<p>Yubikey 5 Series works by turning technical inputs into more interpretable outputs at the system level. Across the source skills, it appears as part of larger analysis, investigation, monitoring, or validation loops rather than as a standalone end state.</p>
+<h2>Core Concepts</h2>
+<ul><li>FIDO2</li><li>WebAuthn</li><li>hardware security key</li><li>YubiKey</li><li>passkeys</li><li>passwordless authentication</li><li>CTAP2</li><li>identity and access management</li></ul>
+<h2>Typical Workflow</h2>
+<ul><li><strong>Define RP identity</strong>: Create a <code>PublicKeyCredentialRpEntity</code> with the relying party name (display name shown to users) and RP ID (the effective domain of the application). The RP ID must be a registrable domain suffix of the origin -- for example, <code>example.com</code> is valid for <code>https://auth.example.com</code> but <code>other.com</code> is not.</li><li><code>none</code>: No attestation requested (simplest, recommended for most deployments)</li><li><code>indirect</code>: Attestation may be provided but CA may anonymize it</li><li><code>direct</code>: Full attestation chain from the authenticator&#39;s manufacturer</li><li><code>enterprise</code>: Device-identifying attestation for managed environments</li><li><strong>Session management</strong>: Configure server-side sessions to store WebAuthn state between the begin and complete phases of registration/authentication ceremonies. Use secure, httponly cookies with SameSite=Strict.</li><li><strong>Credential storage</strong>: Design the database schema to store credential records: <code>credential_id</code> (binary), <code>public_key</code> (COSE key), <code>sign_count</code> (uint32 for clone detection), <code>user_id</code>, <code>created_at</code>, <code>last_used</code>, <code>display_name</code>, and <code>transports</code> (USB, NFC, BLE, internal).</li><li><strong>Begin registration</strong>: Call <code>server.register_begin()</code> with the user entity (<code>PublicKeyCredentialUserEntity</code> containing user ID, username, and display name), the list of existing credentials for the user (to prevent duplicate registration), and options for <code>user_verification</code> and <code>authenticator_attachment</code>.</li></ul>
+<h2>Use Cases</h2>
+<ul><li>Deploying phishing-resistant multi-factor authentication (MFA) using FIDO2 hardware security keys for high-value accounts (administrators, developers, privileged users)</li><li>Building a WebAuthn relying party server that supports both roaming authenticators (USB/NFC security keys) and platform authenticators (Windows Hello, Touch ID, Android biometrics)</li><li>Migrating an existing password-based authentication system to support passkeys (discoverable credentials) as a primary or secondary authentication factor</li><li>Enrolling YubiKey devices for an organization&#39;s workforce, including PIN setup, credential registration, and backup key provisioning</li><li>Implementing passwordless authentication flows that comply with NIST SP 800-63B AAL3 (authenticator assurance level 3) requirements</li><li>Setting user_verification: discouraged which allows anyone who physically possesses the key to authenticate without a PIN</li><li>Forgetting to validate the sign counter, missing cloned key attacks</li></ul>
+<h2>Limitations</h2>
+<ul><li>Output still depends on context, data quality, and surrounding analysis.</li><li>The tool should be interpreted as part of a broader workflow, not as a complete answer by itself.</li><li>Capabilities and visibility vary depending on environment, integrations, and available inputs.</li></ul>
+<h2>Related Tools</h2>
+<ul><li>And Nano Form Factors, And OTP; Available In USB A, And Verify_authentication_response Functions, And Viewing Registered Accounts, Demo.yubico.com, Generate_authentication_options, NFC, OpenPGP</li></ul>
+<h2>Sources</h2>
+<ul><li>implementing-hardware-security-key-authentication</li></ul>
+  <div class="footer-space"></div>
+</article>
+    </main>
+  </body>
+</html>

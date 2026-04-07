@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Att Ck Workbench | Cyber Research Wiki</title>
+    <meta name="description" content="Att Ck Workbench encyclopedia entry." />
+    <link rel="canonical" href="https://danyel-ii.github.io/cyber-research-wiki/tools/att-ck-workbench/" />
+    <link rel="stylesheet" href="/cyber-research-wiki/assets/wiki.css" />
+  </head>
+  <body>
+    <header class="site-shell">
+      <div class="shell-inner">
+        <a class="brand" href="/cyber-research-wiki/">Cyber Research Wiki</a>
+        <nav class="nav">
+          <a href="/cyber-research-wiki/">Index</a>
+          <a href="https://danyel-ii.github.io/WikiCompanion/">Pocket Atlas</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page-shell">
+      <article class="article">
+  <h1>Att Ck Workbench</h1>
+<h2>Overview</h2>
+<p>Att Ck Workbench is a detection engineering tool that appears across threat intelligence workflows in this knowledge base. It is referenced as part of higher-level security analysis, investigation, monitoring, or validation activity rather than as an end in itself.</p>
+<h2>What It Is</h2>
+<p>Att Ck Workbench is best understood as a threat-intelligence tool in this knowledge base. Its role is conceptual and system-facing rather than procedural: it gives analysts or defenders a structured way to examine evidence, model system behavior, or reason about security state.</p>
+<h2>How It Works</h2>
+<p>Att Ck Workbench works by turning technical inputs into more interpretable outputs at the system level. Across the source skills, it appears as part of larger analysis, investigation, monitoring, or validation loops rather than as a standalone end state.</p>
+<h2>Core Concepts</h2>
+<ul><li>MITRE ATT&amp;CK</li><li>ATT&amp;CK Navigator</li><li>Sigma</li><li>D3FEND</li><li>TTP</li><li>detection engineering</li><li>NIST CSF</li><li>threat intelligence</li></ul>
+<h2>Typical Workflow</h2>
+<ul><li>from mitreattack.stix20 import MitreAttackData</li><li>mitre = MitreAttackData(&quot;enterprise-attack.json&quot;)</li><li>techniques = mitre.get_techniques(remove_revoked_deprecated=True)</li><li>print(t[&quot;external_references&quot;][0][&quot;external_id&quot;], t[&quot;name&quot;])</li></ul>
+<h2>Use Cases</h2>
+<ul><li>Generating an ATT&amp;CK coverage heatmap to show which techniques your detection stack addresses</li><li>Tagging existing SIEM use cases or Sigma rules with ATT&amp;CK technique IDs for structured reporting</li><li>Aligning your security program roadmap to specific adversary groups known to target your sector</li></ul>
+<h2>Limitations</h2>
+<ul><li>Output still depends on context, data quality, and surrounding analysis.</li><li>The tool should be interpreted as part of a broader workflow, not as a complete answer by itself.</li><li>Capabilities and visibility vary depending on environment, integrations, and available inputs.</li></ul>
+<h2>Related Tools</h2>
+<ul><li>Atomic Red Team, ATT&amp;CK Navigator, Elastic, Groups, Mitigations), Mitreattack Python, QRadar, Sentinel</li></ul>
+<h2>Sources</h2>
+<ul><li>mapping-mitre-attack-techniques</li></ul>
+  <div class="footer-space"></div>
+</article>
+    </main>
+  </body>
+</html>

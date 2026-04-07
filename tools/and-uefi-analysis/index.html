@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>And Uefi Analysis | Cyber Research Wiki</title>
+    <meta name="description" content="And Uefi Analysis encyclopedia entry." />
+    <link rel="canonical" href="https://danyel-ii.github.io/cyber-research-wiki/tools/and-uefi-analysis/" />
+    <link rel="stylesheet" href="/cyber-research-wiki/assets/wiki.css" />
+  </head>
+  <body>
+    <header class="site-shell">
+      <div class="shell-inner">
+        <a class="brand" href="/cyber-research-wiki/">Cyber Research Wiki</a>
+        <nav class="nav">
+          <a href="/cyber-research-wiki/">Index</a>
+          <a href="https://danyel-ii.github.io/WikiCompanion/">Pocket Atlas</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page-shell">
+      <article class="article">
+  <h1>And Uefi Analysis</h1>
+<h2>Overview</h2>
+<p>And Uefi Analysis is a malware analysis tool that appears across malware analysis workflows in this knowledge base. It is referenced as part of higher-level security analysis, investigation, monitoring, or validation activity rather than as an end in itself.</p>
+<h2>What It Is</h2>
+<p>And Uefi Analysis is best understood as a malware-analysis tool in this knowledge base. Its role is conceptual and system-facing rather than procedural: it gives analysts or defenders a structured way to examine evidence, model system behavior, or reason about security state.</p>
+<h2>How It Works</h2>
+<p>And Uefi Analysis works by turning technical inputs into more interpretable outputs at the system level. Across the source skills, it appears as part of larger analysis, investigation, monitoring, or validation loops rather than as a standalone end state.</p>
+<h2>Core Concepts</h2>
+<ul><li>malware</li><li>firmware</li><li>IoT</li><li>UEFI</li><li>embedded security</li><li>malware analysis</li></ul>
+<h2>Typical Workflow</h2>
+<ul><li>binwalk -e firmware.bin</li><li>binwalk -eM firmware.bin</li></ul>
+<h2>Use Cases</h2>
+<ul><li>A compromised IoT device or router needs firmware analysis to identify implanted backdoors</li><li>Investigating UEFI/BIOS rootkits that persist across OS reinstallations</li><li>Analyzing firmware updates for supply chain compromise or malicious modifications</li><li>Extracting and examining embedded Linux filesystems from IoT device firmware images</li><li>Verifying firmware integrity after a suspected hardware or firmware-level compromise</li><li>Ignoring modified shared libraries (.so files) that may hook system functions</li><li>Missing firmware modifications stored outside the main filesystem (bootloader, configuration partitions)</li></ul>
+<h2>Limitations</h2>
+<ul><li>Output still depends on context, data quality, and surrounding analysis.</li><li>The tool should be interpreted as part of a broader workflow, not as a complete answer by itself.</li><li>Capabilities and visibility vary depending on environment, integrations, and available inputs.</li></ul>
+<h2>Related Tools</h2>
+<ul><li>And Analyzing Embedded File Systems And Compressed Data In Firmware Images, And Drivers, And Other Embedded Architecture Support For Firmware Binary Analysis, Binwalk, Chipsec, Extracting, Firmadyne, Ghidra</li></ul>
+<h2>Sources</h2>
+<ul><li>performing-firmware-malware-analysis</li></ul>
+  <div class="footer-space"></div>
+</article>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AWS Athena | Cyber Research Wiki</title>
+    <meta name="description" content="AWS Athena encyclopedia entry." />
+    <link rel="canonical" href="https://danyel-ii.github.io/cyber-research-wiki/tools/aws-athena/" />
+    <link rel="stylesheet" href="/cyber-research-wiki/assets/wiki.css" />
+  </head>
+  <body>
+    <header class="site-shell">
+      <div class="shell-inner">
+        <a class="brand" href="/cyber-research-wiki/">Cyber Research Wiki</a>
+        <nav class="nav">
+          <a href="/cyber-research-wiki/">Index</a>
+          <a href="https://danyel-ii.github.io/WikiCompanion/">Pocket Atlas</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page-shell">
+      <article class="article">
+  <h1>AWS Athena</h1>
+<h2>Overview</h2>
+<p>AWS Athena is a forensics tool that appears across cloud security workflows in this knowledge base. It is referenced as part of higher-level security analysis, investigation, monitoring, or validation activity rather than as an end in itself.</p>
+<h2>What It Is</h2>
+<p>AWS Athena is best understood as a cloud-security tool in this knowledge base. Its role is conceptual and system-facing rather than procedural: it gives analysts or defenders a structured way to examine evidence, model system behavior, or reason about security state.</p>
+<h2>How It Works</h2>
+<p>AWS Athena works by turning technical inputs into more interpretable outputs at the system level. Across the source skills, it appears as part of larger analysis, investigation, monitoring, or validation loops rather than as a standalone end state.</p>
+<h2>Core Concepts</h2>
+<ul><li>cloud security</li><li>aws</li><li>cloudtrail</li><li>forensics</li><li>incident response</li><li>dfir</li><li>boto3</li><li>s3</li><li>cloud</li><li>athena</li><li>vpc flow logs</li><li>alb</li></ul>
+<h2>Typical Workflow</h2>
+<ul><li>1. <strong>Scope Investigation</strong>: Identify timeframe, affected accounts, and compromised credentials.</li><li>2. <strong>Query CloudTrail</strong>: Use boto3 lookup_events or Athena to retrieve relevant API events.</li><li>3. <strong>Filter by Indicators</strong>: Search for suspicious user agents, source IPs, and event names.</li><li>4. <strong>Reconstruct Timeline</strong>: Build chronological sequence of attacker actions from API calls.</li><li>5. <strong>Analyze Access Patterns</strong>: Identify data access, IAM changes, and resource modifications.</li><li>6. <strong>Identify Persistence</strong>: Check for new IAM users, access keys, roles, or Lambda functions.</li><li>7. <strong>Generate Report</strong>: Produce forensic timeline with findings and remediation steps.</li></ul>
+<h2>Use Cases</h2>
+<ul><li>When investigating suspected AWS account compromise</li><li>After detecting unauthorized API calls or credential exposure</li><li>During incident response involving cloud infrastructure</li><li>When analyzing S3 data exfiltration or IAM privilege escalation</li><li>For post-incident forensic timeline reconstruction</li><li>When investigating AWS security incidents that require querying massive volumes of cloud logs</li><li>When performing forensic analysis across CloudTrail, VPC Flow Logs, S3 access logs, and ALB logs</li><li>When building reusable Athena tables with partition projection for ongoing incident response</li><li>When hunting for indicators of compromise across multiple AWS log sources simultaneously</li><li>When creating evidence-grade SQL queries for compliance audits or legal proceedings</li></ul>
+<h2>Limitations</h2>
+<ul><li>Output still depends on context, data quality, and surrounding analysis.</li><li>The tool should be interpreted as part of a broader workflow, not as a complete answer by itself.</li><li>Capabilities and visibility vary depending on environment, integrations, and available inputs.</li></ul>
+<h2>Related Tools</h2>
+<ul><li>AWS CLI, Boto3 CloudTrail Client, CloudTrail Lake, Jq</li></ul>
+<h2>Sources</h2>
+<ul><li>performing-cloud-forensics-with-aws-cloudtrail</li><li>performing-cloud-log-forensics-with-athena</li></ul>
+  <div class="footer-space"></div>
+</article>
+    </main>
+  </body>
+</html>

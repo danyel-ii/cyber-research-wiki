@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Os Detection | Cyber Research Wiki</title>
+    <meta name="description" content="Os Detection encyclopedia entry." />
+    <link rel="canonical" href="https://danyel-ii.github.io/cyber-research-wiki/tools/os-detection/" />
+    <link rel="stylesheet" href="/cyber-research-wiki/assets/wiki.css" />
+  </head>
+  <body>
+    <header class="site-shell">
+      <div class="shell-inner">
+        <a class="brand" href="/cyber-research-wiki/">Cyber Research Wiki</a>
+        <nav class="nav">
+          <a href="/cyber-research-wiki/">Index</a>
+          <a href="https://danyel-ii.github.io/WikiCompanion/">Pocket Atlas</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page-shell">
+      <article class="article">
+  <h1>Os Detection</h1>
+<h2>Overview</h2>
+<p>Os Detection is a network security tool that appears across network security workflows in this knowledge base. It is referenced as part of higher-level security analysis, investigation, monitoring, or validation activity rather than as an end in itself.</p>
+<h2>What It Is</h2>
+<p>Os Detection is best understood as a network-security tool in this knowledge base. Its role is conceptual and system-facing rather than procedural: it gives analysts or defenders a structured way to examine evidence, model system behavior, or reason about security state.</p>
+<h2>How It Works</h2>
+<p>Os Detection works by turning technical inputs into more interpretable outputs at the system level. Across the source skills, it appears as part of larger analysis, investigation, monitoring, or validation loops rather than as a standalone end state.</p>
+<h2>Core Concepts</h2>
+<ul><li>network security</li><li>nmap</li><li>port scanning</li><li>service enumeration</li><li>reconnaissance</li></ul>
+<h2>Typical Workflow</h2>
+<ul><li>nmap -sn -PR 192.168.1.0/24 -oA discovery_arp</li><li>nmap -sn -PE -PP -PS21,22,25,80,443,445,3389,8080 -PU53,161,500 10.0.0.0/16 -oA discovery_combined</li><li>nmap -sL 10.0.0.0/24 -oN dns_resolution.txt</li></ul>
+<h2>Use Cases</h2>
+<ul><li>Performing comprehensive asset discovery across large enterprise networks during authorized assessments</li><li>Enumerating service versions and configurations to identify outdated or vulnerable software</li><li>Bypassing firewall rules and IDS during authorized penetration tests using scan evasion techniques</li><li>Scripting automated vulnerability checks using the Nmap Scripting Engine (NSE)</li><li>Generating structured scan output for integration into vulnerability management pipelines</li><li>Setting --min-rate too high on congested network segments causing packet loss and false negatives</li><li>Running -T5 (Insane) timing on production networks, potentially overwhelming older network devices</li><li>Forgetting to scan UDP ports, missing critical services like SNMP (161), DNS (53), and TFTP (69)</li></ul>
+<h2>Limitations</h2>
+<ul><li>Output still depends on context, data quality, and surrounding analysis.</li><li>The tool should be interpreted as part of a broader workflow, not as a complete answer by itself.</li><li>Capabilities and visibility vary depending on environment, integrations, and available inputs.</li></ul>
+<h2>Related Tools</h2>
+<ul><li>And Multiple Output Formats, Host Lists), Metasploit Framework, Ndiff, Nmap 7.90+, Nmap Parse Output, Version Probing, Zenmap</li></ul>
+<h2>Sources</h2>
+<ul><li>scanning-network-with-nmap-advanced</li></ul>
+  <div class="footer-space"></div>
+</article>
+    </main>
+  </body>
+</html>

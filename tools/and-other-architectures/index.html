@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>And Other Architectures | Cyber Research Wiki</title>
+    <meta name="description" content="And Other Architectures encyclopedia entry." />
+    <link rel="canonical" href="https://danyel-ii.github.io/cyber-research-wiki/tools/and-other-architectures/" />
+    <link rel="stylesheet" href="/cyber-research-wiki/assets/wiki.css" />
+  </head>
+  <body>
+    <header class="site-shell">
+      <div class="shell-inner">
+        <a class="brand" href="/cyber-research-wiki/">Cyber Research Wiki</a>
+        <nav class="nav">
+          <a href="/cyber-research-wiki/">Index</a>
+          <a href="https://danyel-ii.github.io/WikiCompanion/">Pocket Atlas</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page-shell">
+      <article class="article">
+  <h1>And Other Architectures</h1>
+<h2>Overview</h2>
+<p>And Other Architectures is a firmware analysis tool that appears across penetration testing workflows in this knowledge base. It is referenced as part of higher-level security analysis, investigation, monitoring, or validation activity rather than as an end in itself.</p>
+<h2>What It Is</h2>
+<p>And Other Architectures is best understood as a penetration-testing tool in this knowledge base. Its role is conceptual and system-facing rather than procedural: it gives analysts or defenders a structured way to examine evidence, model system behavior, or reason about security state.</p>
+<h2>How It Works</h2>
+<p>And Other Architectures works by turning technical inputs into more interpretable outputs at the system level. Across the source skills, it appears as part of larger analysis, investigation, monitoring, or validation loops rather than as a standalone end state.</p>
+<h2>Core Concepts</h2>
+<ul><li>IoT security</li><li>firmware analysis</li><li>embedded systems</li><li>hardware hacking</li><li>UART JTAG</li><li>penetration testing</li></ul>
+<h2>Typical Workflow</h2>
+<ul><li><strong>External inspection</strong>: Document all physical interfaces (USB, Ethernet, serial ports, SD card slots), labels, FCC ID, and model numbers</li><li><strong>FCC ID lookup</strong>: Search the FCC database (fcc.gov/oet/ea/fccid) using the FCC ID to find internal photos, schematics, and radio frequency information</li><li>Main processor/SoC (read markings, search datasheet)</li><li>Flash memory chips (SPI NOR, NAND, eMMC)</li><li>Debug headers and test points</li><li>UART/JTAG/SWD pins (look for 4-pin or 10-pin headers, or unpopulated pads)</li><li><strong>UART identification</strong>: Use a multimeter to identify UART pins (TX, RX, GND, VCC). Connect USB-to-UART adapter and attempt serial console access at common baud rates (9600, 38400, 57600, 115200)</li><li><strong>JTAG identification</strong>: Use JTAGulator or manual probing to identify JTAG pins (TCK, TMS, TDI, TDO, TRST). Connect JTAG debugger for memory access and debugging.</li></ul>
+<h2>Use Cases</h2>
+<ul><li>Evaluating the security of IoT devices before deployment in enterprise or critical infrastructure environments</li><li>Assessing consumer IoT products for security vulnerabilities as part of product security review or certification</li><li>Testing industrial IoT (IIoT) devices for vulnerabilities that could affect operational technology environments</li><li>Analyzing firmware for backdoors, hardcoded credentials, and known vulnerabilities in embedded components</li><li>Evaluating the security of the complete IoT ecosystem including device, cloud backend, and mobile companion app</li><li>Focusing only on the web interface and missing UART/JTAG access that provides a root shell with no authentication</li><li>Testing the device in isolation and missing network-level risks from deploying vulnerable devices on the corporate network</li></ul>
+<h2>Limitations</h2>
+<ul><li>Output still depends on context, data quality, and surrounding analysis.</li><li>The tool should be interpreted as part of a broader workflow, not as a complete answer by itself.</li><li>Capabilities and visibility vary depending on environment, integrations, and available inputs.</li></ul>
+<h2>Related Tools</h2>
+<ul><li>And Embedded Data Within Firmware Images, And JTAG Protocols For Interfacing With Embedded Device Debug Interfaces, Binwalk, Bus Pirate, Compression Formats, FirmAE, Ghidra, I2C</li></ul>
+<h2>Sources</h2>
+<ul><li>performing-iot-security-assessment</li></ul>
+  <div class="footer-space"></div>
+</article>
+    </main>
+  </body>
+</html>

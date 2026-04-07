@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Fake Router6 | Cyber Research Wiki</title>
+    <meta name="description" content="Fake Router6 encyclopedia entry." />
+    <link rel="canonical" href="https://danyel-ii.github.io/cyber-research-wiki/tools/fake-router6/" />
+    <link rel="stylesheet" href="/cyber-research-wiki/assets/wiki.css" />
+  </head>
+  <body>
+    <header class="site-shell">
+      <div class="shell-inner">
+        <a class="brand" href="/cyber-research-wiki/">Cyber Research Wiki</a>
+        <nav class="nav">
+          <a href="/cyber-research-wiki/">Index</a>
+          <a href="https://danyel-ii.github.io/WikiCompanion/">Pocket Atlas</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page-shell">
+      <article class="article">
+  <h1>Fake Router6</h1>
+<h2>Overview</h2>
+<p>Fake Router6 is a network security tool that appears across network security workflows in this knowledge base. It is referenced as part of higher-level security analysis, investigation, monitoring, or validation activity rather than as an end in itself.</p>
+<h2>What It Is</h2>
+<p>Fake Router6 is best understood as a network-security tool in this knowledge base. Its role is conceptual and system-facing rather than procedural: it gives analysts or defenders a structured way to examine evidence, model system behavior, or reason about security state.</p>
+<h2>How It Works</h2>
+<p>Fake Router6 works by turning technical inputs into more interpretable outputs at the system level. Across the source skills, it appears as part of larger analysis, investigation, monitoring, or validation loops rather than as a standalone end state.</p>
+<h2>Core Concepts</h2>
+<ul><li>network security</li><li>ipv6</li><li>slaac</li><li>router advertisement</li><li>dual stack security</li></ul>
+<h2>Typical Workflow</h2>
+<ul><li>ping6 -c 3 ff02::1%eth0</li><li>nmap -6 --script ipv6-multicast-mld-list -e eth0</li><li>nmap -6 -sn --script targets-ipv6-multicast-echo -e eth0</li></ul>
+<h2>Use Cases</h2>
+<ul><li>Testing whether dual-stack networks have consistent security controls for both IPv4 and IPv6 traffic</li><li>Demonstrating risks from unmanaged IPv6 on networks where only IPv4 is officially supported</li><li>Exploiting SLAAC and Router Advertisement mechanisms to perform man-in-the-middle attacks via IPv6</li><li>Testing IPv6-aware firewall rules and IDS/IPS detection for IPv6-specific attack patterns</li><li>Identifying IPv6 tunneling protocols (6to4, Teredo, ISATAP) that bypass IPv4-only security controls</li><li>Flooding the network with Router Advertisements can cause instability on some devices</li><li>mitm6 affects all Windows hosts on the VLAN, not just the target -- ensure scope covers all potentially affected hosts</li><li>Some environments have IPv6-dependent services (SCCM, certain Azure services) that break when IPv6 is disrupted</li></ul>
+<h2>Limitations</h2>
+<ul><li>Output still depends on context, data quality, and surrounding analysis.</li><li>The tool should be interpreted as part of a broader workflow, not as a complete answer by itself.</li><li>Capabilities and visibility vary depending on environment, integrations, and available inputs.</li></ul>
+<h2>Related Tools</h2>
+<ul><li>And Flood Tools, Mitm6, Ndpmon, Nmap, Parasite6, Scapy, THC IPv6 Toolkit</li></ul>
+<h2>Sources</h2>
+<ul><li>exploiting-ipv6-vulnerabilities</li></ul>
+  <div class="footer-space"></div>
+</article>
+    </main>
+  </body>
+</html>

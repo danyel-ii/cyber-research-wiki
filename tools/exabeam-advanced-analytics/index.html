@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Exabeam Advanced Analytics | Cyber Research Wiki</title>
+    <meta name="description" content="Exabeam Advanced Analytics encyclopedia entry." />
+    <link rel="canonical" href="https://danyel-ii.github.io/cyber-research-wiki/tools/exabeam-advanced-analytics/" />
+    <link rel="stylesheet" href="/cyber-research-wiki/assets/wiki.css" />
+  </head>
+  <body>
+    <header class="site-shell">
+      <div class="shell-inner">
+        <a class="brand" href="/cyber-research-wiki/">Cyber Research Wiki</a>
+        <nav class="nav">
+          <a href="/cyber-research-wiki/">Index</a>
+          <a href="https://danyel-ii.github.io/WikiCompanion/">Pocket Atlas</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page-shell">
+      <article class="article">
+  <h1>Exabeam Advanced Analytics</h1>
+<h2>Overview</h2>
+<p>Exabeam Advanced Analytics is a anomaly detection tool that appears across identity access management workflows in this knowledge base. It is referenced as part of higher-level security analysis, investigation, monitoring, or validation activity rather than as an end in itself.</p>
+<h2>What It Is</h2>
+<p>Exabeam Advanced Analytics is best understood as a identity-access-management tool in this knowledge base. Its role is conceptual and system-facing rather than procedural: it gives analysts or defenders a structured way to examine evidence, model system behavior, or reason about security state.</p>
+<h2>How It Works</h2>
+<p>Exabeam Advanced Analytics works by turning technical inputs into more interpretable outputs at the system level. Across the source skills, it appears as part of larger analysis, investigation, monitoring, or validation loops rather than as a standalone end state.</p>
+<h2>Core Concepts</h2>
+<ul><li>UEBA</li><li>authentication anomaly</li><li>impossible travel</li><li>brute force</li><li>credential stuffing</li><li>behavioral analytics</li><li>identity access management</li><li>soc</li><li>user behavior</li><li>insider threat</li><li>anomaly detection</li><li>splunk</li></ul>
+<h2>Typical Workflow</h2>
+<ul><li>from datetime import datetime, timedelta</li><li>from collections import defaultdict</li><li>index=auth sourcetype IN (&quot;o365:management:activity&quot;, &quot;vpn_logs&quot;, &quot;WinEventLog:Security&quot;)</li><li>earliest=-30d latest=-1d</li><li>| stats dc(src_ip) AS unique_ips,</li><li>dc(src_country) AS unique_countries,</li><li>dc(app) AS unique_apps,</li><li>count AS total_logins,</li><li>earliest(_time) AS first_login,</li><li>latest(_time) AS last_login,</li></ul>
+<h2>Use Cases</h2>
+<ul><li>Security operations needs to identify compromised accounts from authentication log analysis</li><li>Implementing impossible travel detection to flag geographically inconsistent logins</li><li>Detecting brute force, password spraying, and credential stuffing attacks in real time</li><li>Building behavioral baselines for users to identify deviations indicating account compromise</li><li>Correlating authentication anomalies with threat intelligence for lateral movement detection</li><li>Investigating alerts from SIEM or IdP for suspicious sign-in activity</li><li>Relying on single-signal detection (failed logins only) misses successful spray results</li><li>SOC teams need to detect compromised accounts through abnormal authentication patterns</li><li>Insider threat programs require behavioral monitoring beyond rule-based detection</li><li>Impossible travel or geographic anomalies indicate credential compromise</li></ul>
+<h2>Limitations</h2>
+<ul><li>Output still depends on context, data quality, and surrounding analysis.</li><li>The tool should be interpreted as part of a broader workflow, not as a complete answer by itself.</li><li>Capabilities and visibility vary depending on environment, integrations, and available inputs.</li></ul>
+<h2>Related Tools</h2>
+<ul><li>Microsoft Sentinel UEBA, Splunk UBA, Elastic SIEM ML Jobs, Securonix</li></ul>
+<h2>Sources</h2>
+<ul><li>detecting-anomalous-authentication-patterns</li><li>performing-user-behavior-analytics</li></ul>
+  <div class="footer-space"></div>
+</article>
+    </main>
+  </body>
+</html>

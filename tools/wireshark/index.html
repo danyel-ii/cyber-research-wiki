@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Wireshark | Cyber Research Wiki</title>
+    <meta name="description" content="Wireshark is an open-source network protocol analyzer for capturing and interactively analyzing packet data from live interfaces or capture files, with a companion CLI (TShark) and a capture utility (dumpcap)." />
+    <link rel="canonical" href="https://danyel-ii.github.io/cyber-research-wiki/tools/wireshark/" />
+    <link rel="stylesheet" href="/cyber-research-wiki/assets/wiki.css" />
+  </head>
+  <body>
+    <header class="site-shell">
+      <div class="shell-inner">
+        <a class="brand" href="/cyber-research-wiki/">Cyber Research Wiki</a>
+        <nav class="nav">
+          <a href="/cyber-research-wiki/">Index</a>
+          <a href="https://danyel-ii.github.io/WikiCompanion/">Pocket Atlas</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page-shell">
+      <article class="article">
+  <h1>Wireshark</h1>
+<blockquote><p>Wireshark is an open-source network protocol analyzer for capturing and interactively analyzing packet data from live interfaces or capture files, with a companion CLI (TShark) and a capture utility (dumpcap).</p></blockquote>
+<h2>Overview</h2>
+<p>Wireshark is used for network troubleshooting, protocol development, education, and digital forensics. It provides deep protocol dissection with powerful display filtering and supports numerous capture file formats. Live capture is delegated to the separate dumpcap program and platform capture libraries (libpcap on UNIX-like systems and Npcap on Windows), enabling the main analyzer to operate with normal user privileges. Much of the same analysis capability is available in a terminal interface through TShark. Wireshark’s default capture format is pcapng, though it can read and write pcap and many other formats. When supplied with appropriate keys or secrets, it supports limited decryption workflows (for example, TLS using (Pre)-Master Secret logs).</p>
+<h2>What It Is</h2>
+<p>Wireshark is a GUI-centric protocol analyzer comprising hundreds of dissectors for both common and specialized protocols. It functions within a toolchain where dumpcap performs privileged packet capture, while Wireshark and TShark perform decoding, filtering, and analysis. It operates on live traffic or stored captures and integrates a display filter language tied to protocol fields for targeted investigation and reporting.</p>
+<h2>How It Works</h2>
+<ul><li>Packet acquisition: Wireshark relies on dumpcap, which uses libpcap on UNIX-like systems and Npcap on Windows to access network interfaces. Captured data are typically written in pcapng, preserving rich capture metadata.</li><li>Dissection and querying: A large library of protocol dissectors parses frames into hierarchical fields. The display filter language references these fields to enable precise queries, selective views, and focused statistics.</li><li>Extensibility: Wireshark supports Lua-based dissectors and plugins, allowing developers to add protocols or analysis taps and to tailor decoding behavior.</li><li>Optional decryption: When provided with suitable secrets, such as TLS (Pre)-Master Secret logs, Wireshark can decrypt and dissect encrypted sessions to aid troubleshooting, within the limits of the underlying cryptographic exchange.</li></ul>
+<h2>Core Concepts</h2>
+<ul><li>Packet capture vs. protocol dissection</li><li>Capture filters (libpcap syntax) vs. display filters (wireshark-filter syntax)</li><li>pcapng vs. pcap file formats and capture metadata</li><li>Protocol fields and dissector-driven analysis</li><li>Decryption keys and session secrets for analysis of encrypted protocols</li><li>Privilege separation via dumpcap and capture libraries</li><li>Reassembly (stream/flow) and conversation analysis</li></ul>
+<h2>Typical Workflow</h2>
+<ul><li>Acquire data: run a time-bounded capture with dumpcap/Wireshark or import existing pcap/pcapng files.</li><li>Scope with display filters to isolate relevant hosts, protocols, or conversations.</li><li>Drill into protocol dissection to validate handshakes, headers, and payload semantics.</li><li>Use statistics (e.g., protocol hierarchy, conversations) to identify anomalies, beacons, or outliers.</li><li>If applicable, supply decryption material (e.g., TLS key log) to inspect encrypted exchanges.</li><li>Export artifacts (objects, flows) or save filtered captures to support incident timelines or detections.</li><li>Document findings using profiles, color rules, and saved filters for repeatability.</li></ul>
+<h2>Use Cases</h2>
+<ul><li>Network forensics on incident-related packet captures (e.g., tracing exfiltration flows)</li><li>Protocol validation and troubleshooting (e.g., HTTP, DNS, TLS handshakes)</li><li>Malware/C2 traffic analysis from sandbox or endpoint-collected pcaps</li><li>Development and verification of network-based detections or IDS signatures</li><li>Operational troubleshooting of performance issues (e.g., TCP retransmissions, latency)</li><li>Reverse engineering and custom protocol analysis with Lua dissectors</li><li>Quality assurance for networked applications and device interoperability</li></ul>
+<h2>Limitations</h2>
+<ul><li>Capturing may require elevated privileges or driver support; architectural separation (dumpcap) mitigates but does not remove platform constraints.</li><li>High-throughput links can overwhelm host capture buffers, leading to packet loss; Wireshark is not optimized for long-term, line-rate monitoring.</li><li>Encrypted traffic remains opaque without appropriate keys or session secrets; some key types (e.g., ephemeral ECDHE without key logs) prevent decryption.</li><li>Resource intensive on large captures; indexing, reassembly, and GUI rendering can be memory/CPU heavy.</li><li>Not an IDS/IPS: Wireshark provides analysis, not continuous detection or prevention.</li><li>Process attribution to packets is generally unavailable; mapping packets to originating processes is outside libpcap/Npcap scope.</li><li>Handling sensitive packet data raises privacy, legal, and data-handling concerns in production environments.</li></ul>
+<h2>Related Tools</h2>
+<ul><li>dumpcap: Wireshark’s capture utility; performs privileged packet capture and writes pcapng/pcap for later analysis.</li><li>TShark: Terminal-based Wireshark for headless or scripted analysis; shares dissectors and filters.</li><li>libpcap: Cross-platform capture library used by Wireshark/TShark on UNIX-like systems.</li><li>Npcap: Windows capture/injection library used by Wireshark for packet I/O.</li><li>tcpdump: CLI packet capture/inspection tool; produces pcaps that Wireshark can analyze.</li><li>Zeek: Network security monitor producing higher-level logs complementary to packet analysis.</li><li>NetworkMiner: Forensic artifact extractor from pcaps; complements Wireshark’s decoding with object reconstruction.</li><li>Suricata/Snort: IDS/IPS engines for real-time detection; their alerts can guide targeted Wireshark analysis.</li><li>Termshark: Alternative TUI built on TShark for terminal packet browsing.</li></ul>
+<h2>Evidence Gaps</h2>
+<ul><li>Exact counts of supported protocols and formats vary by version; authoritative, up-to-date totals are not centrally enumerated in one canonical source.</li><li>Specific performance ceilings (e.g., maximum sustainable capture rates on commodity hardware) are environment-dependent and not formally specified by the project.</li></ul>
+<h2>Sources</h2>
+<ul><li><a href="https://www.wireshark.org/">Wireshark • Go Deep (project home)</a> (Wireshark Foundation)</li><li><a href="https://www.wireshark.org/about">Wireshark • About (features and supported formats)</a> (Wireshark Foundation)</li><li><a href="https://www.wireshark.org/docs/wsug_html/">Wireshark User’s Guide (HTML)</a> (Wireshark Foundation)</li><li><a href="https://www.wireshark.org/docs/man-pages/tshark.html">tshark(1) manual page</a> (Wireshark Foundation)</li><li><a href="https://www.wireshark.org/docs/man-pages/dumpcap.html">dumpcap(1) manual page</a> (Wireshark Foundation)</li><li><a href="https://www.wireshark.org/docs/dfref/default">Display Filter Reference (Index)</a> (Wireshark Foundation)</li><li><a href="https://www.wireshark.org/docs/man-pages/wireshark-filter">wireshark-filter(4) manual page</a> (Wireshark Foundation)</li><li><a href="https://wiki.wireshark.org/libpcap">libpcap - Wireshark Wiki (capture library usage)</a> (Wireshark Foundation)</li><li><a href="https://wiki.wireshark.org/Development/PcapNg">Development/PcapNg - Wireshark Wiki</a> (Wireshark Foundation)</li><li><a href="https://www.wireshark.org/docs/wsdg_html/">Wireshark Developer’s Guide (capture architecture, Lua support)</a> (Wireshark Foundation)</li><li><a href="https://www.wireshark.org/download/docs/Wireshark%20User%27s%20Guide.pdf">Wireshark User’s Guide (PDF, pcapng default; TLS key log tooling references)</a> (Wireshark Foundation)</li><li><a href="https://npcap.com/">Npcap: Windows Packet Capture Library &amp; Driver</a> (Nmap Project)</li></ul>
+<h2>Confidence</h2>
+<p>high</p>
+  <div class="footer-space"></div>
+</article>
+    </main>
+  </body>
+</html>

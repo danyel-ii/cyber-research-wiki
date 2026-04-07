@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Popularity | Cyber Research Wiki</title>
+    <meta name="description" content="Popularity encyclopedia entry." />
+    <link rel="canonical" href="https://danyel-ii.github.io/cyber-research-wiki/tools/popularity/" />
+    <link rel="stylesheet" href="/cyber-research-wiki/assets/wiki.css" />
+  </head>
+  <body>
+    <header class="site-shell">
+      <div class="shell-inner">
+        <a class="brand" href="/cyber-research-wiki/">Cyber Research Wiki</a>
+        <nav class="nav">
+          <a href="/cyber-research-wiki/">Index</a>
+          <a href="https://danyel-ii.github.io/WikiCompanion/">Pocket Atlas</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page-shell">
+      <article class="article">
+  <h1>Popularity</h1>
+<h2>Overview</h2>
+<p>Popularity is a devsecops tool that appears across devsecops workflows in this knowledge base. It is referenced as part of higher-level security analysis, investigation, monitoring, or validation activity rather than as an end in itself.</p>
+<h2>What It Is</h2>
+<p>Popularity is best understood as a devsecops tool in this knowledge base. Its role is conceptual and system-facing rather than procedural: it gives analysts or defenders a structured way to examine evidence, model system behavior, or reason about security state.</p>
+<h2>How It Works</h2>
+<p>Popularity works by turning technical inputs into more interpretable outputs at the system level. Across the source skills, it appears as part of larger analysis, investigation, monitoring, or validation loops rather than as a standalone end state.</p>
+<h2>Core Concepts</h2>
+<ul><li>devsecops</li><li>cicd</li><li>sca</li><li>snyk</li><li>dependency scanning</li><li>secure sdlc</li></ul>
+<h2>Typical Workflow</h2>
+<ul><li>snyk test --json | jq &#39;.summary&#39;</li><li>name: Dependency Security Scan</li></ul>
+<h2>Use Cases</h2>
+<ul><li>When applications use open-source packages that may contain known vulnerabilities</li><li>When compliance requires tracking and remediating vulnerable dependencies (PCI DSS, SOC 2)</li><li>When needing automated fix PRs for vulnerable dependencies in CI/CD</li><li>When license compliance requires visibility into open-source license obligations</li><li>When continuous monitoring is needed for newly disclosed vulnerabilities in deployed dependencies</li></ul>
+<h2>Limitations</h2>
+<ul><li>Output still depends on context, data quality, and surrounding analysis.</li><li>The tool should be interpreted as part of a broader workflow, not as a complete answer by itself.</li><li>Capabilities and visibility vary depending on environment, integrations, and available inputs.</li></ul>
+<h2>Related Tools</h2>
+<ul><li>And Security Signals, Npm Audit, OWASP Dependency Check, Pip Audit, Snyk Advisor, Snyk CLI, Snyk Open Source</li></ul>
+<h2>Sources</h2>
+<ul><li>performing-sca-dependency-scanning-with-snyk</li></ul>
+  <div class="footer-space"></div>
+</article>
+    </main>
+  </body>
+</html>

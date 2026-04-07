@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Trivy Action | Cyber Research Wiki</title>
+    <meta name="description" content="Trivy Action encyclopedia entry." />
+    <link rel="canonical" href="https://danyel-ii.github.io/cyber-research-wiki/tools/trivy-action/" />
+    <link rel="stylesheet" href="/cyber-research-wiki/assets/wiki.css" />
+  </head>
+  <body>
+    <header class="site-shell">
+      <div class="shell-inner">
+        <a class="brand" href="/cyber-research-wiki/">Cyber Research Wiki</a>
+        <nav class="nav">
+          <a href="/cyber-research-wiki/">Index</a>
+          <a href="https://danyel-ii.github.io/WikiCompanion/">Pocket Atlas</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page-shell">
+      <article class="article">
+  <h1>Trivy Action</h1>
+<h2>Overview</h2>
+<p>Trivy Action is a devsecops tool that appears across devsecops workflows in this knowledge base. It is referenced as part of higher-level security analysis, investigation, monitoring, or validation activity rather than as an end in itself.</p>
+<h2>What It Is</h2>
+<p>Trivy Action is best understood as a devsecops tool in this knowledge base. Its role is conceptual and system-facing rather than procedural: it gives analysts or defenders a structured way to examine evidence, model system behavior, or reason about security state.</p>
+<h2>How It Works</h2>
+<p>Trivy Action works by turning technical inputs into more interpretable outputs at the system level. Across the source skills, it appears as part of larger analysis, investigation, monitoring, or validation loops rather than as a standalone end state.</p>
+<h2>Core Concepts</h2>
+<ul><li>devsecops</li><li>cicd</li><li>trivy</li><li>container security</li><li>vulnerability scanning</li><li>secure sdlc</li></ul>
+<h2>Typical Workflow</h2>
+<ul><li>Set up a GitHub Actions workflow that builds a Docker image and scans it with Trivy before pushing to a container registry.</li><li>name: Container Security Scan</li><li>&#39;docker-compose*.yml&#39;</li></ul>
+<h2>Use Cases</h2>
+<ul><li>When building Docker container images in CI/CD and needing automated vulnerability scanning before registry push</li><li>When establishing quality gates that prevent images with critical or high CVEs from reaching production</li><li>When compliance requirements mandate vulnerability scanning of all container images before deployment</li><li>When scanning IaC files (Dockerfiles, Kubernetes manifests) alongside container image scanning</li><li>When needing a single tool to scan OS packages, language-specific dependencies, and misconfigurations</li></ul>
+<h2>Limitations</h2>
+<ul><li>Output still depends on context, data quality, and surrounding analysis.</li><li>The tool should be interpreted as part of a broader workflow, not as a complete answer by itself.</li><li>Capabilities and visibility vary depending on environment, integrations, and available inputs.</li></ul>
+<h2>Related Tools</h2>
+<ul><li>And IaC, Filesystems, Grype, Harbor, Repos, Trivy, Trivy Operator</li></ul>
+<h2>Sources</h2>
+<ul><li>scanning-containers-with-trivy-in-cicd</li></ul>
+  <div class="footer-space"></div>
+</article>
+    </main>
+  </body>
+</html>

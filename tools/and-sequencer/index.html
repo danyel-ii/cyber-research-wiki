@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>And Sequencer | Cyber Research Wiki</title>
+    <meta name="description" content="And Sequencer encyclopedia entry." />
+    <link rel="canonical" href="https://danyel-ii.github.io/cyber-research-wiki/tools/and-sequencer/" />
+    <link rel="stylesheet" href="/cyber-research-wiki/assets/wiki.css" />
+  </head>
+  <body>
+    <header class="site-shell">
+      <div class="shell-inner">
+        <a class="brand" href="/cyber-research-wiki/">Cyber Research Wiki</a>
+        <nav class="nav">
+          <a href="/cyber-research-wiki/">Index</a>
+          <a href="https://danyel-ii.github.io/WikiCompanion/">Pocket Atlas</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page-shell">
+      <article class="article">
+  <h1>And Sequencer</h1>
+<h2>Overview</h2>
+<p>And Sequencer is a penetration testing tool that appears across penetration testing workflows in this knowledge base. It is referenced as part of higher-level security analysis, investigation, monitoring, or validation activity rather than as an end in itself.</p>
+<h2>What It Is</h2>
+<p>And Sequencer is best understood as a penetration-testing tool in this knowledge base. Its role is conceptual and system-facing rather than procedural: it gives analysts or defenders a structured way to examine evidence, model system behavior, or reason about security state.</p>
+<h2>How It Works</h2>
+<p>And Sequencer works by turning technical inputs into more interpretable outputs at the system level. Across the source skills, it appears as part of larger analysis, investigation, monitoring, or validation loops rather than as a standalone end state.</p>
+<h2>Core Concepts</h2>
+<ul><li>web application pentest</li><li>OWASP</li><li>Burp Suite</li><li>WSTG</li><li>application security</li><li>penetration testing</li></ul>
+<h2>Typical Workflow</h2>
+<ul><li>Configure Burp Suite proxy and spider the application by browsing every page, form, and function manually while Burp captures the sitemap</li><li>Use Burp&#39;s Discover Content feature to find hidden directories and files not linked from the visible application</li><li>Identify the technology stack from response headers (<code>X-Powered-By</code>, <code>Server</code>), cookies (JSESSIONID = Java, PHPSESSID = PHP, ASP.NET_SessionId = .NET), and page extensions</li><li>Enumerate endpoints using <code>ffuf -w /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-medium.txt -u https://target.com/FUZZ -mc 200,301,302,403</code></li><li>Review JavaScript files for hardcoded API endpoints, secrets, and client-side routing using Burp&#39;s JS Link Finder extension or <code>LinkFinder.py</code></li><li>Document all entry points: URL parameters, POST bodies, HTTP headers, cookies, file uploads, and WebSocket connections</li><li><strong>Credential enumeration</strong>: Submit valid and invalid usernames to identify differences in response (timing, message, HTTP status) that reveal valid accounts</li><li><strong>Brute force protection</strong>: Attempt 10-20 rapid login attempts with invalid credentials to verify account lockout and rate limiting are enforced</li><li><strong>Password policy</strong>: Test password creation with weak passwords (123456, password, single character) to verify policy enforcement</li><li><strong>Multi-factor authentication bypass</strong>: Test for MFA bypass by directly accessing post-authentication pages, manipulating MFA tokens, or replaying successful MFA responses</li></ul>
+<h2>Use Cases</h2>
+<ul><li>Testing web applications before production deployment to identify exploitable vulnerabilities</li><li>Conducting compliance-driven security assessments (PCI-DSS requirement 6.6, SOC 2 Type II)</li><li>Validating remediation of previously identified web application vulnerabilities during retesting</li><li>Assessing third-party web applications before integration into the organization&#39;s environment</li><li>Evaluating custom-developed web applications where automated scanning alone is insufficient</li><li>Testing only the frontend while ignoring the API layer that lacks independent authorization checks</li><li>Missing business logic flaws by relying solely on automated scanning without manual testing</li></ul>
+<h2>Limitations</h2>
+<ul><li>Output still depends on context, data quality, and surrounding analysis.</li><li>The tool should be interpreted as part of a broader workflow, not as a complete answer by itself.</li><li>Capabilities and visibility vary depending on environment, integrations, and available inputs.</li></ul>
+<h2>Related Tools</h2>
+<ul><li>And Manual Testing Tools Including Repeater, And Payload Delivery Used Throughout Web Application Testing, And Virtual Host Enumeration, Burp Suite Professional, Credential Testing, Ffuf, Intruder, Nuclei</li></ul>
+<h2>Sources</h2>
+<ul><li>performing-web-application-penetration-test</li></ul>
+  <div class="footer-space"></div>
+</article>
+    </main>
+  </body>
+</html>

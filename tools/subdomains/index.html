@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Subdomains | Cyber Research Wiki</title>
+    <meta name="description" content="Subdomains encyclopedia entry." />
+    <link rel="canonical" href="https://danyel-ii.github.io/cyber-research-wiki/tools/subdomains/" />
+    <link rel="stylesheet" href="/cyber-research-wiki/assets/wiki.css" />
+  </head>
+  <body>
+    <header class="site-shell">
+      <div class="shell-inner">
+        <a class="brand" href="/cyber-research-wiki/">Cyber Research Wiki</a>
+        <nav class="nav">
+          <a href="/cyber-research-wiki/">Index</a>
+          <a href="https://danyel-ii.github.io/WikiCompanion/">Pocket Atlas</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page-shell">
+      <article class="article">
+  <h1>Subdomains</h1>
+<h2>Overview</h2>
+<p>Subdomains is a penetration testing tool that appears across penetration testing workflows in this knowledge base. It is referenced as part of higher-level security analysis, investigation, monitoring, or validation activity rather than as an end in itself.</p>
+<h2>What It Is</h2>
+<p>Subdomains is best understood as a penetration-testing tool in this knowledge base. Its role is conceptual and system-facing rather than procedural: it gives analysts or defenders a structured way to examine evidence, model system behavior, or reason about security state.</p>
+<h2>How It Works</h2>
+<p>Subdomains works by turning technical inputs into more interpretable outputs at the system level. Across the source skills, it appears as part of larger analysis, investigation, monitoring, or validation loops rather than as a standalone end state.</p>
+<h2>Core Concepts</h2>
+<ul><li>OSINT</li><li>reconnaissance</li><li>attack surface</li><li>footprinting</li><li>passive recon</li><li>penetration testing</li></ul>
+<h2>Typical Workflow</h2>
+<ul><li><strong>Root domain identification</strong>: Start with the primary domain and identify all related domains through reverse WHOIS lookups on registrant name, email, and organization using <code>whoxy.com</code> or <code>domaintools.com</code></li><li><code>amass enum -passive -d target.com -o amass_subs.txt</code> for passive subdomain discovery from 40+ data sources</li><li><code>subfinder -d target.com -all -o subfinder_subs.txt</code> for fast passive enumeration</li><li><code>crt.sh</code> certificate transparency log queries: <code>curl -s &quot;https://crt.sh/?q=%25.target.com&amp;output=json&quot; | jq -r &#39;.[].name_value&#39; | sort -u</code></li><li><strong>DNS record analysis</strong>: Query for all record types: <code>dig target.com ANY</code>, check for SPF, DKIM, DMARC records that reveal email infrastructure, and enumerate MX records to identify email providers</li><li><strong>Zone transfer attempt</strong>: <code>dig axfr @ns1.target.com target.com</code> to check for misconfigured DNS servers</li><li><strong>Consolidate results</strong>: Merge, deduplicate, and resolve all discovered subdomains to IP addresses. Map IP addresses to ASN and hosting providers.</li><li><strong>Shodan</strong>: <code>shodan search &quot;ssl.cert.subject.cn:target.com&quot;</code> to find all internet-facing services with TLS certificates for the target domain. Also search by organization name and IP ranges.</li><li><strong>Censys</strong>: Search for target&#39;s IP ranges and TLS certificates to identify services, technologies, and potential vulnerabilities indexed from internet-wide scanning</li></ul>
+<h2>Use Cases</h2>
+<ul><li>Performing the initial reconnaissance phase of a penetration test to gather intelligence before active scanning</li><li>Mapping an organization&#39;s external attack surface to identify unknown or shadow IT assets</li><li>Collecting employee information, email formats, and organizational structure for social engineering campaigns</li><li>Identifying exposed credentials, leaked data, or sensitive documents published on the internet</li><li>Scoping the breadth of an organization&#39;s digital footprint prior to a red team engagement</li><li>Relying on a single subdomain enumeration tool and missing assets found by other tools using different data sources</li><li>Failing to check cloud storage services (S3, Azure Blob, GCP) for publicly accessible buckets</li></ul>
+<h2>Limitations</h2>
+<ul><li>Output still depends on context, data quality, and surrounding analysis.</li><li>The tool should be interpreted as part of a broader workflow, not as a complete answer by itself.</li><li>Capabilities and visibility vary depending on environment, integrations, and available inputs.</li></ul>
+<h2>Related Tools</h2>
+<ul><li>Amass, And Certificate Transparency Log Analysis, And Metadata For Internet Connected Devices, And Open Ports From Public Sources, Banners, DNS Brute Forcing, Domain, Employee Names</li></ul>
+<h2>Sources</h2>
+<ul><li>conducting-external-reconnaissance-with-osint</li></ul>
+  <div class="footer-space"></div>
+</article>
+    </main>
+  </body>
+</html>

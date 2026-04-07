@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Xss Hunter | Cyber Research Wiki</title>
+    <meta name="description" content="Xss Hunter encyclopedia entry." />
+    <link rel="canonical" href="https://danyel-ii.github.io/cyber-research-wiki/tools/xss-hunter/" />
+    <link rel="stylesheet" href="/cyber-research-wiki/assets/wiki.css" />
+  </head>
+  <body>
+    <header class="site-shell">
+      <div class="shell-inner">
+        <a class="brand" href="/cyber-research-wiki/">Cyber Research Wiki</a>
+        <nav class="nav">
+          <a href="/cyber-research-wiki/">Index</a>
+          <a href="https://danyel-ii.github.io/WikiCompanion/">Pocket Atlas</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page-shell">
+      <article class="article">
+  <h1>Xss Hunter</h1>
+<h2>Overview</h2>
+<p>Xss Hunter is a penetration testing tool that appears across penetration testing workflows in this knowledge base. It is referenced as part of higher-level security analysis, investigation, monitoring, or validation activity rather than as an end in itself.</p>
+<h2>What It Is</h2>
+<p>Xss Hunter is best understood as a penetration-testing tool in this knowledge base. Its role is conceptual and system-facing rather than procedural: it gives analysts or defenders a structured way to examine evidence, model system behavior, or reason about security state.</p>
+<h2>How It Works</h2>
+<p>Xss Hunter works by turning technical inputs into more interpretable outputs at the system level. Across the source skills, it appears as part of larger analysis, investigation, monitoring, or validation loops rather than as a standalone end state.</p>
+<h2>Core Concepts</h2>
+<ul><li>penetration testing</li><li>xss</li><li>burpsuite</li><li>owasp</li><li>web security</li><li>cross site scripting</li><li>web application security</li><li>client side security</li><li>OWASP A03</li><li>JavaScript injection</li></ul>
+<h2>Typical Workflow</h2>
+<ul><li>Set up the proxy and crawl the application to discover all input vectors.</li><li>1. Proxy &gt; Options &gt; Proxy Listeners: 127.0.0.1:8080</li><li>2. Target &gt; Scope: Add target domain (e.g., *.target.example.com)</li><li>3. Dashboard &gt; New Scan &gt; Crawl only &gt; Select target URL</li><li>4. Enable &quot;Passive scanning&quot; in Dashboard settings</li><li>Install Burp CA: http://burpsuite → CA Certificate</li><li>Import certificate into browser trust store</li><li>Configure proxy: 127.0.0.1:8080</li><li>Browse the application manually to build the site map</li><li><strong>Reflected inputs</strong>: Test every URL parameter, search field, error message, and HTTP header value that is reflected in the response</li></ul>
+<h2>Use Cases</h2>
+<ul><li>During authorized web application penetration testing to find reflected, stored, and DOM-based XSS</li><li>When validating XSS findings reported by automated vulnerability scanners</li><li>For testing the effectiveness of Content Security Policy (CSP) and XSS filters</li><li>When assessing client-side security of single-page applications (SPAs)</li><li>During bug bounty programs targeting XSS vulnerabilities</li><li>Testing web applications for client-side injection vulnerabilities as part of OWASP WSTG testing</li><li>Evaluating the effectiveness of input sanitization and output encoding across all application features</li><li>Assessing the protection provided by Content Security Policy (CSP) headers against XSS exploitation</li><li>Demonstrating the impact of XSS through session hijacking, credential theft, or phishing overlay to stakeholders</li><li>Testing single-page applications (React, Angular, Vue) for DOM-based XSS in client-side routing and rendering</li></ul>
+<h2>Limitations</h2>
+<ul><li>Output still depends on context, data quality, and surrounding analysis.</li><li>The tool should be interpreted as part of a broader workflow, not as a complete answer by itself.</li><li>Capabilities and visibility vary depending on environment, integrations, and available inputs.</li></ul>
+<h2>Related Tools</h2>
+<ul><li>Burp Suite Professional, And DOM Content When Triggered, And Elements Tabs For Tracing DOM Based XSS Data Flows And Testing Payloads In Real Time, Browser Developer Tools, Cookies, CSP Evaluator, Dalfox, DOM Invader</li></ul>
+<h2>Sources</h2>
+<ul><li>testing-for-xss-vulnerabilities</li><li>testing-for-xss-vulnerabilities-with-burpsuite</li></ul>
+  <div class="footer-space"></div>
+</article>
+    </main>
+  </body>
+</html>

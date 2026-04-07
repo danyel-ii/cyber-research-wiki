@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Splunk Dashboard Studio | Cyber Research Wiki</title>
+    <meta name="description" content="Splunk Dashboard Studio encyclopedia entry." />
+    <link rel="canonical" href="https://danyel-ii.github.io/cyber-research-wiki/tools/splunk-dashboard-studio/" />
+    <link rel="stylesheet" href="/cyber-research-wiki/assets/wiki.css" />
+  </head>
+  <body>
+    <header class="site-shell">
+      <div class="shell-inner">
+        <a class="brand" href="/cyber-research-wiki/">Cyber Research Wiki</a>
+        <nav class="nav">
+          <a href="/cyber-research-wiki/">Index</a>
+          <a href="https://danyel-ii.github.io/WikiCompanion/">Pocket Atlas</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page-shell">
+      <article class="article">
+  <h1>Splunk Dashboard Studio</h1>
+<h2>Overview</h2>
+<p>Splunk Dashboard Studio is a soc operations tool that appears across soc operations workflows in this knowledge base. It is referenced as part of higher-level security analysis, investigation, monitoring, or validation activity rather than as an end in itself.</p>
+<h2>What It Is</h2>
+<p>Splunk Dashboard Studio is best understood as a soc-operations tool in this knowledge base. Its role is conceptual and system-facing rather than procedural: it gives analysts or defenders a structured way to examine evidence, model system behavior, or reason about security state.</p>
+<h2>How It Works</h2>
+<p>Splunk Dashboard Studio works by turning technical inputs into more interpretable outputs at the system level. Across the source skills, it appears as part of larger analysis, investigation, monitoring, or validation loops rather than as a standalone end state.</p>
+<h2>Core Concepts</h2>
+<ul><li>soc</li><li>dashboard</li><li>incident response</li><li>splunk</li><li>visualization</li><li>situational awareness</li><li>metrics</li><li>soc operations</li><li>kpi</li><li>mttd</li><li>mttr</li><li>reporting</li></ul>
+<h2>Typical Workflow</h2>
+<ul><li>&lt;dashboard version=&quot;2&quot; theme=&quot;dark&quot;&gt;</li><li>&lt;label&gt;Active Incident Response Dashboard&lt;/label&gt;</li><li>&lt;description&gt;Real-time tracking for IR-2024-0450&lt;/description&gt;</li><li>&lt;title&gt;Incident Summary&lt;/title&gt;</li><li>| Metric | Definition | Target | NIST CSF |</li><li>|--------|-----------|--------|----------|</li><li>| MTTD | Time from threat occurrence to SOC detection | &lt;15 min | Detect |</li><li>| MTTA | Time from alert to analyst acknowledgment | &lt;5 min | Respond |</li><li>| MTTI | Time from acknowledgment to investigation start | &lt;10 min | Respond |</li><li>| MTTC | Time from investigation to containment | &lt;1 hour | Respond |</li></ul>
+<h2>Use Cases</h2>
+<ul><li>IR teams need real-time dashboards during active incidents for coordination and tracking</li><li>SOC leadership requires operational dashboards showing incident status and analyst workload</li><li>Post-incident reviews need visual timelines and impact assessments</li><li>Executive briefings require high-level incident metrics and trend analysis</li><li><strong>Active Ransomware Incident</strong>: Dashboard showing encryption spread, containment status, backup verification, recovery progress</li><li><strong>Data Breach Investigation</strong>: Dashboard tracking affected data stores, exfiltration volume, notification requirements</li><li><strong>Phishing Campaign Response</strong>: Dashboard showing recipient count, click rate, credential exposure, remediation status</li><li><strong>Monthly SOC Report</strong>: Leadership dashboard with incident trends, MTTD/MTTR metrics, analyst performance</li><li><strong>Compliance Audit</strong>: Dashboard demonstrating detection coverage, response SLA compliance, and incident closure metrics</li><li>SOC leadership needs data-driven visibility into operational performance</li></ul>
+<h2>Limitations</h2>
+<ul><li>Output still depends on context, data quality, and surrounding analysis.</li><li>The tool should be interpreted as part of a broader workflow, not as a complete answer by itself.</li><li>Capabilities and visibility vary depending on environment, integrations, and available inputs.</li></ul>
+<h2>Related Tools</h2>
+<ul><li>Grafana, And Canvas For Security Dashboards, ATT&amp;CK Navigator, Elastic Kibana Dashboard, Maps, Microsoft Sentinel Workbooks, Power BI, ServiceNow Performance Analytics</li></ul>
+<h2>Sources</h2>
+<ul><li>building-incident-response-dashboard</li><li>building-soc-metrics-and-kpi-tracking</li></ul>
+  <div class="footer-space"></div>
+</article>
+    </main>
+  </body>
+</html>

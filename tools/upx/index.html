@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Upx | Cyber Research Wiki</title>
+    <meta name="description" content="Upx encyclopedia entry." />
+    <link rel="canonical" href="https://danyel-ii.github.io/cyber-research-wiki/tools/upx/" />
+    <link rel="stylesheet" href="/cyber-research-wiki/assets/wiki.css" />
+  </head>
+  <body>
+    <header class="site-shell">
+      <div class="shell-inner">
+        <a class="brand" href="/cyber-research-wiki/">Cyber Research Wiki</a>
+        <nav class="nav">
+          <a href="/cyber-research-wiki/">Index</a>
+          <a href="https://danyel-ii.github.io/WikiCompanion/">Pocket Atlas</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page-shell">
+      <article class="article">
+  <h1>Upx</h1>
+<h2>Overview</h2>
+<p>Upx is a static analysis tool that appears across malware analysis workflows in this knowledge base. It is referenced as part of higher-level security analysis, investigation, monitoring, or validation activity rather than as an end in itself.</p>
+<h2>What It Is</h2>
+<p>Upx is best understood as a malware-analysis tool in this knowledge base. Its role is conceptual and system-facing rather than procedural: it gives analysts or defenders a structured way to examine evidence, model system behavior, or reason about security state.</p>
+<h2>How It Works</h2>
+<p>Upx works by turning technical inputs into more interpretable outputs at the system level. Across the source skills, it appears as part of larger analysis, investigation, monitoring, or validation loops rather than as a standalone end state.</p>
+<h2>Core Concepts</h2>
+<ul><li>malware</li><li>unpacking</li><li>UPX</li><li>packing</li><li>static analysis</li><li>malware analysis</li></ul>
+<h2>Typical Workflow</h2>
+<ul><li>print(&quot;Section Analysis:&quot;)</li></ul>
+<h2>Use Cases</h2>
+<ul><li>Static analysis reveals high entropy sections and minimal imports indicating the binary is packed</li><li>PEiD, Detect It Easy, or PEStudio identifies UPX or another known packer</li><li>The import table contains only LoadLibrary and GetProcAddress (runtime import resolution typical of packed binaries)</li><li>You need to recover the original binary for proper disassembly and decompilation in Ghidra or IDA</li><li>Automated UPX decompression fails because the malware author modified UPX magic bytes or headers</li><li>Assuming UPX is the only packer; the binary may be double-packed (UPX + custom layer)</li><li>Modifying the original packed sample instead of working on a copy</li></ul>
+<h2>Limitations</h2>
+<ul><li>Output still depends on context, data quality, and surrounding analysis.</li><li>The tool should be interpreted as part of a broader workflow, not as a complete answer by itself.</li><li>Capabilities and visibility vary depending on environment, integrations, and available inputs.</li></ul>
+<h2>Related Tools</h2>
+<ul><li>And Linker Detection Tool That Identifies Protection On PE, And Mach O Files, Compiler, Detect It Easy, ELF, PE Bear, Scylla, X64dbg</li></ul>
+<h2>Sources</h2>
+<ul><li>analyzing-packed-malware-with-upx-unpacker</li></ul>
+  <div class="footer-space"></div>
+</article>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Yara | Cyber Research Wiki</title>
+    <meta name="description" content="Yara encyclopedia entry." />
+    <link rel="canonical" href="https://danyel-ii.github.io/cyber-research-wiki/tools/yara/" />
+    <link rel="stylesheet" href="/cyber-research-wiki/assets/wiki.css" />
+  </head>
+  <body>
+    <header class="site-shell">
+      <div class="shell-inner">
+        <a class="brand" href="/cyber-research-wiki/">Cyber Research Wiki</a>
+        <nav class="nav">
+          <a href="/cyber-research-wiki/">Index</a>
+          <a href="https://danyel-ii.github.io/WikiCompanion/">Pocket Atlas</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page-shell">
+      <article class="article">
+  <h1>Yara</h1>
+<h2>Overview</h2>
+<p>Yara is a malware analysis tool that appears across incident response workflows in this knowledge base. It is referenced as part of higher-level security analysis, investigation, monitoring, or validation activity rather than as an end in itself.</p>
+<h2>What It Is</h2>
+<p>Yara is best understood as a incident-response tool in this knowledge base. Its role is conceptual and system-facing rather than procedural: it gives analysts or defenders a structured way to examine evidence, model system behavior, or reason about security state.</p>
+<h2>How It Works</h2>
+<p>Yara works by turning technical inputs into more interpretable outputs at the system level. Across the source skills, it appears as part of larger analysis, investigation, monitoring, or validation loops rather than as a standalone end state.</p>
+<h2>Core Concepts</h2>
+<ul><li>malware</li><li>macro</li><li>Office</li><li>VBA</li><li>document malware</li><li>malware analysis</li><li>UEFI</li><li>bootkit</li><li>firmware</li><li>Secure Boot</li><li>chipsec</li><li>ESP</li></ul>
+<h2>Typical Workflow</h2>
+<ul><li>flashrom -p internal -r firmware_dump.rom</li><li>Review EDR alert details: detection name, file path, hash (SHA-256), process tree</li><li>Check if the detection is a known malware family or generic heuristic detection</li><li>Query the file hash against VirusTotal, MalwareBazaar, and internal threat intelligence</li><li>Examine the process execution chain to determine how the malware was delivered</li><li>SHA-256:     a1b2c3d4e5f6...</li><li>Detection:   CrowdStrike: Malware/Qakbot | VirusTotal: 58/72 engines</li><li>Delivery:    Email attachment (Invoice-Nov2025.docm)</li><li>schtasks /query /fo CSV /v &gt; schtasks_all.csv</li><li>yara -r malware_rules.yar /path/to/samples/</li></ul>
+<h2>Use Cases</h2>
+<ul><li>A suspicious Office document (.doc, .docm, .xls, .xlsm, .ppt) has been flagged by email security</li><li>Investigating phishing campaigns that deliver weaponized Office documents</li><li>Extracting VBA macro code to identify the payload download URL and execution method</li><li>Analyzing obfuscated VBA code to understand the full attack chain</li><li>Determining if a document uses DDE, ActiveX, or remote template injection instead of macros</li><li>Opening the document in Microsoft Office for &quot;quick analysis&quot; instead of using command-line tools</li><li>Missing VBA code stored in UserForms (GUI elements can contain code in their event handlers)</li><li>Ignoring document metadata that may contain attacker fingerprints (author name, template name)</li><li>A compromised system re-establishes C2 communication after OS reinstallation or disk replacement</li><li>Secure Boot has been tampered with, disabled, or shows unexpected Machine Owner Key (MOK) enrollment</li></ul>
+<h2>Limitations</h2>
+<ul><li>Output still depends on context, data quality, and surrounding analysis.</li><li>The tool should be interpreted as part of a broader workflow, not as a complete answer by itself.</li><li>Capabilities and visibility vary depending on environment, integrations, and available inputs.</li></ul>
+<h2>Related Tools</h2>
+<ul><li>Volatility, DumpIt, MemProcFS, WinPmem, And Comparing Module GUIDs, And Detecting Suspicious Keywords And IOCs, And Integration With Analysis Pipelines, And Secure Boot Configuration Auditing</li></ul>
+<h2>Sources</h2>
+<ul><li>analyzing-macro-malware-in-office-documents</li><li>analyzing-uefi-bootkit-persistence</li><li>conducting-malware-incident-response</li><li>conducting-memory-forensics-with-volatility</li><li>eradicating-malware-from-infected-systems</li><li>investigating-ransomware-attack-artifacts</li><li>performing-malware-triage-with-yara</li><li>performing-memory-forensics-with-volatility3</li></ul>
+  <div class="footer-space"></div>
+</article>
+    </main>
+  </body>
+</html>

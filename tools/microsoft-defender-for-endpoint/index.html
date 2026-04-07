@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Microsoft Defender For Endpoint | Cyber Research Wiki</title>
+    <meta name="description" content="Microsoft Defender For Endpoint encyclopedia entry." />
+    <link rel="canonical" href="https://danyel-ii.github.io/cyber-research-wiki/tools/microsoft-defender-for-endpoint/" />
+    <link rel="stylesheet" href="/cyber-research-wiki/assets/wiki.css" />
+  </head>
+  <body>
+    <header class="site-shell">
+      <div class="shell-inner">
+        <a class="brand" href="/cyber-research-wiki/">Cyber Research Wiki</a>
+        <nav class="nav">
+          <a href="/cyber-research-wiki/">Index</a>
+          <a href="https://danyel-ii.github.io/WikiCompanion/">Pocket Atlas</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page-shell">
+      <article class="article">
+  <h1>Microsoft Defender For Endpoint</h1>
+<h2>Overview</h2>
+<p>Microsoft Defender For Endpoint is a hunting framework tool that appears across threat hunting workflows in this knowledge base. It is referenced as part of higher-level security analysis, investigation, monitoring, or validation activity rather than as an end in itself.</p>
+<h2>What It Is</h2>
+<p>Microsoft Defender For Endpoint is best understood as a threat-hunting tool in this knowledge base. Its role is conceptual and system-facing rather than procedural: it gives analysts or defenders a structured way to examine evidence, model system behavior, or reason about security state.</p>
+<h2>How It Works</h2>
+<p>Microsoft Defender For Endpoint works by turning technical inputs into more interpretable outputs at the system level. Across the source skills, it appears as part of larger analysis, investigation, monitoring, or validation loops rather than as a standalone end state.</p>
+<h2>Core Concepts</h2>
+<ul><li>threat hunting</li><li>methodology</li><li>hypothesis</li><li>threat intelligence</li><li>hunting framework</li><li>proactive detection</li><li>malware response</li><li>malware analysis</li><li>eradication</li><li>endpoint remediation</li><li>MITRE ATT&amp;CK</li><li>incident response</li></ul>
+<h2>Typical Workflow</h2>
+<ul><li>1. <strong>Formulate Hypothesis</strong>: Define a testable hypothesis based on threat intelligence or ATT&amp;CK gap analysis.</li><li>2. <strong>Identify Data Sources</strong>: Determine which logs and telemetry are needed to validate or refute the hypothesis.</li><li>3. <strong>Execute Queries</strong>: Run detection queries against SIEM and EDR platforms to collect relevant events.</li><li>4. <strong>Analyze Results</strong>: Examine query results for anomalies, correlating across multiple data sources.</li><li>5. <strong>Validate Findings</strong>: Distinguish true positives from false positives through contextual analysis.</li><li>6. <strong>Correlate Activity</strong>: Link findings to broader attack chains and threat actor TTPs.</li><li>7. <strong>Document and Report</strong>: Record findings, update detection rules, and recommend response actions.</li><li>Review EDR alert details: detection name, file path, hash (SHA-256), process tree</li><li>Check if the detection is a known malware family or generic heuristic detection</li><li>Query the file hash against VirusTotal, MalwareBazaar, and internal threat intelligence</li></ul>
+<h2>Use Cases</h2>
+<ul><li>When proactively hunting for indicators of building threat hunt hypothesis framework in the environment</li><li>After threat intelligence indicates active campaigns using these techniques</li><li>During incident response to scope compromise related to these techniques</li><li>When EDR or SIEM alerts trigger on related indicators</li><li>During periodic security assessments and purple team exercises</li><li>EDR or antivirus detects malware execution on one or more endpoints</li><li>A user reports suspicious system behavior indicative of malware infection</li><li>Threat intelligence indicates a malware campaign targeting the organization&#39;s industry</li><li>Network monitoring detects beaconing traffic consistent with known malware C2 patterns</li><li>A file detonation in a sandbox returns a malicious verdict</li></ul>
+<h2>Limitations</h2>
+<ul><li>Output still depends on context, data quality, and surrounding analysis.</li><li>The tool should be interpreted as part of a broader workflow, not as a complete answer by itself.</li><li>Capabilities and visibility vary depending on environment, integrations, and available inputs.</li></ul>
+<h2>Related Tools</h2>
+<ul><li>CrowdStrike Falcon, Sysmon, Elastic Security, Sigma Rules, Velociraptor, Splunk Enterprise, LOLBAS Project, Pe Sieve</li></ul>
+<h2>Sources</h2>
+<ul><li>building-threat-hunt-hypothesis-framework</li><li>conducting-malware-incident-response</li><li>containing-active-breach</li><li>detecting-dll-sideloading-attacks</li><li>detecting-email-forwarding-rules-attack</li><li>detecting-evasion-techniques-in-endpoint-logs</li><li>detecting-fileless-attacks-on-endpoints</li><li>detecting-insider-threat-behaviors</li><li>detecting-kerberoasting-attacks</li><li>detecting-mimikatz-execution-patterns</li><li>detecting-pass-the-hash-attacks</li><li>detecting-privilege-escalation-attempts</li><li>detecting-process-hollowing-technique</li><li>detecting-service-account-abuse</li><li>detecting-suspicious-powershell-execution</li><li>hunting-for-living-off-the-cloud-techniques</li><li>hunting-for-living-off-the-land-binaries</li><li>hunting-for-lolbins-execution-in-endpoint-logs</li><li>hunting-for-registry-persistence-mechanisms</li><li>hunting-for-scheduled-task-persistence</li><li>hunting-for-shadow-copy-deletion</li><li>hunting-for-spearphishing-indicators</li><li>hunting-for-supply-chain-compromise</li><li>hunting-for-unusual-network-connections</li><li>hunting-for-webshell-activity</li></ul>
+  <div class="footer-space"></div>
+</article>
+    </main>
+  </body>
+</html>

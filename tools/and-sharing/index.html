@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>And Sharing | Cyber Research Wiki</title>
+    <meta name="description" content="And Sharing encyclopedia entry." />
+    <link rel="canonical" href="https://danyel-ii.github.io/cyber-research-wiki/tools/and-sharing/" />
+    <link rel="stylesheet" href="/cyber-research-wiki/assets/wiki.css" />
+  </head>
+  <body>
+    <header class="site-shell">
+      <div class="shell-inner">
+        <a class="brand" href="/cyber-research-wiki/">Cyber Research Wiki</a>
+        <nav class="nav">
+          <a href="/cyber-research-wiki/">Index</a>
+          <a href="https://danyel-ii.github.io/WikiCompanion/">Pocket Atlas</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page-shell">
+      <article class="article">
+  <h1>And Sharing</h1>
+<h2>Overview</h2>
+<p>And Sharing is a soc operations tool that appears across soc operations workflows in this knowledge base. It is referenced as part of higher-level security analysis, investigation, monitoring, or validation activity rather than as an end in itself.</p>
+<h2>What It Is</h2>
+<p>And Sharing is best understood as a soc-operations tool in this knowledge base. Its role is conceptual and system-facing rather than procedural: it gives analysts or defenders a structured way to examine evidence, model system behavior, or reason about security state.</p>
+<h2>How It Works</h2>
+<p>And Sharing works by turning technical inputs into more interpretable outputs at the system level. Across the source skills, it appears as part of larger analysis, investigation, monitoring, or validation loops rather than as a standalone end state.</p>
+<h2>Core Concepts</h2>
+<ul><li>soc</li><li>threat intelligence</li><li>stix</li><li>taxii</li><li>misp</li><li>feeds</li><li>ioc</li><li>siem integration</li><li>soc operations</li></ul>
+<h2>Typical Workflow</h2>
+<ul><li>| Feed Source | Format | IOC Types | Update Freq | Cost |</li><li>|-------------|--------|-----------|-------------|------|</li><li>| AlienVault OTX | STIX/JSON | IP, Domain, Hash, URL | Real-time | Free |</li><li>| Abuse.ch URLhaus | CSV/JSON | URL, Domain | Every 5 min | Free |</li><li>| Abuse.ch MalwareBazaar | JSON API | File Hash | Real-time | Free |</li><li>| CISA AIS | STIX/TAXII 2.1 | All types | Daily | Free (US Gov) |</li><li>| CrowdStrike Intel | STIX/JSON | All types + Actor TTP | Real-time | Commercial |</li><li>| Mandiant Advantage | STIX 2.1 | All types + Reports | Real-time | Commercial |</li><li>from taxii2client.v21 import Server, Collection</li></ul>
+<h2>Use Cases</h2>
+<ul><li>SOC teams need automated ingestion of threat intelligence feeds into SIEM platforms</li><li>Multiple TI sources require normalization into a common format (STIX 2.1)</li><li>Detection systems need real-time IOC matching against network and endpoint telemetry</li><li>TI feed quality assessment and deduplication processes need to be established</li><li><strong>New Feed Onboarding</strong>: Evaluate feed quality, map fields to STIX, configure automated ingestion pipeline</li><li><strong>Multi-SIEM Distribution</strong>: Push normalized IOCs from MISP to Splunk, Elastic, and Sentinel simultaneously</li><li><strong>False Positive Reduction</strong>: Score IOCs by source count and age, expire stale indicators automatically</li><li><strong>Feed Quality Audit</strong>: Compare detection match rates across feeds to identify highest-value sources</li><li><strong>Incident IOC Sharing</strong>: Package investigation IOCs as STIX bundle and share with ISACs via TAXII</li></ul>
+<h2>Limitations</h2>
+<ul><li>Output still depends on context, data quality, and surrounding analysis.</li><li>The tool should be interpreted as part of a broader workflow, not as a complete answer by itself.</li><li>Capabilities and visibility vary depending on environment, integrations, and available inputs.</li></ul>
+<h2>Related Tools</h2>
+<ul><li>Abuse.ch, AlienVault OTX, Correlation, Feodo Tracker, MalwareBazaar, MISP, OpenCTI, TAXII2 Client</li></ul>
+<h2>Sources</h2>
+<ul><li>building-threat-intelligence-feed-integration</li></ul>
+  <div class="footer-space"></div>
+</article>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Frida Tools | Cyber Research Wiki</title>
+    <meta name="description" content="Frida Tools encyclopedia entry." />
+    <link rel="canonical" href="https://danyel-ii.github.io/cyber-research-wiki/tools/frida-tools/" />
+    <link rel="stylesheet" href="/cyber-research-wiki/assets/wiki.css" />
+  </head>
+  <body>
+    <header class="site-shell">
+      <div class="shell-inner">
+        <a class="brand" href="/cyber-research-wiki/">Cyber Research Wiki</a>
+        <nav class="nav">
+          <a href="/cyber-research-wiki/">Index</a>
+          <a href="https://danyel-ii.github.io/WikiCompanion/">Pocket Atlas</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page-shell">
+      <article class="article">
+  <h1>Frida Tools</h1>
+<h2>Overview</h2>
+<p>Frida Tools is a ipa analysis tool that appears across mobile security workflows in this knowledge base. It is referenced as part of higher-level security analysis, investigation, monitoring, or validation activity rather than as an end in itself.</p>
+<h2>What It Is</h2>
+<p>Frida Tools is best understood as a mobile-security tool in this knowledge base. Its role is conceptual and system-facing rather than procedural: it gives analysts or defenders a structured way to examine evidence, model system behavior, or reason about security state.</p>
+<h2>How It Works</h2>
+<p>Frida Tools works by turning technical inputs into more interpretable outputs at the system level. Across the source skills, it appears as part of larger analysis, investigation, monitoring, or validation loops rather than as a standalone end state.</p>
+<h2>Core Concepts</h2>
+<ul><li>mobile security</li><li>ios</li><li>objection</li><li>frida</li><li>owasp mobile</li><li>penetration testing</li><li>ssl pinning</li><li>keychain</li><li>ipa analysis</li><li>owasp mastg</li></ul>
+<h2>Typical Workflow</h2>
+<ul><li><strong>For jailbroken devices:</strong></li><li>ssh root@&lt;device_ip&gt; &quot;/usr/sbin/frida-server -D&quot;</li><li>frida-ps -U  # List processes on USB-connected device</li><li><strong>For non-jailbroken devices (authorized testing):</strong></li><li>objection patchipa --source target.ipa --codesign-signature &quot;Apple Development: test@example.com&quot;</li><li>unzip target.ipa -d target_app/</li><li>otool -hv target_app/Payload/*.app/AppExecutable</li><li>plutil -p target_app/Payload/*.app/Info.plist</li><li>strings target_app/Payload/*.app/AppExecutable | grep -iE &quot;api[_-]?key|secret|password|token|firebase&quot;</li></ul>
+<h2>Use Cases</h2>
+<ul><li>Performing runtime security assessment of iOS applications during authorized penetration tests</li><li>Inspecting iOS keychain, filesystem, and memory for sensitive data exposure</li><li>Bypassing client-side security controls (SSL pinning, jailbreak detection) during security testing</li><li>Evaluating iOS app behavior at runtime without access to source code</li><li>Conducting authorized penetration tests of iOS applications against OWASP MASVS/MASTG criteria</li><li>Performing dynamic analysis of iOS apps using Frida instrumentation and Objection runtime exploration</li><li>Bypassing SSL/TLS certificate pinning to intercept and analyze app network traffic through a proxy</li><li>Extracting and auditing iOS Keychain contents for insecure credential storage practices</li><li>Performing static analysis of IPA packages to identify hardcoded secrets, entitlements, and binary protections</li><li>Assessing jailbreak detection and anti-tampering controls in iOS applications</li></ul>
+<h2>Limitations</h2>
+<ul><li>Output still depends on context, data quality, and surrounding analysis.</li><li>The tool should be interpreted as part of a broader workflow, not as a complete answer by itself.</li><li>Capabilities and visibility vary depending on environment, integrations, and available inputs.</li></ul>
+<h2>Related Tools</h2>
+<ul><li>Burp Suite, Frida, Frida Trace, Ideviceinstaller, Objection, And Encryption Info, And Frida Discover, Cycript</li></ul>
+<h2>Sources</h2>
+<ul><li>analyzing-ios-app-security-with-objection</li><li>performing-ios-app-security-assessment</li></ul>
+  <div class="footer-space"></div>
+</article>
+    </main>
+  </body>
+</html>

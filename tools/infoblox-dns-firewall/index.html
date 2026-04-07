@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Infoblox DNS Firewall | Cyber Research Wiki</title>
+    <meta name="description" content="Infoblox DNS Firewall encyclopedia entry." />
+    <link rel="canonical" href="https://danyel-ii.github.io/cyber-research-wiki/tools/infoblox-dns-firewall/" />
+    <link rel="stylesheet" href="/cyber-research-wiki/assets/wiki.css" />
+  </head>
+  <body>
+    <header class="site-shell">
+      <div class="shell-inner">
+        <a class="brand" href="/cyber-research-wiki/">Cyber Research Wiki</a>
+        <nav class="nav">
+          <a href="/cyber-research-wiki/">Index</a>
+          <a href="https://danyel-ii.github.io/WikiCompanion/">Pocket Atlas</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page-shell">
+      <article class="article">
+  <h1>Infoblox DNS Firewall</h1>
+<h2>Overview</h2>
+<p>Infoblox DNS Firewall is a c2 detection tool that appears across soc operations workflows in this knowledge base. It is referenced as part of higher-level security analysis, investigation, monitoring, or validation activity rather than as an end in itself.</p>
+<h2>What It Is</h2>
+<p>Infoblox DNS Firewall is best understood as a soc-operations tool in this knowledge base. Its role is conceptual and system-facing rather than procedural: it gives analysts or defenders a structured way to examine evidence, model system behavior, or reason about security state.</p>
+<h2>How It Works</h2>
+<p>Infoblox DNS Firewall works by turning technical inputs into more interpretable outputs at the system level. Across the source skills, it appears as part of larger analysis, investigation, monitoring, or validation loops rather than as a standalone end state.</p>
+<h2>Core Concepts</h2>
+<ul><li>soc</li><li>dns</li><li>exfiltration</li><li>dns tunneling</li><li>dga</li><li>c2 detection</li><li>splunk</li><li>threat detection</li><li>soc operations</li></ul>
+<h2>Typical Workflow</h2>
+<ul><li>index=dns sourcetype=&quot;stream:dns&quot; query_type IN (&quot;A&quot;, &quot;AAAA&quot;, &quot;TXT&quot;, &quot;CNAME&quot;, &quot;MX&quot;)</li><li>| eval domain_parts = split(query, &quot;.&quot;)</li><li>| eval subdomain = mvindex(domain_parts, 0, mvcount(domain_parts)-3)</li><li>| eval subdomain_str = mvjoin(subdomain, &quot;.&quot;)</li><li>| eval subdomain_len = len(subdomain_str)</li><li>| eval tld = mvindex(domain_parts, -1)</li><li>| eval registered_domain = mvindex(domain_parts, -2).&quot;.&quot;.tld</li><li>| where subdomain_len &gt; 50</li><li>| stats count AS queries, dc(query) AS unique_queries,</li><li>avg(subdomain_len) AS avg_subdomain_len,</li></ul>
+<h2>Use Cases</h2>
+<ul><li>SOC teams suspect data exfiltration through DNS tunneling to bypass firewall/proxy controls</li><li>Threat intelligence indicates adversaries using DNS-based C2 channels (e.g., Cobalt Strike DNS beacon)</li><li>UEBA detects anomalous DNS query volumes from specific hosts</li><li>Malware analysis reveals DNS-over-HTTPS (DoH) or DNS tunneling capabilities</li><li><strong>Cobalt Strike DNS Beacon</strong>: Detect periodic TXT queries with encoded payloads to C2 domain</li><li><strong>Data Exfiltration</strong>: Large volumes of unique subdomain queries encoding stolen data in Base64/hex</li><li><strong>DGA Malware</strong>: Detect DNS queries to algorithmically generated domains (high entropy, no web content)</li><li><strong>DNS-over-HTTPS Bypass</strong>: Employee using DoH to bypass corporate DNS filtering and monitoring</li><li><strong>Slow Drip Exfiltration</strong>: Low-volume DNS tunneling staying below threshold alerts (requires baseline comparison)</li></ul>
+<h2>Limitations</h2>
+<ul><li>Output still depends on context, data quality, and surrounding analysis.</li><li>The tool should be interpreted as part of a broader workflow, not as a complete answer by itself.</li><li>Capabilities and visibility vary depending on environment, integrations, and available inputs.</li></ul>
+<h2>Related Tools</h2>
+<ul><li>Cisco Umbrella, Farsight DNSDB, Splunk Stream, Zeek</li></ul>
+<h2>Sources</h2>
+<ul><li>analyzing-dns-logs-for-exfiltration</li></ul>
+  <div class="footer-space"></div>
+</article>
+    </main>
+  </body>
+</html>

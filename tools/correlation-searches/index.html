@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Correlation Searches | Cyber Research Wiki</title>
+    <meta name="description" content="Correlation Searches encyclopedia entry." />
+    <link rel="canonical" href="https://danyel-ii.github.io/cyber-research-wiki/tools/correlation-searches/" />
+    <link rel="stylesheet" href="/cyber-research-wiki/assets/wiki.css" />
+  </head>
+  <body>
+    <header class="site-shell">
+      <div class="shell-inner">
+        <a class="brand" href="/cyber-research-wiki/">Cyber Research Wiki</a>
+        <nav class="nav">
+          <a href="/cyber-research-wiki/">Index</a>
+          <a href="https://danyel-ii.github.io/WikiCompanion/">Pocket Atlas</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page-shell">
+      <article class="article">
+  <h1>Correlation Searches</h1>
+<h2>Overview</h2>
+<p>Correlation Searches is a soc operations tool that appears across soc operations workflows in this knowledge base. It is referenced as part of higher-level security analysis, investigation, monitoring, or validation activity rather than as an end in itself.</p>
+<h2>What It Is</h2>
+<p>Correlation Searches is best understood as a soc-operations tool in this knowledge base. Its role is conceptual and system-facing rather than procedural: it gives analysts or defenders a structured way to examine evidence, model system behavior, or reason about security state.</p>
+<h2>How It Works</h2>
+<p>Correlation Searches works by turning technical inputs into more interpretable outputs at the system level. Across the source skills, it appears as part of larger analysis, investigation, monitoring, or validation loops rather than as a standalone end state.</p>
+<h2>Core Concepts</h2>
+<ul><li>soc</li><li>splunk</li><li>alert triage</li><li>siem</li><li>notable events</li><li>correlation search</li><li>incident review</li><li>soc operations</li></ul>
+<h2>Typical Workflow</h2>
+<ul><li>| search status=&quot;new&quot; OR status=&quot;unassigned&quot;</li><li>| table _time, rule_name, src, dest, user, urgency, status</li><li>Focus on Critical and High urgency events first. Group related alerts by <code>src</code> or <code>dest</code> to identify attack chains rather than treating each alert independently.</li><li>index=wineventlog sourcetype=&quot;WinEventLog:Security&quot; EventCode=4625</li><li>src_ip=&quot;192.168.1.105&quot;</li></ul>
+<h2>Use Cases</h2>
+<ul><li>SOC Tier 1 analysts need to process the Incident Review queue in Splunk Enterprise Security (ES)</li><li>Notable events require rapid severity classification and initial investigation before escalation</li><li>Alert volume exceeds capacity and analysts need a systematic triage methodology</li><li>Management requests metrics on alert disposition (true positive, false positive, benign)</li><li><strong>Brute Force Alerts</strong>: Correlate EventCode 4625 (failed logon) with 4624 (successful logon) from same source to determine if attack succeeded</li><li><strong>Malware Detection</strong>: Cross-reference endpoint AV alert with proxy logs for C2 callback confirmation</li><li><strong>Data Exfiltration Alert</strong>: Check outbound data volume from DLP and proxy logs against user baseline</li><li><strong>Privilege Escalation</strong>: Correlate EventCode 4672 (special privileges assigned) with 4720 (account created) from non-admin users</li><li><strong>Lateral Movement</strong>: Map EventCode 4648 (explicit credential logon) across multiple destinations from single source</li></ul>
+<h2>Limitations</h2>
+<ul><li>Output still depends on context, data quality, and surrounding analysis.</li><li>The tool should be interpreted as part of a broader workflow, not as a complete answer by itself.</li><li>Capabilities and visibility vary depending on environment, integrations, and available inputs.</li></ul>
+<h2>Related Tools</h2>
+<ul><li>And Risk Based Alerting, Asset &amp; Identity Framework, Splunk Enterprise Security, Splunk SOAR, Threat Intelligence Framework</li></ul>
+<h2>Sources</h2>
+<ul><li>triaging-security-alerts-in-splunk</li></ul>
+  <div class="footer-space"></div>
+</article>
+    </main>
+  </body>
+</html>

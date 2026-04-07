@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Lime | Cyber Research Wiki</title>
+    <meta name="description" content="Lime encyclopedia entry." />
+    <link rel="canonical" href="https://danyel-ii.github.io/cyber-research-wiki/tools/lime/" />
+    <link rel="stylesheet" href="/cyber-research-wiki/assets/wiki.css" />
+  </head>
+  <body>
+    <header class="site-shell">
+      <div class="shell-inner">
+        <a class="brand" href="/cyber-research-wiki/">Cyber Research Wiki</a>
+        <nav class="nav">
+          <a href="/cyber-research-wiki/">Index</a>
+          <a href="https://danyel-ii.github.io/WikiCompanion/">Pocket Atlas</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page-shell">
+      <article class="article">
+  <h1>Lime</h1>
+<h2>Overview</h2>
+<p>Lime is a memory forensics tool that appears across digital forensics workflows in this knowledge base. It is referenced as part of higher-level security analysis, investigation, monitoring, or validation activity rather than as an end in itself.</p>
+<h2>What It Is</h2>
+<p>Lime is best understood as a digital-forensics tool in this knowledge base. Its role is conceptual and system-facing rather than procedural: it gives analysts or defenders a structured way to examine evidence, model system behavior, or reason about security state.</p>
+<h2>How It Works</h2>
+<p>Lime works by turning technical inputs into more interpretable outputs at the system level. Across the source skills, it appears as part of larger analysis, investigation, monitoring, or validation loops rather than as a standalone end state.</p>
+<h2>Core Concepts</h2>
+<ul><li>malware</li><li>memory forensics</li><li>Volatility</li><li>RAM analysis</li><li>incident response</li><li>malware analysis</li><li>dfir</li><li>forensics</li><li>volatile evidence</li><li>chain of custody</li><li>malware detection</li><li>digital forensics</li></ul>
+<h2>Typical Workflow</h2>
+<ul><li>diff /mnt/forensic_usb/tools/known_good_hashes.txt /tmp/toolkit_hashes.txt</li><li>unzip windows.zip -d /opt/volatility3/volatility3/symbols/</li></ul>
+<h2>Use Cases</h2>
+<ul><li>A compromised system&#39;s RAM has been captured and needs forensic analysis for malware artifacts</li><li>Detecting fileless malware that exists only in memory without persistent disk artifacts</li><li>Extracting encryption keys, passwords, or decrypted configuration from process memory</li><li>Identifying process injection, DLL injection, or process hollowing in a compromised system</li><li>Analyzing rootkit activity that hides from standard disk-based forensic tools</li><li>Using the wrong symbol tables for the OS version (causes plugin failures or incorrect results)</li><li>Ignoring legitimate processes that have been injected into (focus on malfind results, not just process names)</li><li>Security incident confirmed and compromised host identified</li><li>Before system isolation, shutdown, or remediation begins</li><li>Memory-resident malware suspected (fileless attacks)</li></ul>
+<h2>Limitations</h2>
+<ul><li>Output still depends on context, data quality, and surrounding analysis.</li><li>The tool should be interpreted as part of a broader workflow, not as a complete answer by itself.</li><li>Capabilities and visibility vary depending on environment, integrations, and available inputs.</li></ul>
+<h2>Related Tools</h2>
+<ul><li>WinPmem, MemProcFS, Rekall, Volatility, And MacOS Memory Analysis With Plugin Architecture, CyLR, DumpIt, GRR Rapid Response</li></ul>
+<h2>Sources</h2>
+<ul><li>analyzing-memory-dumps-with-volatility</li><li>collecting-volatile-evidence-from-compromised-host</li><li>performing-memory-forensics-with-volatility3</li></ul>
+  <div class="footer-space"></div>
+</article>
+    </main>
+  </body>
+</html>

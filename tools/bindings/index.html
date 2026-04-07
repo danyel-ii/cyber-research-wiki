@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bindings | Cyber Research Wiki</title>
+    <meta name="description" content="Bindings encyclopedia entry." />
+    <link rel="canonical" href="https://danyel-ii.github.io/cyber-research-wiki/tools/bindings/" />
+    <link rel="stylesheet" href="/cyber-research-wiki/assets/wiki.css" />
+  </head>
+  <body>
+    <header class="site-shell">
+      <div class="shell-inner">
+        <a class="brand" href="/cyber-research-wiki/">Cyber Research Wiki</a>
+        <nav class="nav">
+          <a href="/cyber-research-wiki/">Index</a>
+          <a href="https://danyel-ii.github.io/WikiCompanion/">Pocket Atlas</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page-shell">
+      <article class="article">
+  <h1>Bindings</h1>
+<h2>Overview</h2>
+<p>Bindings is a cloud security tool that appears across cloud security workflows in this knowledge base. It is referenced as part of higher-level security analysis, investigation, monitoring, or validation activity rather than as an end in itself.</p>
+<h2>What It Is</h2>
+<p>Bindings is best understood as a cloud-security tool in this knowledge base. Its role is conceptual and system-facing rather than procedural: it gives analysts or defenders a structured way to examine evidence, model system behavior, or reason about security state.</p>
+<h2>How It Works</h2>
+<p>Bindings works by turning technical inputs into more interpretable outputs at the system level. Across the source skills, it appears as part of larger analysis, investigation, monitoring, or validation loops rather than as a standalone end state.</p>
+<h2>Core Concepts</h2>
+<ul><li>cloud security</li><li>kubernetes</li><li>rbac</li><li>access control</li><li>eks</li><li>gke</li><li>aks</li></ul>
+<h2>Typical Workflow</h2>
+<ul><li>Identify roles with wildcard permissions, secret access, pod exec, or escalation capabilities.</li><li>data = json.load(sys.stdin)</li><li>name = role[&#39;metadata&#39;][&#39;name&#39;]</li><li>verbs = rule.get(&#39;verbs&#39;, [])</li><li>resources = rule.get(&#39;resources&#39;, [])</li></ul>
+<h2>Use Cases</h2>
+<ul><li>When performing security assessments of Kubernetes clusters (EKS, GKE, AKS, or self-managed)</li><li>When validating that RBAC policies enforce least privilege for users and service accounts</li><li>When investigating potential lateral movement or privilege escalation within a Kubernetes cluster</li><li>When compliance audits require documentation of access controls and permissions</li><li>When onboarding new teams to a shared cluster and defining appropriate RBAC policies</li></ul>
+<h2>Limitations</h2>
+<ul><li>Output still depends on context, data quality, and surrounding analysis.</li><li>The tool should be interpreted as part of a broader workflow, not as a complete answer by itself.</li><li>Capabilities and visibility vary depending on environment, integrations, and available inputs.</li></ul>
+<h2>Related Tools</h2>
+<ul><li>And Policy Generation, Kubeaudit, Kubectl, KubiScan, Rakkess, Rbac Tool, Service Accounts), Visualization</li></ul>
+<h2>Sources</h2>
+<ul><li>auditing-kubernetes-cluster-rbac</li></ul>
+  <div class="footer-space"></div>
+</article>
+    </main>
+  </body>
+</html>

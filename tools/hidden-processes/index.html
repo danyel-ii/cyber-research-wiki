@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Hidden Processes | Cyber Research Wiki</title>
+    <meta name="description" content="Hidden Processes encyclopedia entry." />
+    <link rel="canonical" href="https://danyel-ii.github.io/cyber-research-wiki/tools/hidden-processes/" />
+    <link rel="stylesheet" href="/cyber-research-wiki/assets/wiki.css" />
+  </head>
+  <body>
+    <header class="site-shell">
+      <div class="shell-inner">
+        <a class="brand" href="/cyber-research-wiki/">Cyber Research Wiki</a>
+        <nav class="nav">
+          <a href="/cyber-research-wiki/">Index</a>
+          <a href="https://danyel-ii.github.io/WikiCompanion/">Pocket Atlas</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page-shell">
+      <article class="article">
+  <h1>Hidden Processes</h1>
+<h2>Overview</h2>
+<p>Hidden Processes is a mbr analysis tool that appears across malware analysis workflows in this knowledge base. It is referenced as part of higher-level security analysis, investigation, monitoring, or validation activity rather than as an end in itself.</p>
+<h2>What It Is</h2>
+<p>Hidden Processes is best understood as a malware-analysis tool in this knowledge base. Its role is conceptual and system-facing rather than procedural: it gives analysts or defenders a structured way to examine evidence, model system behavior, or reason about security state.</p>
+<h2>How It Works</h2>
+<p>Hidden Processes works by turning technical inputs into more interpretable outputs at the system level. Across the source skills, it appears as part of larger analysis, investigation, monitoring, or validation loops rather than as a standalone end state.</p>
+<h2>Core Concepts</h2>
+<ul><li>malware</li><li>bootkit</li><li>rootkit</li><li>UEFI</li><li>MBR analysis</li><li>malware analysis</li></ul>
+<h2>Typical Workflow</h2>
+<h2>Use Cases</h2>
+<ul><li>A system shows signs of compromise that persist through OS reinstallation</li><li>Antivirus and EDR are unable to detect malware despite clear evidence of compromise</li><li>UEFI Secure Boot has been disabled or shows integrity violations</li><li>Memory forensics reveals rootkit behavior (hidden processes, hooked system calls)</li><li>Investigating nation-state level threats known to deploy bootkits (APT28, APT41, Equation Group)</li><li>Analyzing the system while the compromised OS is running (rootkit may hide from live analysis)</li><li>Assuming Secure Boot prevents all bootkits (known bypasses exist, e.g., CVE-2022-21894)</li></ul>
+<h2>Limitations</h2>
+<ul><li>Output still depends on context, data quality, and surrounding analysis.</li><li>The tool should be interpreted as part of a broader workflow, not as a complete answer by itself.</li><li>Capabilities and visibility vary depending on environment, integrations, and available inputs.</li></ul>
+<h2>Related Tools</h2>
+<ul><li>And Driver Analysis Plugins For Kernel Rootkit Detection, And Modified Kernel Modules, And Modules, And UEFI Configuration, Bootkits Analyzer, Callback, Chipsec, Drivers</li></ul>
+<h2>Sources</h2>
+<ul><li>analyzing-bootkit-and-rootkit-samples</li></ul>
+  <div class="footer-space"></div>
+</article>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Microsoft Defender For Identity | Cyber Research Wiki</title>
+    <meta name="description" content="Microsoft Defender For Identity encyclopedia entry." />
+    <link rel="canonical" href="https://danyel-ii.github.io/cyber-research-wiki/tools/microsoft-defender-for-identity/" />
+    <link rel="stylesheet" href="/cyber-research-wiki/assets/wiki.css" />
+  </head>
+  <body>
+    <header class="site-shell">
+      <div class="shell-inner">
+        <a class="brand" href="/cyber-research-wiki/">Cyber Research Wiki</a>
+        <nav class="nav">
+          <a href="/cyber-research-wiki/">Index</a>
+          <a href="https://danyel-ii.github.io/WikiCompanion/">Pocket Atlas</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page-shell">
+      <article class="article">
+  <h1>Microsoft Defender For Identity</h1>
+<h2>Overview</h2>
+<p>Microsoft Defender For Identity is a cloud security tool that appears across cloud security workflows in this knowledge base. It is referenced as part of higher-level security analysis, investigation, monitoring, or validation activity rather than as an end in itself.</p>
+<h2>What It Is</h2>
+<p>Microsoft Defender For Identity is best understood as a cloud-security tool in this knowledge base. Its role is conceptual and system-facing rather than procedural: it gives analysts or defenders a structured way to examine evidence, model system behavior, or reason about security state.</p>
+<h2>How It Works</h2>
+<p>Microsoft Defender For Identity works by turning technical inputs into more interpretable outputs at the system level. Across the source skills, it appears as part of larger analysis, investigation, monitoring, or validation loops rather than as a standalone end state.</p>
+<h2>Core Concepts</h2>
+<ul><li>cloud security</li><li>azure</li><li>entra id</li><li>active directory</li><li>iam audit</li><li>conditional access</li><li>threat hunting</li><li>dcsync</li><li>credential theft</li><li>mitre t1003 006</li><li>mimikatz</li><li>kerberos</li></ul>
+<h2>Typical Workflow</h2>
+<ul><li>Assess the tenant&#39;s baseline identity security settings including security defaults and legacy authentication status.</li><li>Connect-MgGraph -Scopes &quot;Directory.Read.All&quot;,&quot;Policy.Read.All&quot;,&quot;AuditLog.Read.All&quot;</li><li>Get-MgOrganization | Select-Object DisplayName, Id, VerifiedDomains</li><li>Get-MgPolicyIdentitySecurityDefaultEnforcementPolicy | Select-Object IsEnabled</li><li>Get-MgPolicyAuthenticationMethodPolicy | ConvertTo-Json -Depth 5</li><li>1. <strong>Identify Legitimate Replication Sources</strong>: Document all domain controllers in the environment by hostname, IP, and computer account. Only these should perform directory replication.</li><li>2. <strong>Enable Required Auditing</strong>: Configure Advanced Audit Policy to capture Event ID 4662 on domain controllers with specific GUID monitoring for replication rights.</li><li>3. <strong>Monitor Replication Rights Access</strong>: Track access to three critical GUIDs -- DS-Replication-Get-Changes (1131f6aa-9c07-11d1-f79f-00c04fc2dcd2), DS-Replication-Get-Changes-All (1131f6ad-9c07-11d1-f79f-00c04fc2dcd2), and DS-Replication-Get-Changes-In-Filtered-Set (89e95b76-444d-4c62-991a-0facbeda640c).</li><li>4. <strong>Detect Non-DC Replication Requests</strong>: Alert when any account NOT associated with a domain controller requests replication rights.</li><li>5. <strong>Correlate with Network Traffic</strong>: DCSync generates replication traffic (MS-DRSR/RPC) from the attacker&#39;s machine to the DC. Monitor for DrsGetNCChanges RPC calls from non-DC IP addresses.</li></ul>
+<h2>Use Cases</h2>
+<ul><li>When performing a security assessment of an Azure tenant&#39;s identity configuration</li><li>When compliance audits require review of authentication policies, MFA enforcement, and role assignments</li><li>When onboarding a new Azure tenant after merger or acquisition</li><li>When investigating suspicious sign-in activity or compromised accounts</li><li>When validating conditional access policies adequately protect against identity-based attacks</li><li>When hunting for credential theft in Active Directory environments</li><li>After compromise of accounts with Replicating Directory Changes permissions</li><li>When investigating suspected use of Mimikatz or Impacket secretsdump</li><li>During incident response involving lateral movement with domain admin credentials</li><li>When auditing AD replication permissions as part of security hardening</li></ul>
+<h2>Limitations</h2>
+<ul><li>Output still depends on context, data quality, and surrounding analysis.</li><li>The tool should be interpreted as part of a broader workflow, not as a complete answer by itself.</li><li>Capabilities and visibility vary depending on environment, integrations, and available inputs.</li></ul>
+<h2>Related Tools</h2>
+<ul><li>BloodHound, CrowdStrike Falcon, And Audit Logs, And Identity Checks, And Network Flows, And WinRM Traffic Analysis, AzureADRecon, DSInternals</li></ul>
+<h2>Sources</h2>
+<ul><li>auditing-azure-active-directory-configuration</li><li>detecting-dcsync-attack-in-active-directory</li><li>performing-lateral-movement-detection</li></ul>
+  <div class="footer-space"></div>
+</article>
+    </main>
+  </body>
+</html>

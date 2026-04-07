@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Jefferson | Cyber Research Wiki</title>
+    <meta name="description" content="Jefferson encyclopedia entry." />
+    <link rel="canonical" href="https://danyel-ii.github.io/cyber-research-wiki/tools/jefferson/" />
+    <link rel="stylesheet" href="/cyber-research-wiki/assets/wiki.css" />
+  </head>
+  <body>
+    <header class="site-shell">
+      <div class="shell-inner">
+        <a class="brand" href="/cyber-research-wiki/">Cyber Research Wiki</a>
+        <nav class="nav">
+          <a href="/cyber-research-wiki/">Index</a>
+          <a href="https://danyel-ii.github.io/WikiCompanion/">Pocket Atlas</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page-shell">
+      <article class="article">
+  <h1>Jefferson</h1>
+<h2>Overview</h2>
+<p>Jefferson is a firmware analysis tool that appears across firmware analysis workflows in this knowledge base. It is referenced as part of higher-level security analysis, investigation, monitoring, or validation activity rather than as an end in itself.</p>
+<h2>What It Is</h2>
+<p>Jefferson is best understood as a firmware-analysis tool in this knowledge base. Its role is conceptual and system-facing rather than procedural: it gives analysts or defenders a structured way to examine evidence, model system behavior, or reason about security state.</p>
+<h2>How It Works</h2>
+<p>Jefferson works by turning technical inputs into more interpretable outputs at the system level. Across the source skills, it appears as part of larger analysis, investigation, monitoring, or validation loops rather than as a standalone end state.</p>
+<h2>Core Concepts</h2>
+<ul><li>firmware</li><li>binwalk</li><li>extraction</li><li>entropy</li><li>IoT security</li><li>reverse engineering</li><li>firmware analysis</li></ul>
+<h2>Typical Workflow</h2>
+<ul><li>binwalk -v firmware.bin</li><li>binwalk -y &quot;squashfs&quot; firmware.bin</li><li>binwalk -A firmware.bin</li></ul>
+<h2>Use Cases</h2>
+<ul><li>Analyzing IoT device firmware downloaded from vendor sites or extracted from flash chips</li><li>Reverse engineering router, camera, or embedded device firmware for vulnerability research</li><li>Identifying embedded filesystems (SquashFS, CramFS, JFFS2, UBIFS) within firmware blobs</li><li>Detecting encrypted or compressed regions using entropy analysis</li><li>Extracting hardcoded credentials, API keys, certificates, or configuration files from firmware</li><li>Performing security assessments of embedded devices in authorized penetration tests</li><li>Some vendors use non-standard SquashFS with custom compression; use sasquatch instead of unsquashfs</li><li>Encrypted firmware requires decryption keys often found in bootloader or previous unencrypted versions</li></ul>
+<h2>Limitations</h2>
+<ul><li>Output still depends on context, data quality, and surrounding analysis.</li><li>The tool should be interpreted as part of a broader workflow, not as a complete answer by itself.</li><li>Capabilities and visibility vary depending on environment, integrations, and available inputs.</li></ul>
+<h2>Related Tools</h2>
+<ul><li>And Automated Extraction Of Embedded Files, And Repacking Firmware Images For Security Testing, Binwalk, Entropy Analysis, Firmware Mod Kit, Modifying, Sasquatch, Unsquashfs</li></ul>
+<h2>Sources</h2>
+<ul><li>performing-firmware-extraction-with-binwalk</li></ul>
+  <div class="footer-space"></div>
+</article>
+    </main>
+  </body>
+</html>

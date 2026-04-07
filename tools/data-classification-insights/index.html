@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Data Classification Insights | Cyber Research Wiki</title>
+    <meta name="description" content="Data Classification Insights encyclopedia entry." />
+    <link rel="canonical" href="https://danyel-ii.github.io/cyber-research-wiki/tools/data-classification-insights/" />
+    <link rel="stylesheet" href="/cyber-research-wiki/assets/wiki.css" />
+  </head>
+  <body>
+    <header class="site-shell">
+      <div class="shell-inner">
+        <a class="brand" href="/cyber-research-wiki/">Cyber Research Wiki</a>
+        <nav class="nav">
+          <a href="/cyber-research-wiki/">Index</a>
+          <a href="https://danyel-ii.github.io/WikiCompanion/">Pocket Atlas</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page-shell">
+      <article class="article">
+  <h1>Data Classification Insights</h1>
+<h2>Overview</h2>
+<p>Data Classification Insights is a endpoint dlp tool that appears across data protection workflows in this knowledge base. It is referenced as part of higher-level security analysis, investigation, monitoring, or validation activity rather than as an end in itself.</p>
+<h2>What It Is</h2>
+<p>Data Classification Insights is best understood as a data-protection tool in this knowledge base. Its role is conceptual and system-facing rather than procedural: it gives analysts or defenders a structured way to examine evidence, model system behavior, or reason about security state.</p>
+<h2>How It Works</h2>
+<p>Data Classification Insights works by turning technical inputs into more interpretable outputs at the system level. Across the source skills, it appears as part of larger analysis, investigation, monitoring, or validation loops rather than as a standalone end state.</p>
+<h2>Core Concepts</h2>
+<ul><li>DLP</li><li>Microsoft Purview</li><li>sensitivity labels</li><li>endpoint DLP</li><li>data classification</li><li>compliance</li><li>data protection</li></ul>
+<h2>Typical Workflow</h2>
+<ul><li>Public           -&gt; No protection, external sharing allowed</li><li>├─ Confidential - All Employees</li><li>├─ Confidential - Finance</li><li>├─ Highly Confidential - Project X</li><li>└─ Highly Confidential - Board Only</li></ul>
+<h2>Use Cases</h2>
+<ul><li>Deploying DLP policies to prevent sensitive data (PII, PHI, PCI, intellectual property) from leaving the organization through email, cloud storage, chat, or endpoint file operations</li><li>Configuring sensitivity labels with encryption, content marking, and auto-labeling to classify documents and emails by confidentiality level</li><li>Creating custom sensitive information types with regex patterns to detect organization-specific data formats (employee IDs, project codes, internal account numbers)</li><li>Deploying endpoint DLP to control copy-to-USB, print, upload-to-cloud, and copy-to-clipboard actions for labeled or sensitive content on managed devices</li><li>Investigating DLP incidents through Activity Explorer to analyze policy match events, user activity patterns, and false positive rates for policy tuning</li><li>Deploying DLP policies in enforcement mode without simulation, causing mass blocking of legitimate business communications and user productivity disruption</li><li>Using low confidence thresholds (65) for SITs, generating excessive false positives that erode user trust and lead to policy override fatigue</li></ul>
+<h2>Limitations</h2>
+<ul><li>Output still depends on context, data quality, and surrounding analysis.</li><li>The tool should be interpreted as part of a broader workflow, not as a complete answer by itself.</li><li>Capabilities and visibility vary depending on environment, integrations, and available inputs.</li></ul>
+<h2>Related Tools</h2>
+<ul><li>And Manage Device Compliance States., And Protection Scope Evaluation For Integrating Purview DLP With Custom Applications And SIEM Platforms., And Reviewing Activity Explorer Data And DLP Alerts., And Sensitive Information Types., Auto Labeling Rules, Deploy Configuration Profiles, DLP Policies, DLP Policies (New DlpCompliancePolicy</li></ul>
+<h2>Sources</h2>
+<ul><li>implementing-data-loss-prevention-with-microsoft-purview</li></ul>
+  <div class="footer-space"></div>
+</article>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>The Sleuth Kit | Cyber Research Wiki</title>
+    <meta name="description" content="The Sleuth Kit encyclopedia entry." />
+    <link rel="canonical" href="https://danyel-ii.github.io/cyber-research-wiki/tools/the-sleuth-kit/" />
+    <link rel="stylesheet" href="/cyber-research-wiki/assets/wiki.css" />
+  </head>
+  <body>
+    <header class="site-shell">
+      <div class="shell-inner">
+        <a class="brand" href="/cyber-research-wiki/">Cyber Research Wiki</a>
+        <nav class="nav">
+          <a href="/cyber-research-wiki/">Index</a>
+          <a href="https://danyel-ii.github.io/WikiCompanion/">Pocket Atlas</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page-shell">
+      <article class="article">
+  <h1>The Sleuth Kit</h1>
+<h2>Overview</h2>
+<p>The Sleuth Kit is a forensics tool that appears across digital forensics workflows in this knowledge base. It is referenced as part of higher-level security analysis, investigation, monitoring, or validation activity rather than as an end in itself.</p>
+<h2>What It Is</h2>
+<p>The Sleuth Kit is best understood as a digital-forensics tool in this knowledge base. Its role is conceptual and system-facing rather than procedural: it gives analysts or defenders a structured way to examine evidence, model system behavior, or reason about security state.</p>
+<h2>How It Works</h2>
+<p>The Sleuth Kit works by turning technical inputs into more interpretable outputs at the system level. Across the source skills, it appears as part of larger analysis, investigation, monitoring, or validation loops rather than as a standalone end state.</p>
+<h2>Core Concepts</h2>
+<ul><li>forensics</li><li>autopsy</li><li>disk analysis</li><li>sleuth kit</li><li>file recovery</li><li>artifact analysis</li><li>digital forensics</li><li>slack space</li><li>ntfs</li><li>mft</li><li>usn journal</li><li>alternate data streams</li></ul>
+<h2>Typical Workflow</h2>
+<ul><li>sudo apt-get install autopsy sleuthkit</li><li>unzip autopsy-4.21.0.zip -d /opt/autopsy</li><li>/opt/autopsy/bin/autopsy --nosplash</li><li>sudo apt-get install sleuthkit</li><li>mmls /cases/case-2024-001/images/evidence.dd</li><li>icat -o 2048 /cases/case-2024-001/images/evidence.dd 0 &gt; /cases/case-2024-001/ntfs/MFT</li><li>icat -o 2048 /cases/case-2024-001/images/evidence.dd 62-128 &gt; /cases/case-2024-001/ntfs/UsnJrnl_J</li><li>icat -o 2048 /cases/case-2024-001/images/evidence.dd 2 &gt; /cases/case-2024-001/ntfs/LogFile</li><li>blkls -s -o 2048 /cases/case-2024-001/images/evidence.dd &gt; /cases/case-2024-001/ntfs/slack_space.raw</li></ul>
+<h2>Use Cases</h2>
+<ul><li>When you have a forensic disk image and need structured analysis of its contents</li><li>During investigations requiring file recovery, keyword searching, and timeline analysis</li><li>When non-technical stakeholders need visual reports from forensic evidence</li><li>For examining file system metadata, deleted files, and embedded artifacts</li><li>When building a comprehensive case from multiple disk images</li><li>When searching for hidden or residual data in file system slack space</li><li>For analyzing NTFS Master File Table (MFT) entries for deleted file metadata</li><li>When reconstructing file operations from the USN Change Journal</li><li>For detecting Alternate Data Streams (ADS) used to hide data or malware</li><li>During deep forensic analysis requiring examination beyond standard file recovery</li></ul>
+<h2>Limitations</h2>
+<ul><li>Output still depends on context, data quality, and surrounding analysis.</li><li>The tool should be interpreted as part of a broader workflow, not as a complete answer by itself.</li><li>Capabilities and visibility vary depending on environment, integrations, and available inputs.</li></ul>
+<h2>Related Tools</h2>
+<ul><li>AnalyzeMFT, Autopsy, Bulk_extractor, Fls, Icat, Mactime, MFTECmd, MFTExplorer</li></ul>
+<h2>Sources</h2>
+<ul><li>analyzing-disk-image-with-autopsy</li><li>analyzing-slack-space-and-file-system-artifacts</li></ul>
+  <div class="footer-space"></div>
+</article>
+    </main>
+  </body>
+</html>

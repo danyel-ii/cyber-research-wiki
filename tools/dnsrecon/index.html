@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>DNSRecon | Cyber Research Wiki</title>
+    <meta name="description" content="DNSRecon is a Python-based DNS enumeration tool for security assessments that automates record discovery, zone transfer testing, DNSSEC zone walking, cache snooping, reverse lookups, and wordlist-based subdomain brute forcing, with export to XML/CSV/JSON and optional REST API and Shodan-assisted enrichment." />
+    <link rel="canonical" href="https://danyel-ii.github.io/cyber-research-wiki/tools/dnsrecon/" />
+    <link rel="stylesheet" href="/cyber-research-wiki/assets/wiki.css" />
+  </head>
+  <body>
+    <header class="site-shell">
+      <div class="shell-inner">
+        <a class="brand" href="/cyber-research-wiki/">Cyber Research Wiki</a>
+        <nav class="nav">
+          <a href="/cyber-research-wiki/">Index</a>
+          <a href="https://danyel-ii.github.io/WikiCompanion/">Pocket Atlas</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page-shell">
+      <article class="article">
+  <h1>DNSRecon</h1>
+<blockquote><p>DNSRecon is a Python-based DNS enumeration tool for security assessments that automates record discovery, zone transfer testing, DNSSEC zone walking, cache snooping, reverse lookups, and wordlist-based subdomain brute forcing, with export to XML/CSV/JSON and optional REST API and Shodan-assisted enrichment.</p></blockquote>
+<h2>Overview</h2>
+<p>DNSRecon focuses on collecting and validating DNS information to support mapping and risk assessment of Internet-exposed assets. It blends standard DNS querying with optional passive and active enrichment, such as search-engine and certificate transparency lookups, and tests for common misconfigurations including unauthorized AXFR zone transfers and open recursion exposed via cache snooping. Recent versions added an optional REST API server and Shodan-powered netblock expansion to broaden discovery. Distributed in major security toolsets (e.g., Kali Linux) and maintained on GitHub, DNSRecon had a 1.6.0 release on February 28, 2026.</p>
+<h2>What It Is</h2>
+<p>DNSRecon is a reconnaissance and assessment utility for DNS, not an exploit framework. It implements multiple discovery methods—standard queries, brute-force enumeration, and reverse lookups—alongside checks such as AXFR attempts, wildcard detection, cache snooping, and DNSSEC zone walking where NSEC allows it. The tool emphasizes structured output and a lightweight local datastore to facilitate integration into larger assessment workflows.</p>
+<h2>How It Works</h2>
+<p>DNSRecon uses dnspython for resolution and record retrieval. Its core routines enumerate common record types (NS/SOA, MX, A/AAAA, TXT/SPF, SRV) and attempt AXFR zone transfers against authoritative nameservers. Subdomain discovery combines wordlist-based brute force with passive sources, including search-engine scraping (Bing and Yandex) and certificate transparency via crt.sh; it can optionally derive and expand netblocks from WHOIS/SPF data and consult Shodan for host enrichment, supporting both passive and active validation modes. The system can perform reverse DNS lookups across IP ranges or CIDRs and infer resolver cache contents via cache snooping against specified nameservers. Where DNSSEC exposes walkable NSEC ranges, it can enumerate names through zone walking, subject to NSEC3 and opt-out protections. Results are presented via a command-line interface or an optional REST API and can be exported as XML, CSV, JSON, or persisted in SQLite for downstream correlation.</p>
+<h2>Core Concepts</h2>
+<ul><li>Authoritative vs. recursive DNS and zone transfers (AXFR).</li><li>Record-type enumeration (SOA, NS, MX, A/AAAA, TXT/SPF, SRV).</li><li>Subdomain discovery: brute force and passive sources (search engines, CT logs).</li><li>Wildcard DNS detection and filtering implications.</li><li>Reverse DNS (PTR) mapping for ranges/CIDRs.</li><li>Cache snooping to infer resolver cache contents.</li><li>DNSSEC NSEC-based zone walking constraints.</li><li>Data export/serialization for integration with other tools.</li></ul>
+<h2>Typical Workflow</h2>
+<ul><li>Define target domains and select abstract enumeration modes to establish a baseline view of DNS records and infrastructure.</li><li>Optionally include authoritative nameservers and assess AXFR exposure across them to evaluate transfer controls.</li><li>Broaden discovery through passive sources (crt.sh, Bing, Yandex) and SPF/WHOIS-derived netblocks; optionally apply Shodan-backed enrichment for additional candidate hosts.</li><li>Apply wordlist-driven subdomain discovery with wildcard-aware filtering to reduce noise from catch-all responses and CDN aliases.</li><li>Where relevant, correlate reverse DNS mappings for targeted ranges/CIDRs and, when permissible, infer cache contents of resolvers via snooping to understand query prevalence.</li><li>Serialize findings to structured formats or a local datastore to integrate with adjacent reconnaissance outputs and support further analysis of hygiene issues such as unauthorized transfers, open recursion, and NSEC-exposed enumeration.</li></ul>
+<h2>Use Cases</h2>
+<ul><li>Scoping and mapping external attack surface by cataloging domains, subdomains, and DNS infrastructure for authorized tests.</li><li>Validating DNS hygiene: checking for unauthorized AXFR, recursion exposure, and wildcard behavior.</li><li>Discovering infrastructure pivots via MX/SRV/NS relationships and CT-derived hostnames.</li><li>Building seed hostlists for web/service enumeration and vulnerability scanning pipelines.</li><li>Enriching SPF/WHOIS-derived netblocks with Shodan to identify additional in-scope hosts before validation.</li><li>Assessing DNSSEC posture where NSEC-based zone walking inadvertently enables name enumeration.</li></ul>
+<h2>Limitations</h2>
+<ul><li>AXFR is rarely permitted in well-managed zones; successful transfers are uncommon.</li><li>Search-engine scraping (Bing/Yandex) and some passive sources may be rate-limited, captcha-gated, or incomplete; results can vary over time.</li><li>DNSSEC zone walking only works where NSEC records expose walkable ranges; NSEC3 and proper configurations prevent this.</li><li>Wildcard DNS and CDN CNAME patterns can inflate false positives in brute-force results if not filtered.</li><li>Reverse PTR coverage depends on rDNS delegation; many ranges have sparse or outdated PTRs.</li><li>Shodan enrichment requires an API key and reflects Shodan’s crawl freshness; active validation is recommended.</li><li>Output reflects resolver and network conditions (timeouts, filtering, DNS over TCP/UDP behavior) and may miss transient records.</li></ul>
+<h2>Related Tools</h2>
+<ul><li>Amass: Broader asset discovery (passive/active) with many data sources; complementary for large-scale subdomain enumeration.</li><li>Subfinder: Fast passive subdomain enumeration; pairs well with DNSRecon’s active checks and AXFR/zone-walk tests.</li><li>dnsenum: Another DNS enumeration script with AXFR and brute force; overlapping scope.</li><li>dig: Low-level DNS query utility; useful for validation of individual findings.</li><li>massdns: High-speed DNS resolution for very large wordlists; can post-process DNSRecon candidate names.</li><li>fierce: DNS reconnaissance with different heuristics for host discovery; complementary approach.</li><li>dnsx (ProjectDiscovery): Fast DNS probing/resolution utility to validate large host sets discovered by DNSRecon.</li><li>Gobuster (DNS mode): Focused, fast wordlist-based DNS brute forcing; alternative to DNSRecon’s brt mode.</li></ul>
+<h2>Evidence Gaps</h2>
+<ul><li>The GitHub README lists core capabilities but omits a full CLI flag reference; the Kali tools page currently serves as the most complete public reference for modes/flags, which may lag or differ from upstream in future versions.</li><li>Historical claims of Google-based enumeration appear in some secondary sources; current maintained documentation emphasizes Bing/Yandex and crt.sh. Modern Google scraping behavior is not confirmed in upstream docs.</li><li>Detailed behavior and stability guarantees of the new REST API are described mainly in release notes and README snippets; a formal upstream API specification is limited.</li></ul>
+<h2>Sources</h2>
+<ul><li><a href="https://github.com/darkoperator/dnsrecon">DNSRecon GitHub repository (README, version info)</a> (GitHub)</li><li><a href="https://github.com/darkoperator/dnsrecon/releases">DNSRecon releases (introduces REST API; recent versions)</a> (GitHub)</li><li><a href="https://www.kali.org/tools/dnsrecon/">dnsrecon | Kali Linux Tools (CLI options, modes, exports)</a> (OffSec/Kali Linux)</li><li><a href="https://pypi.org/project/dnsrecon/">dnsrecon · PyPI (packaging overview)</a> (Python Package Index)</li><li><a href="https://www.geeksforgeeks.org/dnsrecon-a-powerful-dns-enumeration-script/">https://www.geeksforgeeks.org/dnsrecon-a-powerful-dns-enumeration-script/</a> (geeksforgeeks.org)</li><li><a href="https://www.patreon.com/posts/dnsrecon-now-123526865">https://www.patreon.com/posts/dnsrecon-now-123526865</a> (patreon.com)</li><li><a href="https://linuxhandbook.com/enumerate-dns-records-dnsrecon/">https://linuxhandbook.com/enumerate-dns-records-dnsrecon/</a> (linuxhandbook.com)</li><li><a href="https://wiredgorilla.com/enumerate-dns-records-from-the-command-line-with-dnsrecon/">https://wiredgorilla.com/enumerate-dns-records-from-the-command-line-with-dnsrecon/</a> (wiredgorilla.com)</li><li><a href="https://www.reddit.com/r/Pentesting/comments/1otced8">https://www.reddit.com/r/Pentesting/comments/1otced8</a> (reddit.com)</li><li><a href="https://thelinuxcode.com/dnsrecon-a-powerful-dns-enumeration-script/">https://thelinuxcode.com/dnsrecon-a-powerful-dns-enumeration-script/</a> (thelinuxcode.com)</li><li><a href="https://www.aldeid.com/wiki/Dnsrecon">https://www.aldeid.com/wiki/Dnsrecon</a> (aldeid.com)</li><li><a href="https://www.reddit.com/r/Infosec/comments/1otcfox">https://www.reddit.com/r/Infosec/comments/1otcfox</a> (reddit.com)</li></ul>
+<h2>Confidence</h2>
+<p>high</p>
+  <div class="footer-space"></div>
+</article>
+    </main>
+  </body>
+</html>

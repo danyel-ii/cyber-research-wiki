@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Jadx | Cyber Research Wiki</title>
+    <meta name="description" content="Jadx encyclopedia entry." />
+    <link rel="canonical" href="https://danyel-ii.github.io/cyber-research-wiki/tools/jadx/" />
+    <link rel="stylesheet" href="/cyber-research-wiki/assets/wiki.css" />
+  </head>
+  <body>
+    <header class="site-shell">
+      <div class="shell-inner">
+        <a class="brand" href="/cyber-research-wiki/">Cyber Research Wiki</a>
+        <nav class="nav">
+          <a href="/cyber-research-wiki/">Index</a>
+          <a href="https://danyel-ii.github.io/WikiCompanion/">Pocket Atlas</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page-shell">
+      <article class="article">
+  <h1>Jadx</h1>
+<h2>Overview</h2>
+<p>Jadx is a static analysis tool that appears across malware analysis workflows in this knowledge base. It is referenced as part of higher-level security analysis, investigation, monitoring, or validation activity rather than as an end in itself.</p>
+<h2>What It Is</h2>
+<p>Jadx is best understood as a malware-analysis tool in this knowledge base. Its role is conceptual and system-facing rather than procedural: it gives analysts or defenders a structured way to examine evidence, model system behavior, or reason about security state.</p>
+<h2>How It Works</h2>
+<p>Jadx works by turning technical inputs into more interpretable outputs at the system level. Across the source skills, it appears as part of larger analysis, investigation, monitoring, or validation loops rather than as a standalone end state.</p>
+<h2>Core Concepts</h2>
+<ul><li>mobile pentest</li><li>OWASP MASTG</li><li>Android security</li><li>iOS security</li><li>mobile application security</li><li>penetration testing</li><li>mobile security</li><li>android</li><li>mobsf</li><li>static analysis</li><li>owasp mobile</li><li>malware</li></ul>
+<h2>Typical Workflow</h2>
+<ul><li><strong>Android Static Analysis:</strong></li><li>Decompile the APK: <code>jadx -d output/ target.apk</code> to obtain Java/Kotlin source code</li><li>Review <code>AndroidManifest.xml</code> for exported components (activities, services, receivers, content providers), permissions, and debuggable flag</li><li>Check for WebView vulnerabilities: <code>setJavaScriptEnabled(true)</code>, <code>addJavascriptInterface()</code>, and loading untrusted content</li><li>Run MobSF automated scan: <code>python manage.py runserver</code> and upload the APK for automated static analysis</li><li><strong>iOS Static Analysis:</strong></li><li>Extract the IPA and locate the Mach-O binary</li><li>Use <code>otool -L &lt;binary&gt;</code> to list linked frameworks and identify third-party libraries</li><li>Analyze with Ghidra or Hopper for hardcoded URLs, API endpoints, and embedded credentials</li><li>docker run -it --rm -p 8000:8000 opensecurity/mobile-security-framework-mobsf:latest</li></ul>
+<h2>Use Cases</h2>
+<ul><li>Testing mobile applications before release to identify security vulnerabilities and data protection issues</li><li>Conducting compliance assessments against OWASP MASVS (Mobile Application Security Verification Standard) levels L1 and L2</li><li>Evaluating the security of mobile banking, healthcare, or government applications handling sensitive data</li><li>Testing mobile apps that interact with backend APIs to assess the end-to-end security of the mobile ecosystem</li><li>Assessing mobile application resistance to reverse engineering, tampering, and runtime manipulation</li><li>Testing only on an emulator and missing hardware-specific security features (Android Keystore hardware backing, iOS Secure Enclave)</li><li>Ignoring the backend API security because it was &quot;tested separately&quot; when the mobile app may call API endpoints differently than the web app</li><li>Conducting security assessment of Android APK or AAB files before production release</li><li>Integrating automated mobile security scanning into CI/CD pipelines</li><li>Performing initial triage of Android applications during penetration testing engagements</li></ul>
+<h2>Limitations</h2>
+<ul><li>Output still depends on context, data quality, and surrounding analysis.</li><li>The tool should be interpreted as part of a broader workflow, not as a complete answer by itself.</li><li>Capabilities and visibility vary depending on environment, integrations, and available inputs.</li></ul>
+<h2>Related Tools</h2>
+<ul><li>MobSF, Apktool, Frida, And Code Analysis, And Manipulating Application Behavior At Runtime, Androguard, Android Lint, Burp Suite Professional</li></ul>
+<h2>Sources</h2>
+<ul><li>conducting-mobile-app-penetration-test</li><li>performing-android-app-static-analysis-with-mobsf</li><li>reverse-engineering-android-malware-with-jadx</li></ul>
+  <div class="footer-space"></div>
+</article>
+    </main>
+  </body>
+</html>

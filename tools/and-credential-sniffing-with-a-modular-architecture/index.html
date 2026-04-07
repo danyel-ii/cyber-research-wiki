@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>And Credential Sniffing With A Modular Architecture | Cyber Research Wiki</title>
+    <meta name="description" content="And Credential Sniffing With A Modular Architecture encyclopedia entry." />
+    <link rel="canonical" href="https://danyel-ii.github.io/cyber-research-wiki/tools/and-credential-sniffing-with-a-modular-architecture/" />
+    <link rel="stylesheet" href="/cyber-research-wiki/assets/wiki.css" />
+  </head>
+  <body>
+    <header class="site-shell">
+      <div class="shell-inner">
+        <a class="brand" href="/cyber-research-wiki/">Cyber Research Wiki</a>
+        <nav class="nav">
+          <a href="/cyber-research-wiki/">Index</a>
+          <a href="https://danyel-ii.github.io/WikiCompanion/">Pocket Atlas</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page-shell">
+      <article class="article">
+  <h1>And Credential Sniffing With A Modular Architecture</h1>
+<h2>Overview</h2>
+<p>And Credential Sniffing With A Modular Architecture is a mitmproxy tool that appears across network security workflows in this knowledge base. It is referenced as part of higher-level security analysis, investigation, monitoring, or validation activity rather than as an end in itself.</p>
+<h2>What It Is</h2>
+<p>And Credential Sniffing With A Modular Architecture is best understood as a network-security tool in this knowledge base. Its role is conceptual and system-facing rather than procedural: it gives analysts or defenders a structured way to examine evidence, model system behavior, or reason about security state.</p>
+<h2>How It Works</h2>
+<p>And Credential Sniffing With A Modular Architecture works by turning technical inputs into more interpretable outputs at the system level. Across the source skills, it appears as part of larger analysis, investigation, monitoring, or validation loops rather than as a standalone end state.</p>
+<h2>Core Concepts</h2>
+<ul><li>network security</li><li>mitm</li><li>bettercap</li><li>ettercap</li><li>mitmproxy</li></ul>
+<h2>Typical Workflow</h2>
+<ul><li>sudo sysctl -w net.ipv4.ip_forward=1</li><li>sudo sysctl -w net.ipv6.conf.all.forwarding=1</li><li>sudo sysctl -w net.ipv4.conf.all.send_redirects=0</li><li>openssl genrsa -out mitm-ca.key 4096</li><li>-subj &quot;/CN=MITM Test CA/O=Security Assessment/C=US&quot;</li><li>sudo bettercap -iface eth0 -eval &quot;net.probe on; sleep 10; net.show; quit&quot;</li></ul>
+<h2>Use Cases</h2>
+<ul><li>Testing whether applications properly validate TLS certificates and enforce encrypted communications</li><li>Demonstrating the risk of cleartext protocols (HTTP, FTP, Telnet, SMTP) to organization stakeholders</li><li>Validating that HSTS, certificate pinning, and other anti-MITM controls are correctly implemented</li><li>Assessing network detection capabilities for ARP spoofing, DHCP spoofing, and DNS spoofing attacks</li><li>Training incident response teams to identify and respond to MITM attack indicators</li><li>Forgetting to enable IP forwarding, causing a denial of service instead of transparent interception</li><li>Testing SSL stripping on an application with HSTS preloaded in the browser and concluding HSTS works, when a fresh browser instance might be vulnerable</li></ul>
+<h2>Limitations</h2>
+<ul><li>Output still depends on context, data quality, and surrounding analysis.</li><li>The tool should be interpreted as part of a broader workflow, not as a complete answer by itself.</li><li>Capabilities and visibility vary depending on environment, integrations, and available inputs.</li></ul>
+<h2>Related Tools</h2>
+<ul><li>And Plugin Based Traffic Manipulation, Bettercap 2.x, DNS Spoofing, Ettercap, Inspecting, Mitmproxy, Sslstrip, Wireshark</li></ul>
+<h2>Sources</h2>
+<ul><li>conducting-man-in-the-middle-attack-simulation</li></ul>
+  <div class="footer-space"></div>
+</article>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Cdp | Cyber Research Wiki</title>
+    <meta name="description" content="Cdp encyclopedia entry." />
+    <link rel="canonical" href="https://danyel-ii.github.io/cyber-research-wiki/tools/cdp/" />
+    <link rel="stylesheet" href="/cyber-research-wiki/assets/wiki.css" />
+  </head>
+  <body>
+    <header class="site-shell">
+      <div class="shell-inner">
+        <a class="brand" href="/cyber-research-wiki/">Cyber Research Wiki</a>
+        <nav class="nav">
+          <a href="/cyber-research-wiki/">Index</a>
+          <a href="https://danyel-ii.github.io/WikiCompanion/">Pocket Atlas</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page-shell">
+      <article class="article">
+  <h1>Cdp</h1>
+<h2>Overview</h2>
+<p>Cdp is a network security tool that appears across network security workflows in this knowledge base. It is referenced as part of higher-level security analysis, investigation, monitoring, or validation activity rather than as an end in itself.</p>
+<h2>What It Is</h2>
+<p>Cdp is best understood as a network-security tool in this knowledge base. Its role is conceptual and system-facing rather than procedural: it gives analysts or defenders a structured way to examine evidence, model system behavior, or reason about security state.</p>
+<h2>How It Works</h2>
+<p>Cdp works by turning technical inputs into more interpretable outputs at the system level. Across the source skills, it appears as part of larger analysis, investigation, monitoring, or validation loops rather than as a standalone end state.</p>
+<h2>Core Concepts</h2>
+<ul><li>network security</li><li>vlan hopping</li><li>layer2 attack</li><li>switch security</li><li>802.1q</li></ul>
+<h2>Typical Workflow</h2>
+<ul><li>lldpcli show neighbors</li><li>sudo tcpdump -nn -v -i eth0 -s 1500 -c 1 &#39;ether[20:2] == 0x2000&#39;</li></ul>
+<h2>Use Cases</h2>
+<ul><li>Testing the effectiveness of VLAN-based network segmentation during authorized penetration tests</li><li>Validating that switch trunk port configurations prevent unauthorized VLAN access</li><li>Assessing whether 802.1Q tagging and native VLAN configurations resist double-tagging attacks</li><li>Demonstrating to network teams why proper switch hardening is critical for isolation between zones</li><li>Verifying that DTP (Dynamic Trunking Protocol) is disabled on all access ports</li><li>DTP spoofing can cause spanning-tree topology changes that disrupt network connectivity</li><li>Double tagging may not work if the native VLAN is not VLAN 1 or if the switch is configured properly</li><li>VTP attacks in a production environment can delete VLANs across the entire switching domain, causing widespread outages</li></ul>
+<h2>Limitations</h2>
+<ul><li>Output still depends on context, data quality, and surrounding analysis.</li><li>The tool should be interpreted as part of a broader workflow, not as a complete answer by itself.</li><li>Capabilities and visibility vary depending on environment, integrations, and available inputs.</li></ul>
+<h2>Related Tools</h2>
+<ul><li>And 802.1Q Attacks With Both GUI And CLI Modes, DHCP, Frogger, Scapy, STP, Tcpdump, VTP, Wireshark</li></ul>
+<h2>Sources</h2>
+<ul><li>performing-vlan-hopping-attack</li></ul>
+  <div class="footer-space"></div>
+</article>
+    </main>
+  </body>
+</html>

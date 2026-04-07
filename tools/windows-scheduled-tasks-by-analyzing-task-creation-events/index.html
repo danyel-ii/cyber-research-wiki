@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Windows Scheduled Tasks By Analyzing Task Creation Events | Cyber Research Wiki</title>
+    <meta name="description" content="Windows Scheduled Tasks By Analyzing Task Creation Events encyclopedia entry." />
+    <link rel="canonical" href="https://danyel-ii.github.io/cyber-research-wiki/tools/windows-scheduled-tasks-by-analyzing-task-creation-events/" />
+    <link rel="stylesheet" href="/cyber-research-wiki/assets/wiki.css" />
+  </head>
+  <body>
+    <header class="site-shell">
+      <div class="shell-inner">
+        <a class="brand" href="/cyber-research-wiki/">Cyber Research Wiki</a>
+        <nav class="nav">
+          <a href="/cyber-research-wiki/">Index</a>
+          <a href="https://danyel-ii.github.io/WikiCompanion/">Pocket Atlas</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page-shell">
+      <article class="article">
+  <h1>Windows Scheduled Tasks By Analyzing Task Creation Events</h1>
+<h2>Overview</h2>
+<p>Windows Scheduled Tasks By Analyzing Task Creation Events is a endpoint detection tool that appears across threat hunting workflows in this knowledge base. It is referenced as part of higher-level security analysis, investigation, monitoring, or validation activity rather than as an end in itself.</p>
+<h2>What It Is</h2>
+<p>Windows Scheduled Tasks By Analyzing Task Creation Events is best understood as a threat-hunting tool in this knowledge base. Its role is conceptual and system-facing rather than procedural: it gives analysts or defenders a structured way to examine evidence, model system behavior, or reason about security state.</p>
+<h2>How It Works</h2>
+<p>Windows Scheduled Tasks By Analyzing Task Creation Events works by turning technical inputs into more interpretable outputs at the system level. Across the source skills, it appears as part of larger analysis, investigation, monitoring, or validation loops rather than as a standalone end state.</p>
+<h2>Core Concepts</h2>
+<ul><li>threat hunting</li><li>scheduled tasks</li><li>persistence</li><li>mitre t1053 005</li><li>windows</li><li>endpoint detection</li></ul>
+<h2>Typical Workflow</h2>
+<ul><li>1. <strong>Enumerate All Scheduled Tasks</strong>: Collect complete task inventory from target systems using <code>schtasks /query /fo CSV /v</code> or <code>Get-ScheduledTask</code> PowerShell cmdlet.</li><li>2. <strong>Monitor Task Creation Events</strong>: Track Event ID 4698 for new task creation, correlating with the creating process and user account context.</li><li>3. <strong>Analyze Task Actions</strong>: Examine what each task executes. Flag tasks running scripts (PowerShell, cmd, wscript), binaries from user-writable paths (TEMP, AppData, Downloads), or encoded/obfuscated commands.</li><li>4. <strong>Check Task Triggers</strong>: Review trigger conditions. Tasks triggered by system startup, user logon, or short intervals (1-5 minutes) warrant investigation.</li><li>5. <strong>Identify Hidden or Disguised Tasks</strong>: Hunt for tasks with names mimicking legitimate Windows tasks, tasks with Security Descriptor modifications hiding them from standard enumeration, or tasks stored in non-standard registry locations.</li><li>6. <strong>Correlate with Process Execution</strong>: Match scheduled task execution events with process creation logs to confirm what actually runs.</li><li>7. <strong>Baseline and Diff</strong>: Compare current task inventory against known-good baselines to identify new, modified, or unexpected tasks.</li></ul>
+<h2>Use Cases</h2>
+<ul><li>When proactively hunting for persistence mechanisms in Windows environments</li><li>After detecting schtasks.exe or at.exe usage in process creation logs</li><li>When investigating malware that survives reboots and user logoffs</li><li>During incident response to enumerate all persistence on compromised systems</li><li>When Windows Security Event ID 4698 (Scheduled Task Created) fires for unusual tasks</li></ul>
+<h2>Limitations</h2>
+<ul><li>Output still depends on context, data quality, and surrounding analysis.</li><li>The tool should be interpreted as part of a broader workflow, not as a complete answer by itself.</li><li>Capabilities and visibility vary depending on environment, integrations, and available inputs.</li></ul>
+<h2>Related Tools</h2>
+<ul><li>None listed yet</li></ul>
+<h2>Sources</h2>
+<ul><li>hunting-for-suspicious-scheduled-tasks</li></ul>
+  <div class="footer-space"></div>
+</article>
+    </main>
+  </body>
+</html>

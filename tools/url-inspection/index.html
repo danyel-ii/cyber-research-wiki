@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Url Inspection | Cyber Research Wiki</title>
+    <meta name="description" content="Url Inspection encyclopedia entry." />
+    <link rel="canonical" href="https://danyel-ii.github.io/cyber-research-wiki/tools/url-inspection/" />
+    <link rel="stylesheet" href="/cyber-research-wiki/assets/wiki.css" />
+  </head>
+  <body>
+    <header class="site-shell">
+      <div class="shell-inner">
+        <a class="brand" href="/cyber-research-wiki/">Cyber Research Wiki</a>
+        <nav class="nav">
+          <a href="/cyber-research-wiki/">Index</a>
+          <a href="https://danyel-ii.github.io/WikiCompanion/">Pocket Atlas</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page-shell">
+      <article class="article">
+  <h1>Url Inspection</h1>
+<h2>Overview</h2>
+<p>Url Inspection is a email header analysis tool that appears across incident response workflows in this knowledge base. It is referenced as part of higher-level security analysis, investigation, monitoring, or validation activity rather than as an end in itself.</p>
+<h2>What It Is</h2>
+<p>Url Inspection is best understood as a incident-response tool in this knowledge base. Its role is conceptual and system-facing rather than procedural: it gives analysts or defenders a structured way to examine evidence, model system behavior, or reason about security state.</p>
+<h2>How It Works</h2>
+<p>Url Inspection works by turning technical inputs into more interpretable outputs at the system level. Across the source skills, it appears as part of larger analysis, investigation, monitoring, or validation loops rather than as a standalone end state.</p>
+<h2>Core Concepts</h2>
+<ul><li>phishing response</li><li>email security</li><li>credential compromise</li><li>email header analysis</li><li>mailbox remediation</li><li>incident response</li></ul>
+<h2>Typical Workflow</h2>
+<ul><li>Extract the email as an .EML or .MSG file (preserves headers)</li><li>Analyze email headers to determine the true sender, relay path, and authentication results</li><li>━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</li><li>Return-Path:     billing@spoofed-domain[.]com</li><li>From:            &quot;IT Support&quot; &lt;support@corp-lookalike[.]com&gt;</li><li>Reply-To:        attacker@gmail[.]com (different from From)</li><li>SPF:             FAIL (sender IP not authorized for domain)</li><li>DKIM:            FAIL (signature invalid)</li><li>DMARC:           FAIL (policy: none - no enforcement)</li></ul>
+<h2>Use Cases</h2>
+<ul><li>A user reports receiving a suspicious email via the phishing report button or abuse mailbox</li><li>Email gateway detects a malicious email that bypassed initial filtering</li><li>Threat intelligence indicates an active phishing campaign targeting the organization</li><li>A user confirms they clicked a link or opened an attachment from a suspicious email</li><li>Credentials have been entered on a suspected phishing page</li><li>Only resetting passwords without revoking active sessions (attacker retains access via stolen session cookies)</li></ul>
+<h2>Limitations</h2>
+<ul><li>Output still depends on context, data quality, and surrounding analysis.</li><li>The tool should be interpreted as part of a broader workflow, not as a complete answer by itself.</li><li>Capabilities and visibility vary depending on environment, integrations, and available inputs.</li></ul>
+<h2>Related Tools</h2>
+<ul><li>And IOC Extraction, GoPhish, Microsoft Defender For Office 365, PhishTool, Proofpoint TAP, URLscan.io</li></ul>
+<h2>Sources</h2>
+<ul><li>conducting-phishing-incident-response</li></ul>
+  <div class="footer-space"></div>
+</article>
+    </main>
+  </body>
+</html>

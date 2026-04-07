@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Identityiq Report Builder | Cyber Research Wiki</title>
+    <meta name="description" content="Identityiq Report Builder encyclopedia entry." />
+    <link rel="canonical" href="https://danyel-ii.github.io/cyber-research-wiki/tools/identityiq-report-builder/" />
+    <link rel="stylesheet" href="/cyber-research-wiki/assets/wiki.css" />
+  </head>
+  <body>
+    <header class="site-shell">
+      <div class="shell-inner">
+        <a class="brand" href="/cyber-research-wiki/">Cyber Research Wiki</a>
+        <nav class="nav">
+          <a href="/cyber-research-wiki/">Index</a>
+          <a href="https://danyel-ii.github.io/WikiCompanion/">Pocket Atlas</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page-shell">
+      <article class="article">
+  <h1>Identityiq Report Builder</h1>
+<h2>Overview</h2>
+<p>Identityiq Report Builder is a identity access management tool that appears across identity access management workflows in this knowledge base. It is referenced as part of higher-level security analysis, investigation, monitoring, or validation activity rather than as an end in itself.</p>
+<h2>What It Is</h2>
+<p>Identityiq Report Builder is best understood as a identity-access-management tool in this knowledge base. Its role is conceptual and system-facing rather than procedural: it gives analysts or defenders a structured way to examine evidence, model system behavior, or reason about security state.</p>
+<h2>How It Works</h2>
+<p>Identityiq Report Builder works by turning technical inputs into more interpretable outputs at the system level. Across the source skills, it appears as part of larger analysis, investigation, monitoring, or validation loops rather than as a standalone end state.</p>
+<h2>Core Concepts</h2>
+<ul><li>SailPoint</li><li>IdentityIQ</li><li>access review</li><li>entitlement certification</li><li>IGA</li><li>access governance</li><li>identity access management</li></ul>
+<h2>Typical Workflow</h2>
+<ul><li>// SailPoint IdentityIQ BeanShell - Campaign Configuration</li><li>import sailpoint.object.*;</li><li>import sailpoint.api.*;</li><li>// Define campaign schedule for quarterly manager certifications</li><li>CertificationSchedule schedule = new CertificationSchedule();</li><li>schedule.setName(&quot;Q1-2026-Manager-Access-Review&quot;);</li><li>schedule.setDescription(&quot;Quarterly manager certification for all active employees&quot;);</li><li>schedule.setType(Certification.Type.Manager);</li><li>// Configure campaign scope</li></ul>
+<h2>Use Cases</h2>
+<ul><li>Quarterly or annual access certification campaigns are required for compliance (SOX, HIPAA, PCI-DSS)</li><li>Organization needs automated manager-based access reviews for all direct reports</li><li>Targeted entitlement reviews are needed for sensitive applications or high-privilege roles</li><li>Separation of Duties (SOD) violations must be identified and remediated</li><li>Orphaned accounts and excessive entitlements need to be discovered and cleaned up</li><li>Audit findings require evidence of periodic access review and remediation tracking</li><li>Setting campaigns too short (under 21 days) results in rubber-stamping and low-quality reviews</li></ul>
+<h2>Limitations</h2>
+<ul><li>Output still depends on context, data quality, and surrounding analysis.</li><li>The tool should be interpreted as part of a broader workflow, not as a complete answer by itself.</li><li>Capabilities and visibility vary depending on environment, integrations, and available inputs.</li></ul>
+<h2>Related Tools</h2>
+<ul><li>And Compliance Reporting, And Extracting Audit Data, And Generating Compliance Evidence, And Trend Analysis, IdentityIQ Compliance Manager, Lifecycle Management, Querying Status, SailPoint IdentityIQ</li></ul>
+<h2>Sources</h2>
+<ul><li>performing-entitlement-review-with-sailpoint-iiq</li></ul>
+  <div class="footer-space"></div>
+</article>
+    </main>
+  </body>
+</html>

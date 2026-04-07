@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Wazuh | Cyber Research Wiki</title>
+    <meta name="description" content="Wazuh encyclopedia entry." />
+    <link rel="canonical" href="https://danyel-ii.github.io/cyber-research-wiki/tools/wazuh/" />
+    <link rel="stylesheet" href="/cyber-research-wiki/assets/wiki.css" />
+  </head>
+  <body>
+    <header class="site-shell">
+      <div class="shell-inner">
+        <a class="brand" href="/cyber-research-wiki/">Cyber Research Wiki</a>
+        <nav class="nav">
+          <a href="/cyber-research-wiki/">Index</a>
+          <a href="https://danyel-ii.github.io/WikiCompanion/">Pocket Atlas</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page-shell">
+      <article class="article">
+  <h1>Wazuh</h1>
+<h2>Overview</h2>
+<p>Wazuh is a behavioral analysis tool that appears across endpoint security workflows in this knowledge base. It is referenced as part of higher-level security analysis, investigation, monitoring, or validation activity rather than as an end in itself.</p>
+<h2>What It Is</h2>
+<p>Wazuh is best understood as a endpoint-security tool in this knowledge base. Its role is conceptual and system-facing rather than procedural: it gives analysts or defenders a structured way to examine evidence, model system behavior, or reason about security state.</p>
+<h2>How It Works</h2>
+<p>Wazuh works by turning technical inputs into more interpretable outputs at the system level. Across the source skills, it appears as part of larger analysis, investigation, monitoring, or validation loops rather than as a standalone end state.</p>
+<h2>Core Concepts</h2>
+<ul><li>endpoint</li><li>HIDS</li><li>Wazuh</li><li>OSSEC</li><li>file integrity monitoring</li><li>intrusion detection</li><li>endpoint security</li><li>ransomware</li><li>detection</li><li>entropy</li><li>behavioral analysis</li><li>file monitoring</li></ul>
+<h2>Typical Workflow</h2>
+<ul><li>Invoke-WebRequest -Uri &quot;https://packages.wazuh.com/4.x/windows/wazuh-agent-4.9.0-1.msi&quot; `</li><li>-OutFile &quot;wazuh-agent.msi&quot;</li><li>msiexec /i wazuh-agent.msi /q WAZUH_MANAGER=&quot;wazuh-manager.corp.com&quot; `</li><li>WAZUH_REGISTRATION_SERVER=&quot;wazuh-manager.corp.com&quot; WAZUH_AGENT_GROUP=&quot;windows-workstations&quot;</li><li>━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</li><li>.docx           3.5 - 6.5        7.8 - 8.0</li><li>.xlsx           4.0 - 6.8        7.8 - 8.0</li><li>.pdf            5.0 - 7.2        7.8 - 8.0</li><li>.txt            2.0 - 5.0        7.8 - 8.0</li><li>.csv            2.0 - 5.5        7.8 - 8.0</li></ul>
+<h2>Use Cases</h2>
+<ul><li>Deploying HIDS agents (Wazuh, OSSEC, AIDE) across Windows and Linux endpoints</li><li>Configuring file integrity monitoring (FIM) for compliance (PCI DSS 11.5, NIST SI-7)</li><li>Monitoring system configuration changes, rootkit detection, and security policy violations</li><li>Integrating HIDS alerts with SIEM platforms for centralized monitoring</li><li>Building or tuning a behavioral detection layer for ransomware that catches unknown/zero-day variants</li><li>Monitoring file servers and endpoints for mass encryption activity that evades signature-based detection</li><li>Implementing entropy-based detection to identify when files are being replaced with encrypted (high-entropy) content</li><li>Analyzing suspicious process behavior patterns: rapid sequential file opens, writes, renames, and deletes</li><li>Validating EDR detection rules against actual ransomware encryption patterns during red team exercises</li><li>When deploying or configuring implementing endpoint detection with wazuh capabilities in your environment</li></ul>
+<h2>Limitations</h2>
+<ul><li>Output still depends on context, data quality, and surrounding analysis.</li><li>The tool should be interpreted as part of a broader workflow, not as a complete answer by itself.</li><li>Capabilities and visibility vary depending on environment, integrations, and available inputs.</li></ul>
+<h2>Related Tools</h2>
+<ul><li>Agent, AIDE, And Dashboard, Elastic Endpoint, OSSEC, Psutil, Samhain, Sysmon</li></ul>
+<h2>Sources</h2>
+<ul><li>configuring-host-based-intrusion-detection</li><li>detecting-ransomware-encryption-behavior</li><li>implementing-endpoint-detection-with-wazuh</li></ul>
+  <div class="footer-space"></div>
+</article>
+    </main>
+  </body>
+</html>

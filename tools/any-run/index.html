@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Any Run | Cyber Research Wiki</title>
+    <meta name="description" content="Any Run encyclopedia entry." />
+    <link rel="canonical" href="https://danyel-ii.github.io/cyber-research-wiki/tools/any-run/" />
+    <link rel="stylesheet" href="/cyber-research-wiki/assets/wiki.css" />
+  </head>
+  <body>
+    <header class="site-shell">
+      <div class="shell-inner">
+        <a class="brand" href="/cyber-research-wiki/">Cyber Research Wiki</a>
+        <nav class="nav">
+          <a href="/cyber-research-wiki/">Index</a>
+          <a href="https://danyel-ii.github.io/WikiCompanion/">Pocket Atlas</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page-shell">
+      <article class="article">
+  <h1>Any Run</h1>
+<h2>Overview</h2>
+<p>Any Run is a malware analysis tool that appears across soc operations workflows in this knowledge base. It is referenced as part of higher-level security analysis, investigation, monitoring, or validation activity rather than as an end in itself.</p>
+<h2>What It Is</h2>
+<p>Any Run is best understood as a soc-operations tool in this knowledge base. Its role is conceptual and system-facing rather than procedural: it gives analysts or defenders a structured way to examine evidence, model system behavior, or reason about security state.</p>
+<h2>How It Works</h2>
+<p>Any Run works by turning technical inputs into more interpretable outputs at the system level. Across the source skills, it appears as part of larger analysis, investigation, monitoring, or validation loops rather than as a standalone end state.</p>
+<h2>Core Concepts</h2>
+<ul><li>soc</li><li>malware analysis</li><li>sandbox</li><li>automation</li><li>virustotal</li><li>cuckoo</li><li>any run</li><li>pipeline</li><li>soc operations</li><li>malware response</li><li>eradication</li><li>endpoint remediation</li></ul>
+<h2>Typical Workflow</h2>
+<ul><li>from pathlib import Path</li><li>from datetime import datetime</li><li>self.quarantine_dir = Path(quarantine_dir)</li><li>self.quarantine_dir.mkdir(exist_ok=True)</li><li>Review EDR alert details: detection name, file path, hash (SHA-256), process tree</li><li>Check if the detection is a known malware family or generic heuristic detection</li><li>Query the file hash against VirusTotal, MalwareBazaar, and internal threat intelligence</li><li>Examine the process execution chain to determine how the malware was delivered</li><li>SHA-256:     a1b2c3d4e5f6...</li><li>Detection:   CrowdStrike: Malware/Qakbot | VirusTotal: 58/72 engines</li></ul>
+<h2>Use Cases</h2>
+<ul><li>SOC teams face high volume of suspicious file alerts requiring sandbox analysis</li><li>Manual sandbox submission creates bottlenecks in alert triage workflow</li><li>Endpoint and email security tools quarantine files needing automated verdict determination</li><li>Incident response requires rapid malware family identification and IOC extraction</li><li><strong>Email Attachment Triage</strong>: Auto-submit quarantined email attachments, generate verdict in &lt;5 minutes</li><li><strong>EDR Quarantine Processing</strong>: Batch-process files quarantined by endpoint security for detailed analysis</li><li><strong>Incident Investigation</strong>: Submit suspicious binaries found during IR for malware family identification and IOC extraction</li><li><strong>Threat Intel Enrichment</strong>: Analyze samples from threat feeds to extract C2 infrastructure and update blocking</li><li><strong>Zero-Day Detection</strong>: Sandbox catches novel malware missed by signature-based AV through behavioral analysis</li><li>EDR or antivirus detects malware execution on one or more endpoints</li></ul>
+<h2>Limitations</h2>
+<ul><li>Output still depends on context, data quality, and surrounding analysis.</li><li>The tool should be interpreted as part of a broader workflow, not as a complete answer by itself.</li><li>Capabilities and visibility vary depending on environment, integrations, and available inputs.</li></ul>
+<h2>Related Tools</h2>
+<ul><li>And MITRE ATT&amp;CK Mapping, Joe Sandbox, VirusTotal, YARA, And Network Requests, And Report, And Threat Explorer For Investigation, And Threat Hunting</li></ul>
+<h2>Sources</h2>
+<ul><li>building-automated-malware-submission-pipeline</li><li>conducting-malware-incident-response</li><li>implementing-ransomware-kill-switch-detection</li><li>investigating-phishing-email-incident</li><li>investigating-ransomware-attack-artifacts</li><li>performing-dynamic-analysis-with-any-run</li></ul>
+  <div class="footer-space"></div>
+</article>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Compilers | Cyber Research Wiki</title>
+    <meta name="description" content="Compilers encyclopedia entry." />
+    <link rel="canonical" href="https://danyel-ii.github.io/cyber-research-wiki/tools/compilers/" />
+    <link rel="stylesheet" href="/cyber-research-wiki/assets/wiki.css" />
+  </head>
+  <body>
+    <header class="site-shell">
+      <div class="shell-inner">
+        <a class="brand" href="/cyber-research-wiki/">Cyber Research Wiki</a>
+        <nav class="nav">
+          <a href="/cyber-research-wiki/">Index</a>
+          <a href="https://danyel-ii.github.io/WikiCompanion/">Pocket Atlas</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page-shell">
+      <article class="article">
+  <h1>Compilers</h1>
+<h2>Overview</h2>
+<p>Compilers is a static analysis tool that appears across malware analysis workflows in this knowledge base. It is referenced as part of higher-level security analysis, investigation, monitoring, or validation activity rather than as an end in itself.</p>
+<h2>What It Is</h2>
+<p>Compilers is best understood as a malware-analysis tool in this knowledge base. Its role is conceptual and system-facing rather than procedural: it gives analysts or defenders a structured way to examine evidence, model system behavior, or reason about security state.</p>
+<h2>How It Works</h2>
+<p>Compilers works by turning technical inputs into more interpretable outputs at the system level. Across the source skills, it appears as part of larger analysis, investigation, monitoring, or validation loops rather than as a standalone end state.</p>
+<h2>Core Concepts</h2>
+<ul><li>malware</li><li>static analysis</li><li>PE analysis</li><li>PEStudio</li><li>reverse engineering</li><li>malware analysis</li></ul>
+<h2>Typical Workflow</h2>
+<h2>Use Cases</h2>
+<ul><li>A suspicious Windows executable has been collected and needs initial triage before sandbox execution</li><li>You need to identify imports, strings, and resources that reveal malware functionality without running the sample</li><li>Determining whether a PE file is packed, obfuscated, or contains anti-analysis techniques</li><li>Extracting indicators of compromise (hashes, URLs, IPs, registry keys) embedded in a binary</li><li>Classifying a sample&#39;s capabilities based on its import table and section characteristics</li><li>Trusting the PE compile timestamp without corroborating evidence (timestamps are trivially forged)</li><li>Concluding a file is benign because it has few suspicious imports (packed malware hides real imports)</li><li>Missing Unicode strings by only running ASCII string extraction</li></ul>
+<h2>Limitations</h2>
+<ul><li>Output still depends on context, data quality, and surrounding analysis.</li><li>The tool should be interpreted as part of a broader workflow, not as a complete answer by itself.</li><li>Capabilities and visibility vary depending on environment, integrations, and available inputs.</li></ul>
+<h2>Related Tools</h2>
+<ul><li>And Linkers Used To Build PE Files, And Resource Directories, And Resource Inspection In A Single Interface, CFF Explorer, Detect It Easy, FLOSS, Imports, Pefile</li></ul>
+<h2>Sources</h2>
+<ul><li>performing-static-malware-analysis-with-pe-studio</li></ul>
+  <div class="footer-space"></div>
+</article>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sigma Rules | Cyber Research Wiki</title>
+    <meta name="description" content="Sigma Rules encyclopedia entry." />
+    <link rel="canonical" href="https://danyel-ii.github.io/cyber-research-wiki/tools/sigma-rules/" />
+    <link rel="stylesheet" href="/cyber-research-wiki/assets/wiki.css" />
+  </head>
+  <body>
+    <header class="site-shell">
+      <div class="shell-inner">
+        <a class="brand" href="/cyber-research-wiki/">Cyber Research Wiki</a>
+        <nav class="nav">
+          <a href="/cyber-research-wiki/">Index</a>
+          <a href="https://danyel-ii.github.io/WikiCompanion/">Pocket Atlas</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page-shell">
+      <article class="article">
+  <h1>Sigma Rules</h1>
+<h2>Overview</h2>
+<p>Sigma Rules is a hunting framework tool that appears across threat hunting workflows in this knowledge base. It is referenced as part of higher-level security analysis, investigation, monitoring, or validation activity rather than as an end in itself.</p>
+<h2>What It Is</h2>
+<p>Sigma Rules is best understood as a threat-hunting tool in this knowledge base. Its role is conceptual and system-facing rather than procedural: it gives analysts or defenders a structured way to examine evidence, model system behavior, or reason about security state.</p>
+<h2>How It Works</h2>
+<p>Sigma Rules works by turning technical inputs into more interpretable outputs at the system level. Across the source skills, it appears as part of larger analysis, investigation, monitoring, or validation loops rather than as a standalone end state.</p>
+<h2>Core Concepts</h2>
+<ul><li>threat hunting</li><li>methodology</li><li>hypothesis</li><li>threat intelligence</li><li>hunting framework</li><li>proactive detection</li><li>mitre attack</li><li>email forwarding</li><li>persistence</li><li>bec</li><li>t1114</li><li>endpoint</li></ul>
+<h2>Typical Workflow</h2>
+<ul><li>1. <strong>Formulate Hypothesis</strong>: Define a testable hypothesis based on threat intelligence or ATT&amp;CK gap analysis.</li><li>2. <strong>Identify Data Sources</strong>: Determine which logs and telemetry are needed to validate or refute the hypothesis.</li><li>3. <strong>Execute Queries</strong>: Run detection queries against SIEM and EDR platforms to collect relevant events.</li><li>4. <strong>Analyze Results</strong>: Examine query results for anomalies, correlating across multiple data sources.</li><li>5. <strong>Validate Findings</strong>: Distinguish true positives from false positives through contextual analysis.</li><li>6. <strong>Correlate Activity</strong>: Link findings to broader attack chains and threat actor TTPs.</li><li>7. <strong>Document and Report</strong>: Record findings, update detection rules, and recommend response actions.</li><li>CommandLine contains: &quot;wevtutil cl&quot; OR &quot;wevtutil clear-log&quot;</li><li>Source: Microsoft-Windows-Eventlog</li><li>2. <strong>Identify Target LOLBins</strong>: Select specific binaries from the LOLBAS Project database to hunt for, prioritizing those matching current threat landscape (certutil, mshta, rundll32, regsvr32, msiexec, wmic, cmstp, bitsadmin).</li></ul>
+<h2>Use Cases</h2>
+<ul><li>When proactively hunting for indicators of building threat hunt hypothesis framework in the environment</li><li>After threat intelligence indicates active campaigns using these techniques</li><li>During incident response to scope compromise related to these techniques</li><li>When EDR or SIEM alerts trigger on related indicators</li><li>During periodic security assessments and purple team exercises</li><li>When proactively hunting for indicators of detecting email forwarding rules attack in the environment</li><li>Hunting for adversary defense evasion techniques (MITRE ATT&amp;CK TA0005) in endpoint telemetry</li><li>Building detection rules for common evasion methods (process injection, timestomping, log clearing)</li><li>Investigating incidents where adversaries disabled or bypassed security tools</li><li>Analyzing endpoint logs for indicators of living-off-the-land binary (LOLBin) abuse</li></ul>
+<h2>Limitations</h2>
+<ul><li>Output still depends on context, data quality, and surrounding analysis.</li><li>The tool should be interpreted as part of a broader workflow, not as a complete answer by itself.</li><li>Capabilities and visibility vary depending on environment, integrations, and available inputs.</li></ul>
+<h2>Related Tools</h2>
+<ul><li>CrowdStrike Falcon, Elastic Security, Microsoft Defender For Endpoint, Sysmon, Velociraptor, Splunk Enterprise, LOLBAS Project, Splunk</li></ul>
+<h2>Sources</h2>
+<ul><li>building-threat-hunt-hypothesis-framework</li><li>detecting-email-forwarding-rules-attack</li><li>detecting-evasion-techniques-in-endpoint-logs</li><li>detecting-insider-threat-behaviors</li><li>detecting-kerberoasting-attacks</li><li>detecting-mimikatz-execution-patterns</li><li>detecting-pass-the-hash-attacks</li><li>detecting-privilege-escalation-attempts</li><li>detecting-service-account-abuse</li><li>detecting-suspicious-powershell-execution</li><li>hunting-for-living-off-the-cloud-techniques</li><li>hunting-for-living-off-the-land-binaries</li><li>hunting-for-lolbins-execution-in-endpoint-logs</li><li>hunting-for-registry-persistence-mechanisms</li><li>hunting-for-scheduled-task-persistence</li><li>hunting-for-shadow-copy-deletion</li><li>hunting-for-spearphishing-indicators</li><li>hunting-for-supply-chain-compromise</li><li>hunting-for-unusual-network-connections</li><li>hunting-for-webshell-activity</li></ul>
+  <div class="footer-space"></div>
+</article>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Hashcat | Cyber Research Wiki</title>
+    <meta name="description" content="A high-performance, cross‑platform password recovery tool that supports hundreds of hash and key‑derivation formats, multiple attack modes, and GPU/accelerator backends for offline credential security testing." />
+    <link rel="canonical" href="https://danyel-ii.github.io/cyber-research-wiki/tools/hashcat/" />
+    <link rel="stylesheet" href="/cyber-research-wiki/assets/wiki.css" />
+  </head>
+  <body>
+    <header class="site-shell">
+      <div class="shell-inner">
+        <a class="brand" href="/cyber-research-wiki/">Cyber Research Wiki</a>
+        <nav class="nav">
+          <a href="/cyber-research-wiki/">Index</a>
+          <a href="https://danyel-ii.github.io/WikiCompanion/">Pocket Atlas</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page-shell">
+      <article class="article">
+  <h1>Hashcat</h1>
+<blockquote><p>A high-performance, cross‑platform password recovery tool that supports hundreds of hash and key‑derivation formats, multiple attack modes, and GPU/accelerator backends for offline credential security testing.</p></blockquote>
+<h2>Overview</h2>
+<p>Hashcat is an open‑source password recovery and auditing utility used to evaluate the strength of stored credentials and related secrets across diverse systems and protocols. It operates on offline cryptographic material—password hashes, password‑derived keys, and certain protocol artifacts—rather than live authentication endpoints. The project supports CPUs and hardware accelerators via CUDA, OpenCL, HIP, and Metal backends, and implements several complementary attack modes (dictionary/straight, combinator, mask/brute‑force, and hybrids). Its hash‑mode catalog spans common and specialized algorithms, including NTLM, bcrypt, PBKDF2, WPA/WPA2 PMKID/EAPOL, and HMAC‑signed JSON Web Tokens (JWT). Hashcat is widely used in security testing, incident response, and digital forensics to validate password policies, identify weak secrets, and benchmark defensive configurations. It is released under the MIT license and actively maintained in a public repository.</p>
+<h2>What It Is</h2>
+<p>Hashcat is a command‑line framework for offline password and secret auditing. It focuses on recovering plaintexts from captured hashes, password‑derived encryption keys, and selected protocol artifacts such as WPA/WPA2 handshakes and PMKIDs, as well as attempting to recover secrets used in HMAC‑signed JWTs. It is not an exploitation or online attack framework and does not target live, rate‑limited authentication services. In API‑security contexts, its scope includes evaluation of HMAC‑based JWT secret strength and assessment of password‑derived credentials used by backend systems.</p>
+<h2>How It Works</h2>
+<p>Hashcat normalizes inputs to a specific hash‑mode format and selects optimized compute kernels for the chosen algorithm. It then generates candidate passwords/secrets using configurable strategies—dictionary (straight) attacks with rule‑based mutations, combinator attacks that join words, mask/brute‑force patterns, and hybrid methods that mix wordlists and masks. External generators such as maskprocessor, statsprocessor, and princeprocessor can feed additional candidate streams. Workloads execute on CPU or accelerator backends (CUDA, OpenCL, HIP, Metal), enabling large‑scale parallel testing of candidates against target hashes. For Wi‑Fi auditing, WPA/WPA2 handshakes and PMKIDs are converted to the unified 22000/22001 text formats to improve efficiency and reuse of PBKDF2 computations. For JWT auditing, hash‑mode 16500 targets HMAC‑signed tokens by attempting to recover the shared secret; JWTs signed with public‑key algorithms are out of scope for secret recovery. Results are persisted in a potfile, with per‑hash status and performance metrics available for downstream analysis and reporting, including structured status/benchmark outputs.</p>
+<h2>Core Concepts</h2>
+<ul><li>Offline password/secret auditing</li><li>GPU and hardware‑accelerated cracking backends (CUDA/OpenCL/HIP/Metal)</li><li>Attack modes: straight (dictionary), combinator, mask/brute‑force, hybrids</li><li>Rule‑based wordlist mutation</li><li>Hash‑mode catalog (over 300 algorithms) including NTLM, bcrypt, WPA PMKID/EAPOL, JWT (HMAC)</li><li>Unified WPA hash‑mode 22000/22001 workflow</li><li>Potfile for recovered credentials</li><li>Distributed/at‑scale workflows (supported via community tools)</li></ul>
+<h2>Typical Workflow</h2>
+<ul><li>Establish authorization and scope for credential/secret assessment, ensuring only in‑scope material is processed.</li><li>Collect or extract hashes and artifacts, and normalize them to supported formats (e.g., convert WPA captures to 22000 text and assemble hashes with required salts/parameters).</li><li>Select the appropriate hash‑mode and design an attack strategy that combines wordlists, rules, masks, or hybrids informed by contextual password policies.</li><li>Execute attacks on suitable hardware backends, monitor progress and correctness via performance and health metrics, and iterate strategies based on interim results.</li><li>Record outcomes (cracked and uncracked), analyze patterns to inform policy and training, and coordinate remediation for weak credentials or secrets.</li></ul>
+<h2>Use Cases</h2>
+<ul><li>Enterprise credential audits to validate password policy effectiveness and detect weak or reused passwords.</li><li>Incident response triage on leaked hash dumps to assess exposure and prioritize resets.</li><li>Wireless security assessments of WPA/WPA2‑PSK deployments using PMKID/EAPOL artifacts, with outcomes informing segmentation and PSK strength decisions.</li><li>API‑security assessments of HMAC‑signed JWTs to evaluate secret key strength and identify weak/shared secrets that enable offline forgery.</li><li>Validation of hardening initiatives (e.g., adoption of stronger KDFs or increased iteration counts) by measuring practical cracking resistance.</li><li>Hardware and algorithm benchmarking to set realistic organizational password requirements.</li></ul>
+<h2>Limitations</h2>
+<ul><li>Operates only on offline material; it does not test live, rate‑limited endpoints.</li><li>Effectiveness is bounded by cryptographic design and cost parameters; slow KDFs (e.g., bcrypt, scrypt, Argon2 with high cost) and high‑entropy passwords may remain infeasible to crack.</li><li>JWT applicability is limited to HMAC‑based tokens (HS*); RSA/ECDSA‑signed tokens (RS*/ES*) do not expose a recoverable secret.</li><li>Wi‑Fi success depends on capture quality and the use of unified 22000/22001 formats, which supersede legacy .cap/.hccapx workflows in current versions.</li><li>Performance depends on correct GPU/accelerator drivers and supported hardware; driver mismatches are a common failure mode.</li><li>Use is constrained by legal and ethical requirements and must be limited to authorized testing and analysis.</li></ul>
+<h2>Related Tools</h2>
+<ul><li>John the Ripper: Alternative offline password cracker; complements hashcat and supports some differing formats.</li><li>hcxdumptool / hcxtools: Preferred modern tools to capture and convert WPA/WPA2 artifacts into hash‑mode 22000/22001 for use with Hashcat.</li><li>maskprocessor, statsprocessor, princeprocessor: Candidate generators used alongside Hashcat to produce structured guesses for mask, Markov, or PRINCE‑based attacks.</li><li>hashcat-utils: Supplemental utilities maintained by the project to assist with advanced cracking workflows.</li><li>Hashtopolis: Community orchestration platform for distributing Hashcat jobs across multiple systems.</li></ul>
+<h2>Evidence Gaps</h2>
+<ul><li>Official documentation lists JWT hash‑mode 16500 but does not explicitly consolidate, in a single statement, that it targets only HMAC‑signed JWTs; this limitation is inferred from JWT standards and the mode’s design.</li><li>Integration patterns for broader API‑security workflows beyond JWT secret auditing are primarily community practice rather than vendor‑provided guidance.</li></ul>
+<h2>Sources</h2>
+<ul><li><a href="https://github.com/hashcat/hashcat">hashcat/hashcat – GitHub repository (README: description, platforms, license, attack modes, algorithms)</a> (GitHub)</li><li><a href="https://hashcat.net/wiki/doku.php?id=hashcat">Hashcat wiki – Project overview, attack modes, options, and hash-mode listings (incl. 16500 JWT)</a> (hashcat.net)</li><li><a href="https://hashcat.net/wiki/doku.php?id=cracking_wpawpa2">Hashcat wiki – Cracking WPA/WPA2 with hashcat (unified 22000/22001 formats and deprecation of legacy formats)</a> (hashcat.net)</li><li><a href="https://www.kali.org/tools/hashcat/">Kali Linux Tools: hashcat (summary of capabilities and attack modes)</a> (Offensive Security)</li><li><a href="https://en.wikipedia.org/wiki/JSON_Web_Token">JWT (JSON Web Token) – overview of HMAC vs. RSA/ECDSA signing (standards context)</a> (Wikipedia)</li><li><a href="https://hashcat.net/forum/thread-7317.html">Hashcat v4.1.0 forum notes – Added hash-mode 16500 (JWT)</a> (hashcat.net)</li><li><a href="https://hashcat.net/faq/wrongdriver">Hashcat FAQ – Driver correctness and troubleshooting (wrongdriver)</a> (hashcat.net)</li><li><a href="https://hashcat.net/wiki/">Hashcat wiki – Start page (core attack modes; related utilities such as maskprocessor/statsprocessor/princeprocessor)</a> (hashcat.net)</li><li><a href="https://github.com/ZerBea/hcxdumptool">ZerBea/hcxdumptool – modern Wi‑Fi capture tooling referenced by Hashcat docs</a> (GitHub)</li><li><a href="https://openwall.com/john/">John the Ripper – official project site (related/alternative tool)</a> (Openwall Project)</li><li><a href="https://www.hashcat.io/">https://www.hashcat.io/</a> (hashcat.io)</li><li><a href="https://www.yonlabs.com/2020/10/hashcat-to-crack-jwt/index.html">https://www.yonlabs.com/2020/10/hashcat-to-crack-jwt/index.html</a> (yonlabs.com)</li></ul>
+<h2>Confidence</h2>
+<p>high</p>
+  <div class="footer-space"></div>
+</article>
+    </main>
+  </body>
+</html>

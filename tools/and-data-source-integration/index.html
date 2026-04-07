@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>And Data Source Integration | Cyber Research Wiki</title>
+    <meta name="description" content="And Data Source Integration encyclopedia entry." />
+    <link rel="canonical" href="https://danyel-ii.github.io/cyber-research-wiki/tools/and-data-source-integration/" />
+    <link rel="stylesheet" href="/cyber-research-wiki/assets/wiki.css" />
+  </head>
+  <body>
+    <header class="site-shell">
+      <div class="shell-inner">
+        <a class="brand" href="/cyber-research-wiki/">Cyber Research Wiki</a>
+        <nav class="nav">
+          <a href="/cyber-research-wiki/">Index</a>
+          <a href="https://danyel-ii.github.io/WikiCompanion/">Pocket Atlas</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page-shell">
+      <article class="article">
+  <h1>And Data Source Integration</h1>
+<h2>Overview</h2>
+<p>And Data Source Integration is a network security tool that appears across network security workflows in this knowledge base. It is referenced as part of higher-level security analysis, investigation, monitoring, or validation activity rather than as an end in itself.</p>
+<h2>What It Is</h2>
+<p>And Data Source Integration is best understood as a network-security tool in this knowledge base. Its role is conceptual and system-facing rather than procedural: it gives analysts or defenders a structured way to examine evidence, model system behavior, or reason about security state.</p>
+<h2>How It Works</h2>
+<p>And Data Source Integration works by turning technical inputs into more interpretable outputs at the system level. Across the source skills, it appears as part of larger analysis, investigation, monitoring, or validation loops rather than as a standalone end state.</p>
+<h2>Core Concepts</h2>
+<ul><li>network security</li><li>dns</li><li>enumeration</li><li>zone transfer</li><li>reconnaissance</li></ul>
+<h2>Typical Workflow</h2>
+<ul><li>dig NS example.com +short</li><li>dig SOA example.com +short</li><li>dig example.com ANY +noall +answer</li><li>dig MX example.com +short</li></ul>
+<h2>Use Cases</h2>
+<ul><li>Mapping the external attack surface of a target organization during authorized penetration tests</li><li>Discovering hidden subdomains, internal hostnames, and IP addresses exposed via DNS records</li><li>Testing whether DNS servers allow unauthorized zone transfers that leak the entire zone file</li><li>Identifying mail servers, name servers, and service records for further targeted testing</li><li>Validating DNS security configurations including DNSSEC, SPF, DKIM, and DMARC</li><li>Sending thousands of DNS queries per second and triggering rate limiting or DNS-based DDoS protection</li><li>Missing subdomains that use separate DNS providers or CDN-specific CNAME records</li></ul>
+<h2>Limitations</h2>
+<ul><li>Output still depends on context, data quality, and surrounding analysis.</li><li>The tool should be interpreted as part of a broader workflow, not as a complete answer by itself.</li><li>Capabilities and visibility vary depending on environment, integrations, and available inputs.</li></ul>
+<h2>Related Tools</h2>
+<ul><li>Amass, And DNS Databases, And Google Dork Queries, And Zone Transfer Queries, Brute Force, Cache Snooping, Dig, Dnsrecon</li></ul>
+<h2>Sources</h2>
+<ul><li>performing-dns-enumeration-and-zone-transfer</li></ul>
+  <div class="footer-space"></div>
+</article>
+    </main>
+  </body>
+</html>

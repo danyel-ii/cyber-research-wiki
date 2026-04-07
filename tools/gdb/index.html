@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Gdb | Cyber Research Wiki</title>
+    <meta name="description" content="Gdb encyclopedia entry." />
+    <link rel="canonical" href="https://danyel-ii.github.io/cyber-research-wiki/tools/gdb/" />
+    <link rel="stylesheet" href="/cyber-research-wiki/assets/wiki.css" />
+  </head>
+  <body>
+    <header class="site-shell">
+      <div class="shell-inner">
+        <a class="brand" href="/cyber-research-wiki/">Cyber Research Wiki</a>
+        <nav class="nav">
+          <a href="/cyber-research-wiki/">Index</a>
+          <a href="https://danyel-ii.github.io/WikiCompanion/">Pocket Atlas</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page-shell">
+      <article class="article">
+  <h1>Gdb</h1>
+<h2>Overview</h2>
+<p>Gdb is a malware analysis tool that appears across malware analysis workflows in this knowledge base. It is referenced as part of higher-level security analysis, investigation, monitoring, or validation activity rather than as an end in itself.</p>
+<h2>What It Is</h2>
+<p>Gdb is best understood as a malware-analysis tool in this knowledge base. Its role is conceptual and system-facing rather than procedural: it gives analysts or defenders a structured way to examine evidence, model system behavior, or reason about security state.</p>
+<h2>How It Works</h2>
+<p>Gdb works by turning technical inputs into more interpretable outputs at the system level. Across the source skills, it appears as part of larger analysis, investigation, monitoring, or validation loops rather than as a standalone end state.</p>
+<h2>Core Concepts</h2>
+<ul><li>malware</li><li>Linux</li><li>ELF</li><li>reverse engineering</li><li>server malware</li><li>malware analysis</li></ul>
+<h2>Typical Workflow</h2>
+<ul><li>readelf -h suspect_binary</li><li>readelf -S suspect_binary</li><li>readelf -l suspect_binary</li></ul>
+<h2>Use Cases</h2>
+<ul><li>A Linux server or container has been compromised and suspicious ELF binaries are found</li><li>Analyzing Linux botnets (Mirai, Gafgyt, XorDDoS), cryptominers, or ransomware</li><li>Investigating malware targeting cloud infrastructure, Docker containers, or Kubernetes pods</li><li>Reverse engineering Linux rootkits and kernel modules</li><li>Analyzing cross-platform malware compiled for Linux x86_64, ARM, or MIPS architectures</li><li>Running ldd on malware outside a sandbox (ldd can execute code in the binary)</li><li>Missing companion scripts (.sh files) that may handle persistence and cleanup</li></ul>
+<h2>Limitations</h2>
+<ul><li>Output still depends on context, data quality, and surrounding analysis.</li><li>The tool should be interpreted as part of a broader workflow, not as a complete answer by itself.</li><li>Capabilities and visibility vary depending on environment, integrations, and available inputs.</li></ul>
+<h2>Related Tools</h2>
+<ul><li>And Other Linux Architectures, And Process Operations, And Stepping Through Linux Binary Execution, ARM, Examining Memory, Ghidra, MIPS, Pyelftools</li></ul>
+<h2>Sources</h2>
+<ul><li>analyzing-linux-elf-malware</li></ul>
+  <div class="footer-space"></div>
+</article>
+    </main>
+  </body>
+</html>

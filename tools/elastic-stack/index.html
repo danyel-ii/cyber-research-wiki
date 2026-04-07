@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Elastic Stack | Cyber Research Wiki</title>
+    <meta name="description" content="Elastic Stack encyclopedia entry." />
+    <link rel="canonical" href="https://danyel-ii.github.io/cyber-research-wiki/tools/elastic-stack/" />
+    <link rel="stylesheet" href="/cyber-research-wiki/assets/wiki.css" />
+  </head>
+  <body>
+    <header class="site-shell">
+      <div class="shell-inner">
+        <a class="brand" href="/cyber-research-wiki/">Cyber Research Wiki</a>
+        <nav class="nav">
+          <a href="/cyber-research-wiki/">Index</a>
+          <a href="https://danyel-ii.github.io/WikiCompanion/">Pocket Atlas</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page-shell">
+      <article class="article">
+  <h1>Elastic Stack</h1>
+<h2>Overview</h2>
+<p>Elastic Stack is a network monitoring tool that appears across network security workflows in this knowledge base. It is referenced as part of higher-level security analysis, investigation, monitoring, or validation activity rather than as an end in itself.</p>
+<h2>What It Is</h2>
+<p>Elastic Stack is best understood as a network-security tool in this knowledge base. Its role is conceptual and system-facing rather than procedural: it gives analysts or defenders a structured way to examine evidence, model system behavior, or reason about security state.</p>
+<h2>How It Works</h2>
+<p>Elastic Stack works by turning technical inputs into more interpretable outputs at the system level. Across the source skills, it appears as part of larger analysis, investigation, monitoring, or validation loops rather than as a standalone end state.</p>
+<h2>Core Concepts</h2>
+<ul><li>network security</li><li>suricata</li><li>ids</li><li>ips</li><li>network monitoring</li></ul>
+<h2>Typical Workflow</h2>
+<ul><li>sudo add-apt-repository ppa:oisf/suricata-stable</li><li>sudo apt install -y suricata suricata-update jq</li><li>suricata --build-info | grep -E &quot;Version|AF_PACKET|NFQueue&quot;</li><li>libmagic-dev libnetfilter-queue-dev libhiredis-dev rustc cargo cbindgen</li></ul>
+<h2>Use Cases</h2>
+<ul><li>Deploying a high-performance IDS/IPS capable of multi-threaded packet processing for 10+ Gbps network links</li><li>Monitoring network traffic with protocol-aware inspection for HTTP, TLS, DNS, SMB, and other protocols</li><li>Generating structured EVE JSON logs for direct SIEM ingestion without custom parsers</li><li>Running in inline (IPS) mode to actively block malicious traffic at network choke points</li><li>Combining signature-based detection with protocol anomaly detection and file extraction</li><li>Enabling all available rules without tuning, overwhelming analysts with false positives</li><li>Forgetting to disable NIC offloading, resulting in incorrect checksums and missed detections</li></ul>
+<h2>Limitations</h2>
+<ul><li>Output still depends on context, data quality, and surrounding analysis.</li><li>The tool should be interpreted as part of a broader workflow, not as a complete answer by itself.</li><li>Capabilities and visibility vary depending on environment, integrations, and available inputs.</li></ul>
+<h2>Related Tools</h2>
+<ul><li>And Custom Rule Sources, And JA3, And Monitoring Rule Performance, Enabling, ET Pro, Evebox, File Extraction, Scirius</li></ul>
+<h2>Sources</h2>
+<ul><li>configuring-suricata-for-network-monitoring</li></ul>
+  <div class="footer-space"></div>
+</article>
+    </main>
+  </body>
+</html>

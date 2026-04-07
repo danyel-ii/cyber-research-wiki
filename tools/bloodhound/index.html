@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>BloodHound (Community Edition) | Cyber Research Wiki</title>
+    <meta name="description" content="BloodHound is an open‑source tool from SpecterOps that applies graph theory to identity and access relationships to uncover attack paths (privilege escalation and lateral movement) across Microsoft Active Directory, Azure AD, and other platforms via an extension model." />
+    <link rel="canonical" href="https://danyel-ii.github.io/cyber-research-wiki/tools/bloodhound/" />
+    <link rel="stylesheet" href="/cyber-research-wiki/assets/wiki.css" />
+  </head>
+  <body>
+    <header class="site-shell">
+      <div class="shell-inner">
+        <a class="brand" href="/cyber-research-wiki/">Cyber Research Wiki</a>
+        <nav class="nav">
+          <a href="/cyber-research-wiki/">Index</a>
+          <a href="https://danyel-ii.github.io/WikiCompanion/">Pocket Atlas</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page-shell">
+      <article class="article">
+  <h1>BloodHound (Community Edition)</h1>
+<blockquote><p>BloodHound is an open‑source tool from SpecterOps that applies graph theory to identity and access relationships to uncover attack paths (privilege escalation and lateral movement) across Microsoft Active Directory, Azure AD, and other platforms via an extension model.</p></blockquote>
+<h2>Overview</h2>
+<p>BloodHound (Community Edition) is an identity attack path discovery and analysis platform used by red and blue teams to map feasible privilege escalation and lateral movement across enterprise identity systems. It is not a containment or EDR product; rather, it models identities, permissions, and sessions as a graph to expose abusable relationships and shortest paths to high‑value targets. Community Edition presents a web interface backed by a Go REST API, uses PostgreSQL for application metadata, and stores the identity graph in Neo4j. Data is gathered by official collectors—SharpHound for on‑premises Active Directory and AzureHound for Azure AD/Entra ID—and ingested for graph analytics. Support for platforms beyond Microsoft ecosystems is expanding via an extension model that shares lineage with the commercial BloodHound Enterprise.</p>
+<h2>What It Is</h2>
+<p>An open‑source identity graph analytics system that represents users, computers, groups, GPOs, service principals, and related permissions and sessions as nodes and edges. It enables pathfinding and query‑driven analysis to reveal shortest or otherwise tractable routes from ordinary principals to tier‑0 assets (for example, Domain Admin) and highlights misconfigurations and abusable rights. The tool is used both to validate offensive feasibility and to guide defensive hardening and risk reduction.</p>
+<h2>How It Works</h2>
+<ul><li>Data collection: SharpHound enumerates on‑premises Active Directory through LDAP, SMB, and Win32 interfaces to capture directory objects, ACLs, group nesting, trusts, sessions, and related relationships. AzureHound enumerates Azure AD/Entra ID via cloud APIs. Collectors produce JSON/ZIP artifacts for ingestion. Extensions built on OpenGraph broaden coverage to additional identity platforms.</li><li>Storage and processing: Community Edition runs as a containerized web application. A Go‑based REST API coordinates ingestion and queries. Application metadata is stored in PostgreSQL. The identity graph—nodes and edges representing objects, permissions, sessions, and trust relationships—is persisted in Neo4j.</li><li>Analysis and visualization: The browser UI and API support exploration of the graph, execution of saved queries and pathfinding, and visualization of attack paths and risky configurations. Results surface abusable permissions (for example, write privileges on key objects), lateral movement enabled by sessions or membership, and other relationships relevant to escalation.</li></ul>
+<h2>Core Concepts</h2>
+<ul><li>Identity attack paths and graph theory (shortest/quietest paths to privilege)</li><li>Active Directory object/ACL modeling (e.g., DCSync rights, Kerberoastable SPNs, local admin edges)</li><li>Session- and membership‑derived lateral movement</li><li>Collector–backend compatibility (collector versions aligned with CE)</li><li>Extensibility via OpenGraph and integrations</li><li>Use for both offensive assessment and defensive risk reduction</li></ul>
+<h2>Typical Workflow</h2>
+<ul><li>Define scope and collect directory and cloud identity data with the official collectors to capture objects, ACLs, sessions, trusts, and related relationships as export artifacts.</li><li>Ingest the collected datasets through the Community Edition interface or API to populate the identity graph.</li><li>Explore the graph with built‑in searches and pathfinding to trace routes from standard users to tier‑0 assets and other high‑value targets.</li><li>Prioritize findings by examining abusable permissions, misconfigurations, and sessions that enable lateral movement.</li><li>Plan and track remediation of identity risks (for example, ACL hardening and group hygiene) and re‑collect to assess change over time.</li></ul>
+<h2>Use Cases</h2>
+<ul><li>Threat hunting and incident investigation to understand feasible lateral movement from compromised principals</li><li>Red team and penetration testing to map escalation routes and validate attack feasibility</li><li>Blue team hardening to prioritize and track remediation of identity attack paths (tactically with Community Edition or programmatically with BloodHound Enterprise)</li><li>Exposure reviews during organizational changes such as mergers or domain consolidations</li><li>Cross‑platform identity risk analysis via OpenGraph extensions beyond AD/Azure</li></ul>
+<h2>Limitations</h2>
+<ul><li>Not a containment, EDR, or network isolation tool; it does not directly block or revoke access.</li><li>Quality of insights depends on completeness and recency of collection; stale or partial datasets degrade accuracy.</li><li>Large environments can produce dense graphs and high resource utilization; visualization at scale may be challenging.</li><li>Collector–backend version mismatches can lead to ingestion or schema issues; versions should be aligned.</li><li>Focuses on identity relationships and does not replace log‑centric detection, endpoint telemetry, or forensics tooling.</li></ul>
+<h2>Related Tools</h2>
+<ul><li>SharpHound: Official AD data collector feeding BloodHound CE.</li><li>AzureHound: Official Azure/Entra ID data collector feeding BloodHound CE.</li><li>BloodHound Enterprise (BHE): Commercial product for continuous attack path management using similar models and shared codebase with CE.</li><li>Microsoft Defender for Identity: Defensive sensor detecting identity threats in AD; complementary to graph‑based path analysis.</li><li>PingCastle: AD risk assessment tool; complementary for hygiene scoring vs. path‑centric analysis.</li><li>Neo4j: Graph database used by BloodHound to store and query identity graphs.</li><li>Splunk / SIEM: Log analytics platforms that complement BloodHound’s structural analysis with activity telemetry.</li></ul>
+<h2>Evidence Gaps</h2>
+<ul><li>Community Edition versions change frequently; this dossier references release notes noting v7.2.0 on March 25, 2025. Verify the latest version before deployment.</li><li>Coverage for non‑Microsoft platforms via OpenGraph and product updates is evolving; confirm specific platform support and data models before operational use.</li></ul>
+<h2>Sources</h2>
+<ul><li><a href="https://bloodhound.specterops.io/get-started/quickstart/community-edition-quickstart">BloodHound Community Edition documentation (Quickstart, API/ingest)</a> (SpecterOps)</li><li><a href="https://bloodhound.specterops.io/get-started/custom-installation">BloodHound CE custom installation (architecture, Neo4j/PostgreSQL, env)</a> (SpecterOps)</li><li><a href="https://specterops.io/bloodhound-community-edition/">BloodHound Community Edition product page (purpose, positioning, OpenGraph)</a> (SpecterOps)</li><li><a href="https://specterops.io/blog/2023/08/08/bloodhound-community-edition-a-new-era/">BloodHound CE: A New Era (architecture shift, containers, shared code/docs)</a> (SpecterOps)</li><li><a href="https://github.com/SpecterOps/BloodHound">BloodHound monorepo README (CE architecture, collectors, databases)</a> (GitHub)</li><li><a href="https://github.com/SpecterOps/AzureHound">AzureHound (official Azure collector)</a> (GitHub)</li><li><a href="https://bloodhound.specterops.io/resources/release-notes/v7-2-0">BloodHound release notes v7.2.0 (docs portal, versions)</a> (SpecterOps)</li><li><a href="https://github.com/SpecterOps/bloodhound-cli">BloodHound CLI (management utility)</a> (GitHub)</li><li><a href="https://www.reddit.com/r/oscp/comments/1kfz3j8">https://www.reddit.com/r/oscp/comments/1kfz3j8</a> (reddit.com)</li><li><a href="https://www.reddit.com/r/oscp/comments/1mk05ky/blood_hound_issue/">https://www.reddit.com/r/oscp/comments/1mk05ky/blood_hound_issue/</a> (reddit.com)</li><li><a href="https://pypi.org/project/bloodhound-cli/1.1.0/">https://pypi.org/project/bloodhound-cli/1.1.0/</a> (pypi.org)</li><li><a href="https://www.reddit.com/r/SecOpsDaily/comments/1rx1z1z/bloodhound_enterprise_expands_beyond_microsoft/">https://www.reddit.com/r/SecOpsDaily/comments/1rx1z1z/bloodhound_enterprise_expands_beyond_microsoft/</a> (reddit.com)</li></ul>
+<h2>Confidence</h2>
+<p>high</p>
+  <div class="footer-space"></div>
+</article>
+    </main>
+  </body>
+</html>

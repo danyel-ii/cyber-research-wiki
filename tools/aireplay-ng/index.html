@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Aireplay Ng | Cyber Research Wiki</title>
+    <meta name="description" content="Aireplay Ng encyclopedia entry." />
+    <link rel="canonical" href="https://danyel-ii.github.io/cyber-research-wiki/tools/aireplay-ng/" />
+    <link rel="stylesheet" href="/cyber-research-wiki/assets/wiki.css" />
+  </head>
+  <body>
+    <header class="site-shell">
+      <div class="shell-inner">
+        <a class="brand" href="/cyber-research-wiki/">Cyber Research Wiki</a>
+        <nav class="nav">
+          <a href="/cyber-research-wiki/">Index</a>
+          <a href="https://danyel-ii.github.io/WikiCompanion/">Pocket Atlas</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page-shell">
+      <article class="article">
+  <h1>Aireplay Ng</h1>
+<h2>Overview</h2>
+<p>Aireplay Ng is a network security tool that appears across network security workflows in this knowledge base. It is referenced as part of higher-level security analysis, investigation, monitoring, or validation activity rather than as an end in itself.</p>
+<h2>What It Is</h2>
+<p>Aireplay Ng is best understood as a network-security tool in this knowledge base. Its role is conceptual and system-facing rather than procedural: it gives analysts or defenders a structured way to examine evidence, model system behavior, or reason about security state.</p>
+<h2>How It Works</h2>
+<p>Aireplay Ng works by turning technical inputs into more interpretable outputs at the system level. Across the source skills, it appears as part of larger analysis, investigation, monitoring, or validation loops rather than as a standalone end state.</p>
+<h2>Core Concepts</h2>
+<ul><li>wireless pentest</li><li>WiFi security</li><li>WPA2</li><li>WPA3</li><li>evil twin</li><li>penetration testing</li><li>network security</li><li>wifi</li><li>aircrack ng</li><li>wireless security</li></ul>
+<h2>Typical Workflow</h2>
+<ul><li>Enable monitor mode: <code>airmon-ng start wlan0</code></li><li>Identify target networks from the authorized scope and note their security configurations (WEP, WPA2-Personal, WPA2-Enterprise, WPA3-SAE, WPA3-Transition)</li><li>Enumerate connected clients and their signal strengths to understand client distribution</li><li>Check for hidden SSIDs by capturing probe requests from clients: <code>airodump-ng wlan0mon --essid-regex &quot;.*&quot; -c &lt;channel&gt;</code></li><li>Identify rogue access points by comparing discovered BSSIDs against the client&#39;s authorized AP inventory</li><li>Target the specific AP: <code>airodump-ng wlan0mon -c &lt;channel&gt; --bssid &lt;bssid&gt; -w capture</code></li><li>Deauthenticate a connected client to force re-authentication: <code>aireplay-ng -0 5 -a &lt;bssid&gt; -c &lt;client_mac&gt; wlan0mon</code></li><li>Verify handshake capture in airodump-ng (WPA handshake indicator appears)</li><li>sudo airmon-ng check kill</li><li>sudo airmon-ng start wlan0</li></ul>
+<h2>Use Cases</h2>
+<ul><li>Assessing the security of enterprise wireless networks including guest, corporate, and IoT WiFi segments</li><li>Testing whether attackers within physical proximity can compromise wireless authentication and access internal networks</li><li>Validating wireless intrusion detection/prevention system (WIDS/WIPS) capabilities against known attack techniques</li><li>Evaluating the effectiveness of WPA3 migration and transition mode configurations</li><li>Testing network segmentation between wireless and wired networks after a wireless network compromise</li><li>Conducting deauthentication attacks during business hours without coordinating with the client, causing visible WiFi disruptions</li><li>Focusing only on password cracking and missing network segmentation issues that are often the higher-risk finding</li><li>Assessing the strength of WPA/WPA2/WPA3 passphrases during authorized wireless penetration tests</li><li>Testing whether wireless networks are using weak or default passwords that can be cracked offline</li><li>Capturing and analyzing 4-way handshakes to evaluate wireless authentication security</li></ul>
+<h2>Limitations</h2>
+<ul><li>Output still depends on context, data quality, and surrounding analysis.</li><li>The tool should be interpreted as part of a broader workflow, not as a complete answer by itself.</li><li>Capabilities and visibility vary depending on environment, integrations, and available inputs.</li></ul>
+<h2>Related Tools</h2>
+<ul><li>Aircrack Ng Suite, And Aircrack Ng, Hashcat, And Evil Twin Deployment, And Intrusion Detection System For Passive Monitoring, And Mask Attacks, And PMKID Formats, Bettercap</li></ul>
+<h2>Sources</h2>
+<ul><li>conducting-wireless-network-penetration-test</li><li>performing-wifi-password-cracking-with-aircrack</li></ul>
+  <div class="footer-space"></div>
+</article>
+    </main>
+  </body>
+</html>

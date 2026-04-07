@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sysmon | Cyber Research Wiki</title>
+    <meta name="description" content="Sysmon encyclopedia entry." />
+    <link rel="canonical" href="https://danyel-ii.github.io/cyber-research-wiki/tools/sysmon/" />
+    <link rel="stylesheet" href="/cyber-research-wiki/assets/wiki.css" />
+  </head>
+  <body>
+    <header class="site-shell">
+      <div class="shell-inner">
+        <a class="brand" href="/cyber-research-wiki/">Cyber Research Wiki</a>
+        <nav class="nav">
+          <a href="/cyber-research-wiki/">Index</a>
+          <a href="https://danyel-ii.github.io/WikiCompanion/">Pocket Atlas</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page-shell">
+      <article class="article">
+  <h1>Sysmon</h1>
+<h2>Overview</h2>
+<p>Sysmon is a log analysis tool that appears across threat hunting workflows in this knowledge base. It is referenced as part of higher-level security analysis, investigation, monitoring, or validation activity rather than as an end in itself.</p>
+<h2>What It Is</h2>
+<p>Sysmon is best understood as a threat-hunting tool in this knowledge base. Its role is conceptual and system-facing rather than procedural: it gives analysts or defenders a structured way to examine evidence, model system behavior, or reason about security state.</p>
+<h2>How It Works</h2>
+<p>Sysmon works by turning technical inputs into more interpretable outputs at the system level. Across the source skills, it appears as part of larger analysis, investigation, monitoring, or validation loops rather than as a standalone end state.</p>
+<h2>Core Concepts</h2>
+<ul><li>splunk</li><li>SPL</li><li>SIEM</li><li>log analysis</li><li>security monitoring</li><li>incident response</li><li>soc</li><li>windows events</li><li>sysmon</li><li>event logs</li><li>mitre attack</li><li>active directory</li></ul>
+<h2>Typical Workflow</h2>
+<ul><li>| Set initial investigation scope</li><li>index=windows OR index=firewall OR index=proxy</li><li>earliest=&quot;2025-11-14T00:00:00&quot; latest=&quot;2025-11-16T00:00:00&quot;</li><li>(host=&quot;WKSTN-042&quot; OR src_ip=&quot;10.1.5.42&quot; OR user=&quot;jsmith&quot;)</li><li>| stats count by index, sourcetype, host</li><li>This query establishes which log sources contain relevant data for the investigation timeframe and affected assets.</li><li>| Detect brute force and credential stuffing</li><li><strong>Brute Force Detection (EventCode 4625 — Failed Logon):</strong></li><li>index=wineventlog sourcetype=&quot;WinEventLog:Security&quot; EventCode=4625</li><li>| stats count, dc(TargetUserName) AS unique_users, values(TargetUserName) AS targeted_users</li></ul>
+<h2>Use Cases</h2>
+<ul><li>Investigating a security incident that requires correlation across multiple log sources</li><li>Hunting for adversary activity using known TTPs and IOCs</li><li>Building detection rules for specific attack patterns</li><li>Reconstructing an incident timeline from disparate log sources</li><li>Analyzing authentication anomalies, lateral movement, or data exfiltration patterns</li><li>Searching only the last 24 hours when the credential stuffing may have occurred over weeks</li><li>Failing to normalize timestamps across log sources in different time zones</li><li>SOC analysts investigate alerts related to Windows authentication, process execution, or AD changes</li><li>Detection engineers build SPL queries for Windows-based threat detection</li><li>Incident responders need forensic timelines of Windows endpoint or domain controller activity</li></ul>
+<h2>Limitations</h2>
+<ul><li>Output still depends on context, data quality, and surrounding analysis.</li><li>The tool should be interpreted as part of a broader workflow, not as a complete answer by itself.</li><li>Capabilities and visibility vary depending on environment, integrations, and available inputs.</li></ul>
+<h2>Related Tools</h2>
+<ul><li>CrowdStrike Falcon, Microsoft Defender For Endpoint, Velociraptor, Elastic Security, Sigma Rules, Splunk Enterprise, Splunk, Volatility</li></ul>
+<h2>Sources</h2>
+<ul><li>analyzing-security-logs-with-splunk</li><li>analyzing-windows-event-logs-in-splunk</li><li>building-threat-hunt-hypothesis-framework</li><li>deploying-decoy-files-for-ransomware-detection</li><li>detecting-dll-sideloading-attacks</li><li>detecting-email-forwarding-rules-attack</li><li>detecting-evasion-techniques-in-endpoint-logs</li><li>detecting-fileless-attacks-on-endpoints</li><li>detecting-fileless-malware-techniques</li><li>detecting-insider-threat-behaviors</li><li>detecting-kerberoasting-attacks</li><li>detecting-lateral-movement-with-splunk</li><li>detecting-malicious-scheduled-tasks-with-sysmon</li><li>detecting-mimikatz-execution-patterns</li><li>detecting-pass-the-hash-attacks</li><li>detecting-privilege-escalation-attempts</li><li>detecting-process-injection-techniques</li><li>detecting-ransomware-encryption-behavior</li><li>detecting-service-account-abuse</li><li>detecting-suspicious-powershell-execution</li><li>detecting-t1055-process-injection-with-sysmon</li><li>detecting-wmi-persistence</li><li>hunting-for-dcom-lateral-movement</li><li>hunting-for-living-off-the-cloud-techniques</li><li>hunting-for-living-off-the-land-binaries</li><li>hunting-for-lolbins-execution-in-endpoint-logs</li><li>hunting-for-persistence-mechanisms-in-windows</li><li>hunting-for-registry-persistence-mechanisms</li><li>hunting-for-scheduled-task-persistence</li><li>hunting-for-shadow-copy-deletion</li><li>hunting-for-spearphishing-indicators</li><li>hunting-for-supply-chain-compromise</li><li>hunting-for-unusual-network-connections</li><li>hunting-for-webshell-activity</li><li>implementing-ransomware-kill-switch-detection</li><li>performing-lateral-movement-detection</li><li>performing-purple-team-atomic-testing</li></ul>
+  <div class="footer-space"></div>
+</article>
+    </main>
+  </body>
+</html>

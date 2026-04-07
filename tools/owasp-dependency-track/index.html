@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Owasp Dependency Track | Cyber Research Wiki</title>
+    <meta name="description" content="Owasp Dependency Track encyclopedia entry." />
+    <link rel="canonical" href="https://danyel-ii.github.io/cyber-research-wiki/tools/owasp-dependency-track/" />
+    <link rel="stylesheet" href="/cyber-research-wiki/assets/wiki.css" />
+  </head>
+  <body>
+    <header class="site-shell">
+      <div class="shell-inner">
+        <a class="brand" href="/cyber-research-wiki/">Cyber Research Wiki</a>
+        <nav class="nav">
+          <a href="/cyber-research-wiki/">Index</a>
+          <a href="https://danyel-ii.github.io/WikiCompanion/">Pocket Atlas</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page-shell">
+      <article class="article">
+  <h1>Owasp Dependency Track</h1>
+<h2>Overview</h2>
+<p>Owasp Dependency Track is a dependency analysis tool that appears across supply chain security workflows in this knowledge base. It is referenced as part of higher-level security analysis, investigation, monitoring, or validation activity rather than as an end in itself.</p>
+<h2>What It Is</h2>
+<p>Owasp Dependency Track is best understood as a supply-chain-security tool in this knowledge base. Its role is conceptual and system-facing rather than procedural: it gives analysts or defenders a structured way to examine evidence, model system behavior, or reason about security state.</p>
+<h2>How It Works</h2>
+<p>Owasp Dependency Track works by turning technical inputs into more interpretable outputs at the system level. Across the source skills, it appears as part of larger analysis, investigation, monitoring, or validation loops rather than as a standalone end state.</p>
+<h2>Core Concepts</h2>
+<ul><li>SBOM</li><li>CycloneDX</li><li>SPDX</li><li>NVD</li><li>CVE</li><li>supply chain</li><li>dependency analysis</li><li>syft</li><li>grype</li><li>supply chain security</li></ul>
+<h2>Typical Workflow</h2>
+<ul><li>syft alpine:latest -o cyclonedx-json &gt; sbom-cyclonedx.json</li><li>syft dir:/path/to/project -o spdx-json &gt; sbom-spdx.json</li><li>syft docker:my-app-container -o cyclonedx-json &gt; sbom.json</li><li>Syft supports over 30 package ecosystems including npm, PyPI, Maven, Go modules, apt, apk, and RPM. The generated SBOM includes package names, versions, licenses, CPE identifiers, and PURL (Package URL) references.</li><li><strong>CycloneDX JSON Structure:</strong></li></ul>
+<h2>Use Cases</h2>
+<ul><li>A new regulatory requirement (EO 14028, EU CRA) mandates SBOM analysis for software deliveries</li><li>Security team needs to assess third-party risk by scanning vendor-provided SBOMs</li><li>CI/CD pipeline requires automated vulnerability checks against generated SBOMs</li><li>Incident response needs to determine if a newly disclosed CVE affects deployed software</li><li>Procurement team requires supply chain risk assessment for a software acquisition</li><li>Vendor SBOMs may be incomplete, missing shaded/bundled JAR files that embed log4j</li><li>SPDX and CycloneDX version differences may affect parser compatibility</li><li>NVD API rate limits can slow analysis when scanning hundreds of components without an API key</li></ul>
+<h2>Limitations</h2>
+<ul><li>Output still depends on context, data quality, and surrounding analysis.</li><li>The tool should be interpreted as part of a broader workflow, not as a complete answer by itself.</li><li>Capabilities and visibility vary depending on environment, integrations, and available inputs.</li></ul>
+<h2>Related Tools</h2>
+<ul><li>And Policy Enforcement, And Validating CycloneDX SBOMs Programmatically, Cyclonedx Python Lib, Grype, Lib4sbom, Nvdlib, Parsing, Syft</li></ul>
+<h2>Sources</h2>
+<ul><li>analyzing-sbom-for-supply-chain-vulnerabilities</li></ul>
+  <div class="footer-space"></div>
+</article>
+    </main>
+  </body>
+</html>

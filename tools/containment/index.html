@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Containment | Cyber Research Wiki</title>
+    <meta name="description" content="Containment encyclopedia entry." />
+    <link rel="canonical" href="https://danyel-ii.github.io/cyber-research-wiki/tools/containment/" />
+    <link rel="stylesheet" href="/cyber-research-wiki/assets/wiki.css" />
+  </head>
+  <body>
+    <header class="site-shell">
+      <div class="shell-inner">
+        <a class="brand" href="/cyber-research-wiki/">Cyber Research Wiki</a>
+        <nav class="nav">
+          <a href="/cyber-research-wiki/">Index</a>
+          <a href="https://danyel-ii.github.io/WikiCompanion/">Pocket Atlas</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page-shell">
+      <article class="article">
+  <h1>Containment</h1>
+<h2>Overview</h2>
+<p>Containment is a malware analysis tool that appears across incident response workflows in this knowledge base. It is referenced as part of higher-level security analysis, investigation, monitoring, or validation activity rather than as an end in itself.</p>
+<h2>What It Is</h2>
+<p>Containment is best understood as a incident-response tool in this knowledge base. Its role is conceptual and system-facing rather than procedural: it gives analysts or defenders a structured way to examine evidence, model system behavior, or reason about security state.</p>
+<h2>How It Works</h2>
+<p>Containment works by turning technical inputs into more interpretable outputs at the system level. Across the source skills, it appears as part of larger analysis, investigation, monitoring, or validation loops rather than as a standalone end state.</p>
+<h2>Core Concepts</h2>
+<ul><li>malware response</li><li>malware analysis</li><li>eradication</li><li>endpoint remediation</li><li>MITRE ATT&amp;CK</li><li>incident response</li></ul>
+<h2>Typical Workflow</h2>
+<ul><li>Review EDR alert details: detection name, file path, hash (SHA-256), process tree</li><li>Check if the detection is a known malware family or generic heuristic detection</li><li>Query the file hash against VirusTotal, MalwareBazaar, and internal threat intelligence</li><li>Examine the process execution chain to determine how the malware was delivered</li><li>SHA-256:     a1b2c3d4e5f6...</li><li>Detection:   CrowdStrike: Malware/Qakbot | VirusTotal: 58/72 engines</li><li>Delivery:    Email attachment (Invoice-Nov2025.docm)</li></ul>
+<h2>Use Cases</h2>
+<ul><li>EDR or antivirus detects malware execution on one or more endpoints</li><li>A user reports suspicious system behavior indicative of malware infection</li><li>Threat intelligence indicates a malware campaign targeting the organization&#39;s industry</li><li>Network monitoring detects beaconing traffic consistent with known malware C2 patterns</li><li>A file detonation in a sandbox returns a malicious verdict</li><li>Focusing only on Emotet and missing the Cobalt Strike second-stage payload</li><li>Failing to extract and block the Cobalt Strike Malleable C2 profile indicators</li></ul>
+<h2>Limitations</h2>
+<ul><li>Output still depends on context, data quality, and surrounding analysis.</li><li>The tool should be interpreted as part of a broader workflow, not as a complete answer by itself.</li><li>Capabilities and visibility vary depending on environment, integrations, and available inputs.</li></ul>
+<h2>Related Tools</h2>
+<ul><li>And Threat Hunting, ANY.RUN, CrowdStrike Falcon, Joe Sandbox, KAPE, MalwareBazaar, Microsoft Defender For Endpoint, VirusTotal</li></ul>
+<h2>Sources</h2>
+<ul><li>conducting-malware-incident-response</li></ul>
+  <div class="footer-space"></div>
+</article>
+    </main>
+  </body>
+</html>

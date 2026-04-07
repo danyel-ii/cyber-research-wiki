@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AWS Lambda Power Tuning | Cyber Research Wiki</title>
+    <meta name="description" content="AWS Lambda Power Tuning encyclopedia entry." />
+    <link rel="canonical" href="https://danyel-ii.github.io/cyber-research-wiki/tools/aws-lambda-power-tuning/" />
+    <link rel="stylesheet" href="/cyber-research-wiki/assets/wiki.css" />
+  </head>
+  <body>
+    <header class="site-shell">
+      <div class="shell-inner">
+        <a class="brand" href="/cyber-research-wiki/">Cyber Research Wiki</a>
+        <nav class="nav">
+          <a href="/cyber-research-wiki/">Index</a>
+          <a href="https://danyel-ii.github.io/WikiCompanion/">Pocket Atlas</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page-shell">
+      <article class="article">
+  <h1>AWS Lambda Power Tuning</h1>
+<h2>Overview</h2>
+<p>AWS Lambda Power Tuning is a cloud security tool that appears across cloud security workflows in this knowledge base. It is referenced as part of higher-level security analysis, investigation, monitoring, or validation activity rather than as an end in itself.</p>
+<h2>What It Is</h2>
+<p>AWS Lambda Power Tuning is best understood as a cloud-security tool in this knowledge base. Its role is conceptual and system-facing rather than procedural: it gives analysts or defenders a structured way to examine evidence, model system behavior, or reason about security state.</p>
+<h2>How It Works</h2>
+<p>AWS Lambda Power Tuning works by turning technical inputs into more interpretable outputs at the system level. Across the source skills, it appears as part of larger analysis, investigation, monitoring, or validation loops rather than as a standalone end state.</p>
+<h2>Core Concepts</h2>
+<ul><li>serverless security</li><li>aws lambda</li><li>azure functions</li><li>function hardening</li><li>supply chain</li><li>cloud security</li></ul>
+<h2>Typical Workflow</h2>
+<ul><li>Assign each Lambda function a dedicated IAM role with permissions scoped to only the specific resources it accesses. Never share IAM roles across functions.</li></ul>
+<h2>Use Cases</h2>
+<ul><li>When deploying Lambda functions or Azure Functions with access to sensitive data or cloud APIs</li><li>When auditing existing serverless workloads for overly permissive IAM roles</li><li>When integrating serverless functions into a DevSecOps pipeline with automated security scanning</li><li>When hardcoded secrets or vulnerable dependencies are discovered in function code</li><li>When establishing runtime monitoring for serverless workloads to detect injection or credential theft</li></ul>
+<h2>Limitations</h2>
+<ul><li>Output still depends on context, data quality, and surrounding analysis.</li><li>The tool should be interpreted as part of a broader workflow, not as a complete answer by itself.</li><li>Capabilities and visibility vary depending on environment, integrations, and available inputs.</li></ul>
+<h2>Related Tools</h2>
+<ul><li>And Insecure Configurations, AWS X Ray, GuardDuty Lambda Protection, Hardcoded Secrets, Semgrep, Snyk</li></ul>
+<h2>Sources</h2>
+<ul><li>securing-serverless-functions</li></ul>
+  <div class="footer-space"></div>
+</article>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Jsql Injection | Cyber Research Wiki</title>
+    <meta name="description" content="Jsql Injection encyclopedia entry." />
+    <link rel="canonical" href="https://danyel-ii.github.io/cyber-research-wiki/tools/jsql-injection/" />
+    <link rel="stylesheet" href="/cyber-research-wiki/assets/wiki.css" />
+  </head>
+  <body>
+    <header class="site-shell">
+      <div class="shell-inner">
+        <a class="brand" href="/cyber-research-wiki/">Cyber Research Wiki</a>
+        <nav class="nav">
+          <a href="/cyber-research-wiki/">Index</a>
+          <a href="https://danyel-ii.github.io/WikiCompanion/">Pocket Atlas</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page-shell">
+      <article class="article">
+  <h1>Jsql Injection</h1>
+<h2>Overview</h2>
+<p>Jsql Injection is a penetration testing tool that appears across penetration testing workflows in this knowledge base. It is referenced as part of higher-level security analysis, investigation, monitoring, or validation activity rather than as an end in itself.</p>
+<h2>What It Is</h2>
+<p>Jsql Injection is best understood as a penetration-testing tool in this knowledge base. Its role is conceptual and system-facing rather than procedural: it gives analysts or defenders a structured way to examine evidence, model system behavior, or reason about security state.</p>
+<h2>How It Works</h2>
+<p>Jsql Injection works by turning technical inputs into more interpretable outputs at the system level. Across the source skills, it appears as part of larger analysis, investigation, monitoring, or validation loops rather than as a standalone end state.</p>
+<h2>Core Concepts</h2>
+<ul><li>SQL injection</li><li>sqlmap</li><li>database security</li><li>OWASP A03</li><li>injection testing</li><li>penetration testing</li><li>owasp</li><li>web security</li><li>web application security</li></ul>
+<h2>Typical Workflow</h2>
+<ul><li><strong>Map all input vectors</strong>: Catalog every parameter in URLs (GET), request bodies (POST), HTTP headers (Cookie, Referer, User-Agent, X-Forwarded-For), and JSON/XML API payloads</li><li><strong>Error-based detection</strong>: Inject a single quote (<code>&#39;</code>) into each parameter and observe the response. SQL errors (e.g., &quot;You have an error in your SQL syntax&quot;, &quot;unterminated quoted string&quot;, &quot;ORA-01756&quot;) confirm the parameter reaches the database unsanitized.</li><li><strong>Boolean-based detection</strong>: Inject <code>&#39; AND 1=1--</code> (true condition) and <code>&#39; AND 1=2--</code> (false condition). If the responses differ (different content length, different data returned, different HTTP status), the parameter is injectable.</li><li><strong>Time-based detection</strong>: Inject <code>&#39;; WAITFOR DELAY &#39;0:0:5&#39;--</code> (MSSQL), <code>&#39; AND SLEEP(5)--</code> (MySQL), or <code>&#39;; SELECT pg_sleep(5)--</code> (PostgreSQL). A 5-second response delay confirms injection.</li><li><strong>Out-of-band detection</strong>: Use payloads that trigger DNS or HTTP requests to a Burp Collaborator domain to confirm injection in scenarios where responses are not directly observable.</li><li><strong>Second-order injection</strong>: Test for injection where input is stored and later used in a different SQL query (e.g., username stored at registration, used in a query on the profile page).</li><li><strong>Error-based fingerprinting</strong>: Each database produces distinctive error messages. MySQL includes &quot;MySQL&quot;, MSSQL mentions &quot;SQL Server&quot;, PostgreSQL references &quot;PG&quot;, Oracle contains &quot;ORA-&quot;.</li><li>MySQL: <code>&#39; AND VERSION()--</code> or <code>&#39; AND @@version--</code></li><li>MSSQL: <code>&#39; AND @@version--</code> or <code>&#39; AND DB_NAME()--</code></li><li>Manually browse the application and identify parameters that interact with the database. Use Burp Suite to capture requests.</li></ul>
+<h2>Use Cases</h2>
+<ul><li>Testing web application input parameters for SQL injection vulnerabilities during an authorized penetration test</li><li>Validating that parameterized queries and input sanitization are properly implemented across all database interactions</li><li>Demonstrating the business impact of a confirmed SQL injection vulnerability by extracting sensitive data</li><li>Verifying that WAF rules and input validation controls effectively block SQL injection payloads</li><li>Testing stored procedures, dynamic SQL, and ORM bypass scenarios in enterprise applications</li><li>Running sqlmap with default settings against a production database and causing excessive load or data corruption</li><li>Extracting and storing actual patient data during the assessment rather than limiting proof to record counts and schema</li><li>During authorized web application penetration testing engagements</li><li>When manual testing reveals potential SQL injection points in parameters, headers, or cookies</li><li>For validating SQL injection findings from automated scanners like Burp Suite or OWASP ZAP</li></ul>
+<h2>Limitations</h2>
+<ul><li>Output still depends on context, data quality, and surrounding analysis.</li><li>The tool should be interpreted as part of a broader workflow, not as a complete answer by itself.</li><li>Capabilities and visibility vary depending on environment, integrations, and available inputs.</li></ul>
+<h2>Related Tools</h2>
+<ul><li>Burp Suite Professional, Havij, Sqlmap, And File Read, And Replaying Requests With SQL Injection Payloads Across All Parameter Types, Database Extraction, DBeaver, Modifying</li></ul>
+<h2>Sources</h2>
+<ul><li>exploiting-sql-injection-vulnerabilities</li><li>exploiting-sql-injection-with-sqlmap</li></ul>
+  <div class="footer-space"></div>
+</article>
+    </main>
+  </body>
+</html>

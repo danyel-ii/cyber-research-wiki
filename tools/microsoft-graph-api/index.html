@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Microsoft Graph API | Cyber Research Wiki</title>
+    <meta name="description" content="Microsoft Graph API encyclopedia entry." />
+    <link rel="canonical" href="https://danyel-ii.github.io/cyber-research-wiki/tools/microsoft-graph-api/" />
+    <link rel="stylesheet" href="/cyber-research-wiki/assets/wiki.css" />
+  </head>
+  <body>
+    <header class="site-shell">
+      <div class="shell-inner">
+        <a class="brand" href="/cyber-research-wiki/">Cyber Research Wiki</a>
+        <nav class="nav">
+          <a href="/cyber-research-wiki/">Index</a>
+          <a href="https://danyel-ii.github.io/WikiCompanion/">Pocket Atlas</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page-shell">
+      <article class="article">
+  <h1>Microsoft Graph API</h1>
+<h2>Overview</h2>
+<p>Microsoft Graph API is a cloud security tool that appears across cloud security workflows in this knowledge base. It is referenced as part of higher-level security analysis, investigation, monitoring, or validation activity rather than as an end in itself.</p>
+<h2>What It Is</h2>
+<p>Microsoft Graph API is best understood as a cloud-security tool in this knowledge base. Its role is conceptual and system-facing rather than procedural: it gives analysts or defenders a structured way to examine evidence, model system behavior, or reason about security state.</p>
+<h2>How It Works</h2>
+<p>Microsoft Graph API works by turning technical inputs into more interpretable outputs at the system level. Across the source skills, it appears as part of larger analysis, investigation, monitoring, or validation loops rather than as a standalone end state.</p>
+<h2>Core Concepts</h2>
+<ul><li>cloud security</li><li>azure</li><li>entra id</li><li>active directory</li><li>iam audit</li><li>conditional access</li><li>OAuth</li><li>Azure AD</li><li>Microsoft Graph</li><li>illicit consent</li><li>application permissions</li><li>passwordless</li></ul>
+<h2>Typical Workflow</h2>
+<ul><li>Assess the tenant&#39;s baseline identity security settings including security defaults and legacy authentication status.</li><li>Connect-MgGraph -Scopes &quot;Directory.Read.All&quot;,&quot;Policy.Read.All&quot;,&quot;AuditLog.Read.All&quot;</li><li>Get-MgOrganization | Select-Object DisplayName, Id, VerifiedDomains</li><li>Get-MgPolicyIdentitySecurityDefaultEnforcementPolicy | Select-Object IsEnabled</li><li>Get-MgPolicyAuthenticationMethodPolicy | ConvertTo-Json -Depth 5</li><li>Connect-MgGraph -Scopes &quot;Policy.ReadWrite.AuthenticationMethod&quot;, &quot;User.ReadWrite.All&quot;</li><li>OAuth Grant Inventory - Microsoft Entra ID</li><li>Enumerates all application registrations, service principals,</li><li>and delegated/application permission grants.</li><li>from collections import defaultdict</li></ul>
+<h2>Use Cases</h2>
+<ul><li>When performing a security assessment of an Azure tenant&#39;s identity configuration</li><li>When compliance audits require review of authentication policies, MFA enforcement, and role assignments</li><li>When onboarding a new Azure tenant after merger or acquisition</li><li>When investigating suspicious sign-in activity or compromised accounts</li><li>When validating conditional access policies adequately protect against identity-based attacks</li><li>When investigating security incidents that require detecting suspicious oauth application consent</li><li>When building detection rules or threat hunting queries for this domain</li><li>When SOC analysts need structured procedures for this analysis type</li><li>When validating security monitoring coverage for related attack techniques</li><li>Organization wants to eliminate password-based attacks (phishing, credential stuffing, brute force)</li></ul>
+<h2>Limitations</h2>
+<ul><li>Output still depends on context, data quality, and surrounding analysis.</li><li>The tool should be interpreted as part of a broader workflow, not as a complete answer by itself.</li><li>Capabilities and visibility vary depending on environment, integrations, and available inputs.</li></ul>
+<h2>Related Tools</h2>
+<ul><li>Microsoft Entra Admin Center, Policies, And Audit Logs, And Automating Scope Reviews, And Generating Adoption Reports, And Identity Checks, And Monitoring Sign In Analytics, And OAuth Grant Management</li></ul>
+<h2>Sources</h2>
+<ul><li>auditing-azure-active-directory-configuration</li><li>detecting-suspicious-oauth-application-consent</li><li>implementing-passwordless-auth-with-microsoft-entra</li><li>performing-oauth-scope-minimization-review</li></ul>
+  <div class="footer-space"></div>
+</article>
+    </main>
+  </body>
+</html>

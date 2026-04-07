@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Ory Hydra | Cyber Research Wiki</title>
+    <meta name="description" content="Ory Hydra is an open-source, OpenID Certified OAuth 2.0 and OpenID Connect (OIDC) authorization server that exposes headless APIs for issuing and managing tokens used to protect APIs and applications." />
+    <link rel="canonical" href="https://danyel-ii.github.io/cyber-research-wiki/tools/hydra/" />
+    <link rel="stylesheet" href="/cyber-research-wiki/assets/wiki.css" />
+  </head>
+  <body>
+    <header class="site-shell">
+      <div class="shell-inner">
+        <a class="brand" href="/cyber-research-wiki/">Cyber Research Wiki</a>
+        <nav class="nav">
+          <a href="/cyber-research-wiki/">Index</a>
+          <a href="https://danyel-ii.github.io/WikiCompanion/">Pocket Atlas</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page-shell">
+      <article class="article">
+  <h1>Ory Hydra</h1>
+<blockquote><p>Ory Hydra is an open-source, OpenID Certified OAuth 2.0 and OpenID Connect (OIDC) authorization server that exposes headless APIs for issuing and managing tokens used to protect APIs and applications.</p></blockquote>
+<h2>Overview</h2>
+<p>In API security discourse, “Hydra” typically denotes Ory Hydra, not the unrelated THC Hydra password brute‑forcer. Ory Hydra implements the authorization server role for OAuth 2.0 and the OpenID Provider (OP) role for OIDC. It emphasizes standards conformance, scalability, and API‑first operation, delegating end‑user interactions to external systems. Rather than providing identity management or UI, Hydra integrates with an external identity provider or a custom login/consent application to perform authentication and consent, while it focuses on token issuance, discovery, and key management required to secure APIs and applications.</p>
+<h2>What It Is</h2>
+<ul><li>A standards‑compliant OAuth 2.0/OIDC authorization server and OpenID Provider that can be self‑hosted or consumed as a managed service.</li><li>An OpenID Foundation Certified implementation used to issue access tokens, refresh tokens, and ID tokens to clients accessing protected resources.</li><li>A component of the Ory ecosystem; it integrates with (but does not require) Ory Kratos for identity and Ory Keto for fine‑grained authorization.</li></ul>
+<h2>How It Works</h2>
+<p>Hydra exposes two distinct API surfaces. The Public API handles authorization, token issuance, discovery, logout, and revocation. The Admin API governs client lifecycle, token introspection, cryptographic key management, and callbacks that accept or deny login/consent challenges. End‑user authentication and consent are externalized: a separate login/consent application authenticates users against an identity store (such as an IdP or Ory Kratos) and then signals Hydra via the Admin API with the subject and approved scopes/claims. Hydra signs tokens and publishes public keys through standard OIDC discovery and JWKS endpoints, enabling resource servers to validate JWTs locally. Depending on deployment choices, resource servers can also query token state via introspection. Hydra supports dynamic client registration, OIDC discovery metadata publication, and JSON Web Key generation and rotation through administrative endpoints.</p>
+<h2>Core Concepts</h2>
+<ul><li>OAuth 2.0 Authorization Server and OIDC Provider roles</li><li>Login/Consent application (externalizes user auth and consent)</li><li>Public vs. Admin API separation</li><li>Token issuance and validation (JWT/JWKS, discovery, introspection)</li><li>Dynamic client registration and discovery</li><li>Standards compliance and OpenID Certification</li></ul>
+<h2>Typical Workflow</h2>
+<ul><li>A client initiates an OAuth 2.0/OIDC authorization flow using Hydra’s public endpoints.</li><li>Hydra delegates authentication and consent to an external login/consent application.</li><li>The login/consent application authenticates the user against an IdP and returns accept/deny via Hydra’s admin callbacks with subject and approved scopes/claims.</li><li>Hydra issues tokens at the token endpoint; clients present access tokens to protected APIs.</li><li>Resource servers validate tokens using JWKS for JWTs or via token introspection depending on deployment mode.</li><li>Administrators manage clients, keys, and related policies through the Admin API or CLI.</li></ul>
+<h2>Use Cases</h2>
+<ul><li>Provide a standards‑compliant authorization server for protecting REST/GraphQL APIs and microservices.</li><li>Model and test OAuth 2.0/OIDC flows during API security design reviews and threat modeling.</li><li>Validate token handling in downstream services (e.g., ID token claims, audience/scope enforcement).</li><li>Integrate with existing identity stores by delegating authentication to a custom login/consent app or IdP.</li><li>Support conformance‑oriented deployments that require discovery, JWKS, introspection, and revocation.</li></ul>
+<h2>Limitations</h2>
+<ul><li>Not an identity provider or user management system; registration, password resets, and MFA are handled by the external login/consent app or IdP.</li><li>Requires strict segregation of Public and Admin APIs; exposing admin endpoints publicly is unsafe.</li><li>Capabilities vary by configuration: in stateless JWT modes, operations such as introspection, revocation, or userinfo may not be available.</li><li>Security depends on correct client metadata, redirect URIs, scopes, and key rotation; misconfiguration can undermine a compliant deployment.</li><li>Focuses on the authorization server role; fine‑grained authorization (ABAC/RBAC/relationships) is typically enforced by resource servers or separate systems (e.g., Ory Keto).</li></ul>
+<h2>Related Tools</h2>
+<ul><li>Ory Kratos: Complementary identity provider/user management used as the login/consent backend.</li><li>Ory Keto: Complementary authorization service for fine‑grained permissions beyond token issuance.</li><li>Keycloak: Alternative self‑hosted IdP/OP that combines identity management and OIDC/OAuth2 server features.</li><li>Auth0 / Okta: Commercial IdP/OP platforms that provide OAuth2/OIDC and user management.</li><li>OpenID Conformance Suite: Certification and testing harness used to validate OIDC/OAuth server behavior.</li><li>jwt_tool, Burp Suite JWT Editor: Security analysis tools for inspecting and validating JWT behavior issued by an authorization server.</li></ul>
+<h2>Evidence Gaps</h2>
+<ul><li>The term “Hydra” is ambiguous in security contexts; sources must distinguish Ory Hydra (authorization server) from THC Hydra (password brute‑forcer).</li><li>Exact current release version may change frequently; verify version and change notes for time‑sensitive claims in a given deployment.</li></ul>
+<h2>Sources</h2>
+<ul><li><a href="https://www.ory.com/hydra">Ory Hydra – product/overview page</a> (Ory)</li><li><a href="https://github.com/ory/hydra">Ory Hydra – GitHub repository (official)</a> (GitHub)</li><li><a href="https://openid.net/developers/certified-openid-connect-implementations/">OpenID Foundation – Certified OpenID Connect Implementations (includes Ory Hydra)</a> (OpenID Foundation)</li><li><a href="https://ory.gitbooks.io/hydra/content/2-overview/1-oauth2.html">Hydra official guide (archived) – Ory Hydra does not include user authentication; uses login/consent app</a> (Ory)</li><li><a href="https://deepwiki.com/ory/hydra/7.1-admin-api">DeepWiki mirror of Ory docs – Public/Admin APIs and JWKS endpoints</a> (DeepWiki)</li><li><a href="https://deepwiki.com/ory/hydra/3.4-json-web-key-management">DeepWiki mirror of Ory docs – JSON Web Key Management and JWKS</a> (DeepWiki)</li><li><a href="https://changelog.ory.com/announcements/ory-hydra-ory-keto-ory-network-v25-4-3-released">Ory Changelog – Advisory and changes affecting Hydra behavior</a> (Ory Changelog)</li><li><a href="https://www.ory.com/blog/when-to-use-oauth2-scaling-enterprise-authentication-and-authorization">Ory blog – When to use OAuth2 (Hydra issues access/refresh/ID tokens; identity via Kratos)</a> (Ory)</li><li><a href="https://community.ory.sh/t/how-to-validate-a-token-when-api-server-is-outside-of-internal-subnet/1236">Ory community discussion – token validation and JWKS vs introspection</a> (Ory Community)</li><li><a href="https://www.ory.sh/blog/hydra-v1-stable-release">Ory blog – Hydra v1 stable and certification announcement</a> (Ory)</li><li><a href="https://www.ory.com/hydra/">https://www.ory.com/hydra/</a> (ory.com)</li><li><a href="https://github.com/ory/hydra/releases">https://github.com/ory/hydra/releases</a> (github.com)</li></ul>
+<h2>Confidence</h2>
+<p>high</p>
+  <div class="footer-space"></div>
+</article>
+    </main>
+  </body>
+</html>

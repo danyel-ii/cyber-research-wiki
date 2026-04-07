@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Chronicle Soar | Cyber Research Wiki</title>
+    <meta name="description" content="Chronicle Soar encyclopedia entry." />
+    <link rel="canonical" href="https://danyel-ii.github.io/cyber-research-wiki/tools/chronicle-soar/" />
+    <link rel="stylesheet" href="/cyber-research-wiki/assets/wiki.css" />
+  </head>
+  <body>
+    <header class="site-shell">
+      <div class="shell-inner">
+        <a class="brand" href="/cyber-research-wiki/">Cyber Research Wiki</a>
+        <nav class="nav">
+          <a href="/cyber-research-wiki/">Index</a>
+          <a href="https://danyel-ii.github.io/WikiCompanion/">Pocket Atlas</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page-shell">
+      <article class="article">
+  <h1>Chronicle Soar</h1>
+<h2>Overview</h2>
+<p>Chronicle Soar is a detection engineering tool that appears across soc operations workflows in this knowledge base. It is referenced as part of higher-level security analysis, investigation, monitoring, or validation activity rather than as an end in itself.</p>
+<h2>What It Is</h2>
+<p>Chronicle Soar is best understood as a soc-operations tool in this knowledge base. Its role is conceptual and system-facing rather than procedural: it gives analysts or defenders a structured way to examine evidence, model system behavior, or reason about security state.</p>
+<h2>How It Works</h2>
+<p>Chronicle Soar works by turning technical inputs into more interpretable outputs at the system level. Across the source skills, it appears as part of larger analysis, investigation, monitoring, or validation loops rather than as a standalone end state.</p>
+<h2>Core Concepts</h2>
+<ul><li>soc</li><li>alert fatigue</li><li>tuning</li><li>risk based alerting</li><li>false positive</li><li>siem</li><li>detection engineering</li><li>soc operations</li></ul>
+<h2>Typical Workflow</h2>
+<ul><li>--- Alert volume and disposition analysis (last 90 days)</li><li>index=notable earliest=-90d</li><li>| stats count AS total_alerts,</li><li>sum(eval(if(status_label=&quot;Resolved - True Positive&quot;, 1, 0))) AS true_positives,</li><li>sum(eval(if(status_label=&quot;Resolved - False Positive&quot;, 1, 0))) AS false_positives,</li><li>sum(eval(if(status_label=&quot;Resolved - Benign&quot;, 1, 0))) AS benign,</li><li>sum(eval(if(status_label=&quot;New&quot; OR status_label=&quot;In Progress&quot;, 1, 0))) AS unresolved</li><li>| eval fp_rate = round(false_positives / total_alerts * 100, 1)</li><li>| eval tp_rate = round(true_positives / total_alerts * 100, 1)</li></ul>
+<h2>Use Cases</h2>
+<ul><li>SOC analysts face more alerts than they can reasonably investigate (&gt;100 alerts/analyst/shift)</li><li>False positive rates exceed 70% on key detection rules</li><li>True positives are being missed or dismissed due to alert volume</li><li>Management reports declining analyst morale or increasing turnover related to workload</li><li><strong>Post-RBA Implementation</strong>: Convert 15 threshold alerts into risk contributions, reducing daily volume by 85%</li><li><strong>Quarterly Tuning Cycle</strong>: Review top 20 noisiest rules, apply exclusions, measure FP rate improvement</li><li><strong>New Tool Deployment</strong>: After deploying new EDR, tune initial detection rules to baseline the environment</li><li><strong>Analyst Capacity Planning</strong>: Calculate optimal alert-to-analyst ratio (target 40-60 alerts/analyst/shift)</li><li><strong>Compliance Balance</strong>: Maintain detection coverage for compliance while reducing operational alert volume</li></ul>
+<h2>Limitations</h2>
+<ul><li>Output still depends on context, data quality, and surrounding analysis.</li><li>The tool should be interpreted as part of a broader workflow, not as a complete answer by itself.</li><li>Capabilities and visibility vary depending on environment, integrations, and available inputs.</li></ul>
+<h2>Related Tools</h2>
+<ul><li>Elastic Detection Rules, Or Route Alerts Based On Enrichment Results, Splunk ES Adaptive Response, Splunk ES Risk Based Alerting, Suppress, Tines</li></ul>
+<h2>Sources</h2>
+<ul><li>implementing-alert-fatigue-reduction</li></ul>
+  <div class="footer-space"></div>
+</article>
+    </main>
+  </body>
+</html>

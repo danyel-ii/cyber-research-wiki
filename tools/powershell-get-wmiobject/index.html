@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Powershell Get Wmiobject | Cyber Research Wiki</title>
+    <meta name="description" content="Powershell Get Wmiobject encyclopedia entry." />
+    <link rel="canonical" href="https://danyel-ii.github.io/cyber-research-wiki/tools/powershell-get-wmiobject/" />
+    <link rel="stylesheet" href="/cyber-research-wiki/assets/wiki.css" />
+  </head>
+  <body>
+    <header class="site-shell">
+      <div class="shell-inner">
+        <a class="brand" href="/cyber-research-wiki/">Cyber Research Wiki</a>
+        <nav class="nav">
+          <a href="/cyber-research-wiki/">Index</a>
+          <a href="https://danyel-ii.github.io/WikiCompanion/">Pocket Atlas</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page-shell">
+      <article class="article">
+  <h1>Powershell Get Wmiobject</h1>
+<h2>Overview</h2>
+<p>Powershell Get Wmiobject is a threat hunting tool that appears across threat hunting workflows in this knowledge base. It is referenced as part of higher-level security analysis, investigation, monitoring, or validation activity rather than as an end in itself.</p>
+<h2>What It Is</h2>
+<p>Powershell Get Wmiobject is best understood as a threat-hunting tool in this knowledge base. Its role is conceptual and system-facing rather than procedural: it gives analysts or defenders a structured way to examine evidence, model system behavior, or reason about security state.</p>
+<h2>How It Works</h2>
+<p>Powershell Get Wmiobject works by turning technical inputs into more interpretable outputs at the system level. Across the source skills, it appears as part of larger analysis, investigation, monitoring, or validation loops rather than as a standalone end state.</p>
+<h2>Core Concepts</h2>
+<ul><li>threat hunting</li><li>wmi</li><li>persistence</li><li>sysmon</li><li>t1546.003</li><li>mitre attack</li><li>windows</li><li>dfir</li></ul>
+<h2>Typical Workflow</h2>
+<ul><li>1. <strong>Collect Telemetry</strong>: Parse Sysmon Event IDs 19 (WmiEventFilter), 20 (WmiEventConsumer), 21 (WmiEventConsumerToFilter).</li><li>2. <strong>Identify Suspicious Consumers</strong>: Flag CommandLineEventConsumer and ActiveScriptEventConsumer types executing code.</li><li>3. <strong>Analyze Event Filters</strong>: Examine WQL queries in EventFilters for process start triggers or timer-based execution.</li><li>4. <strong>Correlate Bindings</strong>: Match FilterToConsumerBindings linking suspicious filters to consumers.</li><li>6. <strong>Validate Findings</strong>: Cross-reference with known-good WMI subscriptions (SCCM, AV products).</li><li>7. <strong>Document and Remediate</strong>: Remove malicious subscriptions and update detection rules.</li></ul>
+<h2>Use Cases</h2>
+<ul><li>When hunting for WMI event subscription persistence (MITRE ATT&amp;CK T1546.003)</li><li>After detecting suspicious WMI activity in endpoint telemetry</li><li>During incident response to identify attacker persistence mechanisms</li><li>When Sysmon alerts trigger on Event IDs 19, 20, or 21</li><li>During purple team exercises testing WMI-based persistence</li></ul>
+<h2>Limitations</h2>
+<ul><li>Output still depends on context, data quality, and surrounding analysis.</li><li>The tool should be interpreted as part of a broader workflow, not as a complete answer by itself.</li><li>Capabilities and visibility vary depending on environment, integrations, and available inputs.</li></ul>
+<h2>Related Tools</h2>
+<ul><li>Autoruns, Splunk, Sysmon, Velociraptor, WMI Explorer</li></ul>
+<h2>Sources</h2>
+<ul><li>detecting-wmi-persistence</li></ul>
+  <div class="footer-space"></div>
+</article>
+    </main>
+  </body>
+</html>

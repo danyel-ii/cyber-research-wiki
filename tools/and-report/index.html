@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>And Report | Cyber Research Wiki</title>
+    <meta name="description" content="And Report encyclopedia entry." />
+    <link rel="canonical" href="https://danyel-ii.github.io/cyber-research-wiki/tools/and-report/" />
+    <link rel="stylesheet" href="/cyber-research-wiki/assets/wiki.css" />
+  </head>
+  <body>
+    <header class="site-shell">
+      <div class="shell-inner">
+        <a class="brand" href="/cyber-research-wiki/">Cyber Research Wiki</a>
+        <nav class="nav">
+          <a href="/cyber-research-wiki/">Index</a>
+          <a href="https://danyel-ii.github.io/WikiCompanion/">Pocket Atlas</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page-shell">
+      <article class="article">
+  <h1>And Report</h1>
+<h2>Overview</h2>
+<p>And Report is a dynamic analysis tool that appears across malware analysis workflows in this knowledge base. It is referenced as part of higher-level security analysis, investigation, monitoring, or validation activity rather than as an end in itself.</p>
+<h2>What It Is</h2>
+<p>And Report is best understood as a malware-analysis tool in this knowledge base. Its role is conceptual and system-facing rather than procedural: it gives analysts or defenders a structured way to examine evidence, model system behavior, or reason about security state.</p>
+<h2>How It Works</h2>
+<p>And Report works by turning technical inputs into more interpretable outputs at the system level. Across the source skills, it appears as part of larger analysis, investigation, monitoring, or validation loops rather than as a standalone end state.</p>
+<h2>Core Concepts</h2>
+<ul><li>malware</li><li>dynamic analysis</li><li>sandbox</li><li>ANY.RUN</li><li>interactive analysis</li><li>malware analysis</li></ul>
+<h2>Typical Workflow</h2>
+<ul><li>━━━━━━━━━━━━━━━━━━━━━━━━━━</li><li>OS Selection:        Windows 10 x64 (recommended default)</li><li>Windows 7 x64 (for legacy malware)</li><li>Windows 11 x64 (for modern samples)</li><li>Execution Time:      60 seconds (default) / 120-300 for slow-acting malware</li><li>Network:             Connected (captures real C2 traffic)</li><li>Residential Proxy (bypasses geo-blocking)</li><li>Privacy:             Public (free tier) / Private (paid - not indexed)</li></ul>
+<h2>Use Cases</h2>
+<ul><li>Interactive malware analysis is needed where the analyst must click dialogs, enter credentials, or navigate installer screens</li><li>Rapid cloud-based sandbox analysis without maintaining local sandbox infrastructure</li><li>Malware requires user interaction to proceed past anti-sandbox checks (document macros requiring &quot;Enable Content&quot;)</li><li>Sharing analysis results with team members via public or private task URLs</li><li>Comparing behavior across different OS versions (Windows 7, 10, 11) available in ANY.RUN</li><li>Forgetting to enable MITM proxy, resulting in encrypted HTTPS traffic without visibility</li><li>Using too short an execution timeout for malware with delayed execution or sleep timers</li><li>Uploading to public analysis when the sample contains sensitive organizational data</li></ul>
+<h2>Limitations</h2>
+<ul><li>Output still depends on context, data quality, and surrounding analysis.</li><li>The tool should be interpreted as part of a broader workflow, not as a complete answer by itself.</li><li>Capabilities and visibility vary depending on environment, integrations, and available inputs.</li></ul>
+<h2>Related Tools</h2>
+<ul><li>And MITRE ATT&amp;CK Mapping, ANY.RUN, ANY.RUN API, MITRE ATT&amp;CK Navigator, Network Capture, Process Trees, Status Checking, Suricata</li></ul>
+<h2>Sources</h2>
+<ul><li>performing-dynamic-analysis-with-any-run</li></ul>
+  <div class="footer-space"></div>
+</article>
+    </main>
+  </body>
+</html>

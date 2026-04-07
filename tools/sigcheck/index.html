@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sigcheck | Cyber Research Wiki</title>
+    <meta name="description" content="Sigcheck encyclopedia entry." />
+    <link rel="canonical" href="https://danyel-ii.github.io/cyber-research-wiki/tools/sigcheck/" />
+    <link rel="stylesheet" href="/cyber-research-wiki/assets/wiki.css" />
+  </head>
+  <body>
+    <header class="site-shell">
+      <div class="shell-inner">
+        <a class="brand" href="/cyber-research-wiki/">Cyber Research Wiki</a>
+        <nav class="nav">
+          <a href="/cyber-research-wiki/">Index</a>
+          <a href="https://danyel-ii.github.io/WikiCompanion/">Pocket Atlas</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page-shell">
+      <article class="article">
+  <h1>Sigcheck</h1>
+<h2>Overview</h2>
+<p>Sigcheck is a firmware security tool that appears across firmware security workflows in this knowledge base. It is referenced as part of higher-level security analysis, investigation, monitoring, or validation activity rather than as an end in itself.</p>
+<h2>What It Is</h2>
+<p>Sigcheck is best understood as a firmware-security tool in this knowledge base. Its role is conceptual and system-facing rather than procedural: it gives analysts or defenders a structured way to examine evidence, model system behavior, or reason about security state.</p>
+<h2>How It Works</h2>
+<p>Sigcheck works by turning technical inputs into more interpretable outputs at the system level. Across the source skills, it appears as part of larger analysis, investigation, monitoring, or validation loops rather than as a standalone end state.</p>
+<h2>Core Concepts</h2>
+<ul><li>UEFI</li><li>bootkit</li><li>firmware</li><li>Secure Boot</li><li>chipsec</li><li>ESP</li><li>persistence</li><li>firmware security</li><li>threat hunting</li><li>mitre attack</li><li>dll sideloading</li><li>defense evasion</li></ul>
+<h2>Typical Workflow</h2>
+<ul><li>flashrom -p internal -r firmware_dump.rom</li><li>1. <strong>Identify Sideloading Targets</strong>: Research known vulnerable applications that load DLLs without full path qualification (LOLBAS, DLL-sideload databases).</li><li>2. <strong>Monitor DLL Load Events</strong>: Query Sysmon Event ID 7 for DLL loads where the DLL path differs from the application&#39;s expected directory.</li><li>3. <strong>Check DLL Signatures</strong>: Flag unsigned or untrusted DLLs loaded by signed executables.</li><li>4. <strong>Detect Path Anomalies</strong>: Identify legitimate executables running from unusual locations (Temp, AppData, Public) that may be decoy wrappers.</li><li>5. <strong>Hash Verification</strong>: Compare loaded DLL hashes against known-good versions and threat intel feeds.</li><li>6. <strong>Correlate with Process Behavior</strong>: Check if the host process exhibits unusual behavior (network connections, child processes) after loading the suspicious DLL.</li><li>7. <strong>Document and Remediate</strong>: Report sideloading instances, quarantine malicious DLLs, and update detection rules.</li></ul>
+<h2>Use Cases</h2>
+<ul><li>A compromised system re-establishes C2 communication after OS reinstallation or disk replacement</li><li>Secure Boot has been tampered with, disabled, or shows unexpected Machine Owner Key (MOK) enrollment</li><li>Firmware integrity verification fails against vendor-provided baselines</li><li>Memory forensics reveals rootkit components loading during early boot phase</li><li>Investigating advanced persistent threat (APT) campaigns known to deploy UEFI implants</li><li>Auditing firmware security posture for enterprise endpoint hardening</li><li>Running analysis from the compromised OS (rootkit components hide from live analysis)</li><li>Only checking the ESP without examining SPI flash firmware (misses firmware-level implants like LoJax, MoonBounce)</li><li>When investigating potential DLL hijacking in enterprise environments</li><li>After EDR alerts on unsigned DLLs loaded by signed applications</li></ul>
+<h2>Limitations</h2>
+<ul><li>Output still depends on context, data quality, and surrounding analysis.</li><li>The tool should be interpreted as part of a broader workflow, not as a complete answer by itself.</li><li>Capabilities and visibility vary depending on environment, integrations, and available inputs.</li></ul>
+<h2>Related Tools</h2>
+<ul><li>And Comparing Module GUIDs, And Secure Boot Configuration Auditing, Chipsec, CrowdStrike Falcon, DLL Export Viewer, Extracting DXE Drivers, Flashrom, Microsoft Defender For Endpoint</li></ul>
+<h2>Sources</h2>
+<ul><li>analyzing-uefi-bootkit-persistence</li><li>detecting-dll-sideloading-attacks</li></ul>
+  <div class="footer-space"></div>
+</article>
+    </main>
+  </body>
+</html>

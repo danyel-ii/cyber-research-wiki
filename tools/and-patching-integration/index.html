@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>And Patching Integration | Cyber Research Wiki</title>
+    <meta name="description" content="And Patching Integration encyclopedia entry." />
+    <link rel="canonical" href="https://danyel-ii.github.io/cyber-research-wiki/tools/and-patching-integration/" />
+    <link rel="stylesheet" href="/cyber-research-wiki/assets/wiki.css" />
+  </head>
+  <body>
+    <header class="site-shell">
+      <div class="shell-inner">
+        <a class="brand" href="/cyber-research-wiki/">Cyber Research Wiki</a>
+        <nav class="nav">
+          <a href="/cyber-research-wiki/">Index</a>
+          <a href="https://danyel-ii.github.io/WikiCompanion/">Pocket Atlas</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page-shell">
+      <article class="article">
+  <h1>And Patching Integration</h1>
+<h2>Overview</h2>
+<p>And Patching Integration is a soc operations tool that appears across soc operations workflows in this knowledge base. It is referenced as part of higher-level security analysis, investigation, monitoring, or validation activity rather than as an end in itself.</p>
+<h2>What It Is</h2>
+<p>And Patching Integration is best understood as a soc-operations tool in this knowledge base. Its role is conceptual and system-facing rather than procedural: it gives analysts or defenders a structured way to examine evidence, model system behavior, or reason about security state.</p>
+<h2>How It Works</h2>
+<p>And Patching Integration works by turning technical inputs into more interpretable outputs at the system level. Across the source skills, it appears as part of larger analysis, investigation, monitoring, or validation loops rather than as a standalone end state.</p>
+<h2>Core Concepts</h2>
+<ul><li>soc</li><li>vulnerability scanning</li><li>nessus</li><li>qualys</li><li>openvas</li><li>cvss</li><li>remediation</li><li>patch management</li><li>soc operations</li></ul>
+<h2>Typical Workflow</h2>
+<ul><li><strong>Nessus Scan Configuration (API):</strong></li><li>nessus_url = &quot;https://nessus.company.com:8834&quot;</li></ul>
+<h2>Use Cases</h2>
+<ul><li>SOC teams need to establish or improve recurring vulnerability scanning programs</li><li>Scan results require prioritization beyond raw CVSS scores using asset context and threat intelligence</li><li>Vulnerability data must be integrated into SIEM for correlation with exploitation attempts</li><li>Remediation tracking needs formalization with SLA-based dashboards and reporting</li><li><strong>Zero-Day Response</strong>: New CVE published — run targeted scan for affected software, cross-reference with KEV and exploit databases</li><li><strong>Compliance Audit Prep</strong>: Generate PCI DSS or HIPAA vulnerability report showing scan coverage and remediation status</li><li><strong>Post-Patch Verification</strong>: Rescan patched systems to confirm vulnerability closure and update tracking dashboard</li><li><strong>Network Expansion</strong>: New subnet added to infrastructure — onboard to scan scope with appropriate policy</li><li><strong>Third-Party Risk</strong>: Scan externally-facing assets to validate vendor patch compliance before integration</li></ul>
+<h2>Limitations</h2>
+<ul><li>Output still depends on context, data quality, and surrounding analysis.</li><li>The tool should be interpreted as part of a broader workflow, not as a complete answer by itself.</li><li>Capabilities and visibility vary depending on environment, integrations, and available inputs.</li></ul>
+<h2>Related Tools</h2>
+<ul><li>CISA KEV Catalog, OpenVAS, Prioritization, Qualys VMDR, Rapid7 InsightVM, Tenable Nessus, Tenable.io</li></ul>
+<h2>Sources</h2>
+<ul><li>building-vulnerability-scanning-workflow</li></ul>
+  <div class="footer-space"></div>
+</article>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sslstrip2 | Cyber Research Wiki</title>
+    <meta name="description" content="Sslstrip2 encyclopedia entry." />
+    <link rel="canonical" href="https://danyel-ii.github.io/cyber-research-wiki/tools/sslstrip2/" />
+    <link rel="stylesheet" href="/cyber-research-wiki/assets/wiki.css" />
+  </head>
+  <body>
+    <header class="site-shell">
+      <div class="shell-inner">
+        <a class="brand" href="/cyber-research-wiki/">Cyber Research Wiki</a>
+        <nav class="nav">
+          <a href="/cyber-research-wiki/">Index</a>
+          <a href="https://danyel-ii.github.io/WikiCompanion/">Pocket Atlas</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page-shell">
+      <article class="article">
+  <h1>Sslstrip2</h1>
+<h2>Overview</h2>
+<p>Sslstrip2 is a network security tool that appears across network security workflows in this knowledge base. It is referenced as part of higher-level security analysis, investigation, monitoring, or validation activity rather than as an end in itself.</p>
+<h2>What It Is</h2>
+<p>Sslstrip2 is best understood as a network-security tool in this knowledge base. Its role is conceptual and system-facing rather than procedural: it gives analysts or defenders a structured way to examine evidence, model system behavior, or reason about security state.</p>
+<h2>How It Works</h2>
+<p>Sslstrip2 works by turning technical inputs into more interpretable outputs at the system level. Across the source skills, it appears as part of larger analysis, investigation, monitoring, or validation loops rather than as a standalone end state.</p>
+<h2>Core Concepts</h2>
+<ul><li>network security</li><li>ssl stripping</li><li>https</li><li>hsts</li><li>tls security</li></ul>
+<h2>Typical Workflow</h2>
+<ul><li>sudo sysctl -w net.ipv4.ip_forward=1</li><li>sudo bettercap -iface eth0 -eval &quot;set arp.spoof.targets 192.168.1.50; arp.spoof on&quot;</li><li>sudo arpspoof -i eth0 -t 192.168.1.50 -r 192.168.1.1 &amp;</li><li>sudo bettercap -iface eth0</li><li>&gt; set arp.spoof.targets 192.168.1.50</li></ul>
+<h2>Use Cases</h2>
+<ul><li>Testing whether web applications properly enforce HTTPS through HSTS headers and redirect chains</li><li>Validating that HSTS preloading is correctly configured and registered in browser preload lists</li><li>Demonstrating the risk of cleartext HTTP to stakeholders during authorized security assessments</li><li>Assessing whether internal applications and thick clients validate TLS certificates and reject downgrades</li><li>Training SOC teams to detect SSL stripping indicators in network traffic</li><li>Testing with a browser that already has HSTS cached for the target domain and concluding HSTS works, when a first-time visitor might be vulnerable</li><li>Forgetting to test mobile applications which may not respect HSTS headers at all</li></ul>
+<h2>Limitations</h2>
+<ul><li>Output still depends on context, data quality, and surrounding analysis.</li><li>The tool should be interpreted as part of a broader workflow, not as a complete answer by itself.</li><li>Capabilities and visibility vary depending on environment, integrations, and available inputs.</li></ul>
+<h2>Related Tools</h2>
+<ul><li>And Certificate Validation, And Credential Sniffing, Bettercap 2.x, Curl, Hstspreload.org, Mitmproxy, Redirect Chains</li></ul>
+<h2>Sources</h2>
+<ul><li>performing-ssl-stripping-attack</li></ul>
+  <div class="footer-space"></div>
+</article>
+    </main>
+  </body>
+</html>

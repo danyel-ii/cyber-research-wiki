@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Uploading | Cyber Research Wiki</title>
+    <meta name="description" content="Uploading encyclopedia entry." />
+    <link rel="canonical" href="https://danyel-ii.github.io/cyber-research-wiki/tools/uploading/" />
+    <link rel="stylesheet" href="/cyber-research-wiki/assets/wiki.css" />
+  </head>
+  <body>
+    <header class="site-shell">
+      <div class="shell-inner">
+        <a class="brand" href="/cyber-research-wiki/">Cyber Research Wiki</a>
+        <nav class="nav">
+          <a href="/cyber-research-wiki/">Index</a>
+          <a href="https://danyel-ii.github.io/WikiCompanion/">Pocket Atlas</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page-shell">
+      <article class="article">
+  <h1>Uploading</h1>
+<h2>Overview</h2>
+<p>Uploading is a supply chain security tool that appears across supply chain security workflows in this knowledge base. It is referenced as part of higher-level security analysis, investigation, monitoring, or validation activity rather than as an end in itself.</p>
+<h2>What It Is</h2>
+<p>Uploading is best understood as a supply-chain-security tool in this knowledge base. Its role is conceptual and system-facing rather than procedural: it gives analysts or defenders a structured way to examine evidence, model system behavior, or reason about security state.</p>
+<h2>How It Works</h2>
+<p>Uploading works by turning technical inputs into more interpretable outputs at the system level. Across the source skills, it appears as part of larger analysis, investigation, monitoring, or validation loops rather than as a standalone end state.</p>
+<h2>Core Concepts</h2>
+<ul><li>sigstore</li><li>cosign</li><li>rekor</li><li>fulcio</li><li>software signing</li><li>supply chain</li><li>keyless signing</li><li>OIDC</li><li>transparency log</li><li>supply chain security</li></ul>
+<h2>Typical Workflow</h2>
+<ul><li><strong>Install from binary release</strong>: Download the appropriate binary from the Cosign GitHub releases page and verify its checksum. On Linux: <code>curl -LO https://github.com/sigstore/cosign/releases/latest/download/cosign-linux-amd64 &amp;&amp; chmod +x cosign-linux-amd64 &amp;&amp; sudo mv cosign-linux-amd64 /usr/local/bin/cosign</code></li><li><strong>Verify installation</strong>: Run <code>cosign version</code> to confirm the version and check connectivity to Sigstore services with <code>cosign initialize</code> which fetches the TUF root of trust</li><li><strong>Configure custom infrastructure</strong> (optional): If running a private Sigstore stack, set <code>--fulcio-url</code>, <code>--rekor-url</code>, and <code>--oidc-issuer</code> flags or use environment variables <code>COSIGN_REKOR_URL</code> and <code>COSIGN_FULCIO_URL</code></li><li><strong>Sign a container image</strong>: Run <code>cosign sign &lt;IMAGE_DIGEST&gt;</code> which triggers an OIDC authentication flow. Cosign generates an ephemeral key pair, obtains a short-lived certificate from Fulcio binding the public key to the OIDC identity, signs the image digest, and records the signing event in Rekor. The private key is destroyed immediately after signing.</li><li><strong>Sign a blob (file)</strong>: Run <code>cosign sign-blob &lt;file&gt; --bundle artifact.sigstore.json</code> to sign arbitrary files. The bundle contains the signature, certificate, timestamp, and Rekor inclusion proof.</li></ul>
+<h2>Use Cases</h2>
+<ul><li>Signing container images and software artifacts without managing long-lived cryptographic keys</li><li>Establishing verifiable provenance for build outputs in CI/CD pipelines using OIDC identity binding</li><li>Querying the Rekor transparency log to audit when and by whom an artifact was signed</li><li>Verifying that container images pulled from registries were signed by authorized identities and issuers</li><li>Integrating Sigstore verification into Kubernetes admission controllers to enforce signed-image policies</li><li>Signing the image tag instead of the digest (cosign sign myimage:latest vs cosign sign myimage@sha256:abc...) means verification breaks when the tag is updated to point to a different digest</li><li>Forgetting to set id-token: write permission in GitHub Actions results in OIDC token retrieval failure and signing errors</li></ul>
+<h2>Limitations</h2>
+<ul><li>Output still depends on context, data quality, and surrounding analysis.</li><li>The tool should be interpreted as part of a broader workflow, not as a complete answer by itself.</li><li>Capabilities and visibility vary depending on environment, integrations, and available inputs.</li></ul>
+<h2>Related Tools</h2>
+<ul><li>And Attaching Attestations Using Sigstore Keyless Signing Or Traditional Key Based Signing, And Verifying Entries In The Rekor Transparency Log, Artifact Hash, Cosign, Fulcio, Or Public Key, Rekor, Rekor Cli</li></ul>
+<h2>Sources</h2>
+<ul><li>implementing-sigstore-for-software-signing</li></ul>
+  <div class="footer-space"></div>
+</article>
+    </main>
+  </body>
+</html>

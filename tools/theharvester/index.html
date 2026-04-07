@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>theHarvester | Cyber Research Wiki</title>
+    <meta name="description" content="theHarvester is an open‑source reconnaissance tool used to passively and selectively actively enumerate emails, subdomains/hosts, IPs and related URLs for a target domain using multiple public data sources." />
+    <link rel="canonical" href="https://danyel-ii.github.io/cyber-research-wiki/tools/theharvester/" />
+    <link rel="stylesheet" href="/cyber-research-wiki/assets/wiki.css" />
+  </head>
+  <body>
+    <header class="site-shell">
+      <div class="shell-inner">
+        <a class="brand" href="/cyber-research-wiki/">Cyber Research Wiki</a>
+        <nav class="nav">
+          <a href="/cyber-research-wiki/">Index</a>
+          <a href="https://danyel-ii.github.io/WikiCompanion/">Pocket Atlas</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page-shell">
+      <article class="article">
+  <h1>theHarvester</h1>
+<blockquote><p>theHarvester is an open‑source reconnaissance tool used to passively and selectively actively enumerate emails, subdomains/hosts, IPs and related URLs for a target domain using multiple public data sources.</p></blockquote>
+<h2>Overview</h2>
+<p>theHarvester occupies the early reconnaissance and footprinting phase of penetration testing and red team assessments. It aggregates artifacts about an organization from public sources—such as search engines, Certificate Transparency logs, breach and asset databases, and DNS resources—and can perform limited active checks like DNS brute force and host screenshots. The project is distributed as a Python package, widely shipped in security distributions (e.g., Kali), and actively maintained with modular source integrations. Many providers are accessed via optional user‑supplied API keys, and modules are subject to the terms, quotas, and availability of their respective services.</p>
+<h2>What It Is</h2>
+<p>theHarvester is an OSINT collector that queries third‑party services to discover organization‑related artifacts without requiring direct interaction with target infrastructure beyond necessary lookups like DNS resolution. It focuses on collecting emails, subdomains/hosts, IP addresses, and related URLs, and can enrich host findings through optional integrations (e.g., Shodan). Documentation enumerates supported passive modules and API key configuration for sources that require authentication.</p>
+<h2>How It Works</h2>
+<p>At its core, theHarvester implements a modular source architecture. Each source module encapsulates lookups against public datasets and services (for example, DuckDuckGo, crt.sh, SecurityTrails, Censys, HaveIBeenPwned, urlscan.io, ProjectDiscovery Chaos, FOFA, Yahoo, and Zoomeye). When executed, the tool queries selected sources—respecting any provider rate limits or quotas—then normalizes and aggregates results into consolidated findings of emails, hosts/subdomains, IPs, and related URLs. Optional integrations can enrich discovered hosts (such as Shodan lookups) or capture screenshots. A constrained active DNS brute‑force capability can expand subdomain discovery, complementing the primarily passive collection approach.</p>
+<h2>Core Concepts</h2>
+<ul><li>Open‑source intelligence (OSINT)</li><li>Passive reconnaissance</li><li>Target footprinting and attack‑surface discovery</li><li>Third‑party data source aggregation</li><li>API‑driven enrichment</li><li>Selective active checks (DNS brute force, screenshots)</li></ul>
+<h2>Typical Workflow</h2>
+<ul><li>Define scope by specifying the target domain and selecting relevant data sources (often guided by available API keys/quotas).</li><li>Run passive collection to enumerate emails, subdomains/hosts, and URLs from multiple providers; aggregate and de‑duplicate findings.</li><li>Optionally perform selective active checks (e.g., DNS brute‑force expansion, host screenshots) to triage and prioritize assets.</li><li>Export or hand off results to complementary tools for mapping, validation, and risk analysis (e.g., AS/ASN mapping, port/service enumeration, vuln scanning).</li></ul>
+<h2>Use Cases</h2>
+<ul><li>Initial reconnaissance in penetration tests and red team engagements to quickly map external assets.</li><li>Attack‑surface management support by identifying unknown or shadow subdomains and externally reachable hosts.</li><li>Seed collection for social‑engineering pretexting (email address discovery) subject to legal and policy constraints.</li><li>Digital footprint baselining prior to deeper active scanning or continuous monitoring.</li><li>Cross‑checking and enriching outputs from other recon tools with additional public sources.</li></ul>
+<h2>Limitations</h2>
+<ul><li>Dependent on third‑party services and their terms, availability, accuracy, and rate limits; many useful modules require paid or registered API keys.</li><li>Source coverage and modules change over time (e.g., the current README lists supported sources; some historic sources like Google/LinkedIn are not listed), so results vary by version and configuration.</li><li>Not a comprehensive asset inventory by itself; findings should be validated and correlated with other datasets and active scanning where authorized.</li><li>Potential gaps for organizations with minimal public exposure or with strong anti‑scraping controls on platforms.</li><li>Legal/ToS and privacy considerations apply; misuse or violating provider terms can result in blocking or incomplete data.</li><li>Active features are intentionally limited; deep service enumeration, exploitation, or intrusive testing are out of scope for this tool.</li></ul>
+<h2>Related Tools</h2>
+<ul><li>Amass: Alternative/adjacent OSINT and DNS enumeration tool for subdomains and attack‑surface mapping.</li><li>Subfinder: Focused passive subdomain enumeration; often used in tandem to broaden coverage.</li><li>SpiderFoot: Broad OSINT automation framework with 200+ modules; overlaps in data source aggregation.</li><li>Recon‑ng: Modular web reconnaissance framework; similar goal of OSINT collection and reporting.</li><li>Maltego: Link analysis and OSINT graphing platform; often used to visualize theHarvester outputs.</li><li>Shodan: Internet‑wide service search; also a module within theHarvester for host enrichment.</li><li>Censys: Certificate/host search; available as a passive module for subdomain and certificate data.</li><li>crt.sh: Certificate Transparency log search; used as a passive source for subdomain discovery.</li><li>DNSDumpster: Domain research/subdomain discovery site; available as a passive module.</li></ul>
+<h2>Evidence Gaps</h2>
+<ul><li>Public, authoritative changelogs precisely documenting removal of older sources (e.g., Google/LinkedIn) are not clearly published; current support is best inferred from the live README’s module list.</li><li>Independent, peer‑reviewed evaluations comparing recall/precision across sources and versions are limited; most references are practitioner slides and distribution package trackers rather than formal studies.</li></ul>
+<h2>Sources</h2>
+<ul><li><a href="https://cocalc.com/github/laramies/theHarvester/blob/master/README.md">theHarvester README (supported modules, capabilities, API key notes)</a> (GitHub (mirror via CoCalc))</li><li><a href="https://github.com/laramies/theHarvester/wiki/Installation">theHarvester Installation and API keys (Wiki)</a> (GitHub)</li><li><a href="https://pkg.kali.org/pkg/theharvester">Kali Linux Package Tracker – theharvester (version history and packaging)</a> (Kali Linux)</li><li><a href="https://github.com/laramies/theHarvester/releases">theHarvester Releases (active maintenance evidence)</a> (GitHub)</li><li><a href="https://www3.cs.stonybrook.edu/~mikepo/CSE508/2024/lectures/CSE508_2024_lecture_17_reconnaissance.pdf">Stony Brook CSE508 Reconnaissance slides (contextual academic reference)</a> (Stony Brook University CS Department)</li><li><a href="https://owasp.org/www-chapter-dorset/assets/presentations/2020-04/RT_OSINT_Phishing.pdf">OWASP Dorset – Red Teaming OSINT (tool listing context)</a> (OWASP Dorset Chapter)</li><li><a href="https://pkg.kali.org/theharvester">https://pkg.kali.org/theharvester</a> (pkg.kali.org)</li><li><a href="https://www.reddit.com/r/KaliLinux_Hacking/comments/fgxhok">https://www.reddit.com/r/KaliLinux_Hacking/comments/fgxhok</a> (reddit.com)</li><li><a href="https://www.reddit.com/r/Hacking_Tutorials/comments/1mudpgj/help_regarding_kali_linux_overrated_pen/">https://www.reddit.com/r/Hacking_Tutorials/comments/1mudpgj/help_regarding_kali_linux_overrated_pen/</a> (reddit.com)</li><li><a href="https://www.redsiege.com/wp-content/uploads/2021/08/20210824-SIEGECAST_THE_WAY_OF_THE_SPRAY.pdf">https://www.redsiege.com/wp-content/uploads/2021/08/20210824-SIEGECAST_THE_WAY_OF_THE_SPRAY.pdf</a> (redsiege.com)</li><li><a href="https://www.reddit.com/r/OSINT/comments/m42uzf">https://www.reddit.com/r/OSINT/comments/m42uzf</a> (reddit.com)</li><li><a href="https://www.totalsem.com/download/amzn_learning/handouts/pentest_002/Chapter%2012_Tools%20Inventory_Handout.pdf">https://www.totalsem.com/download/amzn_learning/handouts/pentest_002/Chapter%2012_Tools%20Inventory_Handout.pdf</a> (totalsem.com)</li></ul>
+<h2>Confidence</h2>
+<p>high</p>
+  <div class="footer-space"></div>
+</article>
+    </main>
+  </body>
+</html>

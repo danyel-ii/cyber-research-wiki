@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Task Tracking | Cyber Research Wiki</title>
+    <meta name="description" content="Task Tracking encyclopedia entry." />
+    <link rel="canonical" href="https://danyel-ii.github.io/cyber-research-wiki/tools/task-tracking/" />
+    <link rel="stylesheet" href="/cyber-research-wiki/assets/wiki.css" />
+  </head>
+  <body>
+    <header class="site-shell">
+      <div class="shell-inner">
+        <a class="brand" href="/cyber-research-wiki/">Cyber Research Wiki</a>
+        <nav class="nav">
+          <a href="/cyber-research-wiki/">Index</a>
+          <a href="https://danyel-ii.github.io/WikiCompanion/">Pocket Atlas</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page-shell">
+      <article class="article">
+  <h1>Task Tracking</h1>
+<h2>Overview</h2>
+<p>Task Tracking is a incident response tool that appears across incident response workflows in this knowledge base. It is referenced as part of higher-level security analysis, investigation, monitoring, or validation activity rather than as an end in itself.</p>
+<h2>What It Is</h2>
+<p>Task Tracking is best understood as a incident-response tool in this knowledge base. Its role is conceptual and system-facing rather than procedural: it gives analysts or defenders a structured way to examine evidence, model system behavior, or reason about security state.</p>
+<h2>How It Works</h2>
+<p>Task Tracking works by turning technical inputs into more interpretable outputs at the system level. Across the source skills, it appears as part of larger analysis, investigation, monitoring, or validation loops rather than as a standalone end state.</p>
+<h2>Core Concepts</h2>
+<ul><li>incident triage</li><li>NIST 800 61</li><li>SANS PICERL</li><li>severity classification</li><li>SOC operations</li><li>incident response</li></ul>
+<h2>Typical Workflow</h2>
+<ul><li><strong>Alert source</strong>: Which detection system generated the alert (EDR, SIEM, IDS/IPS, firewall, user report)</li><li><strong>Timestamp</strong>: When the event occurred and when it was detected (dwell time gap)</li><li><strong>Affected assets</strong>: Hostnames, IP addresses, user accounts involved</li><li><strong>Alert fidelity</strong>: Historical true-positive rate for this detection rule</li><li><strong>Raw evidence</strong>: Log entries, packet captures, process execution chains</li><li>Source:       CrowdStrike Falcon</li><li>Detection:    Suspicious PowerShell Execution (T1059.001)</li><li>Host:         WORKSTATION-FIN-042</li><li>User:         jsmith@corp.example.com</li></ul>
+<h2>Use Cases</h2>
+<ul><li>A SIEM or EDR alert fires and requires human classification before escalation</li><li>Multiple concurrent alerts arrive and the SOC must prioritize response order</li><li>An end user reports suspicious activity and the incident needs initial categorization</li><li>A threat intelligence feed matches an IOC observed in the environment</li><li>Dismissing encoded PowerShell as a false positive without decoding the payload</li><li>Failing to check for lateral spread to other recipients of the same phishing email</li><li>Remediating the endpoint before capturing volatile memory evidence</li></ul>
+<h2>Limitations</h2>
+<ul><li>Output still depends on context, data quality, and surrounding analysis.</li><li>The tool should be interpreted as part of a broader workflow, not as a complete answer by itself.</li><li>Capabilities and visibility vary depending on environment, integrations, and available inputs.</li></ul>
+<h2>Related Tools</h2>
+<ul><li>And One Click Host Containment, And Team Collaboration, And Triage Workflow Management, Correlation, Cortex XSOAR, CrowdStrike Falcon, MISP, Splunk Enterprise Security</li></ul>
+<h2>Sources</h2>
+<ul><li>triaging-security-incident</li></ul>
+  <div class="footer-space"></div>
+</article>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>API Monitor | Cyber Research Wiki</title>
+    <meta name="description" content="API Monitor encyclopedia entry." />
+    <link rel="canonical" href="https://danyel-ii.github.io/cyber-research-wiki/tools/api-monitor/" />
+    <link rel="stylesheet" href="/cyber-research-wiki/assets/wiki.css" />
+  </head>
+  <body>
+    <header class="site-shell">
+      <div class="shell-inner">
+        <a class="brand" href="/cyber-research-wiki/">Cyber Research Wiki</a>
+        <nav class="nav">
+          <a href="/cyber-research-wiki/">Index</a>
+          <a href="https://danyel-ii.github.io/WikiCompanion/">Pocket Atlas</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page-shell">
+      <article class="article">
+  <h1>API Monitor</h1>
+<h2>Overview</h2>
+<p>API Monitor is a memory forensics tool that appears across malware analysis workflows in this knowledge base. It is referenced as part of higher-level security analysis, investigation, monitoring, or validation activity rather than as an end in itself.</p>
+<h2>What It Is</h2>
+<p>API Monitor is best understood as a malware-analysis tool in this knowledge base. Its role is conceptual and system-facing rather than procedural: it gives analysts or defenders a structured way to examine evidence, model system behavior, or reason about security state.</p>
+<h2>How It Works</h2>
+<p>API Monitor works by turning technical inputs into more interpretable outputs at the system level. Across the source skills, it appears as part of larger analysis, investigation, monitoring, or validation loops rather than as a standalone end state.</p>
+<h2>Core Concepts</h2>
+<ul><li>threat hunting</li><li>mitre attack</li><li>process hollowing</li><li>process injection</li><li>edr</li><li>t1055</li><li>proactive detection</li><li>malware</li><li>detection</li><li>memory forensics</li><li>defense evasion</li><li>malware analysis</li></ul>
+<h2>Typical Workflow</h2>
+<ul><li>1. <strong>Understand Hollowing Mechanics</strong>: Process hollowing involves creating a legitimate process in suspended state, unmapping its memory, writing malicious code, then resuming execution.</li><li>2. <strong>Monitor Suspended Process Creation</strong>: Hunt for processes created with CREATE_SUSPENDED flag followed by memory writes and thread resumption.</li><li>3. <strong>Detect Memory Section Anomalies</strong>: Identify processes where the in-memory image differs from the on-disk binary (image mismatch).</li><li>5. <strong>Check Process Integrity</strong>: Compare process memory sections against the legitimate binary on disk.</li><li>6. <strong>Correlate with Network Activity</strong>: Hollowed processes often establish C2 connections - correlate suspicious process behavior with network logs.</li><li>7. <strong>Document and Contain</strong>: Report findings, isolate affected endpoints, and update detection rules.</li></ul>
+<h2>Use Cases</h2>
+<ul><li>When investigating suspected fileless malware or in-memory threats</li><li>After EDR alerts on process injection or suspicious memory operations</li><li>When hunting for defense evasion techniques in a compromised environment</li><li>When threat intel reports indicate process hollowing in active campaigns</li><li>During purple team exercises validating T1055.012 detection coverage</li><li>EDR alerts on suspicious API call sequences (VirtualAllocEx + WriteProcessMemory + CreateRemoteThread)</li><li>A legitimate process (explorer.exe, svchost.exe) exhibits unexpected network connections or file operations</li><li>Memory forensics reveals executable code in memory regions that should not contain it</li><li>Investigating living-off-the-land attacks where malware hides inside trusted processes</li><li>Building detection logic for specific injection techniques in EDR or SIEM rules</li></ul>
+<h2>Limitations</h2>
+<ul><li>Output still depends on context, data quality, and surrounding analysis.</li><li>The tool should be interpreted as part of a broader workflow, not as a complete answer by itself.</li><li>Capabilities and visibility vary depending on environment, integrations, and available inputs.</li></ul>
+<h2>Related Tools</h2>
+<ul><li>Pe Sieve, Process Hacker, Volatility, And Hollowing, And Injected Modules, CrowdStrike Falcon, Hollows Hunter, Hooking</li></ul>
+<h2>Sources</h2>
+<ul><li>detecting-process-hollowing-technique</li><li>detecting-process-injection-techniques</li></ul>
+  <div class="footer-space"></div>
+</article>
+    </main>
+  </body>
+</html>

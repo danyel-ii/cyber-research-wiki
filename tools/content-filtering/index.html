@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Content Filtering | Cyber Research Wiki</title>
+    <meta name="description" content="Content Filtering encyclopedia entry." />
+    <link rel="canonical" href="https://danyel-ii.github.io/cyber-research-wiki/tools/content-filtering/" />
+    <link rel="stylesheet" href="/cyber-research-wiki/assets/wiki.css" />
+  </head>
+  <body>
+    <header class="site-shell">
+      <div class="shell-inner">
+        <a class="brand" href="/cyber-research-wiki/">Cyber Research Wiki</a>
+        <nav class="nav">
+          <a href="/cyber-research-wiki/">Index</a>
+          <a href="https://danyel-ii.github.io/WikiCompanion/">Pocket Atlas</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page-shell">
+      <article class="article">
+  <h1>Content Filtering</h1>
+<h2>Overview</h2>
+<p>Content Filtering is a network security tool that appears across network security workflows in this knowledge base. It is referenced as part of higher-level security analysis, investigation, monitoring, or validation activity rather than as an end in itself.</p>
+<h2>What It Is</h2>
+<p>Content Filtering is best understood as a network-security tool in this knowledge base. Its role is conceptual and system-facing rather than procedural: it gives analysts or defenders a structured way to examine evidence, model system behavior, or reason about security state.</p>
+<h2>How It Works</h2>
+<p>Content Filtering works by turning technical inputs into more interpretable outputs at the system level. Across the source skills, it appears as part of larger analysis, investigation, monitoring, or validation loops rather than as a standalone end state.</p>
+<h2>Core Concepts</h2>
+<ul><li>network security</li><li>arp spoofing</li><li>mitm</li><li>ettercap</li><li>layer2 attack</li></ul>
+<h2>Typical Workflow</h2>
+<ul><li>nmap -sn -PR 192.168.1.0/24 -oG arp_discovery.txt</li><li>ip route show default</li></ul>
+<h2>Use Cases</h2>
+<ul><li>Testing whether network switches and infrastructure properly implement Dynamic ARP Inspection (DAI)</li><li>Demonstrating man-in-the-middle attack risks to stakeholders during authorized security assessments</li><li>Validating that network monitoring tools (IDS/IPS, SIEM) detect ARP cache poisoning attempts</li><li>Assessing the effectiveness of port security, 802.1X, and VLAN segmentation controls</li><li>Training SOC analysts to recognize ARP spoofing indicators in network traffic</li><li>Running ARP spoofing on a VLAN without DAI and accidentally disrupting legitimate traffic</li><li>Forgetting to enable IP forwarding, causing a denial-of-service instead of transparent interception</li></ul>
+<h2>Limitations</h2>
+<ul><li>Output still depends on context, data quality, and surrounding analysis.</li><li>The tool should be interpreted as part of a broader workflow, not as a complete answer by itself.</li><li>Capabilities and visibility vary depending on environment, integrations, and available inputs.</li></ul>
+<h2>Related Tools</h2>
+<ul><li>And Credential Capture, Arp Scan, Arpspoof, DNS Spoofing, Ettercap, Scapy, Wireshark</li></ul>
+<h2>Sources</h2>
+<ul><li>performing-arp-spoofing-attack-simulation</li></ul>
+  <div class="footer-space"></div>
+</article>
+    </main>
+  </body>
+</html>

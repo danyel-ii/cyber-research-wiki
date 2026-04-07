@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Atomic Red Team | Cyber Research Wiki</title>
+    <meta name="description" content="Atomic Red Team encyclopedia entry." />
+    <link rel="canonical" href="https://danyel-ii.github.io/cyber-research-wiki/tools/atomic-red-team/" />
+    <link rel="stylesheet" href="/cyber-research-wiki/assets/wiki.css" />
+  </head>
+  <body>
+    <header class="site-shell">
+      <div class="shell-inner">
+        <a class="brand" href="/cyber-research-wiki/">Cyber Research Wiki</a>
+        <nav class="nav">
+          <a href="/cyber-research-wiki/">Index</a>
+          <a href="https://danyel-ii.github.io/WikiCompanion/">Pocket Atlas</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page-shell">
+      <article class="article">
+  <h1>Atomic Red Team</h1>
+<h2>Overview</h2>
+<p>Atomic Red Team is a soc operations tool that appears across soc operations workflows in this knowledge base. It is referenced as part of higher-level security analysis, investigation, monitoring, or validation activity rather than as an end in itself.</p>
+<h2>What It Is</h2>
+<p>Atomic Red Team is best understood as a soc-operations tool in this knowledge base. Its role is conceptual and system-facing rather than procedural: it gives analysts or defenders a structured way to examine evidence, model system behavior, or reason about security state.</p>
+<h2>How It Works</h2>
+<p>Atomic Red Team works by turning technical inputs into more interpretable outputs at the system level. Across the source skills, it appears as part of larger analysis, investigation, monitoring, or validation loops rather than as a standalone end state.</p>
+<h2>Core Concepts</h2>
+<ul><li>threat hunting</li><li>DCOM</li><li>lateral movement</li><li>T1021.003</li><li>Sysmon</li><li>MMC20</li><li>ShellWindows</li><li>ShellBrowserWindow</li><li>COM objects</li><li>WMI</li><li>RPC</li><li>soc</li></ul>
+<h2>Typical Workflow</h2>
+<ul><li>DCOM lateral movement exploits three primary COM objects. Each has distinct forensic artifacts.</li><li>attack = json.load(f)</li><li>response = requests.get(</li><li>attack_data = response.json()</li><li>from mitreattack.stix20 import MitreAttackData</li><li>mitre = MitreAttackData(&quot;enterprise-attack.json&quot;)</li><li>techniques = mitre.get_techniques(remove_revoked_deprecated=True)</li><li>print(t[&quot;external_references&quot;][0][&quot;external_id&quot;], t[&quot;name&quot;])</li><li>exercise_id: PT-2024-Q1</li><li>duration: 8 hours (09:00-17:00 UTC)</li></ul>
+<h2>Use Cases</h2>
+<ul><li>Proactively hunting for lateral movement in Active Directory environments where DCOM is enabled</li><li>Investigating alerts for suspicious mmc.exe, dllhost.exe, or explorer.exe child process creation on servers</li><li>Building detection rules for MITRE ATT&amp;CK T1021.003 (Remote Services: Distributed Component Object Model)</li><li>Correlating Sysmon Event ID 1 (Process Create) and Event ID 3 (Network Connection) to trace DCOM-based command execution chains</li><li>Auditing DCOM exposure across the domain to reduce lateral movement attack surface</li><li>During purple team exercises validating detection coverage for DCOM-based techniques</li><li>Dismissing mmc.exe activity as legitimate MMC administration without checking the parent process and command line</li><li>SOC teams need to build or expand their SIEM detection library from scratch</li><li>Threat assessments identify ATT&amp;CK technique gaps requiring new detection rules</li><li>Detection engineers need a structured process for use case design, testing, and deployment</li></ul>
+<h2>Limitations</h2>
+<ul><li>Output still depends on context, data quality, and surrounding analysis.</li><li>The tool should be interpreted as part of a broader workflow, not as a complete answer by itself.</li><li>Capabilities and visibility vary depending on environment, integrations, and available inputs.</li></ul>
+<h2>Related Tools</h2>
+<ul><li>ATT&amp;CK Navigator, Microsoft Sentinel, MITRE Caldera, Sigma, And Incident Review, And Lighthouse Multi Tenant, And ML Based Anomaly Detection, ATT&amp;CK Workbench</li></ul>
+<h2>Sources</h2>
+<ul><li>hunting-for-dcom-lateral-movement</li><li>implementing-siem-use-cases-for-detection</li><li>implementing-threat-modeling-with-mitre-attack</li><li>mapping-mitre-attack-techniques</li><li>performing-purple-team-exercise</li><li>performing-threat-emulation-with-atomic-red-team</li></ul>
+  <div class="footer-space"></div>
+</article>
+    </main>
+  </body>
+</html>

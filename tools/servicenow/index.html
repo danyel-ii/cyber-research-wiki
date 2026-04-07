@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Servicenow | Cyber Research Wiki</title>
+    <meta name="description" content="Servicenow encyclopedia entry." />
+    <link rel="canonical" href="https://danyel-ii.github.io/cyber-research-wiki/tools/servicenow/" />
+    <link rel="stylesheet" href="/cyber-research-wiki/assets/wiki.css" />
+  </head>
+  <body>
+    <header class="site-shell">
+      <div class="shell-inner">
+        <a class="brand" href="/cyber-research-wiki/">Cyber Research Wiki</a>
+        <nav class="nav">
+          <a href="/cyber-research-wiki/">Index</a>
+          <a href="https://danyel-ii.github.io/WikiCompanion/">Pocket Atlas</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page-shell">
+      <article class="article">
+  <h1>Servicenow</h1>
+<h2>Overview</h2>
+<p>Servicenow is a soc operations tool that appears across soc operations workflows in this knowledge base. It is referenced as part of higher-level security analysis, investigation, monitoring, or validation activity rather than as an end in itself.</p>
+<h2>What It Is</h2>
+<p>Servicenow is best understood as a soc-operations tool in this knowledge base. Its role is conceptual and system-facing rather than procedural: it gives analysts or defenders a structured way to examine evidence, model system behavior, or reason about security state.</p>
+<h2>How It Works</h2>
+<p>Servicenow works by turning technical inputs into more interpretable outputs at the system level. Across the source skills, it appears as part of larger analysis, investigation, monitoring, or validation loops rather than as a standalone end state.</p>
+<h2>Core Concepts</h2>
+<ul><li>soc</li><li>soar</li><li>phantom</li><li>splunk soar</li><li>automation</li><li>playbook</li><li>orchestration</li><li>incident response</li><li>soc operations</li></ul>
+<h2>Typical Workflow</h2>
+<ul><li><strong>VirusTotal Asset Configuration:</strong></li></ul>
+<h2>Use Cases</h2>
+<ul><li>SOC teams need to automate repetitive triage and enrichment tasks for high-volume alerts</li><li>Manual response times exceed SLA requirements and automation can reduce MTTR</li><li>Multiple security tools (SIEM, EDR, firewall, TIP) need orchestrated response actions</li><li>Playbook standardization is required to ensure consistent analyst response across shifts</li><li><strong>Phishing Triage</strong>: Auto-extract URLs/attachments, detonate in sandbox, block malicious, create ticket</li><li><strong>Malware Alert Enrichment</strong>: Auto-enrich file hashes across VT/MalwareBazaar, isolate if confirmed malicious</li><li><strong>Brute Force Response</strong>: Auto-check if attack succeeded, disable account if compromised, block source IP</li><li><strong>Threat Intel IOC Processing</strong>: Auto-ingest TI feed IOCs, check against internal logs, create blocks for matches</li><li><strong>Vulnerability Alert Response</strong>: Auto-query asset database for affected systems, create patching ticket with priority</li></ul>
+<h2>Limitations</h2>
+<ul><li>Output still depends on context, data quality, and surrounding analysis.</li><li>The tool should be interpreted as part of a broader workflow, not as a complete answer by itself.</li><li>Capabilities and visibility vary depending on environment, integrations, and available inputs.</li></ul>
+<h2>Related Tools</h2>
+<ul><li>CrowdStrike Falcon, Palo Alto NGFW, Splunk ES, Splunk SOAR</li></ul>
+<h2>Sources</h2>
+<ul><li>implementing-soar-automation-with-phantom</li></ul>
+  <div class="footer-space"></div>
+</article>
+    </main>
+  </body>
+</html>

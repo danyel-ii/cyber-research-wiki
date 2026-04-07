@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Filtering By Function Code | Cyber Research Wiki</title>
+    <meta name="description" content="Filtering By Function Code encyclopedia entry." />
+    <link rel="canonical" href="https://danyel-ii.github.io/cyber-research-wiki/tools/filtering-by-function-code/" />
+    <link rel="stylesheet" href="/cyber-research-wiki/assets/wiki.css" />
+  </head>
+  <body>
+    <header class="site-shell">
+      <div class="shell-inner">
+        <a class="brand" href="/cyber-research-wiki/">Cyber Research Wiki</a>
+        <nav class="nav">
+          <a href="/cyber-research-wiki/">Index</a>
+          <a href="https://danyel-ii.github.io/WikiCompanion/">Pocket Atlas</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page-shell">
+      <article class="article">
+  <h1>Filtering By Function Code</h1>
+<h2>Overview</h2>
+<p>Filtering By Function Code is a ot monitoring tool that appears across ot security workflows in this knowledge base. It is referenced as part of higher-level security analysis, investigation, monitoring, or validation activity rather than as an end in itself.</p>
+<h2>What It Is</h2>
+<p>Filtering By Function Code is best understood as a ot-security tool in this knowledge base. Its role is conceptual and system-facing rather than procedural: it gives analysts or defenders a structured way to examine evidence, model system behavior, or reason about security state.</p>
+<h2>How It Works</h2>
+<p>Filtering By Function Code works by turning technical inputs into more interpretable outputs at the system level. Across the source skills, it appears as part of larger analysis, investigation, monitoring, or validation loops rather than as a standalone end state.</p>
+<h2>Core Concepts</h2>
+<ul><li>Modbus TCP</li><li>SCADA</li><li>ICS security</li><li>deep packet inspection</li><li>anomaly detection</li><li>OT monitoring</li><li>ot security</li></ul>
+<h2>Typical Workflow</h2>
+<ul><li><strong>Configure network tap</strong>: Position the monitoring interface on the SPAN port mirroring the VLAN carrying Modbus TCP traffic between HMI/SCADA servers and PLCs. Verify bidirectional traffic capture with <code>tcpdump -i eth0 port 502 -c 100 -w modbus_capture.pcap</code>.</li><li>Transaction Identifier (2 bytes): Matches requests to responses</li><li>Protocol Identifier (2 bytes): Always 0x0000 for Modbus</li><li>Length (2 bytes): Number of following bytes including Unit ID</li><li>Unit Identifier (1 byte): Slave device address (0-247)</li><li>from scapy.all import rdpcap, TCP</li><li>from scapy.contrib.modbus import ModbusADURequest, ModbusADUResponse</li><li>packets = rdpcap(&quot;modbus_capture.pcap&quot;)</li></ul>
+<h2>Use Cases</h2>
+<ul><li>Monitoring OT/ICS networks for unauthorized Modbus commands targeting PLCs, RTUs, or HMIs</li><li>Detecting reconnaissance activity such as Modbus device enumeration (function code 43, Read Device Identification)</li><li>Identifying unauthorized write operations (function codes 05, 06, 15, 16) to coils and holding registers that could alter physical process parameters</li><li>Baselining normal Modbus communication patterns and alerting on deviations in function code distribution, register access ranges, or timing intervals</li><li>Investigating suspected sabotage or insider threats manipulating SCADA process values through Modbus register writes</li><li>Relying solely on IT-side network monitoring (firewall logs, IDS) that does not inspect Modbus application-layer content and would see only a normal TCP connection on port 502</li><li>Setting the baseline period too short (e.g., 4 hours) and missing legitimate but infrequent write operations that occur only during shift changes or maintenance windows</li></ul>
+<h2>Limitations</h2>
+<ul><li>Output still depends on context, data quality, and surrounding analysis.</li><li>The tool should be interpreted as part of a broader workflow, not as a complete answer by itself.</li><li>Capabilities and visibility vary depending on environment, integrations, and available inputs.</li></ul>
+<h2>Related Tools</h2>
+<ul><li>And ASCII Modes. Used For Building Custom Modbus Clients, And Exception Responses., And Exporting Specific Fields For Analysis., And Historian. Used For Testing Detection Rules Against Realistic SCADA Traffic., And Register Data In Captured Packets., And Simulating Master Slave Communication In Test Environments., And Sniffing Modbus Frames. Enables Field Level Access To MBAP Headers, And Values For Real Time Alerting.</li></ul>
+<h2>Sources</h2>
+<ul><li>monitoring-scada-modbus-traffic-anomalies</li></ul>
+  <div class="footer-space"></div>
+</article>
+    </main>
+  </body>
+</html>

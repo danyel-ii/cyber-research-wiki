@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>OWASP Amass | Cyber Research Wiki</title>
+    <meta name="description" content="OWASP Amass is a framework for mapping internet-exposed assets and attack surfaces using OSINT and optional active reconnaissance, correlating results into a unified asset graph for analysis and tracking." />
+    <link rel="canonical" href="https://danyel-ii.github.io/cyber-research-wiki/tools/amass/" />
+    <link rel="stylesheet" href="/cyber-research-wiki/assets/wiki.css" />
+  </head>
+  <body>
+    <header class="site-shell">
+      <div class="shell-inner">
+        <a class="brand" href="/cyber-research-wiki/">Cyber Research Wiki</a>
+        <nav class="nav">
+          <a href="/cyber-research-wiki/">Index</a>
+          <a href="https://danyel-ii.github.io/WikiCompanion/">Pocket Atlas</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page-shell">
+      <article class="article">
+  <h1>OWASP Amass</h1>
+<blockquote><p>OWASP Amass is a framework for mapping internet-exposed assets and attack surfaces using OSINT and optional active reconnaissance, correlating results into a unified asset graph for analysis and tracking.</p></blockquote>
+<h2>Overview</h2>
+<p>OWASP Amass is an OWASP project for external asset discovery and attack surface mapping. It combines open-source intelligence collection with reconnaissance methods to enumerate internet-facing artifacts—such as domains, subdomains, IP addresses, netblocks, and autonomous systems—and to model the relationships among them. The system is widely used to build an organization’s external footprint and to support subsequent security assessment and monitoring activities.</p>
+<h2>What It Is</h2>
+<p>Amass is a modular discovery framework that aggregates heterogeneous data sources—commercial and community—alongside optional active DNS techniques to produce a consolidated view of an organization’s external presence. It emphasizes subdomain and DNS-centric enumeration while enriching results with infrastructure context (e.g., netblocks and ASNs). The framework includes components for scoping (domains, IP ranges, ASNs), discovery, correlation, persistence, visualization, and longitudinal tracking so that findings can be analyzed as a coherent asset graph and compared across assessments.</p>
+<h2>How It Works</h2>
+<p>Operation is governed by YAML-based configuration that defines targets, operational boundaries, DNS resolvers, and credentials for external intelligence sources. During discovery, Amass queries configured repositories and services—such as certificate transparency logs, WHOIS, passive DNS, and search and security APIs—and can optionally apply active techniques like DNS probing within the declared scope. Collected artifacts are resolved and correlated into a unified model that links names, DNS records, IP addresses, netblocks, and ASNs. Results are persisted to a local store or to external graph/relational backends, enabling dashboards, relationship exploration, and change tracking between runs.</p>
+<h2>Core Concepts</h2>
+<ul><li>Open-source intelligence (OSINT) collection for external attack surface mapping. (<a href="https://owasp.org/www-project-amass/?utm_source=openai">owasp.org</a>)</li><li>DNS and subdomain enumeration (passive and optional active). (<a href="https://github.com/owasp-amass/amass?utm_source=openai">github.com</a>)</li><li>Correlation of multi-source data into a unified asset view/graph. (<a href="https://owasp-amass.github.io/docs/configuration/?utm_source=openai">owasp-amass.github.io</a>)</li><li>Certificate Transparency, WHOIS, and passive DNS as discovery inputs. (<a href="https://owasp-amass.github.io/docs/configuration/data_sources/?utm_source=openai">owasp-amass.github.io</a>)</li><li>Change tracking across runs to monitor asset drift. (<a href="https://github.com/OWASP/Amass/wiki/User-Guide?utm_source=openai">github.com</a>)</li></ul>
+<h2>Typical Workflow</h2>
+<ul><li>Define scope (domains, ASNs, IP ranges) and operational boundaries in the YAML configuration. (<a href="https://owasp-amass.github.io/docs/configuration/?utm_source=openai">owasp-amass.github.io</a>)</li><li>Configure and authorize external data sources to improve coverage. (<a href="https://owasp-amass.github.io/docs/configuration/data_sources/?utm_source=openai">owasp-amass.github.io</a>)</li><li>Run discovery to aggregate passive intelligence and, if permitted, apply active techniques to expand findings. (<a href="https://github.com/owasp-amass/amass?utm_source=openai">github.com</a>)</li><li>Resolve and correlate discovered names to infrastructure (IPs, netblocks, ASNs) and persist results. (<a href="https://github.com/owasp-amass/amass?utm_source=openai">github.com</a>)</li><li>Use visualization/tracking to explore relationships and monitor changes over time or between assessments. (<a href="https://github.com/OWASP/Amass/wiki/User-Guide?utm_source=openai">github.com</a>)</li></ul>
+<h2>Use Cases</h2>
+<ul><li>Initial external reconnaissance and asset inventory ahead of security testing or monitoring. (<a href="https://owasp.org/www-project-amass/?utm_source=openai">owasp.org</a>)</li><li>Continuous external attack surface management (EASM)-style monitoring and change tracking. (<a href="https://github.com/OWASP/Amass/wiki/User-Guide?utm_source=openai">github.com</a>)</li><li>Scoping and prioritizing subsequent testing (e.g., selecting hosts/services for deeper analysis). (<a href="https://github.com/owasp-amass/amass?utm_source=openai">github.com</a>)</li><li>Supporting API security discovery by identifying API-bearing hosts/subdomains that feed downstream API-specific analysis. (Inference based on Amass’s subdomain and asset discovery role.) (<a href="https://github.com/owasp-amass/amass?utm_source=openai">github.com</a>)</li></ul>
+<h2>Limitations</h2>
+<ul><li>Coverage depends on the breadth/quality of configured data sources and available API keys; results may vary without proper integrations. (<a href="https://owasp-amass.github.io/docs/configuration/data_sources/?utm_source=openai">owasp-amass.github.io</a>)</li><li>Optional active techniques can increase noise and must respect legal and policy boundaries for the assessed scope. (<a href="https://owasp.org/www-project-amass/?utm_source=openai">owasp.org</a>)</li><li>Findings can include false positives or shared/cloud-hosted assets that need human verification and context prior to action. (Inference from the nature of OSINT-based discovery.)</li><li>Amass focuses on discovery/mapping rather than vulnerability testing; it is typically paired with other assessment tools for validation. (Inference from official descriptions emphasizing asset discovery and mapping.) (<a href="https://github.com/owasp-amass/amass?utm_source=openai">github.com</a>)</li><li>Not API-specific: it surfaces hosts and infrastructure; dedicated API discovery/inspection tools are required to enumerate endpoints, versions, and semantics. (Inference.)</li></ul>
+<h2>Related Tools</h2>
+<ul><li>ProjectDiscovery Subfinder: Alternative/complementary passive subdomain discovery; often used alongside Amass to broaden coverage before consolidation.</li><li>Nuclei: Downstream templated vulnerability and misconfiguration scanning against assets discovered by Amass.</li><li>Shodan: Internet-wide search engine used after discovery to enrich asset context; also a data source category Amass can leverage via APIs.</li><li>Censys: Internet-wide scanning/search platform for enrichment and verification post-discovery.</li><li>httpx / dnsx (ProjectDiscovery): Lightweight probing and DNS utilities commonly applied to Amass outputs for validation and service inventory.</li><li>Maltego / Graph tools: Visualization/analysis tools that can import Amass data for relationship mapping and pivoting. (<a href="https://github.com/OWASP/Amass/wiki/User-Guide?utm_source=openai">github.com</a>)</li></ul>
+<h2>Evidence Gaps</h2>
+<ul><li>Public documentation is high level about internal engine details; architecture specifics are limited in official docs.</li><li>Official materials emphasize external asset discovery generally; there is little first-party guidance specific to API endpoint enumeration beyond host discovery.</li></ul>
+<h2>Sources</h2>
+<ul><li><a href="https://owasp.org/www-project-amass/">OWASP Amass | OWASP Foundation</a> (OWASP)</li><li><a href="https://github.com/owasp-amass/amass">GitHub - owasp-amass/amass: In-depth attack surface mapping and asset discovery</a> (GitHub / OWASP Amass Project)</li><li><a href="https://owasp-amass.github.io/docs/configuration/">Configuration - OWASP Amass Project</a> (OWASP Amass Documentation)</li><li><a href="https://owasp-amass.github.io/docs/configuration/data_sources/">Data Sources - OWASP Amass Project</a> (OWASP Amass Documentation)</li><li><a href="https://owasp-amass.github.io/docs/dashboards/dashboards/">Dashboards - OWASP Amass Project</a> (OWASP Amass Documentation)</li><li><a href="https://github.com/OWASP/Amass/wiki/User-Guide">User Guide · owasp-amass/amass Wiki</a> (GitHub / OWASP Amass Wiki)</li><li><a href="https://tanosmaalouf.com/how-to/amass">https://tanosmaalouf.com/how-to/amass</a> (tanosmaalouf.com)</li><li><a href="https://nest.owasp.org/organizations/owasp-amass">https://nest.owasp.org/organizations/owasp-amass</a> (nest.owasp.org)</li><li><a href="https://nest.owasp.dev/projects/amass">https://nest.owasp.dev/projects/amass</a> (nest.owasp.dev)</li><li><a href="https://en.wikipedia.org/wiki/OWASP">https://en.wikipedia.org/wiki/OWASP</a> (en.wikipedia.org)</li><li><a href="https://www.threatngsecurity.com/glossary/amass">https://www.threatngsecurity.com/glossary/amass</a> (threatngsecurity.com)</li><li><a href="https://pt.wikipedia.org/wiki/OWASP">https://pt.wikipedia.org/wiki/OWASP</a> (pt.wikipedia.org)</li></ul>
+<h2>Confidence</h2>
+<p>high</p>
+  <div class="footer-space"></div>
+</article>
+    </main>
+  </body>
+</html>

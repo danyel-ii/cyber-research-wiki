@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Iac Scanning | Cyber Research Wiki</title>
+    <meta name="description" content="Iac Scanning encyclopedia entry." />
+    <link rel="canonical" href="https://danyel-ii.github.io/cyber-research-wiki/tools/iac-scanning/" />
+    <link rel="stylesheet" href="/cyber-research-wiki/assets/wiki.css" />
+  </head>
+  <body>
+    <header class="site-shell">
+      <div class="shell-inner">
+        <a class="brand" href="/cyber-research-wiki/">Cyber Research Wiki</a>
+        <nav class="nav">
+          <a href="/cyber-research-wiki/">Index</a>
+          <a href="https://danyel-ii.github.io/WikiCompanion/">Pocket Atlas</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page-shell">
+      <article class="article">
+  <h1>Iac Scanning</h1>
+<h2>Overview</h2>
+<p>Iac Scanning is a penetration testing tool that appears across penetration testing workflows in this knowledge base. It is referenced as part of higher-level security analysis, investigation, monitoring, or validation activity rather than as an end in itself.</p>
+<h2>What It Is</h2>
+<p>Iac Scanning is best understood as a penetration-testing tool in this knowledge base. Its role is conceptual and system-facing rather than procedural: it gives analysts or defenders a structured way to examine evidence, model system behavior, or reason about security state.</p>
+<h2>How It Works</h2>
+<p>Iac Scanning works by turning technical inputs into more interpretable outputs at the system level. Across the source skills, it appears as part of larger analysis, investigation, monitoring, or validation loops rather than as a standalone end state.</p>
+<h2>Core Concepts</h2>
+<ul><li>vulnerability scanning</li><li>Nessus</li><li>CVE</li><li>patch management</li><li>Tenable</li><li>penetration testing</li></ul>
+<h2>Typical Workflow</h2>
+<ul><li><strong>Scan type selection</strong>: Choose &quot;Advanced Scan&quot; for full control over plugin families, or &quot;Credentialed Patch Audit&quot; for patch compliance. Avoid &quot;Basic Network Scan&quot; for penetration tests as it uses a limited plugin set.</li><li><strong>Discovery settings</strong>: Configure port scanning to scan all 65,535 TCP ports and top 1,000 UDP ports. Set host discovery to use ARP (local), TCP SYN, and ICMP for maximum coverage.</li><li><strong>Authentication</strong>: Add Windows credentials (domain account with local admin), SSH credentials (key-based preferred over password), SNMP credentials (v3 with authPriv preferred), and database credentials for database-specific checks.</li><li><strong>Plugin configuration</strong>: Enable all plugin families relevant to the target environment. For penetration testing, ensure &quot;Denial of Service&quot; plugins are disabled unless explicitly authorized. Enable CGI scanning for web servers.</li><li><strong>Performance settings</strong>: Set maximum concurrent hosts per scanner (default 30, reduce for sensitive networks), maximum concurrent checks per host (4-5 for production, higher for test environments), and network timeout values appropriate for the target network.</li><li>Start the scan during the authorized testing window</li><li>Monitor scan progress through the Nessus web interface, checking for hosts timing out, authentication failures, or plugins causing errors</li><li>Watch for credential failures indicated by &quot;Authentication Failure&quot; results; these mean the authenticated scan fell back to unauthenticated mode, producing incomplete results</li><li>If specific hosts are crashing or becoming unresponsive, pause the scan, exclude those hosts, and report the issue to the client</li><li>For large networks (1,000+ hosts), consider splitting scans into smaller subnets to manage load and allow restartability</li></ul>
+<h2>Use Cases</h2>
+<ul><li>Conducting initial vulnerability assessment during the reconnaissance phase of a penetration test</li><li>Performing periodic vulnerability scans to maintain compliance with PCI-DSS (requirement 11.2), HIPAA, or SOC 2 standards</li><li>Validating that remediation efforts have successfully addressed previously identified vulnerabilities</li><li>Establishing a baseline of known vulnerabilities before targeted manual exploitation</li><li>Auditing patch compliance and configuration drift across server and workstation fleets</li><li>Running unauthenticated scans and missing the majority of local vulnerabilities, producing an incomplete compliance report</li><li>Scanning fragile legacy systems without reducing scan intensity, causing crashes or service disruption</li></ul>
+<h2>Limitations</h2>
+<ul><li>Output still depends on context, data quality, and surrounding analysis.</li><li>The tool should be interpreted as part of a broader workflow, not as a complete answer by itself.</li><li>Capabilities and visibility vary depending on environment, integrations, and available inputs.</li></ul>
+<h2>Related Tools</h2>
+<ul><li>And Cloud Infrastructure Assessment, And Compliance Checks, And Prioritization, Misconfigurations, Nessus Expert, Nessus Professional, OpenVAS, Tenable.io</li></ul>
+<h2>Sources</h2>
+<ul><li>performing-vulnerability-scanning-with-nessus</li></ul>
+  <div class="footer-space"></div>
+</article>
+    </main>
+  </body>
+</html>

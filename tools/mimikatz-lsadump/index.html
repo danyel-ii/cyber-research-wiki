@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Mimikatz Lsadump | Cyber Research Wiki</title>
+    <meta name="description" content="Mimikatz Lsadump encyclopedia entry." />
+    <link rel="canonical" href="https://danyel-ii.github.io/cyber-research-wiki/tools/mimikatz-lsadump/" />
+    <link rel="stylesheet" href="/cyber-research-wiki/assets/wiki.css" />
+  </head>
+  <body>
+    <header class="site-shell">
+      <div class="shell-inner">
+        <a class="brand" href="/cyber-research-wiki/">Cyber Research Wiki</a>
+        <nav class="nav">
+          <a href="/cyber-research-wiki/">Index</a>
+          <a href="https://danyel-ii.github.io/WikiCompanion/">Pocket Atlas</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page-shell">
+      <article class="article">
+  <h1>Mimikatz Lsadump</h1>
+<h2>Overview</h2>
+<p>Mimikatz Lsadump is a threat hunting tool that appears across threat hunting workflows in this knowledge base. It is referenced as part of higher-level security analysis, investigation, monitoring, or validation activity rather than as an end in itself.</p>
+<h2>What It Is</h2>
+<p>Mimikatz Lsadump is best understood as a threat-hunting tool in this knowledge base. Its role is conceptual and system-facing rather than procedural: it gives analysts or defenders a structured way to examine evidence, model system behavior, or reason about security state.</p>
+<h2>How It Works</h2>
+<p>Mimikatz Lsadump works by turning technical inputs into more interpretable outputs at the system level. Across the source skills, it appears as part of larger analysis, investigation, monitoring, or validation loops rather than as a standalone end state.</p>
+<h2>Core Concepts</h2>
+<ul><li>threat hunting</li><li>dcsync</li><li>active directory</li><li>credential access</li><li>t1003.006</li><li>mimikatz</li><li>windows</li><li>dfir</li></ul>
+<h2>Typical Workflow</h2>
+<ul><li>1. <strong>Enable Auditing</strong>: Ensure Audit Directory Service Access is enabled on domain controllers.</li><li>2. <strong>Collect Events</strong>: Gather Windows Event ID 4662 with AccessMask 0x100 (Control Access).</li><li>3. <strong>Filter Replication GUIDs</strong>: Search for DS-Replication-Get-Changes and DS-Replication-Get-Changes-All.</li><li>4. <strong>Identify Non-DC Sources</strong>: Flag events where SubjectUserName is not a domain controller machine account.</li><li>5. <strong>Correlate with Network</strong>: Cross-reference source IPs against known DC addresses.</li><li>6. <strong>Validate Findings</strong>: Exclude legitimate replication tools (Azure AD Connect, SCCM).</li><li>7. <strong>Respond</strong>: Disable compromised accounts, reset krbtgt, investigate lateral movement.</li></ul>
+<h2>Use Cases</h2>
+<ul><li>When hunting for DCSync credential theft (MITRE ATT&amp;CK T1003.006)</li><li>After detecting Mimikatz or similar tools in the environment</li><li>During incident response involving Active Directory compromise</li><li>When monitoring for unauthorized domain replication requests</li><li>During purple team exercises testing AD attack detection</li></ul>
+<h2>Limitations</h2>
+<ul><li>Output still depends on context, data quality, and surrounding analysis.</li><li>The tool should be interpreted as part of a broader workflow, not as a complete answer by itself.</li><li>Capabilities and visibility vary depending on environment, integrations, and available inputs.</li></ul>
+<h2>Related Tools</h2>
+<ul><li>BloodHound, Elastic Security, Impacket Secretsdump.py, Splunk, Windows Event Viewer</li></ul>
+<h2>Sources</h2>
+<ul><li>hunting-for-dcsync-attacks</li></ul>
+  <div class="footer-space"></div>
+</article>
+    </main>
+  </body>
+</html>

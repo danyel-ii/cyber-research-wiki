@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Tc | Cyber Research Wiki</title>
+    <meta name="description" content="Tc encyclopedia entry." />
+    <link rel="canonical" href="https://danyel-ii.github.io/cyber-research-wiki/tools/tc/" />
+    <link rel="stylesheet" href="/cyber-research-wiki/assets/wiki.css" />
+  </head>
+  <body>
+    <header class="site-shell">
+      <div class="shell-inner">
+        <a class="brand" href="/cyber-research-wiki/">Cyber Research Wiki</a>
+        <nav class="nav">
+          <a href="/cyber-research-wiki/">Index</a>
+          <a href="https://danyel-ii.github.io/WikiCompanion/">Pocket Atlas</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page-shell">
+      <article class="article">
+  <h1>Tc</h1>
+<h2>Overview</h2>
+<p>Tc is a traffic shaping tool that appears across network security workflows in this knowledge base. It is referenced as part of higher-level security analysis, investigation, monitoring, or validation activity rather than as an end in itself.</p>
+<h2>What It Is</h2>
+<p>Tc is best understood as a network-security tool in this knowledge base. Its role is conceptual and system-facing rather than procedural: it gives analysts or defenders a structured way to examine evidence, model system behavior, or reason about security state.</p>
+<h2>How It Works</h2>
+<p>Tc works by turning technical inputs into more interpretable outputs at the system level. Across the source skills, it appears as part of larger analysis, investigation, monitoring, or validation loops rather than as a standalone end state.</p>
+<h2>Core Concepts</h2>
+<ul><li>network security</li><li>bandwidth throttling</li><li>qos</li><li>traffic shaping</li><li>network resilience</li></ul>
+<h2>Typical Workflow</h2>
+<ul><li>iperf3 -c 10.10.20.10 -t 30 -P 4 -p 5201</li><li>ping -c 100 10.10.20.10 | tail -1</li><li>iperf3 -c 10.10.20.10 -u -b 100M -t 10 -p 5201</li></ul>
+<h2>Use Cases</h2>
+<ul><li>Testing application resilience to degraded network conditions during authorized security assessments</li><li>Validating QoS policies detect and mitigate unauthorized traffic shaping on the network</li><li>Simulating network slowloris-style attacks that degrade bandwidth rather than causing complete outages</li><li>Assessing the impact of bandwidth-based attacks on VoIP, video conferencing, and real-time applications</li><li>Testing network monitoring tools&#39; ability to detect abnormal bandwidth utilization patterns</li><li>Forgetting to remove tc rules after testing, leaving bandwidth limitations in place on the test network</li><li>Testing at rates too low, causing complete call failure instead of measurable degradation</li></ul>
+<h2>Limitations</h2>
+<ul><li>Output still depends on context, data quality, and surrounding analysis.</li><li>The tool should be interpreted as part of a broader workflow, not as a complete answer by itself.</li><li>Capabilities and visibility vary depending on environment, integrations, and available inputs.</li></ul>
+<h2>Related Tools</h2>
+<ul><li>Bettercap, Iperf3, NetFlow, Scapy</li></ul>
+<h2>Sources</h2>
+<ul><li>performing-bandwidth-throttling-attack-simulation</li></ul>
+  <div class="footer-space"></div>
+</article>
+    </main>
+  </body>
+</html>

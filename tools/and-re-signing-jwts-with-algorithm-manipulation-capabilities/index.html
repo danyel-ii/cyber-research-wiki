@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>And Re Signing Jwts With Algorithm Manipulation Capabilities | Cyber Research Wiki</title>
+    <meta name="description" content="And Re Signing Jwts With Algorithm Manipulation Capabilities encyclopedia entry." />
+    <link rel="canonical" href="https://danyel-ii.github.io/cyber-research-wiki/tools/and-re-signing-jwts-with-algorithm-manipulation-capabilities/" />
+    <link rel="stylesheet" href="/cyber-research-wiki/assets/wiki.css" />
+  </head>
+  <body>
+    <header class="site-shell">
+      <div class="shell-inner">
+        <a class="brand" href="/cyber-research-wiki/">Cyber Research Wiki</a>
+        <nav class="nav">
+          <a href="/cyber-research-wiki/">Index</a>
+          <a href="https://danyel-ii.github.io/WikiCompanion/">Pocket Atlas</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page-shell">
+      <article class="article">
+  <h1>And Re Signing Jwts With Algorithm Manipulation Capabilities</h1>
+<h2>Overview</h2>
+<p>And Re Signing Jwts With Algorithm Manipulation Capabilities is a api security tool that appears across api security workflows in this knowledge base. It is referenced as part of higher-level security analysis, investigation, monitoring, or validation activity rather than as an end in itself.</p>
+<h2>What It Is</h2>
+<p>And Re Signing Jwts With Algorithm Manipulation Capabilities is best understood as a api-security tool in this knowledge base. Its role is conceptual and system-facing rather than procedural: it gives analysts or defenders a structured way to examine evidence, model system behavior, or reason about security state.</p>
+<h2>How It Works</h2>
+<p>And Re Signing Jwts With Algorithm Manipulation Capabilities works by turning technical inputs into more interpretable outputs at the system level. Across the source skills, it appears as part of larger analysis, investigation, monitoring, or validation loops rather than as a standalone end state.</p>
+<h2>Core Concepts</h2>
+<ul><li>api security</li><li>jwt</li><li>algorithm confusion</li><li>token forgery</li><li>cryptographic attack</li></ul>
+<h2>Typical Workflow</h2>
+<ul><li>BASE_URL = &quot;https://target-api.example.com/api/v1&quot;</li><li>valid_token = login_resp.json().get(&quot;access_token&quot;, &quot;&quot;)</li></ul>
+<h2>Use Cases</h2>
+<ul><li>Testing APIs that use RS256 (asymmetric) JWT tokens for authentication to check for algorithm downgrade to HS256</li><li>Assessing JWT implementations for alg:none bypass where the server skips signature verification</li><li>Evaluating JWT libraries for key confusion vulnerabilities where the public key is used as HMAC secret</li><li>Testing kid (Key ID), jku (JWK Set URL), and x5u (X.509 URL) header parameters for injection</li><li>Validating that the API server enforces a specific algorithm and does not trust the JWT header</li><li>Using the wrong format of the public key as the HMAC secret (PEM with/without headers, DER, raw bytes)</li><li>Assuming the alg:none defense means algorithm confusion is also mitigated</li></ul>
+<h2>Limitations</h2>
+<ul><li>Output still depends on context, data quality, and surrounding analysis.</li><li>The tool should be interpreted as part of a broader workflow, not as a complete answer by itself.</li><li>Capabilities and visibility vary depending on environment, integrations, and available inputs.</li></ul>
+<h2>Related Tools</h2>
+<ul><li>And Kid Injection, Burp Suite JWT Editor, Editing, Hashcat, John The Ripper, Jwt_tool, Jwt.io, None Bypass</li></ul>
+<h2>Sources</h2>
+<ul><li>exploiting-jwt-algorithm-confusion-attack</li></ul>
+  <div class="footer-space"></div>
+</article>
+    </main>
+  </body>
+</html>

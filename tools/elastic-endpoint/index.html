@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Elastic Endpoint | Cyber Research Wiki</title>
+    <meta name="description" content="Elastic Endpoint encyclopedia entry." />
+    <link rel="canonical" href="https://danyel-ii.github.io/cyber-research-wiki/tools/elastic-endpoint/" />
+    <link rel="stylesheet" href="/cyber-research-wiki/assets/wiki.css" />
+  </head>
+  <body>
+    <header class="site-shell">
+      <div class="shell-inner">
+        <a class="brand" href="/cyber-research-wiki/">Cyber Research Wiki</a>
+        <nav class="nav">
+          <a href="/cyber-research-wiki/">Index</a>
+          <a href="https://danyel-ii.github.io/WikiCompanion/">Pocket Atlas</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page-shell">
+      <article class="article">
+  <h1>Elastic Endpoint</h1>
+<h2>Overview</h2>
+<p>Elastic Endpoint is a behavioral analysis tool that appears across ransomware defense workflows in this knowledge base. It is referenced as part of higher-level security analysis, investigation, monitoring, or validation activity rather than as an end in itself.</p>
+<h2>What It Is</h2>
+<p>Elastic Endpoint is best understood as a ransomware-defense tool in this knowledge base. Its role is conceptual and system-facing rather than procedural: it gives analysts or defenders a structured way to examine evidence, model system behavior, or reason about security state.</p>
+<h2>How It Works</h2>
+<p>Elastic Endpoint works by turning technical inputs into more interpretable outputs at the system level. Across the source skills, it appears as part of larger analysis, investigation, monitoring, or validation loops rather than as a standalone end state.</p>
+<h2>Core Concepts</h2>
+<ul><li>ransomware</li><li>detection</li><li>canary files</li><li>honeytokens</li><li>deception</li><li>file integrity</li><li>ransomware defense</li><li>entropy</li><li>behavioral analysis</li><li>file monitoring</li><li>heuristics</li><li>honeypot</li></ul>
+<h2>Typical Workflow</h2>
+<ul><li>━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</li><li>Use names that sort FIRST and LAST alphabetically in each directory</li><li>Ransomware typically enumerates directories A-Z or Z-A</li><li>Examples: _AAAA_budget_2024.docx, ~zzzz_report_final.xlsx</li><li>Desktop, Documents, Downloads on each endpoint</li><li>Department-specific shares (Finance, HR, Legal)</li><li>.docx           3.5 - 6.5        7.8 - 8.0</li><li>.xlsx           4.0 - 6.8        7.8 - 8.0</li><li>.pdf            5.0 - 7.2        7.8 - 8.0</li><li>.txt            2.0 - 5.0        7.8 - 8.0</li></ul>
+<h2>Use Cases</h2>
+<ul><li>Setting up early-warning detection for ransomware on file servers or endpoints</li><li>Supplementing EDR/AV with a deception-based detection layer that catches unknown ransomware variants</li><li>Creating high-fidelity ransomware alerts that have very low false-positive rates (legitimate users have no reason to touch decoy files)</li><li>Testing ransomware response procedures by validating that canary file modifications trigger the expected alerting pipeline</li><li>Protecting high-value file shares (finance, HR, legal) with tripwire files that indicate unauthorized encryption activity</li><li>Building or tuning a behavioral detection layer for ransomware that catches unknown/zero-day variants</li><li>Monitoring file servers and endpoints for mass encryption activity that evades signature-based detection</li><li>Implementing entropy-based detection to identify when files are being replaced with encrypted (high-entropy) content</li><li>Analyzing suspicious process behavior patterns: rapid sequential file opens, writes, renames, and deletes</li><li>Validating EDR detection rules against actual ransomware encryption patterns during red team exercises</li></ul>
+<h2>Limitations</h2>
+<ul><li>Output still depends on context, data quality, and surrounding analysis.</li><li>The tool should be interpreted as part of a broader workflow, not as a complete answer by itself.</li><li>Capabilities and visibility vary depending on environment, integrations, and available inputs.</li></ul>
+<h2>Related Tools</h2>
+<ul><li>Sysmon, URLs, Watchdog, And DNS Tokens, And MacOS, And Ransomware Extension Detection, Canarytokens, Canarytokens.org</li></ul>
+<h2>Sources</h2>
+<ul><li>deploying-decoy-files-for-ransomware-detection</li><li>detecting-ransomware-encryption-behavior</li><li>implementing-honeypot-for-ransomware-detection</li></ul>
+  <div class="footer-space"></div>
+</article>
+    </main>
+  </body>
+</html>

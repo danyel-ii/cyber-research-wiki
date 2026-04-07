@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Elastic | Cyber Research Wiki</title>
+    <meta name="description" content="Elastic encyclopedia entry." />
+    <link rel="canonical" href="https://danyel-ii.github.io/cyber-research-wiki/tools/elastic/" />
+    <link rel="stylesheet" href="/cyber-research-wiki/assets/wiki.css" />
+  </head>
+  <body>
+    <header class="site-shell">
+      <div class="shell-inner">
+        <a class="brand" href="/cyber-research-wiki/">Cyber Research Wiki</a>
+        <nav class="nav">
+          <a href="/cyber-research-wiki/">Index</a>
+          <a href="https://danyel-ii.github.io/WikiCompanion/">Pocket Atlas</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page-shell">
+      <article class="article">
+  <h1>Elastic</h1>
+<h2>Overview</h2>
+<p>Elastic is a network forensics tool that appears across threat hunting workflows in this knowledge base. It is referenced as part of higher-level security analysis, investigation, monitoring, or validation activity rather than as an end in itself.</p>
+<h2>What It Is</h2>
+<p>Elastic is best understood as a threat-hunting tool in this knowledge base. Its role is conceptual and system-facing rather than procedural: it gives analysts or defenders a structured way to examine evidence, model system behavior, or reason about security state.</p>
+<h2>How It Works</h2>
+<p>Elastic works by turning technical inputs into more interpretable outputs at the system level. Across the source skills, it appears as part of larger analysis, investigation, monitoring, or validation loops rather than as a standalone end state.</p>
+<h2>Core Concepts</h2>
+<ul><li>dns</li><li>c2</li><li>tunneling</li><li>dga</li><li>network forensics</li><li>threat detection</li><li>network security</li><li>cloud security</li><li>credential compromise</li><li>guardduty</li><li>incident response</li><li>anomaly detection</li></ul>
+<h2>Typical Workflow</h2>
+<ul><li>grep -E &quot;TXT|NULL|CNAME|MX&quot; &gt; suspicious_qtypes.log</li><li>cat dns.log | zeek-cut query | sort -u &gt; unique_domains.txt</li><li>Monitor GuardDuty findings and CloudTrail anomalies that indicate credential abuse.</li><li>1. <strong>Identify Legitimate Replication Sources</strong>: Document all domain controllers in the environment by hostname, IP, and computer account. Only these should perform directory replication.</li><li>2. <strong>Enable Required Auditing</strong>: Configure Advanced Audit Policy to capture Event ID 4662 on domain controllers with specific GUID monitoring for replication rights.</li><li>3. <strong>Monitor Replication Rights Access</strong>: Track access to three critical GUIDs -- DS-Replication-Get-Changes (1131f6aa-9c07-11d1-f79f-00c04fc2dcd2), DS-Replication-Get-Changes-All (1131f6ad-9c07-11d1-f79f-00c04fc2dcd2), and DS-Replication-Get-Changes-In-Filtered-Set (89e95b76-444d-4c62-991a-0facbeda640c).</li><li>4. <strong>Detect Non-DC Replication Requests</strong>: Alert when any account NOT associated with a domain controller requests replication rights.</li><li>5. <strong>Correlate with Network Traffic</strong>: DCSync generates replication traffic (MS-DRSR/RPC) from the attacker&#39;s machine to the DC. Monitor for DrsGetNCChanges RPC calls from non-DC IP addresses.</li><li>6. <strong>Investigate Source Context</strong>: Examine the process, user account, and machine originating the replication request.</li><li>7. <strong>Check for Credential Abuse</strong>: After DCSync detection, audit for subsequent use of extracted hashes (pass-the-hash, golden ticket creation).</li></ul>
+<h2>Use Cases</h2>
+<ul><li>Investigating suspected DNS tunneling used for C2 communication or data exfiltration</li><li>Analyzing DNS query logs for signs of encoded payloads in subdomain strings</li><li>Classifying domains as DGA-generated vs. legitimate using statistical or ML methods</li><li>Detecting DNS beaconing patterns (regular intervals, consistent query sizes)</li><li>Hunting for Iodine, dnscat2, dns2tcp, Cobalt Strike DNS, or Sliver DNS traffic</li><li>Monitoring TXT record abuse for command delivery or staged payload download</li><li>Building DNS anomaly detection rules for SOC/SIEM deployment</li><li><strong>DISCLAIMER</strong>: DNS tunneling tools referenced in this skill (Iodine, dnscat2, dns2tcp) are dual-use. They have legitimate uses (bypassing captive portals, security research) and malicious uses (C2 channels, exfiltration). Only deploy detection in networks you are authorized to monitor. Testing tunneling tools requires explicit authorization.</li><li>When investigating alerts about unusual cloud API activity from unfamiliar locations</li><li>When building detection rules for credential theft and abuse across cloud environments</li></ul>
+<h2>Limitations</h2>
+<ul><li>Output still depends on context, data quality, and surrounding analysis.</li><li>The tool should be interpreted as part of a broader workflow, not as a complete answer by itself.</li><li>Capabilities and visibility vary depending on environment, integrations, and available inputs.</li></ul>
+<h2>Related Tools</h2>
+<ul><li>Splunk, ATT&amp;CK Navigator, Sigma, Sysmon, Activity Log, And Beacon Detection Queries, And Coverage Over Time, And File Telemetry</li></ul>
+<h2>Sources</h2>
+<ul><li>detecting-command-and-control-over-dns</li><li>detecting-compromised-cloud-credentials</li><li>detecting-dcsync-attack-in-active-directory</li><li>detecting-t1055-process-injection-with-sysmon</li><li>mapping-mitre-attack-techniques</li><li>performing-purple-team-atomic-testing</li><li>performing-timeline-reconstruction-with-plaso</li></ul>
+  <div class="footer-space"></div>
+</article>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Invoke Atomicredteam | Cyber Research Wiki</title>
+    <meta name="description" content="Invoke Atomicredteam encyclopedia entry." />
+    <link rel="canonical" href="https://danyel-ii.github.io/cyber-research-wiki/tools/invoke-atomicredteam/" />
+    <link rel="stylesheet" href="/cyber-research-wiki/assets/wiki.css" />
+  </head>
+  <body>
+    <header class="site-shell">
+      <div class="shell-inner">
+        <a class="brand" href="/cyber-research-wiki/">Cyber Research Wiki</a>
+        <nav class="nav">
+          <a href="/cyber-research-wiki/">Index</a>
+          <a href="https://danyel-ii.github.io/WikiCompanion/">Pocket Atlas</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page-shell">
+      <article class="article">
+  <h1>Invoke Atomicredteam</h1>
+<h2>Overview</h2>
+<p>Invoke Atomicredteam is a detection engineering tool that appears across purple team workflows in this knowledge base. It is referenced as part of higher-level security analysis, investigation, monitoring, or validation activity rather than as an end in itself.</p>
+<h2>What It Is</h2>
+<p>Invoke Atomicredteam is best understood as a purple-team tool in this knowledge base. Its role is conceptual and system-facing rather than procedural: it gives analysts or defenders a structured way to examine evidence, model system behavior, or reason about security state.</p>
+<h2>How It Works</h2>
+<p>Invoke Atomicredteam works by turning technical inputs into more interpretable outputs at the system level. Across the source skills, it appears as part of larger analysis, investigation, monitoring, or validation loops rather than as a standalone end state.</p>
+<h2>Core Concepts</h2>
+<ul><li>purple team</li><li>atomic red team</li><li>mitre attack</li><li>detection engineering</li><li>adversary emulation</li></ul>
+<h2>Typical Workflow</h2>
+<ul><li>Install-Module -Name invoke-atomicredteam -Scope CurrentUser -Force</li><li>Install-Module -Name powershell-yaml -Scope CurrentUser -Force</li><li>Import-Module invoke-atomicredteam</li><li>IEX (IEX (New-Object System.Net.WebClient).DownloadString(</li><li>&#39;https://raw.githubusercontent.com/redcanaryco/invoke-atomicredteam/master/install-atomicredteam.ps1&#39;</li><li>)); Install-AtomicRedTeam -getAtomics -Force</li></ul>
+<h2>Use Cases</h2>
+<ul><li>Validating detection coverage against specific MITRE ATT&amp;CK techniques</li><li>Running purple team exercises using Atomic Red Team test library</li><li>Performing ATT&amp;CK coverage gap analysis to identify blind spots in SIEM/EDR</li><li>Building a detection validation loop: execute atomic test, check SIEM, tune rule, retest</li><li>Generating ATT&amp;CK Navigator heatmap layers for executive reporting</li><li>Automating continuous atomic testing in CI/CD or scheduled pipelines</li><li>Mapping threat intelligence reports to executable atomic tests</li><li><strong>DISCLAIMER</strong>: Atomic Red Team tests execute real attack techniques. Run only on systems you own or have explicit written authorization to test. Many tests modify system state, create artifacts, or trigger security alerts. Always execute cleanup commands after testing. Never run atomic tests in production without risk acceptance from stakeholders.</li></ul>
+<h2>Limitations</h2>
+<ul><li>Output still depends on context, data quality, and surrounding analysis.</li><li>The tool should be interpreted as part of a broader workflow, not as a complete answer by itself.</li><li>Capabilities and visibility vary depending on environment, integrations, and available inputs.</li></ul>
+<h2>Related Tools</h2>
+<ul><li>And Coverage Over Time, And File Telemetry, Atomic Red Team Atomics, ATT&amp;CK Navigator, Caldera, Elastic, Microsoft Sentinel, Multi Step Attack Chains Beyond Single Atomic Tests</li></ul>
+<h2>Sources</h2>
+<ul><li>performing-purple-team-atomic-testing</li></ul>
+  <div class="footer-space"></div>
+</article>
+    </main>
+  </body>
+</html>

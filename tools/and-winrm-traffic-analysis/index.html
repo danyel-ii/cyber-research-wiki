@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>And Winrm Traffic Analysis | Cyber Research Wiki</title>
+    <meta name="description" content="And Winrm Traffic Analysis encyclopedia entry." />
+    <link rel="canonical" href="https://danyel-ii.github.io/cyber-research-wiki/tools/and-winrm-traffic-analysis/" />
+    <link rel="stylesheet" href="/cyber-research-wiki/assets/wiki.css" />
+  </head>
+  <body>
+    <header class="site-shell">
+      <div class="shell-inner">
+        <a class="brand" href="/cyber-research-wiki/">Cyber Research Wiki</a>
+        <nav class="nav">
+          <a href="/cyber-research-wiki/">Index</a>
+          <a href="https://danyel-ii.github.io/WikiCompanion/">Pocket Atlas</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page-shell">
+      <article class="article">
+  <h1>And Winrm Traffic Analysis</h1>
+<h2>Overview</h2>
+<p>And Winrm Traffic Analysis is a detection tool that appears across soc operations workflows in this knowledge base. It is referenced as part of higher-level security analysis, investigation, monitoring, or validation activity rather than as an end in itself.</p>
+<h2>What It Is</h2>
+<p>And Winrm Traffic Analysis is best understood as a soc-operations tool in this knowledge base. Its role is conceptual and system-facing rather than procedural: it gives analysts or defenders a structured way to examine evidence, model system behavior, or reason about security state.</p>
+<h2>How It Works</h2>
+<p>And Winrm Traffic Analysis works by turning technical inputs into more interpretable outputs at the system level. Across the source skills, it appears as part of larger analysis, investigation, monitoring, or validation loops rather than as a standalone end state.</p>
+<h2>Core Concepts</h2>
+<ul><li>soc</li><li>lateral movement</li><li>mitre attack</li><li>pass the hash</li><li>psexec</li><li>wmi</li><li>rdp</li><li>smb</li><li>detection</li><li>soc operations</li></ul>
+<h2>Typical Workflow</h2>
+<ul><li><strong>Pass-the-Hash Detection (EventCode 4624 with NTLM):</strong></li><li>index=wineventlog sourcetype=&quot;WinEventLog:Security&quot; EventCode=4624 Logon_Type=3</li><li>AuthenticationPackageName=&quot;NTLM&quot;</li><li>| stats count, dc(ComputerName) AS unique_targets, values(ComputerName) AS targets</li><li>by src_ip, TargetUserName</li><li>| where unique_targets &gt; 3</li><li>| eval alert = &quot;Possible Pass-the-Hash: NTLM network logon to &quot;.unique_targets.&quot; hosts&quot;</li><li>| sort - unique_targets</li><li>| table src_ip, TargetUserName, unique_targets, count, targets, alert</li></ul>
+<h2>Use Cases</h2>
+<ul><li>SOC teams need to detect attackers pivoting between systems after initial compromise</li><li>Incident investigations require tracking an attacker&#39;s movement path through the network</li><li>Detection engineering needs lateral movement rules mapped to ATT&amp;CK TA0008 techniques</li><li>Red/purple team exercises identify lateral movement detection gaps</li><li><strong>PsExec Spread</strong>: Attacker uses PsExec to execute malware across 20 workstations — detect via service creation events</li><li><strong>RDP Pivoting</strong>: Compromised VPN account used to RDP through multiple internal hosts — detect via Logon_Type 10 chains</li><li><strong>WMI Recon and Execution</strong>: Attacker uses WMI for discovery then execution — detect via WmiPrvSE child processes</li><li><strong>Pass-the-Hash Campaign</strong>: Stolen local admin hash used across subnet — detect via NTLM Logon_Type 3 to multiple hosts</li><li><strong>Scheduled Task Persistence</strong>: Remote scheduled task created on domain controller — detect via EventCode 4698 from non-admin source</li></ul>
+<h2>Limitations</h2>
+<ul><li>Output still depends on context, data quality, and surrounding analysis.</li><li>The tool should be interpreted as part of a broader workflow, not as a complete answer by itself.</li><li>Capabilities and visibility vary depending on environment, integrations, and available inputs.</li></ul>
+<h2>Related Tools</h2>
+<ul><li>And Network Flows, BloodHound, CrowdStrike Falcon, Microsoft Defender For Identity, RDP, Splunk Enterprise Security, Sysmon, Zeek</li></ul>
+<h2>Sources</h2>
+<ul><li>performing-lateral-movement-detection</li></ul>
+  <div class="footer-space"></div>
+</article>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Android Backup Extractor | Cyber Research Wiki</title>
+    <meta name="description" content="Android Backup Extractor encyclopedia entry." />
+    <link rel="canonical" href="https://danyel-ii.github.io/cyber-research-wiki/tools/android-backup-extractor/" />
+    <link rel="stylesheet" href="/cyber-research-wiki/assets/wiki.css" />
+  </head>
+  <body>
+    <header class="site-shell">
+      <div class="shell-inner">
+        <a class="brand" href="/cyber-research-wiki/">Cyber Research Wiki</a>
+        <nav class="nav">
+          <a href="/cyber-research-wiki/">Index</a>
+          <a href="https://danyel-ii.github.io/WikiCompanion/">Pocket Atlas</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page-shell">
+      <article class="article">
+  <h1>Android Backup Extractor</h1>
+<h2>Overview</h2>
+<p>Android Backup Extractor is a mobile security tool that appears across mobile security workflows in this knowledge base. It is referenced as part of higher-level security analysis, investigation, monitoring, or validation activity rather than as an end in itself.</p>
+<h2>What It Is</h2>
+<p>Android Backup Extractor is best understood as a mobile-security tool in this knowledge base. Its role is conceptual and system-facing rather than procedural: it gives analysts or defenders a structured way to examine evidence, model system behavior, or reason about security state.</p>
+<h2>How It Works</h2>
+<p>Android Backup Extractor works by turning technical inputs into more interpretable outputs at the system level. Across the source skills, it appears as part of larger analysis, investigation, monitoring, or validation loops rather than as a standalone end state.</p>
+<h2>Core Concepts</h2>
+<ul><li>mobile security</li><li>android</li><li>ios</li><li>data storage</li><li>owasp mobile</li><li>penetration testing</li></ul>
+<h2>Typical Workflow</h2>
+<ul><li><strong>Android storage paths:</strong></li><li>/data/data/&lt;package_name&gt;/</li><li>├── shared_prefs/      # SharedPreferences XML files</li><li>├── databases/         # SQLite databases</li><li>├── files/             # General files</li><li>├── cache/             # Cached data</li><li>├── lib/               # Native libraries</li><li>└── app_webview/       # WebView data</li><li>/sdcard/Android/data/&lt;package_name&gt;/</li></ul>
+<h2>Use Cases</h2>
+<ul><li>Assessing whether mobile applications store sensitive data securely on the device filesystem</li><li>Testing for credential leakage through SharedPreferences, SQLite databases, or plists</li><li>Evaluating keychain/keystore implementation for proper access control attributes</li><li>Performing data-at-rest security assessment during mobile penetration tests</li></ul>
+<h2>Limitations</h2>
+<ul><li>Output still depends on context, data quality, and surrounding analysis.</li><li>The tool should be interpreted as part of a broader workflow, not as a complete answer by itself.</li><li>Capabilities and visibility vary depending on environment, integrations, and available inputs.</li></ul>
+<h2>Related Tools</h2>
+<ul><li>ADB, IExplorer, Objection, SQLite3</li></ul>
+<h2>Sources</h2>
+<ul><li>exploiting-insecure-data-storage-in-mobile</li></ul>
+  <div class="footer-space"></div>
+</article>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Flare | Cyber Research Wiki</title>
+    <meta name="description" content="Flare encyclopedia entry." />
+    <link rel="canonical" href="https://danyel-ii.github.io/cyber-research-wiki/tools/flare/" />
+    <link rel="stylesheet" href="/cyber-research-wiki/assets/wiki.css" />
+  </head>
+  <body>
+    <header class="site-shell">
+      <div class="shell-inner">
+        <a class="brand" href="/cyber-research-wiki/">Cyber Research Wiki</a>
+        <nav class="nav">
+          <a href="/cyber-research-wiki/">Index</a>
+          <a href="https://danyel-ii.github.io/WikiCompanion/">Pocket Atlas</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page-shell">
+      <article class="article">
+  <h1>Flare</h1>
+<h2>Overview</h2>
+<p>Flare is a frequency analysis tool that appears across threat hunting workflows in this knowledge base. It is referenced as part of higher-level security analysis, investigation, monitoring, or validation activity rather than as an end in itself.</p>
+<h2>What It Is</h2>
+<p>Flare is best understood as a threat-hunting tool in this knowledge base. Its role is conceptual and system-facing rather than procedural: it gives analysts or defenders a structured way to examine evidence, model system behavior, or reason about security state.</p>
+<h2>How It Works</h2>
+<p>Flare works by turning technical inputs into more interpretable outputs at the system level. Across the source skills, it appears as part of larger analysis, investigation, monitoring, or validation loops rather than as a standalone end state.</p>
+<h2>Core Concepts</h2>
+<ul><li>threat hunting</li><li>beaconing</li><li>c2 detection</li><li>frequency analysis</li><li>network traffic</li><li>RITA</li><li>jitter detection</li><li>mitre t1071</li><li>mitre attack</li><li>c2</li><li>network analysis</li><li>proactive detection</li></ul>
+<h2>Typical Workflow</h2>
+<ul><li>1. <strong>Define Beacon Parameters</strong>: Establish detection thresholds -- coefficient of variation (CV) below 0.20 indicates strong periodicity, minimum 50 connections over 24 hours, average interval between 30 seconds and 24 hours.</li><li>2. <strong>Collect Network Telemetry</strong>: Aggregate proxy logs, DNS queries, firewall connection logs, and Zeek metadata into the analysis platform.</li><li>3. <strong>Calculate Connection Intervals</strong>: For each source-destination pair, compute the time delta between consecutive connections and derive mean interval, standard deviation, and CV.</li><li>4. <strong>Apply Jitter Analysis</strong>: Sophisticated C2 frameworks like Cobalt Strike add jitter (randomness) to beacon intervals. The Sunburst backdoor beaconed every 15 minutes plus/minus 90 seconds. Analyze jitter patterns to detect even randomized beaconing.</li><li>5. <strong>Filter Legitimate Periodic Traffic</strong>: Exclude known-good beaconing sources including Windows Update, antivirus definition updates, NTP synchronization, SaaS heartbeat services, and CDN health checks.</li><li>6. <strong>Analyze Data Size Consistency</strong>: C2 heartbeat packets typically have consistent payload sizes. Calculate the CV of bytes transferred per connection -- low variance suggests automated communication.</li><li>7. <strong>Enrich with Threat Intelligence</strong>: Check identified beaconing destinations against VirusTotal, WHOIS registration data (flag domains under 30 days old), certificate transparency logs, and passive DNS history.</li><li>8. <strong>Correlate with Endpoint Telemetry</strong>: Map beaconing source IPs to endpoint hostnames via DHCP logs, then correlate with process creation events (Sysmon Event ID 1, 3) to identify the responsible process.</li><li>9. <strong>Score and Prioritize</strong>: Assign risk scores based on CV value, domain age, TI matches, data size consistency, and suspicious port usage. Escalate high-confidence findings.</li><li>1. <strong>Identify Beaconing Characteristics</strong>: Define what constitutes beaconing (regular intervals, small payload sizes, consistent destinations, jitter patterns).</li></ul>
+<h2>Use Cases</h2>
+<ul><li>When proactively searching for compromised endpoints calling back to C2 infrastructure</li><li>After threat intelligence reports indicate active C2 frameworks targeting your sector</li><li>When network logs show periodic outbound connections to unfamiliar destinations</li><li>During purple team exercises validating C2 detection capabilities</li><li>When investigating a potential breach and need to identify active C2 channels</li><li>When proactively hunting for compromised systems in the network</li><li>After threat intel indicates C2 frameworks targeting your industry</li><li>When investigating periodic outbound connections to suspicious domains</li><li>During incident response to identify active C2 channels</li><li>When DNS query logs show unusual patterns to specific domains</li></ul>
+<h2>Limitations</h2>
+<ul><li>Output still depends on context, data quality, and surrounding analysis.</li><li>The tool should be interpreted as part of a broader workflow, not as a complete answer by itself.</li><li>Capabilities and visibility vary depending on environment, integrations, and available inputs.</li></ul>
+<h2>Related Tools</h2>
+<ul><li>Elastic Security, RITA, Splunk, Suricata, VirusTotal, Zeek, AC Hunter, PassiveDNS</li></ul>
+<h2>Sources</h2>
+<ul><li>hunting-for-beaconing-with-frequency-analysis</li><li>hunting-for-command-and-control-beaconing</li></ul>
+  <div class="footer-space"></div>
+</article>
+    </main>
+  </body>
+</html>

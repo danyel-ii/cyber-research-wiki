@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>tcpdump | Cyber Research Wiki</title>
+    <meta name="description" content="A command-line packet capture and analyzer that uses libpcap to sniff, filter, display, and save network traffic in pcap/pcapng formats for security investigation and troubleshooting." />
+    <link rel="canonical" href="https://danyel-ii.github.io/cyber-research-wiki/tools/tcpdump/" />
+    <link rel="stylesheet" href="/cyber-research-wiki/assets/wiki.css" />
+  </head>
+  <body>
+    <header class="site-shell">
+      <div class="shell-inner">
+        <a class="brand" href="/cyber-research-wiki/">Cyber Research Wiki</a>
+        <nav class="nav">
+          <a href="/cyber-research-wiki/">Index</a>
+          <a href="https://danyel-ii.github.io/WikiCompanion/">Pocket Atlas</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page-shell">
+      <article class="article">
+  <h1>tcpdump</h1>
+<blockquote><p>A command-line packet capture and analyzer that uses libpcap to sniff, filter, display, and save network traffic in pcap/pcapng formats for security investigation and troubleshooting.</p></blockquote>
+<h2>Overview</h2>
+<p>tcpdump is a long-standing, cross-platform packet analyzer for Unix-like systems and environments that provide the pcap API. It captures packets through libpcap (or Npcap on Windows), applies Berkeley Packet Filter (BPF) expressions, decodes numerous protocols, and outputs human-readable summaries or writes capture files for offline analysis. It is widely used in security and network operations for incident response, intrusion analysis, policy validation, and diagnostics. tcpdump is free software under a BSD-style license and is commonly bundled with operating systems and security distributions.</p>
+<h2>What It Is</h2>
+<p>tcpdump is a command-line packet capture tool that reads from live network interfaces or existing capture files and can write raw packet data to disk. It is built atop libpcap (or Npcap on Windows), which supplies a portable capture API and BPF-based filtering. Captures are stored in pcap or, when supported by the linked libpcap, pcapng formats, enabling interoperability with analyzers such as Wireshark.</p>
+<h2>How It Works</h2>
+<ul><li>Packet acquisition: tcpdump opens a network interface via libpcap and receives frames from the operating system’s capture mechanism, optionally enabling promiscuous mode to increase visibility on shared media or mirrored ports.</li><li>Filtering: User-provided expressions are compiled into BPF bytecode and executed, typically in kernel space, to discard non-matching traffic before it reaches user space, reducing overhead and loss.</li><li>Dissection and output: tcpdump parses common link-layer and upper-layer protocols to produce concise textual summaries. It can also bypass decoding and write raw packets directly to capture files for later analysis.</li><li>Capture file handling: The tool reads and writes pcap and, depending on libpcap support, pcapng. These formats preserve packet data and timestamps for cross-tool workflows.</li><li>Privilege model: Because opening capture devices often requires elevated privileges, tcpdump may start with higher rights and then drop privileges after initializing capture to reduce risk in long-running sessions.</li></ul>
+<h2>Core Concepts</h2>
+<ul><li>libpcap/Npcap as the capture API and portability layer</li><li>Berkeley Packet Filter (BPF) expression syntax and kernel/user-space execution</li><li>pcap and pcapng capture file formats and interoperability with Wireshark</li><li>Promiscuous mode and its effect on visibility on switched networks</li><li>Snapshot length (snaplen) and buffering impacting loss and performance</li><li>Timestamp types/precision recorded in captures</li><li>Privilege management and post-initialization privilege drop</li></ul>
+<h2>Typical Workflow</h2>
+<ul><li>Formulate a focused BPF capture filter to constrain traffic volume at the source.</li><li>Start a live capture on relevant interfaces, selecting snapshot length and buffers to balance fidelity and performance.</li><li>Enable rolling capture files and rotation for sustained monitoring to bound storage consumption when needed.</li><li>Export packets to pcap/pcapng for deeper offline analysis in complementary tools.</li><li>Assess capture statistics (received/filtered/dropped) to evaluate fidelity and refine filters or buffers.</li><li>Drop privileges after capture initialization to harden long-running operations when supported.</li></ul>
+<h2>Use Cases</h2>
+<ul><li>Incident response and threat hunting by capturing indicators of compromise or command-and-control traffic at chokepoints.</li><li>Validation of firewall/IDS/IPS policies by confirming permitted or blocked traffic on specific interfaces or spans.</li><li>Malware and sandbox analysis to observe network behaviors and protocol usage.</li><li>Network troubleshooting for latency, retransmissions, DNS issues, and MTU or fragmentation anomalies.</li><li>Baseline creation and anomaly detection support by exporting curated captures to SIEM or NDR pipelines.</li></ul>
+<h2>Limitations</h2>
+<ul><li>Encrypted traffic (TLS, SSH, IPsec, DoH/DoT) limits payload visibility; metadata may still be useful.</li><li>High-throughput links can incur packet loss without careful filtering, buffering, and storage planning.</li><li>NIC/OS offloading features (GRO/LRO/TSO) can alter capture semantics, presenting coalesced segments or checksum anomalies; disabling offloads may be required for wire-accurate analysis.</li><li>Captures typically require elevated privileges; incorrect privilege-dropping configurations may prevent file output or rotation.</li><li>Capture visibility depends on topology (e.g., switched networks, SPAN/TAP availability) and may miss traffic not seen on the chosen interface.</li><li>Time synchronization and timestamp precision affect correlation across sensors and logs.</li><li>Legal and privacy considerations may restrict packet capture and retention in some jurisdictions or environments.</li></ul>
+<h2>Related Tools</h2>
+<ul><li>Wireshark: GUI analyzer using libpcap/Npcap; reads and writes pcap/pcapng and complements tcpdump for deep inspection.</li><li>TShark: Wireshark’s command-line analyzer; often used with tcpdump for automated or headless decoding.</li><li>dumpcap: Wireshark’s capture engine optimized for high-performance capture into files.</li><li>tcptrace: Post-processing utility for tcpdump/Wireshark capture files to summarize TCP connections and performance metrics.</li><li>editcap/mergecap: Utilities for trimming, filtering, and merging pcap/pcapng files in analysis pipelines.</li><li>ngrep: Payload-oriented pattern matching against packets; complements BPF’s header-focused filtering.</li><li>WinDump: Windows port of tcpdump that uses WinPcap/Npcap for capture.</li><li>libpcap/Npcap: Underlying capture libraries providing the pcap API on which tcpdump relies.</li><li>netsniff-ng: Alternative Linux toolkit for capture, replay, and analysis with different performance trade-offs.</li></ul>
+<h2>Evidence Gaps</h2>
+<ul><li>Direct access to tcpdump.org manpages and official release notes was blocked via this interface; option semantics and features were corroborated using reputable mirrors, and availability may vary by OS or tcpdump/libpcap version.</li><li>The exact current stable version as of April 7, 2026 is based on secondary sources rather than the official site; confirm against tcpdump.org for authoritative release information.</li></ul>
+<h2>Sources</h2>
+<ul><li><a href="https://man7.org/linux/man-pages/man8/tcpdump.8.html">tcpdump(8) — Linux manual page</a> (man7.org)</li><li><a href="https://man7.org/linux/man-pages/man7/pcap-filter.7.html">pcap-filter(7) — Packet filter syntax</a> (man7.org)</li><li><a href="https://man7.org/linux/man-pages/man5/pcap-savefile.5.html">pcap-savefile(5) — pcap file format</a> (man7.org)</li><li><a href="https://manpages.debian.org/unstable/tcpdump/tcpdump.8.en.html">Debian tcpdump(8) man page (privilege drop behavior)</a> (Debian Project)</li><li><a href="https://www.wireshark.org/docs/wsdg_html_chunked/ChWorksCaptureFiles.html">Wireshark Developer/User Docs: Capture files (pcap/pcapng)</a> (Wireshark Foundation)</li><li><a href="https://pcapng.com/">PcapNG File Format overview</a> (PcapNG (IETF draft community site))</li><li><a href="https://github.com/the-tcpdump-group/libpcap">libpcap — the tcpdump group (project repository)</a> (GitHub)</li><li><a href="https://npcap.com/">Npcap: Windows Packet Capture Library &amp; Driver</a> (Nmap Project)</li><li><a href="https://en.wikipedia.org/wiki/Pcap">Pcap (overview of formats and interoperability)</a> (Wikipedia)</li><li><a href="https://en.wikipedia.org/wiki/Tcpdump">tcpdump (overview, history)</a> (Wikipedia)</li><li><a href="https://man.freebsd.org/tcpdump">FreeBSD tcpdump(1) manual (mirror)</a> (FreeBSD Project)</li><li><a href="https://www.tcptrace.org/">tcptrace — Official Homepage</a> (tcptrace.org)</li></ul>
+<h2>Confidence</h2>
+<p>high</p>
+  <div class="footer-space"></div>
+</article>
+    </main>
+  </body>
+</html>

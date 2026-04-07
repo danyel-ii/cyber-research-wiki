@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Urlscan Io | Cyber Research Wiki</title>
+    <meta name="description" content="Urlscan Io encyclopedia entry." />
+    <link rel="canonical" href="https://danyel-ii.github.io/cyber-research-wiki/tools/urlscan-io/" />
+    <link rel="stylesheet" href="/cyber-research-wiki/assets/wiki.css" />
+  </head>
+  <body>
+    <header class="site-shell">
+      <div class="shell-inner">
+        <a class="brand" href="/cyber-research-wiki/">Cyber Research Wiki</a>
+        <nav class="nav">
+          <a href="/cyber-research-wiki/">Index</a>
+          <a href="https://danyel-ii.github.io/WikiCompanion/">Pocket Atlas</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page-shell">
+      <article class="article">
+  <h1>Urlscan Io</h1>
+<h2>Overview</h2>
+<p>Urlscan Io is a email header analysis tool that appears across soc operations workflows in this knowledge base. It is referenced as part of higher-level security analysis, investigation, monitoring, or validation activity rather than as an end in itself.</p>
+<h2>What It Is</h2>
+<p>Urlscan Io is best understood as a soc-operations tool in this knowledge base. Its role is conceptual and system-facing rather than procedural: it gives analysts or defenders a structured way to examine evidence, model system behavior, or reason about security state.</p>
+<h2>How It Works</h2>
+<p>Urlscan Io works by turning technical inputs into more interpretable outputs at the system level. Across the source skills, it appears as part of larger analysis, investigation, monitoring, or validation loops rather than as a standalone end state.</p>
+<h2>Core Concepts</h2>
+<ul><li>IOC</li><li>VirusTotal</li><li>AbuseIPDB</li><li>MalwareBazaar</li><li>MISP</li><li>threat intelligence</li><li>STIX</li><li>NIST CSF</li><li>phishing response</li><li>email security</li><li>credential compromise</li><li>email header analysis</li></ul>
+<h2>Typical Workflow</h2>
+<ul><li><strong>IPv4/IPv6 address</strong>: Check if RFC 1918 private (skip external enrichment), validate format</li><li><strong>Domain/FQDN</strong>: Defang for safe handling (<code>evil[.]com</code>), extract registered domain via tldextract</li><li><strong>URL</strong>: Extract domain + path separately; check for redirectors</li><li><strong>File hash</strong>: Identify hash type (MD5/SHA-1/SHA-256); prefer SHA-256 for uniqueness</li><li><strong>Email address</strong>: Split into domain (check MX/DMARC) and local part for pattern analysis</li><li>Defang IOCs in documentation (replace <code>.</code> with <code>[.]</code> and <code>://</code> with <code>[://]</code>) to prevent accidental clicks.</li><li>client = vt.Client(&quot;YOUR_VT_API_KEY&quot;)</li><li>Extract the email as an .EML or .MSG file (preserves headers)</li><li>Analyze email headers to determine the true sender, relay path, and authentication results</li><li>━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</li></ul>
+<h2>Use Cases</h2>
+<ul><li>A phishing email or alert generates IOCs (URLs, IP addresses, file hashes) requiring rapid triage</li><li>Automated feeds deliver bulk IOCs that need confidence scoring before ingestion into blocking controls</li><li>An incident investigation requires contextual enrichment of observed network artifacts</li><li>A user reports receiving a suspicious email via the phishing report button or abuse mailbox</li><li>Email gateway detects a malicious email that bypassed initial filtering</li><li>Threat intelligence indicates an active phishing campaign targeting the organization</li><li>A user confirms they clicked a link or opened an attachment from a suspicious email</li><li>Credentials have been entered on a suspected phishing page</li><li>Only resetting passwords without revoking active sessions (attacker retains access via stolen session cookies)</li><li>A user reports a suspicious email via the phishing report button or helpdesk ticket</li></ul>
+<h2>Limitations</h2>
+<ul><li>Output still depends on context, data quality, and surrounding analysis.</li><li>The tool should be interpreted as part of a broader workflow, not as a complete answer by itself.</li><li>Capabilities and visibility vary depending on environment, integrations, and available inputs.</li></ul>
+<h2>Related Tools</h2>
+<ul><li>DOM, AbuseIPDB, Microsoft Defender For Office 365, PhishTool, Proofpoint TAP, Shodan, VirusTotal, And Banner Information For IP Enrichment</li></ul>
+<h2>Sources</h2>
+<ul><li>analyzing-indicators-of-compromise</li><li>conducting-phishing-incident-response</li><li>investigating-phishing-email-incident</li><li>performing-ioc-enrichment-automation</li></ul>
+  <div class="footer-space"></div>
+</article>
+    </main>
+  </body>
+</html>

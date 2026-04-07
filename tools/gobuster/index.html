@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Gobuster | Cyber Research Wiki</title>
+    <meta name="description" content="High-performance, wordlist-driven enumerator for web content, DNS subdomains, virtual hosts, and select cloud/TFTP targets." />
+    <link rel="canonical" href="https://danyel-ii.github.io/cyber-research-wiki/tools/gobuster/" />
+    <link rel="stylesheet" href="/cyber-research-wiki/assets/wiki.css" />
+  </head>
+  <body>
+    <header class="site-shell">
+      <div class="shell-inner">
+        <a class="brand" href="/cyber-research-wiki/">Cyber Research Wiki</a>
+        <nav class="nav">
+          <a href="/cyber-research-wiki/">Index</a>
+          <a href="https://danyel-ii.github.io/WikiCompanion/">Pocket Atlas</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page-shell">
+      <article class="article">
+  <h1>Gobuster</h1>
+<blockquote><p>High-performance, wordlist-driven enumerator for web content, DNS subdomains, virtual hosts, and select cloud/TFTP targets.</p></blockquote>
+<h2>Overview</h2>
+<p>Gobuster is a Go-based brute-force enumerator used in authorized security assessments to discover unlinked or hidden web resources and related endpoints. It operates in multiple modes—directory/file, DNS, virtual host, fuzzing, and select storage/transfer protocols—and is positioned as a fast alternative to legacy dirbusting tools. Its findings support higher-level activities such as access control validation, exposure analysis, and attack surface mapping.</p>
+<h2>What It Is</h2>
+<p>Gobuster is a multi‑mode enumeration tool that issues large volumes of HTTP, DNS, or service-specific requests derived from a wordlist to identify reachable resources that may not be explicitly linked by an application. This technique, commonly referred to as forced browsing or dirbusting, is primarily used to assess risks related to broken access control and inadvertent exposure rather than to exploit targets directly.</p>
+<h2>How It Works</h2>
+<p>Operation is mode-driven. In directory mode, the tool probes HTTP paths; in DNS mode, it attempts A/AAAA/CNAME resolutions for candidate subdomains; in virtual host mode, it varies the Host header to detect name-based hosting; additional modes target select storage or transfer services. For each mode, Gobuster performs concurrent requests or lookups produced from a wordlist and classifies positives based on response status and observable behaviors. Conceptually, the approach relies on brute‑forcing likely names to enumerate reachable resources that may lack links or robust authorization checks, as described in OWASP testing guidance. Filtering and concurrency settings shape throughput and signal quality but require interpretation in context.</p>
+<h2>Core Concepts</h2>
+<ul><li>Forced browsing / dirbusting</li><li>Wordlist-driven enumeration</li><li>Broken access control exposure mapping</li><li>Subdomain and virtual host discovery</li><li>High-concurrency probing and filtering</li><li>Attack surface reconnaissance</li><li>Result triage and validation</li></ul>
+<h2>Typical Workflow</h2>
+<ul><li>Define an authorized assessment scope and select modes aligned to the target’s characteristics (e.g., directory for web paths, DNS for subdomains, virtual host for name‑based hosting).</li><li>Select wordlists (such as those from common repositories) that reflect the target’s technology and naming patterns.</li><li>Conduct high‑concurrency, filtered enumeration to identify reachable resources and names, capturing structured outputs for later correlation and validation.</li><li>Compare discovered endpoints and names with expected access control policies, following OWASP-aligned testing practices to assess potential exposure.</li></ul>
+<h2>Use Cases</h2>
+<ul><li>Discover unlinked or sensitive directories/files to validate access control, including administrative, backup, or configuration locations.</li><li>Enumerate subdomains to map externally exposed services and organizational naming patterns.</li><li>Identify virtual hostnames served by the same IP to understand multi‑tenant exposure.</li><li>Assess cloud storage naming and exposure (e.g., Amazon S3, Google Cloud Storage) for inadvertent public access.</li><li>Provide reconnaissance inputs for threat modeling and guide targeted manual testing focused on broken access control risks.</li></ul>
+<h2>Limitations</h2>
+<ul><li>Results depend on wordlist quality and coverage; poor dictionaries limit discovery.</li><li>Wildcard DNS, uniform error pages, and custom responses can produce false positives or negatives without careful filtering.</li><li>Scope is mode-limited: Gobuster is not a crawler, vulnerability scanner, or logic‑aware tester; results require human analysis.</li><li>Environmental defenses (rate limiting, WAF/CDN behaviors) may throttle or bias findings; responsible configuration is necessary in authorized tests.</li><li>Discovery does not imply exploitability; enumerated resources must be validated against authorization requirements to assess business impact.</li></ul>
+<h2>Related Tools</h2>
+<ul><li>ffuf: Alternative high‑performance web fuzzer/dirbuster often used for parameter and header fuzzing; overlapping use cases with different ergonomics.</li><li>feroxbuster: Rust‑based content discovery tool with recursive crawling features that complement Gobuster’s wordlist probing.</li><li>dirsearch: Python-based directory brute‑forcer; functional alternative for web content discovery.</li><li>OWASP ZAP Forced Browse: Proxy-integrated forced browsing add‑on derived from DirBuster; comparable directory enumeration capability within a broader testing suite.</li><li>Burp Suite (Intruder/Content Discovery): Commercial proxy platform with wordlist‑driven discovery and fuzzing modules; broader manual testing workflow integration.</li><li>Amass: Comprehensive OSINT/DNS enumeration framework; complementary to Gobuster’s active DNS brute‑forcing.</li></ul>
+<h2>Evidence Gaps</h2>
+<ul><li>Official documentation describes modes and general behavior but gives limited protocol‑level detail on response classification heuristics and edge‑case handling (such as wildcard matching strategies per mode).</li><li>Comparative benchmarks versus tools like ffuf, feroxbuster, and dirsearch are community-driven and may not reflect standardized test conditions.</li></ul>
+<h2>Sources</h2>
+<ul><li><a href="https://github.com/OJ/gobuster">Gobuster – Official GitHub repository (README, modes and features)</a> (GitHub (OJ))</li><li><a href="https://owasp.org/www-community/attacks/Forced_browsing">OWASP Community: Forced browsing (concept and risks)</a> (OWASP Foundation)</li><li><a href="https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/01-Information_Gathering/08-Fingerprint_Web_Application_Framework">OWASP Web Security Testing Guide – Information Gathering: Dirbusting reference</a> (OWASP Foundation)</li><li><a href="https://www.hhs.gov/sites/default/files/owasp-top-10.pdf">OWASP Top 10 reference mentioning force/forced browsing under Broken Access Control</a> (U.S. Department of Health &amp; Human Services (citing OWASP))</li><li><a href="https://manpages.debian.org/unstable/gobuster/gobuster.1.en.html">Debian Manpage – gobuster(1) (confirms mode-driven help incl. vhost)</a> (Debian Project)</li><li><a href="https://hackertarget.com/gobuster-tutorial/">Hackertarget Gobuster Tutorial (illustrative overview of modes incl. dir, dns, vhost, fuzz, s3, gcs)</a> (HackerTarget.com)</li><li><a href="https://www.zaproxy.org/docs/desktop/addons/forced-browse/">ZAP – Forced Browse add-on (context for related tooling)</a> (OWASP ZAP Project)</li><li><a href="https://www.reddit.com/r/hackthebox/comments/18bo35m">https://www.reddit.com/r/hackthebox/comments/18bo35m</a> (reddit.com)</li><li><a href="https://bb-sec.com/blog/vulnerabilities/forced-browsing/">https://bb-sec.com/blog/vulnerabilities/forced-browsing/</a> (bb-sec.com)</li><li><a href="https://cloud.tencent.com/developer/article/2331391">https://cloud.tencent.com/developer/article/2331391</a> (cloud.tencent.com)</li><li><a href="https://www.reddit.com/r/hackthebox/comments/11bsuxt">https://www.reddit.com/r/hackthebox/comments/11bsuxt</a> (reddit.com)</li><li><a href="https://wiki.owasp.org/images/f/f2/OWASP_Top_10_RC2.pdf">https://wiki.owasp.org/images/f/f2/OWASP_Top_10_RC2.pdf</a> (wiki.owasp.org)</li></ul>
+<h2>Confidence</h2>
+<p>high</p>
+  <div class="footer-space"></div>
+</article>
+    </main>
+  </body>
+</html>

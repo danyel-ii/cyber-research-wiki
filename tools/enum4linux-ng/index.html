@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>enum4linux-ng | Cyber Research Wiki</title>
+    <meta name="description" content="A next-generation rewrite of enum4linux that enumerates information from Windows and Samba systems via SMB/RPC/LDAP, adds structured JSON/YAML output, and wraps core Samba client tools for use by security professionals and CTF players." />
+    <link rel="canonical" href="https://danyel-ii.github.io/cyber-research-wiki/tools/enum4linux-ng/" />
+    <link rel="stylesheet" href="/cyber-research-wiki/assets/wiki.css" />
+  </head>
+  <body>
+    <header class="site-shell">
+      <div class="shell-inner">
+        <a class="brand" href="/cyber-research-wiki/">Cyber Research Wiki</a>
+        <nav class="nav">
+          <a href="/cyber-research-wiki/">Index</a>
+          <a href="https://danyel-ii.github.io/WikiCompanion/">Pocket Atlas</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page-shell">
+      <article class="article">
+  <h1>enum4linux-ng</h1>
+<blockquote><p>A next-generation rewrite of enum4linux that enumerates information from Windows and Samba systems via SMB/RPC/LDAP, adds structured JSON/YAML output, and wraps core Samba client tools for use by security professionals and CTF players.</p></blockquote>
+<h2>Overview</h2>
+<p>enum4linux-ng is an open-source enumeration utility for Windows and Samba environments. It modernizes the original enum4linux by orchestrating Samba client tools, parsing their heterogeneous outputs, and normalizing results into machine-readable formats. It is designed for reconnaissance and assessment, supporting unauthenticated and authenticated modes (cleartext credentials, NT hash, Kerberos ticket), optional RID cycling, and selective checks guided by a preflight that detects service availability and suppresses inapplicable tests. It is not an exploitation framework and is typically chained with broader network discovery or Active Directory assessments.</p>
+<h2>What It Is</h2>
+<p>A Python-based rewrite of the classic enum4linux.pl that primarily acts as a wrapper/driver for Samba client utilities (nmblookup, net, rpcclient, smbclient), adding parsers and exporters. It provides SMB/NetBIOS, RPC, and limited LDAP-driven discovery against Windows hosts, Samba servers, and AD domain controllers. The project is distributed under GPL-3.0 and is packaged in common security distributions such as Kali.</p>
+<h2>How It Works</h2>
+<p>The tool begins by probing target reachability and available services (e.g., SMB versus LDAP) and whether a session can be established, enabling a service-aware preflight that disables checks likely to fail. It then invokes Samba utilities to query NetBIOS names, shares, users, groups, services, password policies, operating system and domain details, printers, and—optionally—performs RID cycling to derive accounts from SIDs. Outputs from these tools are parsed into normalized in-memory structures and emitted as categorized console results and/or JSON/YAML artifacts suitable for downstream processing. Authentication is flexible: anonymous/null sessions, username+password, NT hash (pass-the-hash), or Kerberos tickets in AD contexts with correct DNS configuration.</p>
+<h2>Core Concepts</h2>
+<ul><li>Windows/Samba enumeration via SMB/RPC/LDAP</li><li>Wrapper orchestration of Samba client tools with robust parsing</li><li>Machine-readable export (JSON/YAML) for pipeline integration</li><li>RID cycling for account discovery</li><li>Support for legacy SMBv1 and SMB dialect checks</li><li>Authentication flexibility (null, password, NT hash, Kerberos)</li><li>Service-aware &quot;smart&quot; enumeration and timeouts</li></ul>
+<h2>Typical Workflow</h2>
+<ul><li>Identify SMB-capable targets through network discovery and scoping.</li><li>Select an authentication mode aligned with engagement rules (unauthenticated/null, credentials, NT hash, or Kerberos ticket).</li><li>Execute scoped or default enumeration; the tool auto-detects accessible services and adjusts checks accordingly.</li><li>Review categorized console findings and export structured results for archival and correlation.</li><li>Feed JSON/YAML outputs into analysis pipelines or other tools to validate configurations, access controls, and policy posture.</li><li>Iterate with extended checks such as group membership expansion or RID cycling where appropriate and authorized.</li></ul>
+<h2>Use Cases</h2>
+<ul><li>Enumerating Windows and Samba hosts for users, groups, and shares to support asset and identity inventories.</li><li>Assessing SMB configuration posture (dialect support, signing, legacy protocol use) and password policy exposure.</li><li>Discovering writable or world-readable shares and basic service information to inform risk reviews.</li><li>Collecting AD-relevant metadata from domain controllers (e.g., LDAP-driven domain info) for mapping and scoping.</li><li>Supporting red/blue team exercises and CTFs where quick, parsable SMB/RPC enumeration is needed.</li><li>Exporting machine-readable findings to central repositories for correlation with vulnerability management and SIEM data.</li></ul>
+<h2>Limitations</h2>
+<ul><li>Not an exploitation or vulnerability scanner; it enumerates but does not directly test complex exploitability (e.g., EternalBlue).</li><li>Relies on Samba client utilities; version mismatches or Samba tool limitations can affect reliability and feature coverage.</li><li>Results depend on network reachability, firewall rules, service configurations, and authentication success; hardened environments may yield limited data or false negatives.</li><li>Default behavior halts when a session cannot be established, limiting data in strictly locked-down scenarios.</li><li>Kerberos mode requires correct DNS/realm setup; misconfiguration leads to authentication failures.</li><li>IPv6 support is marked experimental; behavior may vary by environment and Samba stack.</li><li>High-noise potential in monitored environments; frequent SMB/RPC probes may trigger detections or rate limits.</li></ul>
+<h2>Related Tools</h2>
+<ul><li>enum4linux (original): Predecessor in Perl; enum4linux-ng rewrites and extends it with structured outputs and modernized behavior.</li><li>Samba client tools: nmblookup, net, rpcclient, smbclient: Underlying dependencies that perform the actual SMB/NetBIOS/RPC interactions coordinated by enum4linux-ng.</li><li>CrackMapExec: Complementary post-auth SMB/AD operator tool; broader credential testing and remote execution beyond enumeration.</li><li>Nmap SMB NSE scripts (e.g., smb-os-discovery, smb-protocols): Complementary network discovery and protocol fingerprinting; provides orthogonal checks to cross-validate findings.</li><li>Impacket examples (e.g., smbclient.py, lookupsid.py, samrdump.py): Alternative Python SMB/RPC clients and SID/LSA/SAM tooling that can replicate or deepen aspects of enumeration.</li><li>smbmap: Adjacent share-focused enumerator that reports permissions and writeability; complements share/access findings.</li><li>ldapsearch / polenum (original): Upstream inspirations; parts of this functionality are natively implemented or emulated within enum4linux-ng.</li></ul>
+<h2>Evidence Gaps</h2>
+<ul><li>No dedicated standalone documentation site beyond the GitHub README; feature depth and roadmap are primarily inferred from README and release notes.</li><li>Granularity of LDAP coverage and AD-specific object classes is not fully specified in public docs.</li><li>Performance characteristics and scalability on large domains/shares are not benchmarked in official sources.</li></ul>
+<h2>Sources</h2>
+<ul><li><a href="https://github.com/cddmp/enum4linux-ng">cddmp/enum4linux-ng – Project README</a> (GitHub)</li><li><a href="https://github.com/cddmp/enum4linux-ng/releases">cddmp/enum4linux-ng – Releases (latest tags and notes)</a> (GitHub)</li><li><a href="https://pkg.kali.org/pkg/enum4linux-ng">enum4linux-ng – Kali Linux Package Tracker (version history)</a> (Kali Linux (Debian Distro Tracker))</li><li><a href="https://github.com/CiscoCXSecurity/enum4linux">CiscoCXSecurity/enum4linux – Original project repository</a> (GitHub)</li><li><a href="https://www.samba.org/samba/docs/current/man-html/rpcclient.1.html">Samba rpcclient man page</a> (Samba Project)</li><li><a href="https://www.samba.org/samba/docs/using_samba/appc.html">Samba nmblookup and smbclient references (suite documentation)</a> (Samba Project)</li><li><a href="https://iemlabs.com/blogs/enum4linux-ng/">https://iemlabs.com/blogs/enum4linux-ng/</a> (iemlabs.com)</li><li><a href="https://github.com/cddmp/enum4linux-ng/blob/master/enum4linux-ng.py">https://github.com/cddmp/enum4linux-ng/blob/master/enum4linux-ng.py</a> (github.com)</li><li><a href="https://github.com/topics/enum4linux">https://github.com/topics/enum4linux</a> (github.com)</li><li><a href="https://www.reddit.com/r/tryhackme/comments/k46vxf">https://www.reddit.com/r/tryhackme/comments/k46vxf</a> (reddit.com)</li><li><a href="https://github.com/cddmp/enum4linux-ng/issues">https://github.com/cddmp/enum4linux-ng/issues</a> (github.com)</li><li><a href="https://pkg.kali.org/news/560024/enum4linux-ng-132-0kali1-migrated-to-kali-rolling/">https://pkg.kali.org/news/560024/enum4linux-ng-132-0kali1-migrated-to-kali-rolling/</a> (pkg.kali.org)</li></ul>
+<h2>Confidence</h2>
+<p>high</p>
+  <div class="footer-space"></div>
+</article>
+    </main>
+  </body>
+</html>

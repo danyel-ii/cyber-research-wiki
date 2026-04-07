@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AWS Backup | Cyber Research Wiki</title>
+    <meta name="description" content="AWS Backup encyclopedia entry." />
+    <link rel="canonical" href="https://danyel-ii.github.io/cyber-research-wiki/tools/aws-backup/" />
+    <link rel="stylesheet" href="/cyber-research-wiki/assets/wiki.css" />
+  </head>
+  <body>
+    <header class="site-shell">
+      <div class="shell-inner">
+        <a class="brand" href="/cyber-research-wiki/">Cyber Research Wiki</a>
+        <nav class="nav">
+          <a href="/cyber-research-wiki/">Index</a>
+          <a href="https://danyel-ii.github.io/WikiCompanion/">Pocket Atlas</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page-shell">
+      <article class="article">
+  <h1>AWS Backup</h1>
+<h2>Overview</h2>
+<p>AWS Backup is a incident response tool that appears across incident response workflows in this knowledge base. It is referenced as part of higher-level security analysis, investigation, monitoring, or validation activity rather than as an end in itself.</p>
+<h2>What It Is</h2>
+<p>AWS Backup is best understood as a incident-response tool in this knowledge base. Its role is conceptual and system-facing rather than procedural: it gives analysts or defenders a structured way to examine evidence, model system behavior, or reason about security state.</p>
+<h2>How It Works</h2>
+<p>AWS Backup works by turning technical inputs into more interpretable outputs at the system level. Across the source skills, it appears as part of larger analysis, investigation, monitoring, or validation loops rather than as a standalone end state.</p>
+<h2>Core Concepts</h2>
+<ul><li>incident response</li><li>ransomware</li><li>disaster recovery</li><li>backup</li><li>rto</li><li>rpo</li><li>resilience</li></ul>
+<h2>Typical Workflow</h2>
+<ul><li>| Tier | System Type | RTO Target | RPO Target | Example |</li><li>|------|------------|------------|------------|---------|</li><li>| Tier 1 | Mission-critical | &lt; 1 hour | &lt; 15 min | Active Directory, core database |</li><li>| Tier 2 | Business-critical | &lt; 4 hours | &lt; 1 hour | ERP, email, CRM |</li><li>| Tier 3 | Business-operational | &lt; 24 hours | &lt; 4 hours | File shares, internal apps |</li><li>| Tier 4 | Non-critical | &lt; 72 hours | &lt; 24 hours | Dev/test, analytics |</li><li>ip route show | grep -v &quot;192.168.100.0/24&quot;  # recovery VLAN only</li></ul>
+<h2>Use Cases</h2>
+<ul><li>Validating that ransomware recovery plans actually work under realistic conditions</li><li>Measuring RTO (Recovery Time Objective) and RPO (Recovery Point Objective) against business requirements</li><li>Testing backup restore operations to confirm data integrity and completeness after simulated encryption</li><li>Conducting tabletop exercises or live recovery drills for ransomware scenarios</li><li>Auditing disaster recovery readiness as part of compliance or cyber insurance requirements</li></ul>
+<h2>Limitations</h2>
+<ul><li>Output still depends on context, data quality, and surrounding analysis.</li><li>The tool should be interpreted as part of a broader workflow, not as a complete answer by itself.</li><li>Capabilities and visibility vary depending on environment, integrations, and available inputs.</li></ul>
+<h2>Related Tools</h2>
+<ul><li>Azure Backup, Commvault, Restic, Rubrik, Veeam Backup &amp; Replication, Velero</li></ul>
+<h2>Sources</h2>
+<ul><li>testing-ransomware-recovery-procedures</li></ul>
+  <div class="footer-space"></div>
+</article>
+    </main>
+  </body>
+</html>

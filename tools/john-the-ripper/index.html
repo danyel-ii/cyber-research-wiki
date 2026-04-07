@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>John the Ripper | Cyber Research Wiki</title>
+    <meta name="description" content="John the Ripper is an open-source, offline password auditing tool from Openwall. The community “Jumbo” edition adds extensive hash/credential format support and optional GPU acceleration via OpenCL." />
+    <link rel="canonical" href="https://danyel-ii.github.io/cyber-research-wiki/tools/john-the-ripper/" />
+    <link rel="stylesheet" href="/cyber-research-wiki/assets/wiki.css" />
+  </head>
+  <body>
+    <header class="site-shell">
+      <div class="shell-inner">
+        <a class="brand" href="/cyber-research-wiki/">Cyber Research Wiki</a>
+        <nav class="nav">
+          <a href="/cyber-research-wiki/">Index</a>
+          <a href="https://danyel-ii.github.io/WikiCompanion/">Pocket Atlas</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page-shell">
+      <article class="article">
+  <h1>John the Ripper</h1>
+<blockquote><p>John the Ripper is an open-source, offline password auditing tool from Openwall. The community “Jumbo” edition adds extensive hash/credential format support and optional GPU acceleration via OpenCL.</p></blockquote>
+<h2>Overview</h2>
+<p>John the Ripper (JtR) is a general-purpose suite for offline password testing that attempts to recover plaintexts from hashed or otherwise derived credentials. It operates by mapping target artifacts—such as operating-system password hashes, application stores, or credentials extracted from documents and archives—into internal formats and running candidate-generation strategies to verify guesses. The project emphasizes password auditing rather than web testing, yet it appears in broader security workflows that include web authentication when artifacts can be reduced to supported formats (e.g., assessing weak symmetric JWT secrets via HMAC-style verification). The community-maintained Jumbo edition substantially broadens format coverage (including Unix crypt variants, NTLM, bcrypt, PBKDF2-based schemes, and numerous document/archive/SSH formats) and exposes hardware acceleration via OpenCL where supported. Parallelism (OpenMP/fork) and device offloading are used to scale performance within the constraints of each format’s algorithmic cost.</p>
+<h2>What It Is</h2>
+<p>JtR is an offline password auditing and recovery toolkit maintained by Openwall, with a widely used Jumbo branch that extends capabilities and format coverage. It is applied across operating systems, applications, archives/documents, and other credential artifacts that can be converted to JtR’s format syntax. In web-adjacent contexts, practitioners sometimes evaluate weak symmetric JWT secrets by treating HS256 tokens as HMAC-SHA256 targets; JtR relies on its generic HMAC-SHA256 format for this purpose rather than a dedicated JWT format. Its role is to measure real-world resistance of stored secrets to offline attack, inform policy, and validate defensive choices such as KDF selection, secret length, and entropy requirements.</p>
+<h2>How It Works</h2>
+<p>JtR consumes inputs normalized into internal formats that define how to test a candidate: the format encapsulates hashing, KDF parameters, HMAC construction, salting, and comparison. The Jumbo edition provides hundreds of such formats, including OpenCL-enabled variants when device offload is meaningful. Candidate generation proceeds via multiple attack modes: single-crack (leveraging user/context data), wordlist attacks augmented with rules for probabilistic mangling, incremental and mask-based brute force for structured keyspaces, and hybrids. Execution scales through CPU parallelism (OpenMP and process forking) and, for compatible formats, GPU acceleration via OpenCL. Results are recorded in a potfile for reuse and deduplication, with status metrics exposing performance and progress characteristics.</p>
+<h2>Core Concepts</h2>
+<ul><li>Offline password auditing vs. online guessing</li><li>Hash/KDF formats and salts (e.g., bcrypt, PBKDF2, SHA-crypt)</li><li>HMAC-based verification for symmetric token secrets (e.g., JWT HS256 via HMAC-SHA256)</li><li>Attack modes: single, wordlist+rules, incremental/mask, hybrid</li><li>Format auto-detection vs. explicit selection; potfile reuse</li><li>Hardware acceleration (OpenMP, fork, OpenCL) and scalability</li><li>Jumbo edition’s extensibility and format coverage</li></ul>
+<h2>Typical Workflow</h2>
+<ul><li>Ingest target material and convert or map it into a supported JtR format using appropriate extractors or transformations.</li><li>Select attack strategies aligned to expected human choice patterns and the cost profile of the target KDF or construction.</li><li>Allocate and tune compute resources (threads, processes, optional OpenCL devices) and observe progress metrics to refine strategy.</li><li>Validate recovered credentials or secrets, track cracked entries via the potfile, and retain evidentiary artifacts appropriately.</li><li>Translate empirical results into risk assessments and policy recommendations concerning KDFs, password hygiene, and secret management.</li></ul>
+<h2>Use Cases</h2>
+<ul><li>Enterprise password audits against OS/account stores (e.g., Unix shadow, NTLM) to measure policy strength and reuse risk. (openwall.com)</li><li>Forensic validation of credentials recovered from systems or images by other tools (archives, documents, SSH keys via “to-john” converters). (openwall.com)</li><li>Assessing feasibility of recovering weak symmetric JWT secrets by treating HS256 tokens as HMAC-SHA256 targets; informs rotation and entropy requirements. (northgreensecurity.com)</li><li>Red team and lab exercises benchmarking hash/KDF resistance and GPU acceleration trade-offs. (openwall.com)</li><li>Support to incident response when evaluating the blast radius of leaked password databases or stolen token material, limited to offline analysis. (en.wikipedia.org)</li></ul>
+<h2>Limitations</h2>
+<ul><li>Not a web-application testing suite; it is an offline auditor. Web-specific JWT attacks such as alg:none or key confusion are out of scope. JtR can help guess weak symmetric secrets (HS256) but cannot break asymmetric JWT signatures (RS/EC).</li><li>Effectiveness depends on target KDF and secret entropy; slow or memory-hard schemes (e.g., bcrypt with high cost) and high-entropy secrets may be impractical to crack.</li><li>Correct format identification and proper extraction/normalization are required; misclassification prevents loading or yields invalid results.</li><li>GPU acceleration and optimizations are format-dependent; not all formats benefit equally from OpenCL or parallelism.</li><li>Subject to legal and ethical constraints; positioned by the publisher as a security auditing tool for authorized use.</li></ul>
+<h2>Related Tools</h2>
+<ul><li>Hashcat: Alternative offline password cracker with extensive GPU focus and an explicit JWT mode (16500); often compared/complementary in audits.</li><li>Openwall “to-john” utilities (e.g., zip2john, pdf2john, ssh2john): Companion extractors for converting artifacts into JtR-supported formats.</li><li>jwt_tool / Burp Suite JWT Editor: Web-token analysis and manipulation; complements JtR when evaluating JWT implementations but does not replace its offline cracking role.</li><li>Volatility / memory forensics suites: Upstream sources for secrets extracted from memory; JtR can audit some derived artifacts offline.</li><li>Mimikatz: Extracts credentials from Windows; recovered hashes can be audited with JtR offline.</li></ul>
+<h2>Evidence Gaps</h2>
+<ul><li>Openwall documentation does not list a dedicated JWT format; community guidance relies on the generic HMAC-SHA256 format for HS256 tokens, and an explicit vendor mapping has not been identified.</li><li>Counts of supported formats and OpenCL variants vary by release; authoritative tallies depend on specific build outputs and release notes.</li></ul>
+<h2>Sources</h2>
+<ul><li><a href="https://www.openwall.com/john/doc/">John the Ripper official documentation index</a> (Openwall)</li><li><a href="https://openwall.com/john/doc/OPTIONS.shtml">Command-line options and formats (core)</a> (Openwall)</li><li><a href="https://www.openwall.com/lists/announce/2019/05/14/1">John the Ripper 1.9.0-jumbo-1 announcement (features, OpenCL)</a> (Openwall)</li><li><a href="https://en.wikipedia.org/wiki/John_the_Ripper">John the Ripper (overview)</a> (Wikipedia)</li><li><a href="https://www.techtarget.com/searchsecurity/tutorial/How-to-use-the-John-the-Ripper-password-cracker">How to use the John the Ripper password cracker (format coverage)</a> (TechTarget)</li><li><a href="https://northgreensecurity.com/2024/08/15/what-are-jwt-tokens-and-how-to-hack-them/">Using JtR/Hashcat against JWT HS256 (community guidance)</a> (North Green Security)</li><li><a href="https://www.sans.org/webcasts/downloads/119565/slides">SANS SEC642 slides excerpt (JWT via JtR HMAC-SHA256)</a> (SANS Institute)</li><li><a href="https://www.openwall.com/lists/john-users/2020/03/26/1">john-users mailing list (HMAC-SHA256 format present)</a> (Openwall Mailing List)</li><li><a href="https://www.openwall.com/john/doc/OPTIONS.shtml">https://www.openwall.com/john/doc/OPTIONS.shtml</a> (openwall.com)</li><li><a href="https://www.reddit.com/r/HowToHack/comments/1gcs2c7">https://www.reddit.com/r/HowToHack/comments/1gcs2c7</a> (reddit.com)</li><li><a href="https://www.reddit.com/r/HowToHack/comments/dd289n">https://www.reddit.com/r/HowToHack/comments/dd289n</a> (reddit.com)</li><li><a href="https://notes.davidvarghese.net/information-security/password-cracking/john-the-ripper">https://notes.davidvarghese.net/information-security/password-cracking/john-the-ripper</a> (notes.davidvarghese.net)</li></ul>
+<h2>Confidence</h2>
+<p>high</p>
+  <div class="footer-space"></div>
+</article>
+    </main>
+  </body>
+</html>

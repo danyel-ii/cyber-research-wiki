@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Windows Event Forwarding | Cyber Research Wiki</title>
+    <meta name="description" content="Windows Event Forwarding encyclopedia entry." />
+    <link rel="canonical" href="https://danyel-ii.github.io/cyber-research-wiki/tools/windows-event-forwarding/" />
+    <link rel="stylesheet" href="/cyber-research-wiki/assets/wiki.css" />
+  </head>
+  <body>
+    <header class="site-shell">
+      <div class="shell-inner">
+        <a class="brand" href="/cyber-research-wiki/">Cyber Research Wiki</a>
+        <nav class="nav">
+          <a href="/cyber-research-wiki/">Index</a>
+          <a href="https://danyel-ii.github.io/WikiCompanion/">Pocket Atlas</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page-shell">
+      <article class="article">
+  <h1>Windows Event Forwarding</h1>
+<h2>Overview</h2>
+<p>Windows Event Forwarding is a endpoint tool that appears across endpoint security workflows in this knowledge base. It is referenced as part of higher-level security analysis, investigation, monitoring, or validation activity rather than as an end in itself.</p>
+<h2>What It Is</h2>
+<p>Windows Event Forwarding is best understood as a endpoint-security tool in this knowledge base. Its role is conceptual and system-facing rather than procedural: it gives analysts or defenders a structured way to examine evidence, model system behavior, or reason about security state.</p>
+<h2>How It Works</h2>
+<p>Windows Event Forwarding works by turning technical inputs into more interpretable outputs at the system level. Across the source skills, it appears as part of larger analysis, investigation, monitoring, or validation loops rather than as a standalone end state.</p>
+<h2>Core Concepts</h2>
+<ul><li>soc</li><li>splunk</li><li>windows events</li><li>sysmon</li><li>event logs</li><li>mitre attack</li><li>active directory</li><li>soc operations</li><li>endpoint</li><li>windows security</li><li>event logging</li><li>audit policy</li></ul>
+<h2>Typical Workflow</h2>
+<ul><li><strong>Brute Force Detection (EventCode 4625 — Failed Logon):</strong></li><li>index=wineventlog sourcetype=&quot;WinEventLog:Security&quot; EventCode=4625</li><li>| stats count, dc(TargetUserName) AS unique_users, values(TargetUserName) AS targeted_users</li><li>by src_ip, Logon_Type, Status</li><li>| eval attack_type = case(</li><li>Logon_Type=3, &quot;Network Brute Force&quot;,</li><li>Logon_Type=10, &quot;RDP Brute Force&quot;,</li><li>Logon_Type=2, &quot;Interactive Brute Force&quot;,</li><li>Computer Configuration → Windows Settings → Security Settings</li><li>→ Advanced Audit Policy Configuration → Audit Policies</li></ul>
+<h2>Use Cases</h2>
+<ul><li>SOC analysts investigate alerts related to Windows authentication, process execution, or AD changes</li><li>Detection engineers build SPL queries for Windows-based threat detection</li><li>Incident responders need forensic timelines of Windows endpoint or domain controller activity</li><li>Periodic threat hunting targets Windows-specific ATT&amp;CK techniques</li><li><strong>Kerberoasting (T1558.003)</strong>: Detect EventCode 4769 with encryption type 0x17 (RC4) for non-standard service accounts</li><li><strong>DCSync (T1003.006)</strong>: Detect EventCode 4662 with DS-Replication-Get-Changes from non-DC sources</li><li><strong>Golden Ticket (T1558.001)</strong>: Detect EventCode 4769 with abnormal ticket properties (long lifetime, non-standard encryption)</li><li><strong>Pass-the-Hash (T1550.002)</strong>: Detect EventCode 4624 Logon_Type 3 with NTLM authentication from unexpected sources</li><li><strong>DLL Side-Loading (T1574.002)</strong>: Sysmon EventCode 7 showing unsigned DLLs loaded by legitimate processes</li><li>Configuring Windows Advanced Audit Policy for security monitoring</li></ul>
+<h2>Limitations</h2>
+<ul><li>Output still depends on context, data quality, and surrounding analysis.</li><li>The tool should be interpreted as part of a broader workflow, not as a complete answer by itself.</li><li>Capabilities and visibility vary depending on environment, integrations, and available inputs.</li></ul>
+<h2>Related Tools</h2>
+<ul><li>Splunk Enterprise, Sysmon, And File Activity Logging, BloodHound, NXLog, Palantir WEF Configuration, PingCastle, Splunk CIM</li></ul>
+<h2>Sources</h2>
+<ul><li>analyzing-windows-event-logs-in-splunk</li><li>configuring-windows-event-logging-for-detection</li><li>detecting-lateral-movement-with-splunk</li></ul>
+  <div class="footer-space"></div>
+</article>
+    </main>
+  </body>
+</html>

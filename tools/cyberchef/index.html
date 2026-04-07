@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Cyberchef | Cyber Research Wiki</title>
+    <meta name="description" content="Cyberchef encyclopedia entry." />
+    <link rel="canonical" href="https://danyel-ii.github.io/cyber-research-wiki/tools/cyberchef/" />
+    <link rel="stylesheet" href="/cyber-research-wiki/assets/wiki.css" />
+  </head>
+  <body>
+    <header class="site-shell">
+      <div class="shell-inner">
+        <a class="brand" href="/cyber-research-wiki/">Cyber Research Wiki</a>
+        <nav class="nav">
+          <a href="/cyber-research-wiki/">Index</a>
+          <a href="https://danyel-ii.github.io/WikiCompanion/">Pocket Atlas</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page-shell">
+      <article class="article">
+  <h1>Cyberchef</h1>
+<h2>Overview</h2>
+<p>Cyberchef is a malware analysis tool that appears across malware analysis workflows in this knowledge base. It is referenced as part of higher-level security analysis, investigation, monitoring, or validation activity rather than as an end in itself.</p>
+<h2>What It Is</h2>
+<p>Cyberchef is best understood as a malware-analysis tool in this knowledge base. Its role is conceptual and system-facing rather than procedural: it gives analysts or defenders a structured way to examine evidence, model system behavior, or reason about security state.</p>
+<h2>How It Works</h2>
+<p>Cyberchef works by turning technical inputs into more interpretable outputs at the system level. Across the source skills, it appears as part of larger analysis, investigation, monitoring, or validation loops rather than as a standalone end state.</p>
+<h2>Core Concepts</h2>
+<ul><li>malware analysis</li><li>pdf</li><li>peepdf</li><li>pdfid</li><li>pdf parser</li><li>static analysis</li><li>reverse engineering</li><li>dfir</li><li>IOC collection</li><li>threat indicators</li><li>STIX TAXII</li><li>MISP</li></ul>
+<h2>Typical Workflow</h2>
+<ul><li>1. <strong>Triage with pdfid</strong>: Scan PDF for suspicious keywords (/JS, /JavaScript, /OpenAction, /Launch, /EmbeddedFile).</li><li>2. <strong>Interactive Analysis</strong>: Open PDF in peepdf interactive mode to explore object structure.</li><li>3. <strong>Identify Suspicious Objects</strong>: Locate objects containing JavaScript, streams, or encoded data.</li><li>4. <strong>Extract Content</strong>: Dump suspicious streams and decode filters (FlateDecode, ASCIIHexDecode).</li><li>5. <strong>Deobfuscate JavaScript</strong>: Analyze extracted JS for shellcode, heap sprays, or exploit code.</li><li>6. <strong>Check VirusTotal</strong>: Use peepdf vtcheck to cross-reference file hash with AV detections.</li><li>7. <strong>Generate IOCs</strong>: Extract URLs, domains, hashes, and shellcode signatures.</li><li><strong>Network Indicators:</strong></li><li>IP addresses (C2 servers, staging servers, exfiltration destinations)</li><li>Domain names (C2 domains, phishing domains, DGA domains)</li></ul>
+<h2>Use Cases</h2>
+<ul><li>When triaging suspicious PDF attachments from phishing emails</li><li>During malware analysis of PDF-based exploit documents</li><li>When extracting embedded JavaScript, shellcode, or executables from PDFs</li><li>For forensic examination of weaponized document artifacts</li><li>When building detection signatures for PDF-based threats</li><li>During active incident response to identify and block adversary infrastructure</li><li>Post-incident to document all observed adversary artifacts for future detection</li><li>When sharing threat intelligence with ISACs, sector partners, or law enforcement</li><li>When building detection rules in SIEM, EDR, or network security tools</li><li>When enriching IOCs with threat intelligence context for risk scoring</li></ul>
+<h2>Limitations</h2>
+<ul><li>Output still depends on context, data quality, and surrounding analysis.</li><li>The tool should be interpreted as part of a broader workflow, not as a complete answer by itself.</li><li>Capabilities and visibility vary depending on environment, integrations, and available inputs.</li></ul>
+<h2>Related Tools</h2>
+<ul><li>VirusTotal, MISP, And Distributing IOCs, And Formatting IOCs, And Transforming Data Useful For Deobfuscating Encoded IOCs, And TTPs, And YARA Rules From Text, Chrome DevTools</li></ul>
+<h2>Sources</h2>
+<ul><li>analyzing-malicious-pdf-with-peepdf</li><li>collecting-indicators-of-compromise</li><li>deobfuscating-javascript-malware</li><li>extracting-iocs-from-malware-samples</li></ul>
+  <div class="footer-space"></div>
+</article>
+    </main>
+  </body>
+</html>

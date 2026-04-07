@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Iam Policy Simulator | Cyber Research Wiki</title>
+    <meta name="description" content="Iam Policy Simulator encyclopedia entry." />
+    <link rel="canonical" href="https://danyel-ii.github.io/cyber-research-wiki/tools/iam-policy-simulator/" />
+    <link rel="stylesheet" href="/cyber-research-wiki/assets/wiki.css" />
+  </head>
+  <body>
+    <header class="site-shell">
+      <div class="shell-inner">
+        <a class="brand" href="/cyber-research-wiki/">Cyber Research Wiki</a>
+        <nav class="nav">
+          <a href="/cyber-research-wiki/">Index</a>
+          <a href="https://danyel-ii.github.io/WikiCompanion/">Pocket Atlas</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page-shell">
+      <article class="article">
+  <h1>Iam Policy Simulator</h1>
+<h2>Overview</h2>
+<p>Iam Policy Simulator is a cloud security tool that appears across cloud security workflows in this knowledge base. It is referenced as part of higher-level security analysis, investigation, monitoring, or validation activity rather than as an end in itself.</p>
+<h2>What It Is</h2>
+<p>Iam Policy Simulator is best understood as a cloud-security tool in this knowledge base. Its role is conceptual and system-facing rather than procedural: it gives analysts or defenders a structured way to examine evidence, model system behavior, or reason about security state.</p>
+<h2>How It Works</h2>
+<p>Iam Policy Simulator works by turning technical inputs into more interpretable outputs at the system level. Across the source skills, it appears as part of larger analysis, investigation, monitoring, or validation loops rather than as a standalone end state.</p>
+<h2>Core Concepts</h2>
+<ul><li>cloud security</li><li>aws</li><li>privilege escalation</li><li>iam</li><li>pacu</li><li>offensive security</li><li>aws iam</li><li>least privilege</li><li>permission boundaries</li><li>access analyzer</li><li>cloud identity</li><li>lambda</li></ul>
+<h2>Typical Workflow</h2>
+<ul><li>Establish the baseline permissions of the test principal before attempting escalation.</li><li>aws sts get-caller-identity</li><li>aws iam list-user-policies --user-name test-user</li><li>aws iam list-attached-user-policies --user-name test-user</li><li>aws iam list-groups-for-user --user-name test-user</li><li>Generate a comprehensive inventory of all IAM users, roles, groups, and attached policies using the AWS CLI and IAM credential reports. Identify accounts with console access, programmatic access keys, and their last-used timestamps.</li><li>aws iam generate-credential-report</li><li>aws iam get-credential-report --query &#39;Content&#39; --output text | base64 -d &gt; iam-report.csv</li><li>aws iam list-roles --query &#39;Roles[*].[RoleName,Arn,CreateDate]&#39; --output table</li><li>aws iam list-users --query &#39;Users[*].UserName&#39; --output text | while read user; do</li></ul>
+<h2>Use Cases</h2>
+<ul><li>When conducting authorized penetration testing of AWS IAM configurations</li><li>When validating that IAM policies follow the principle of least privilege</li><li>When assessing the blast radius of a compromised AWS credential</li><li>When building security reviews for IAM role and policy changes in CI/CD pipelines</li><li>When evaluating cross-account trust relationships for privilege escalation risks</li><li>When onboarding new AWS accounts or workloads that require scoped IAM policies</li><li>When IAM Access Analyzer reports overly permissive policies or unused permissions</li><li>When preparing for a compliance audit requiring least privilege evidence (SOC 2, PCI-DSS)</li><li>When migrating from long-lived access keys to short-lived role-based credentials</li><li>When remediating findings from AWS Security Hub related to IAM misconfigurations</li></ul>
+<h2>Limitations</h2>
+<ul><li>Output still depends on context, data quality, and surrounding analysis.</li><li>The tool should be interpreted as part of a broader workflow, not as a complete answer by itself.</li><li>Capabilities and visibility vary depending on environment, integrations, and available inputs.</li></ul>
+<h2>Related Tools</h2>
+<ul><li>Prowler, And Third Party Tools Into A Unified Dashboard, AWS Access Analyzer, AWS Config, AWS IAM Access Analyzer, AWS Security Hub, Checkov, CloudFox</li></ul>
+<h2>Sources</h2>
+<ul><li>performing-aws-privilege-escalation-assessment</li><li>securing-aws-iam-permissions</li><li>securing-aws-lambda-execution-roles</li></ul>
+  <div class="footer-space"></div>
+</article>
+    </main>
+  </body>
+</html>

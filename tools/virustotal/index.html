@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Virustotal | Cyber Research Wiki</title>
+    <meta name="description" content="Virustotal encyclopedia entry." />
+    <link rel="canonical" href="https://danyel-ii.github.io/cyber-research-wiki/tools/virustotal/" />
+    <link rel="stylesheet" href="/cyber-research-wiki/assets/wiki.css" />
+  </head>
+  <body>
+    <header class="site-shell">
+      <div class="shell-inner">
+        <a class="brand" href="/cyber-research-wiki/">Cyber Research Wiki</a>
+        <nav class="nav">
+          <a href="/cyber-research-wiki/">Index</a>
+          <a href="https://danyel-ii.github.io/WikiCompanion/">Pocket Atlas</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page-shell">
+      <article class="article">
+  <h1>Virustotal</h1>
+<h2>Overview</h2>
+<p>Virustotal is a forensics tool that appears across incident response workflows in this knowledge base. It is referenced as part of higher-level security analysis, investigation, monitoring, or validation activity rather than as an end in itself.</p>
+<h2>What It Is</h2>
+<p>Virustotal is best understood as a incident-response tool in this knowledge base. Its role is conceptual and system-facing rather than procedural: it gives analysts or defenders a structured way to examine evidence, model system behavior, or reason about security state.</p>
+<h2>How It Works</h2>
+<p>Virustotal works by turning technical inputs into more interpretable outputs at the system level. Across the source skills, it appears as part of larger analysis, investigation, monitoring, or validation loops rather than as a standalone end state.</p>
+<h2>Core Concepts</h2>
+<ul><li>forensics</li><li>email analysis</li><li>phishing</li><li>spf</li><li>dkim</li><li>dmarc</li><li>header analysis</li><li>digital forensics</li><li>IOC</li><li>VirusTotal</li><li>AbuseIPDB</li><li>MalwareBazaar</li></ul>
+<h2>Typical Workflow</h2>
+<ul><li>/cases/case-2024-001/email/</li><li><strong>IPv4/IPv6 address</strong>: Check if RFC 1918 private (skip external enrichment), validate format</li><li><strong>Domain/FQDN</strong>: Defang for safe handling (<code>evil[.]com</code>), extract registered domain via tldextract</li><li><strong>URL</strong>: Extract domain + path separately; check for redirectors</li><li><strong>File hash</strong>: Identify hash type (MD5/SHA-1/SHA-256); prefer SHA-256 for uniqueness</li><li><strong>Email address</strong>: Split into domain (check MX/DMARC) and local part for pattern analysis</li><li>Defang IOCs in documentation (replace <code>.</code> with <code>[.]</code> and <code>://</code> with <code>[://]</code>) to prevent accidental clicks.</li><li>client = vt.Client(&quot;YOUR_VT_API_KEY&quot;)</li><li>1. <strong>Triage with pdfid</strong>: Scan PDF for suspicious keywords (/JS, /JavaScript, /OpenAction, /Launch, /EmbeddedFile).</li><li>2. <strong>Interactive Analysis</strong>: Open PDF in peepdf interactive mode to explore object structure.</li></ul>
+<h2>Use Cases</h2>
+<ul><li>When investigating a suspected phishing email to determine its true origin</li><li>For verifying sender authenticity and detecting email spoofing</li><li>During incident response when a user has clicked a phishing link</li><li>When tracing the delivery path and relay servers of a suspicious email</li><li>For validating SPF, DKIM, and DMARC alignment to identify forgery</li><li>A phishing email or alert generates IOCs (URLs, IP addresses, file hashes) requiring rapid triage</li><li>Automated feeds deliver bulk IOCs that need confidence scoring before ingestion into blocking controls</li><li>An incident investigation requires contextual enrichment of observed network artifacts</li><li>When triaging suspicious PDF attachments from phishing emails</li><li>During malware analysis of PDF-based exploit documents</li></ul>
+<h2>Limitations</h2>
+<ul><li>Output still depends on context, data quality, and surrounding analysis.</li><li>The tool should be interpreted as part of a broader workflow, not as a complete answer by itself.</li><li>Capabilities and visibility vary depending on environment, integrations, and available inputs.</li></ul>
+<h2>Related Tools</h2>
+<ul><li>AbuseIPDB, CyberChef, Splunk, Cuckoo Sandbox, DOM, Elastic Security, Joe Sandbox, MalwareBazaar</li></ul>
+<h2>Sources</h2>
+<ul><li>analyzing-email-headers-for-phishing-investigation</li><li>analyzing-indicators-of-compromise</li><li>analyzing-malicious-pdf-with-peepdf</li><li>building-automated-malware-submission-pipeline</li><li>collecting-indicators-of-compromise</li><li>conducting-malware-incident-response</li><li>detecting-mobile-malware-behavior</li><li>extracting-iocs-from-malware-samples</li><li>hunting-for-beaconing-with-frequency-analysis</li><li>hunting-for-command-and-control-beaconing</li><li>performing-ioc-enrichment-automation</li><li>performing-malware-hash-enrichment-with-virustotal</li><li>triaging-security-incident-with-ir-playbook</li></ul>
+  <div class="footer-space"></div>
+</article>
+    </main>
+  </body>
+</html>

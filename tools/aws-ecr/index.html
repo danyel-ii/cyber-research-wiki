@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AWS Ecr | Cyber Research Wiki</title>
+    <meta name="description" content="AWS Ecr encyclopedia entry." />
+    <link rel="canonical" href="https://danyel-ii.github.io/cyber-research-wiki/tools/aws-ecr/" />
+    <link rel="stylesheet" href="/cyber-research-wiki/assets/wiki.css" />
+  </head>
+  <body>
+    <header class="site-shell">
+      <div class="shell-inner">
+        <a class="brand" href="/cyber-research-wiki/">Cyber Research Wiki</a>
+        <nav class="nav">
+          <a href="/cyber-research-wiki/">Index</a>
+          <a href="https://danyel-ii.github.io/WikiCompanion/">Pocket Atlas</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page-shell">
+      <article class="article">
+  <h1>AWS Ecr</h1>
+<h2>Overview</h2>
+<p>AWS Ecr is a cloud security tool that appears across cloud security workflows in this knowledge base. It is referenced as part of higher-level security analysis, investigation, monitoring, or validation activity rather than as an end in itself.</p>
+<h2>What It Is</h2>
+<p>AWS Ecr is best understood as a cloud-security tool in this knowledge base. Its role is conceptual and system-facing rather than procedural: it gives analysts or defenders a structured way to examine evidence, model system behavior, or reason about security state.</p>
+<h2>How It Works</h2>
+<p>AWS Ecr works by turning technical inputs into more interpretable outputs at the system level. Across the source skills, it appears as part of larger analysis, investigation, monitoring, or validation loops rather than as a standalone end state.</p>
+<h2>Core Concepts</h2>
+<ul><li>cloud security</li><li>containers</li><li>registry</li><li>image scanning</li><li>trivy</li><li>cosign</li><li>supply chain</li></ul>
+<h2>Typical Workflow</h2>
+<ul><li>Run comprehensive vulnerability scans against container images before and after pushing to the registry.</li><li>trivy image --severity HIGH,CRITICAL myapp:latest</li><li>trivy image --severity HIGH,CRITICAL 123456789012.dkr.ecr.us-east-1.amazonaws.com/myapp:latest</li><li>trivy image --format json --output trivy-results.json myapp:latest</li><li>trivy image --scanners vuln,misconfig,secret myapp:latest</li><li>trivy image --format spdx-json --output sbom.json myapp:latest</li></ul>
+<h2>Use Cases</h2>
+<ul><li>When establishing security controls for container image registries (ECR, ACR, GCR, Docker Hub)</li><li>When building CI/CD pipelines that enforce vulnerability scanning before image promotion</li><li>When implementing image signing and verification to prevent supply chain attacks</li><li>When auditing existing registries for vulnerable, unscanned, or unsigned images</li><li>When compliance requires software bill of materials (SBOM) for deployed container images</li></ul>
+<h2>Limitations</h2>
+<ul><li>Output still depends on context, data quality, and surrounding analysis.</li><li>The tool should be interpreted as part of a broader workflow, not as a complete answer by itself.</li><li>Capabilities and visibility vary depending on environment, integrations, and available inputs.</li></ul>
+<h2>Related Tools</h2>
+<ul><li>And Attesting Container Images With Key Based Or Keyless Workflows, And Kubernetes Resources, And Lifecycle Policies, Cosign, Filesystems, Git Repos, Grype, Syft</li></ul>
+<h2>Sources</h2>
+<ul><li>securing-container-registry-images</li></ul>
+  <div class="footer-space"></div>
+</article>
+    </main>
+  </body>
+</html>

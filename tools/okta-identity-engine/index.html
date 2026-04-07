@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Okta Identity Engine | Cyber Research Wiki</title>
+    <meta name="description" content="Okta Identity Engine encyclopedia entry." />
+    <link rel="canonical" href="https://danyel-ii.github.io/cyber-research-wiki/tools/okta-identity-engine/" />
+    <link rel="stylesheet" href="/cyber-research-wiki/assets/wiki.css" />
+  </head>
+  <body>
+    <header class="site-shell">
+      <div class="shell-inner">
+        <a class="brand" href="/cyber-research-wiki/">Cyber Research Wiki</a>
+        <nav class="nav">
+          <a href="/cyber-research-wiki/">Index</a>
+          <a href="https://danyel-ii.github.io/WikiCompanion/">Pocket Atlas</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page-shell">
+      <article class="article">
+  <h1>Okta Identity Engine</h1>
+<h2>Overview</h2>
+<p>Okta Identity Engine is a cloud security tool that appears across cloud security workflows in this knowledge base. It is referenced as part of higher-level security analysis, investigation, monitoring, or validation activity rather than as an end in itself.</p>
+<h2>What It Is</h2>
+<p>Okta Identity Engine is best understood as a cloud-security tool in this knowledge base. Its role is conceptual and system-facing rather than procedural: it gives analysts or defenders a structured way to examine evidence, model system behavior, or reason about security state.</p>
+<h2>How It Works</h2>
+<p>Okta Identity Engine works by turning technical inputs into more interpretable outputs at the system level. Across the source skills, it appears as part of larger analysis, investigation, monitoring, or validation loops rather than as a standalone end state.</p>
+<h2>Core Concepts</h2>
+<ul><li>okta</li><li>cloud identity</li><li>single sign on</li><li>phishing resistant mfa</li><li>identity lifecycle</li><li>cloud security</li></ul>
+<h2>Typical Workflow</h2>
+<ul><li>Set up SAML 2.0 or OIDC federation between Okta and each cloud provider console for centralized authentication.</li><li>1. In Okta Admin Console: Applications &gt; Add Application &gt; AWS Account Federation</li><li>Single Sign-On URL: https://signin.aws.amazon.com/saml</li><li>Audience URI: urn:amazon:webservices</li><li>3. Download Okta metadata XML</li><li>4. In AWS IAM: Create Identity Provider (SAML) with Okta metadata</li></ul>
+<h2>Use Cases</h2>
+<ul><li>When centralizing authentication across AWS, Azure, and GCP console access through a single identity provider</li><li>When implementing phishing-resistant MFA to replace SMS or TOTP-based authentication</li><li>When automating user provisioning and deprovisioning across cloud platforms and SaaS applications</li><li>When enforcing adaptive access policies based on device compliance, user risk, and network context</li><li>When auditing identity-related security controls for SOC 2 or zero trust compliance</li></ul>
+<h2>Limitations</h2>
+<ul><li>Output still depends on context, data quality, and surrounding analysis.</li><li>The tool should be interpreted as part of a broader workflow, not as a complete answer by itself.</li><li>Capabilities and visibility vary depending on environment, integrations, and available inputs.</li></ul>
+<h2>Related Tools</h2>
+<ul><li>And Adaptive Access Policies, AWS IAM Identity Center, Azure AD External Identities, Lifecycle Management, MFA, Okta Advanced Server Access, Okta Workflows</li></ul>
+<h2>Sources</h2>
+<ul><li>managing-cloud-identity-with-okta</li></ul>
+  <div class="footer-space"></div>
+</article>
+    </main>
+  </body>
+</html>

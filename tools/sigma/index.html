@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sigma | Cyber Research Wiki</title>
+    <meta name="description" content="Sigma encyclopedia entry." />
+    <link rel="canonical" href="https://danyel-ii.github.io/cyber-research-wiki/tools/sigma/" />
+    <link rel="stylesheet" href="/cyber-research-wiki/assets/wiki.css" />
+  </head>
+  <body>
+    <header class="site-shell">
+      <div class="shell-inner">
+        <a class="brand" href="/cyber-research-wiki/">Cyber Research Wiki</a>
+        <nav class="nav">
+          <a href="/cyber-research-wiki/">Index</a>
+          <a href="https://danyel-ii.github.io/WikiCompanion/">Pocket Atlas</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page-shell">
+      <article class="article">
+  <h1>Sigma</h1>
+<h2>Overview</h2>
+<p>Sigma is a threat detection tool that appears across threat hunting workflows in this knowledge base. It is referenced as part of higher-level security analysis, investigation, monitoring, or validation activity rather than as an end in itself.</p>
+<h2>What It Is</h2>
+<p>Sigma is best understood as a threat-hunting tool in this knowledge base. Its role is conceptual and system-facing rather than procedural: it gives analysts or defenders a structured way to examine evidence, model system behavior, or reason about security state.</p>
+<h2>How It Works</h2>
+<p>Sigma works by turning technical inputs into more interpretable outputs at the system level. Across the source skills, it appears as part of larger analysis, investigation, monitoring, or validation loops rather than as a standalone end state.</p>
+<h2>Core Concepts</h2>
+<ul><li>incident response</li><li>lessons learned</li><li>post incident</li><li>after action review</li><li>process improvement</li><li>network security</li><li>lateral movement</li><li>threat detection</li><li>siem</li><li>pass the hash</li><li>threat hunting</li><li>NTLM relay</li></ul>
+<h2>Typical Workflow</h2>
+<ul><li>index=notable incident_id=&quot;IR-2024-042&quot;</li><li>| stats min(_time) as first_alert, max(_time) as last_alert,</li><li>count as total_alerts, dc(src) as unique_sources</li><li>The NTLM relay attack follows a three-phase pattern: coercion/poisoning, interception, and relay.</li><li><strong>Phase 1 -- Coercion or Poisoning</strong>: The attacker forces or tricks a victim into initiating NTLM authentication. Methods include LLMNR/NBT-NS poisoning (Responder), PetitPotam (MS-EFSRPC abuse), PrinterBug (SpoolService), and DFSCoerce.</li><li><strong>Phase 2 -- Interception</strong>: The attacker captures the NTLM Type 1 (Negotiate) and Type 3 (Authenticate) messages from the victim.</li><li><strong>Phase 3 -- Relay</strong>: The attacker forwards the captured NTLM messages to a target service (SMB, LDAP, HTTP, MSSQL) to authenticate as the victim. This succeeds only when message signing is not enforced.</li><li>Victim ──NTLM Negotiate──&gt; Attacker ──NTLM Negotiate──&gt; Target</li><li>Victim &lt;──NTLM Challenge── Attacker &lt;──NTLM Challenge── Target</li><li>Victim ──NTLM Authenticate──&gt; Attacker ──NTLM Authenticate──&gt; Target</li></ul>
+<h2>Use Cases</h2>
+<ul><li>After any security incident has been fully resolved and recovery completed</li><li>Following tabletop exercises or IR simulations</li><li>After significant near-miss events</li><li>Quarterly review of accumulated incident trends</li><li>When IR playbooks need updating based on real-world experience</li><li>Monitoring enterprise networks for post-compromise lateral movement patterns (pass-the-hash, RDP hopping, PSExec)</li><li>Building SIEM detection rules and alerts for common MITRE ATT&amp;CK lateral movement techniques (T1021, T1570)</li><li>Investigating suspected breaches by analyzing authentication patterns and network connections between internal hosts</li><li>Hunting for anomalous east-west traffic patterns that indicate an attacker pivoting through the network</li><li>Validating that network segmentation and access controls effectively limit lateral movement paths</li></ul>
+<h2>Limitations</h2>
+<ul><li>Output still depends on context, data quality, and surrounding analysis.</li><li>The tool should be interpreted as part of a broader workflow, not as a complete answer by itself.</li><li>Capabilities and visibility vary depending on environment, integrations, and available inputs.</li></ul>
+<h2>Related Tools</h2>
+<ul><li>Splunk, Zeek, Microsoft Sentinel, Atomic Red Team, ATT&amp;CK Navigator, Elastic, Elastic SIEM, QRadar</li></ul>
+<h2>Sources</h2>
+<ul><li>conducting-post-incident-lessons-learned</li><li>detecting-lateral-movement-in-network</li><li>detecting-ntlm-relay-with-event-correlation</li><li>hunting-advanced-persistent-threats</li><li>hunting-for-dcom-lateral-movement</li><li>mapping-mitre-attack-techniques</li><li>performing-purple-team-atomic-testing</li></ul>
+  <div class="footer-space"></div>
+</article>
+    </main>
+  </body>
+</html>

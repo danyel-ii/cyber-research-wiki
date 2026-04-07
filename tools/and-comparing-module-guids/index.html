@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>And Comparing Module Guids | Cyber Research Wiki</title>
+    <meta name="description" content="And Comparing Module Guids encyclopedia entry." />
+    <link rel="canonical" href="https://danyel-ii.github.io/cyber-research-wiki/tools/and-comparing-module-guids/" />
+    <link rel="stylesheet" href="/cyber-research-wiki/assets/wiki.css" />
+  </head>
+  <body>
+    <header class="site-shell">
+      <div class="shell-inner">
+        <a class="brand" href="/cyber-research-wiki/">Cyber Research Wiki</a>
+        <nav class="nav">
+          <a href="/cyber-research-wiki/">Index</a>
+          <a href="https://danyel-ii.github.io/WikiCompanion/">Pocket Atlas</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page-shell">
+      <article class="article">
+  <h1>And Comparing Module Guids</h1>
+<h2>Overview</h2>
+<p>And Comparing Module Guids is a firmware security tool that appears across firmware security workflows in this knowledge base. It is referenced as part of higher-level security analysis, investigation, monitoring, or validation activity rather than as an end in itself.</p>
+<h2>What It Is</h2>
+<p>And Comparing Module Guids is best understood as a firmware-security tool in this knowledge base. Its role is conceptual and system-facing rather than procedural: it gives analysts or defenders a structured way to examine evidence, model system behavior, or reason about security state.</p>
+<h2>How It Works</h2>
+<p>And Comparing Module Guids works by turning technical inputs into more interpretable outputs at the system level. Across the source skills, it appears as part of larger analysis, investigation, monitoring, or validation loops rather than as a standalone end state.</p>
+<h2>Core Concepts</h2>
+<ul><li>UEFI</li><li>bootkit</li><li>firmware</li><li>Secure Boot</li><li>chipsec</li><li>ESP</li><li>persistence</li><li>firmware security</li></ul>
+<h2>Typical Workflow</h2>
+<ul><li>flashrom -p internal -r firmware_dump.rom</li></ul>
+<h2>Use Cases</h2>
+<ul><li>A compromised system re-establishes C2 communication after OS reinstallation or disk replacement</li><li>Secure Boot has been tampered with, disabled, or shows unexpected Machine Owner Key (MOK) enrollment</li><li>Firmware integrity verification fails against vendor-provided baselines</li><li>Memory forensics reveals rootkit components loading during early boot phase</li><li>Investigating advanced persistent threat (APT) campaigns known to deploy UEFI implants</li><li>Auditing firmware security posture for enterprise endpoint hardening</li><li>Running analysis from the compromised OS (rootkit components hide from live analysis)</li><li>Only checking the ESP without examining SPI flash firmware (misses firmware-level implants like LoJax, MoonBounce)</li></ul>
+<h2>Limitations</h2>
+<ul><li>Output still depends on context, data quality, and surrounding analysis.</li><li>The tool should be interpreted as part of a broader workflow, not as a complete answer by itself.</li><li>Capabilities and visibility vary depending on environment, integrations, and available inputs.</li></ul>
+<h2>Related Tools</h2>
+<ul><li>And Secure Boot Configuration Auditing, Chipsec, Extracting DXE Drivers, Flashrom, Reading UEFI Variables, Sigcheck, UEFITool, Verifying Firmware Write Protection</li></ul>
+<h2>Sources</h2>
+<ul><li>analyzing-uefi-bootkit-persistence</li></ul>
+  <div class="footer-space"></div>
+</article>
+    </main>
+  </body>
+</html>

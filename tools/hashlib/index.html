@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Hashlib | Cyber Research Wiki</title>
+    <meta name="description" content="Hashlib encyclopedia entry." />
+    <link rel="canonical" href="https://danyel-ii.github.io/cyber-research-wiki/tools/hashlib/" />
+    <link rel="stylesheet" href="/cyber-research-wiki/assets/wiki.css" />
+  </head>
+  <body>
+    <header class="site-shell">
+      <div class="shell-inner">
+        <a class="brand" href="/cyber-research-wiki/">Cyber Research Wiki</a>
+        <nav class="nav">
+          <a href="/cyber-research-wiki/">Index</a>
+          <a href="https://danyel-ii.github.io/WikiCompanion/">Pocket Atlas</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page-shell">
+      <article class="article">
+  <h1>Hashlib</h1>
+<h2>Overview</h2>
+<p>Hashlib is a detection tool that appears across ransomware defense workflows in this knowledge base. It is referenced as part of higher-level security analysis, investigation, monitoring, or validation activity rather than as an end in itself.</p>
+<h2>What It Is</h2>
+<p>Hashlib is best understood as a ransomware-defense tool in this knowledge base. Its role is conceptual and system-facing rather than procedural: it gives analysts or defenders a structured way to examine evidence, model system behavior, or reason about security state.</p>
+<h2>How It Works</h2>
+<p>Hashlib works by turning technical inputs into more interpretable outputs at the system level. Across the source skills, it appears as part of larger analysis, investigation, monitoring, or validation loops rather than as a standalone end state.</p>
+<h2>Core Concepts</h2>
+<ul><li>ransomware</li><li>canary files</li><li>watchdog</li><li>detection</li><li>early warning</li><li>deception</li><li>defense</li><li>ransomware defense</li></ul>
+<h2>Typical Workflow</h2>
+<ul><li>Create decoy files with realistic names and content that attract ransomware scanners. Files should have names like <code>Passwords.xlsx</code>, <code>Financial_Report_2026.docx</code>, <code>backup_credentials.csv</code> and contain plausible-looking but fake data. Place them in directories ransomware typically targets first: user desktops, Documents folders, network share roots, and backup paths.</li><li>Wire the filesystem monitor to multiple alert channels: email via SMTP, Slack webhook POST, syslog forwarding to SIEM, and local log file. Include the triggering event type, file path, timestamp, and process information (when available) in alert payloads.</li><li>Simulate ransomware behavior by programmatically modifying, renaming, and deleting canary files to verify the detection pipeline fires correctly. Measure time-to-alert and validate alert delivery across all configured channels.</li></ul>
+<h2>Use Cases</h2>
+<ul><li>Deploying proactive ransomware detection on file servers, NAS devices, or endpoint systems</li><li>Building an early-warning system that detects ransomware before it encrypts business-critical data</li><li>Supplementing EDR solutions with lightweight canary file monitoring on systems where agents cannot be deployed</li><li>Testing ransomware incident response procedures by simulating canary file triggers</li><li>Monitoring shared drives, home directories, and backup volumes for unauthorized file operations</li></ul>
+<h2>Limitations</h2>
+<ul><li>Output still depends on context, data quality, and surrounding analysis.</li><li>The tool should be interpreted as part of a broader workflow, not as a complete answer by itself.</li><li>Capabilities and visibility vary depending on environment, integrations, and available inputs.</li></ul>
+<h2>Related Tools</h2>
+<ul><li>Psutil, Requests, Smtplib, Watchdog</li></ul>
+<h2>Sources</h2>
+<ul><li>deploying-ransomware-canary-files</li></ul>
+  <div class="footer-space"></div>
+</article>
+    </main>
+  </body>
+</html>

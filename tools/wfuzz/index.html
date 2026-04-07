@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Wfuzz | Cyber Research Wiki</title>
+    <meta name="description" content="Wfuzz is a Python-based web fuzzer that injects payloads into HTTP requests to discover endpoints, parameters, and behaviors, and to triage responses using flexible filters and output formats." />
+    <link rel="canonical" href="https://danyel-ii.github.io/cyber-research-wiki/tools/wfuzz/" />
+    <link rel="stylesheet" href="/cyber-research-wiki/assets/wiki.css" />
+  </head>
+  <body>
+    <header class="site-shell">
+      <div class="shell-inner">
+        <a class="brand" href="/cyber-research-wiki/">Cyber Research Wiki</a>
+        <nav class="nav">
+          <a href="/cyber-research-wiki/">Index</a>
+          <a href="https://danyel-ii.github.io/WikiCompanion/">Pocket Atlas</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page-shell">
+      <article class="article">
+  <h1>Wfuzz</h1>
+<blockquote><p>Wfuzz is a Python-based web fuzzer that injects payloads into HTTP requests to discover endpoints, parameters, and behaviors, and to triage responses using flexible filters and output formats.</p></blockquote>
+<h2>Overview</h2>
+<p>Wfuzz is a general-purpose web and API fuzzer that operates by substituting FUZZ tokens embedded in any portion of an HTTP request with values drawn from configurable payload generators. It is used in security assessments to enumerate endpoints and parameters and to examine application behavior under varying inputs. The tool provides a request generation and response triage framework rather than a full vulnerability scanner, relying on analyst-selected wordlists and filters to surface potentially interesting responses. The project has a long-running maintenance history with active releases on GitHub and documentation on Read the Docs.</p>
+<h2>What It Is</h2>
+<p>Wfuzz is a command-line and Python library tool for HTTP fuzzing based on a token-replacement model (FUZZ/FUZnZ). It supports injection across URL paths and queries, headers, cookies, bodies (including form and JSON content), and HTTP methods. A plugin system supplies payload generators, encoders/decoders, printers, and filters. Users can route traffic through proxies and use HTTP authentication. A filter language enables inclusion or exclusion of responses by status codes, size, words, lines, headers, and regular expressions. Results can be rendered via multiple output formats or consumed programmatically through the library API.</p>
+<h2>How It Works</h2>
+<p>Wfuzz iterates over payload values wherever FUZZ (or additional positional markers) appear in a request template, issuing corresponding HTTP requests. Multiple payload streams can be combined to fuzz several positions concurrently. Payload generators include wordlists, lists, and ranges; optional encoders and decoders (such as URL encoding, base64, or hashing) transform values prior to injection. Responses are triaged using a filter expression language that can act before or after execution to match on attributes like status code, response length, word and line counts, header presence, or regular expression matches. Execution controls cover concurrency and pacing, recursion for discovered paths, proxy chaining over HTTP or SOCKS, and Basic/Digest/NTLM authentication. The Python library mirrors the CLI concepts to enable integration into custom tooling and pipelines.</p>
+<h2>Core Concepts</h2>
+<ul><li>FUZZ token and multi-position fuzzing</li><li>Payload plugins and iterators (files, lists, ranges)</li><li>Encoders/decoders to transform payloads</li><li>Filter language for triage and pre/post filtering</li><li>Printers for output formatting and exports</li><li>Recursion for directory/path discovery</li><li>Proxying and authentication support</li><li>Python library API for integration</li></ul>
+<h2>Typical Workflow</h2>
+<ul><li>Define a target request and injection points by placing FUZZ markers in the appropriate request components.</li><li>Select payloads/wordlists and any encoders/decoders needed to match API formats (e.g., URL-encoding, base64).</li><li>Configure filters to reduce noise (e.g., hide common 404s, focus on specific statuses or length deltas).</li><li>Tune execution (threads, delays, proxies, auth) to respect target stability and rate limits.</li><li>Run fuzzing, review triaged results, and refine payloads/filters iteratively.</li><li>Optionally recurse into discovered paths or export structured results for further analysis in other tools.</li></ul>
+<h2>Use Cases</h2>
+<ul><li>API endpoint and resource discovery by fuzzing paths and versions across gateways or microservices</li><li>Parameter discovery and behavior analysis for REST/JSON APIs, including hidden or undocumented inputs</li><li>Validation of input handling and content negotiation by fuzzing headers (e.g., Content-Type, Accept) and cookies</li><li>Authentication and authorization surface probing (e.g., header/cookie permutations, verb tampering) within permitted tests</li><li>Baseline and differential response analysis to flag anomalies that merit manual verification</li><li>Evaluating rate limiting and throttling behavior under controlled concurrency and pacing</li><li>Testing for HTTP parameter pollution indicators or inconsistent parameter parsing across components</li><li>WAF/gateway behavior exploration via header variations and encodings (within authorized scopes)</li></ul>
+<h2>Limitations</h2>
+<ul><li>Not a vulnerability scanner; it does not confirm exploitability or risk without analyst interpretation.</li><li>Effectiveness depends on payload quality and filters; poor wordlists or triage can yield noise or false negatives.</li><li>May trigger rate limiting, WAFs, or account lockouts; requires careful pacing and authorization.</li><li>Lacks stateful, model-based, or coverage-guided fuzzing typical of specialized API fuzzers; complex workflows (chained requests, CSRF/anti-automation) require external orchestration.</li><li>Performance is adequate but generally slower than some compiled fuzzers; heavy runs can be resource-intensive.</li><li>Documentation versions lag behind the newest releases; some features/flags may differ across 2.x vs 3.x lines.</li></ul>
+<h2>Related Tools</h2>
+<ul><li>ffuf: Go-based fast web fuzzer with similar token model; often chosen for speed and directory/parameter discovery.</li><li>Burp Suite (Intruder/Turbo Intruder): Commercial proxy suite with request fuzzing and high-throughput attack modules; complementary for interactive testing and complex session handling.</li><li>OWASP ZAP (Fuzzer): Open-source proxy with built-in fuzzer; overlaps in request fuzzing and triage features.</li><li>Arjun: Parameter discovery tool; complements Wfuzz for finding hidden GET/POST/JSON parameters.</li><li>Param Miner (Burp extension): Automates parameter discovery/mining; complementary to payload-driven fuzzing.</li><li>Gobuster/Dirb/Dirbuster: Focused directory and DNS brute-forcers; overlap on endpoint enumeration but narrower scope.</li><li>Schemathesis: Property-based testing of APIs from OpenAPI/Swagger; more model-aware than generic fuzzers like Wfuzz.</li><li>RESTler: Stateful, specification-based API fuzzer; contrasts with Wfuzz’s black-box token-replacement approach.</li></ul>
+<h2>Evidence Gaps</h2>
+<ul><li>Official documentation on Read the Docs primarily covers 2.1.x/2.4-era features, while GitHub shows 3.0.x releases; a consolidated 3.x feature reference is limited.</li><li>Direct, official statements about API-specific capabilities (e.g., JSON schema-aware fuzzing or multi-step state handling) are not present; usage for APIs is inferred from general HTTP fuzzing capability.</li><li>Public performance benchmarks versus other fuzzers (e.g., ffuf) are scarce in authoritative sources.</li></ul>
+<h2>Sources</h2>
+<ul><li><a href="https://wfuzz.readthedocs.io/">Wfuzz: The Web fuzzer — official documentation (concepts, payloads, filters, printers, auth, proxies)</a> (Read the Docs / Wfuzz project)</li><li><a href="https://wfuzz.readthedocs.io/en/latest/user/basicusage.html">Basic Usage, Authentication, Proxies, Recursion — Wfuzz 2.1.4 docs</a> (Wfuzz project)</li><li><a href="https://wfuzz.readthedocs.io/en/stable/user/advanced.html">Advanced Usage and Filter Grammar — Wfuzz 2.1.4 docs</a> (Wfuzz project)</li><li><a href="https://github.com/xmendez/wfuzz/releases">Wfuzz GitHub releases (latest maintained versions incl. 3.0.x)</a> (GitHub)</li><li><a href="https://www.kali.org/tools/wfuzz/">Kali Linux tools: Wfuzz (options overview incl. payloads, encoders, prefilter)</a> (Kali Linux / Offensive Security)</li><li><a href="https://wfuzz.readthedocs.io/en/latest/library/guide.html">Wfuzz Python library guide</a> (Wfuzz project)</li><li><a href="https://tracker.debian.org/wfuzz">Debian package tracker: wfuzz (packaging/maintenance indicator)</a> (Debian)</li><li><a href="https://www.techtarget.com/searchsecurity/feature/How-to-use-Wfuzz-to-find-web-application-vulnerabilities">TechTarget overview: How to use Wfuzz to find web application vulnerabilities</a> (TechTarget)</li><li><a href="https://en.wikipedia.org/wiki/Fuzzing">https://en.wikipedia.org/wiki/Fuzzing</a> (en.wikipedia.org)</li><li><a href="https://www.cnn.gr/ellada/story/480411/synagermos-gia-tin-eksafanisi-15xronis-apo-tous-ampelokipous">https://www.cnn.gr/ellada/story/480411/synagermos-gia-tin-eksafanisi-15xronis-apo-tous-ampelokipous</a> (cnn.gr)</li><li><a href="https://arxiv.org/abs/2512.15554">https://arxiv.org/abs/2512.15554</a> (arxiv.org)</li><li><a href="https://www.reddit.com/r/Pentesting/comments/1pzgldi/free_burp_extension_for_api_pentesting_automates/">https://www.reddit.com/r/Pentesting/comments/1pzgldi/free_burp_extension_for_api_pentesting_automates/</a> (reddit.com)</li></ul>
+<h2>Confidence</h2>
+<p>high</p>
+  <div class="footer-space"></div>
+</article>
+    </main>
+  </body>
+</html>

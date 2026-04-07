@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Authorization Codes | Cyber Research Wiki</title>
+    <meta name="description" content="Authorization Codes encyclopedia entry." />
+    <link rel="canonical" href="https://danyel-ii.github.io/cyber-research-wiki/tools/authorization-codes/" />
+    <link rel="stylesheet" href="/cyber-research-wiki/assets/wiki.css" />
+  </head>
+  <body>
+    <header class="site-shell">
+      <div class="shell-inner">
+        <a class="brand" href="/cyber-research-wiki/">Cyber Research Wiki</a>
+        <nav class="nav">
+          <a href="/cyber-research-wiki/">Index</a>
+          <a href="https://danyel-ii.github.io/WikiCompanion/">Pocket Atlas</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page-shell">
+      <article class="article">
+  <h1>Authorization Codes</h1>
+<h2>Overview</h2>
+<p>Authorization Codes is a api security tool that appears across api security workflows in this knowledge base. It is referenced as part of higher-level security analysis, investigation, monitoring, or validation activity rather than as an end in itself.</p>
+<h2>What It Is</h2>
+<p>Authorization Codes is best understood as a api-security tool in this knowledge base. Its role is conceptual and system-facing rather than procedural: it gives analysts or defenders a structured way to examine evidence, model system behavior, or reason about security state.</p>
+<h2>How It Works</h2>
+<p>Authorization Codes works by turning technical inputs into more interpretable outputs at the system level. Across the source skills, it appears as part of larger analysis, investigation, monitoring, or validation loops rather than as a standalone end state.</p>
+<h2>Core Concepts</h2>
+<ul><li>api security</li><li>oauth2</li><li>oidc</li><li>authentication</li><li>redirect uri</li><li>token security</li></ul>
+<h2>Typical Workflow</h2>
+<ul><li>AUTH_SERVER = &quot;https://auth.example.com&quot;</li><li>CLIENT_ID = &quot;test-client-id&quot;</li><li>REDIRECT_URI = &quot;https://app.example.com/callback&quot;</li><li>SCOPE = &quot;openid profile email&quot;</li></ul>
+<h2>Use Cases</h2>
+<ul><li>Assessing OAuth 2.0 authorization code flow for redirect URI validation weaknesses</li><li>Testing OAuth client applications for CSRF protection (state parameter usage) and PKCE enforcement</li><li>Evaluating token storage, transmission, and lifecycle management in OAuth implementations</li><li>Testing scope escalation where clients request more permissions than authorized</li><li>Assessing OpenID Connect implementations for ID token validation and nonce usage</li><li>Only testing the OAuth flow in the browser without intercepting and manipulating redirect parameters</li><li>Missing open redirect vulnerabilities in the application that can be chained with OAuth redirect_uri</li></ul>
+<h2>Limitations</h2>
+<ul><li>Output still depends on context, data quality, and surrounding analysis.</li><li>The tool should be interpreted as part of a broader workflow, not as a complete answer by itself.</li><li>Capabilities and visibility vary depending on environment, integrations, and available inputs.</li></ul>
+<h2>Related Tools</h2>
+<ul><li>And Token Exchanges, Burp Suite Professional, EsPReSSO, Jwt.io, Oauth2 Security Tester, OWASP ZAP</li></ul>
+<h2>Sources</h2>
+<ul><li>testing-oauth2-implementation-flaws</li></ul>
+  <div class="footer-space"></div>
+</article>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Microsoft Entra Id Conditional Access | Cyber Research Wiki</title>
+    <meta name="description" content="Microsoft Entra Id Conditional Access encyclopedia entry." />
+    <link rel="canonical" href="https://danyel-ii.github.io/cyber-research-wiki/tools/microsoft-entra-id-conditional-access/" />
+    <link rel="stylesheet" href="/cyber-research-wiki/assets/wiki.css" />
+  </head>
+  <body>
+    <header class="site-shell">
+      <div class="shell-inner">
+        <a class="brand" href="/cyber-research-wiki/">Cyber Research Wiki</a>
+        <nav class="nav">
+          <a href="/cyber-research-wiki/">Index</a>
+          <a href="https://danyel-ii.github.io/WikiCompanion/">Pocket Atlas</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page-shell">
+      <article class="article">
+  <h1>Microsoft Entra Id Conditional Access</h1>
+<h2>Overview</h2>
+<p>Microsoft Entra Id Conditional Access is a endpoint compliance tool that appears across zero trust architecture workflows in this knowledge base. It is referenced as part of higher-level security analysis, investigation, monitoring, or validation activity rather than as an end in itself.</p>
+<h2>What It Is</h2>
+<p>Microsoft Entra Id Conditional Access is best understood as a zero-trust-architecture tool in this knowledge base. Its role is conceptual and system-facing rather than procedural: it gives analysts or defenders a structured way to examine evidence, model system behavior, or reason about security state.</p>
+<h2>How It Works</h2>
+<p>Microsoft Entra Id Conditional Access works by turning technical inputs into more interpretable outputs at the system level. Across the source skills, it appears as part of larger analysis, investigation, monitoring, or validation loops rather than as a standalone end state.</p>
+<h2>Core Concepts</h2>
+<ul><li>device posture</li><li>zero trust</li><li>endpoint compliance</li><li>crowdstrike zta</li><li>intune</li><li>conditional access</li><li>jamf</li><li>zero trust architecture</li><li>saas security</li><li>casb</li><li>sspm</li><li>oauth governance</li></ul>
+<h2>Typical Workflow</h2>
+<ul><li>Establish minimum security requirements for each device category.</li><li>Connect-MgGraph -Scopes &quot;DeviceManagementConfiguration.ReadWrite.All&quot;</li><li>displayName = &quot;Zero Trust - Windows Compliance&quot;</li><li>description = &quot;Minimum device requirements for zero trust access&quot;</li><li>osMinimumVersion = &quot;10.0.19045&quot;</li><li>Centralize authentication for all SaaS applications through a single IdP.</li><li>Connect-MgGraph -Scopes &quot;Application.ReadWrite.All&quot;</li><li>preferredSingleSignOnMode = &quot;saml&quot;</li></ul>
+<h2>Use Cases</h2>
+<ul><li>When enforcing device health as a prerequisite for accessing corporate applications</li><li>When integrating CrowdStrike ZTA scores, Intune compliance, or Jamf device status into access decisions</li><li>When implementing CISA Zero Trust Maturity Model device pillar requirements</li><li>When building conditional access policies that adapt based on real-time endpoint security posture</li><li>When detecting and blocking access from compromised, unmanaged, or non-compliant devices</li><li>When securing access to SaaS applications (Microsoft 365, Google Workspace, Salesforce, Slack)</li><li>When implementing conditional access policies requiring MFA and device compliance for SaaS</li><li>When deploying CASB for shadow IT discovery and unsanctioned app blocking</li><li>When enforcing session-level controls (DLP, download restrictions) for sensitive SaaS data</li><li>When governing OAuth application permissions and detecting excessive consent grants</li></ul>
+<h2>Limitations</h2>
+<ul><li>Output still depends on context, data quality, and surrounding analysis.</li><li>The tool should be interpreted as part of a broader workflow, not as a complete answer by itself.</li><li>Capabilities and visibility vary depending on environment, integrations, and available inputs.</li></ul>
+<h2>Related Tools</h2>
+<ul><li>Adaptive Shield, And MDM Platforms, And SSPM, And Third Party EDR, Chrome Enterprise, Cloudflare Device Posture, CrowdStrike Falcon ZTA, DLP</li></ul>
+<h2>Sources</h2>
+<ul><li>implementing-device-posture-assessment-in-zero-trust</li><li>implementing-zero-trust-for-saas-applications</li></ul>
+  <div class="footer-space"></div>
+</article>
+    </main>
+  </body>
+</html>

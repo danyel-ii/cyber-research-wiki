@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>And Dom Content When Triggered | Cyber Research Wiki</title>
+    <meta name="description" content="And Dom Content When Triggered encyclopedia entry." />
+    <link rel="canonical" href="https://danyel-ii.github.io/cyber-research-wiki/tools/and-dom-content-when-triggered/" />
+    <link rel="stylesheet" href="/cyber-research-wiki/assets/wiki.css" />
+  </head>
+  <body>
+    <header class="site-shell">
+      <div class="shell-inner">
+        <a class="brand" href="/cyber-research-wiki/">Cyber Research Wiki</a>
+        <nav class="nav">
+          <a href="/cyber-research-wiki/">Index</a>
+          <a href="https://danyel-ii.github.io/WikiCompanion/">Pocket Atlas</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page-shell">
+      <article class="article">
+  <h1>And Dom Content When Triggered</h1>
+<h2>Overview</h2>
+<p>And Dom Content When Triggered is a penetration testing tool that appears across penetration testing workflows in this knowledge base. It is referenced as part of higher-level security analysis, investigation, monitoring, or validation activity rather than as an end in itself.</p>
+<h2>What It Is</h2>
+<p>And Dom Content When Triggered is best understood as a penetration-testing tool in this knowledge base. Its role is conceptual and system-facing rather than procedural: it gives analysts or defenders a structured way to examine evidence, model system behavior, or reason about security state.</p>
+<h2>How It Works</h2>
+<p>And Dom Content When Triggered works by turning technical inputs into more interpretable outputs at the system level. Across the source skills, it appears as part of larger analysis, investigation, monitoring, or validation loops rather than as a standalone end state.</p>
+<h2>Core Concepts</h2>
+<ul><li>XSS</li><li>cross site scripting</li><li>client side security</li><li>OWASP A03</li><li>JavaScript injection</li><li>penetration testing</li></ul>
+<h2>Typical Workflow</h2>
+<ul><li><strong>Reflected inputs</strong>: Test every URL parameter, search field, error message, and HTTP header value that is reflected in the response</li><li><strong>Stored inputs</strong>: Identify features where input is saved and displayed later: user profiles, comments, forum posts, file names, support tickets, and chat messages</li><li><strong>DOM inputs</strong>: Identify client-side JavaScript that reads from <code>location.hash</code>, <code>location.search</code>, <code>document.referrer</code>, <code>window.name</code>, <code>postMessage</code>, or <code>localStorage</code> and writes to the DOM</li><li>HTML body: <code>&lt;div&gt;USER_INPUT&lt;/div&gt;</code></li><li>HTML attribute: <code>&lt;input value=&quot;USER_INPUT&quot;&gt;</code></li><li>JavaScript string: <code>var x = &#39;USER_INPUT&#39;;</code></li><li>URL context: <code>&lt;a href=&quot;USER_INPUT&quot;&gt;</code></li><li>CSS context: <code>&lt;div style=&quot;color: USER_INPUT&quot;&gt;</code></li><li><strong>HTML body context</strong>: <code>&lt;script&gt;alert(document.domain)&lt;/script&gt;</code>, <code>&lt;img src=x onerror=alert(1)&gt;</code>, <code>&lt;svg onload=alert(1)&gt;</code></li></ul>
+<h2>Use Cases</h2>
+<ul><li>Testing web applications for client-side injection vulnerabilities as part of OWASP WSTG testing</li><li>Evaluating the effectiveness of input sanitization and output encoding across all application features</li><li>Assessing the protection provided by Content Security Policy (CSP) headers against XSS exploitation</li><li>Demonstrating the impact of XSS through session hijacking, credential theft, or phishing overlay to stakeholders</li><li>Testing single-page applications (React, Angular, Vue) for DOM-based XSS in client-side routing and rendering</li><li>Only testing for &lt;script&gt;alert(1)&lt;/script&gt; and missing XSS that fires through event handlers or in non-HTML contexts</li><li>Ignoring DOM-based XSS in single-page applications where the server-side code is secure but client-side rendering is vulnerable</li></ul>
+<h2>Limitations</h2>
+<ul><li>Output still depends on context, data quality, and surrounding analysis.</li><li>The tool should be interpreted as part of a broader workflow, not as a complete answer by itself.</li><li>Capabilities and visibility vary depending on environment, integrations, and available inputs.</li></ul>
+<h2>Related Tools</h2>
+<ul><li>And Elements Tabs For Tracing DOM Based XSS Data Flows And Testing Payloads In Real Time, Browser Developer Tools, Burp Suite Professional, Cookies, DOMPurify, Essential For Blind Stored XSS, Plus Repeater And Intruder For Manual Payload Testing, XSS Hunter</li></ul>
+<h2>Sources</h2>
+<ul><li>testing-for-xss-vulnerabilities</li></ul>
+  <div class="footer-space"></div>
+</article>
+    </main>
+  </body>
+</html>

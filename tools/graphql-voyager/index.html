@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Graphql Voyager | Cyber Research Wiki</title>
+    <meta name="description" content="Graphql Voyager encyclopedia entry." />
+    <link rel="canonical" href="https://danyel-ii.github.io/cyber-research-wiki/tools/graphql-voyager/" />
+    <link rel="stylesheet" href="/cyber-research-wiki/assets/wiki.css" />
+  </head>
+  <body>
+    <header class="site-shell">
+      <div class="shell-inner">
+        <a class="brand" href="/cyber-research-wiki/">Cyber Research Wiki</a>
+        <nav class="nav">
+          <a href="/cyber-research-wiki/">Index</a>
+          <a href="https://danyel-ii.github.io/WikiCompanion/">Pocket Atlas</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page-shell">
+      <article class="article">
+  <h1>Graphql Voyager</h1>
+<h2>Overview</h2>
+<p>Graphql Voyager is a web application security tool that appears across web application security workflows in this knowledge base. It is referenced as part of higher-level security analysis, investigation, monitoring, or validation activity rather than as an end in itself.</p>
+<h2>What It Is</h2>
+<p>Graphql Voyager is best understood as a web-application-security tool in this knowledge base. Its role is conceptual and system-facing rather than procedural: it gives analysts or defenders a structured way to examine evidence, model system behavior, or reason about security state.</p>
+<h2>How It Works</h2>
+<p>Graphql Voyager works by turning technical inputs into more interpretable outputs at the system level. Across the source skills, it appears as part of larger analysis, investigation, monitoring, or validation loops rather than as a standalone end state.</p>
+<h2>Core Concepts</h2>
+<ul><li>API security</li><li>OWASP API Top10</li><li>REST</li><li>GraphQL</li><li>authorization testing</li><li>penetration testing</li><li>introspection</li><li>schema extraction</li><li>query abuse</li><li>owasp</li><li>web security</li><li>web application security</li></ul>
+<h2>Typical Workflow</h2>
+<ul><li><strong>Import API documentation</strong>: Load OpenAPI/Swagger specs into Postman or Burp Suite to catalog all endpoints, methods, parameters, and authentication requirements</li><li><strong>Reverse-engineer undocumented APIs</strong>: Proxy the mobile app or web frontend through Burp Suite and exercise all features to capture API calls. Export the Burp sitemap as the baseline endpoint inventory.</li><li><strong>Endpoint enumeration</strong>: Fuzz for hidden API versions (<code>/api/v1/</code>, <code>/api/v2/</code>, <code>/api/internal/</code>), debug endpoints (<code>/api/debug</code>, <code>/api/health</code>, <code>/api/metrics</code>), and administrative endpoints</li><li><strong>Document authentication mechanisms</strong>: Identify if the API uses API keys, OAuth 2.0 Bearer tokens, JWT, session cookies, or mutual TLS</li><li>Algorithm confusion: Change <code>alg</code> to <code>none</code> and remove the signature</li><li>TARGET = &quot;https://target-api.example.com&quot;</li><li>Locate GraphQL endpoints and confirm GraphQL is running.</li><li>v1/graphql v2/graphql graphql/console; do</li><li>Enumerate all available API endpoints and understand the API surface.</li></ul>
+<h2>Use Cases</h2>
+<ul><li>Testing API endpoints for authorization flaws, injection vulnerabilities, and business logic bypasses</li><li>Assessing the security of microservices architecture where APIs are the primary communication method</li><li>Validating that API gateway protections (rate limiting, authentication, input validation) are properly enforced</li><li>Testing third-party API integrations for data exposure and insecure configurations</li><li>Evaluating GraphQL APIs for introspection disclosure, query complexity attacks, and authorization bypasses</li><li>Testing only the endpoints documented in Swagger and missing undocumented or deprecated API versions</li><li>Ignoring response body analysis for excessive data exposure when the UI only shows a subset of returned fields</li><li>Testing GraphQL endpoints for exposed introspection that reveals the complete API schema</li><li>Mapping the attack surface of a GraphQL API to identify sensitive queries, mutations, and types</li><li>Testing for GraphQL-specific vulnerabilities including query depth abuse, batching attacks, and field-level authorization</li></ul>
+<h2>Limitations</h2>
+<ul><li>Output still depends on context, data quality, and surrounding analysis.</li><li>The tool should be interpreted as part of a broader workflow, not as a complete answer by itself.</li><li>Capabilities and visibility vary depending on environment, integrations, and available inputs.</li></ul>
+<h2>Related Tools</h2>
+<ul><li>Altair GraphQL Client, Burp Suite Professional, Clairvoyance, Graphql Cop, InQL, Jwt_tool, Postman, Analyzing</li></ul>
+<h2>Sources</h2>
+<ul><li>conducting-api-security-testing</li><li>performing-graphql-introspection-attack</li><li>performing-graphql-security-assessment</li><li>testing-api-security-with-owasp-top-10</li></ul>
+  <div class="footer-space"></div>
+</article>
+    </main>
+  </body>
+</html>

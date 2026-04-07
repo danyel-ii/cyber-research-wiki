@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Azure Immutable Blob | Cyber Research Wiki</title>
+    <meta name="description" content="Azure Immutable Blob encyclopedia entry." />
+    <link rel="canonical" href="https://danyel-ii.github.io/cyber-research-wiki/tools/azure-immutable-blob/" />
+    <link rel="stylesheet" href="/cyber-research-wiki/assets/wiki.css" />
+  </head>
+  <body>
+    <header class="site-shell">
+      <div class="shell-inner">
+        <a class="brand" href="/cyber-research-wiki/">Cyber Research Wiki</a>
+        <nav class="nav">
+          <a href="/cyber-research-wiki/">Index</a>
+          <a href="https://danyel-ii.github.io/WikiCompanion/">Pocket Atlas</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page-shell">
+      <article class="article">
+  <h1>Azure Immutable Blob</h1>
+<h2>Overview</h2>
+<p>Azure Immutable Blob is a incident response tool that appears across incident response workflows in this knowledge base. It is referenced as part of higher-level security analysis, investigation, monitoring, or validation activity rather than as an end in itself.</p>
+<h2>What It Is</h2>
+<p>Azure Immutable Blob is best understood as a incident-response tool in this knowledge base. Its role is conceptual and system-facing rather than procedural: it gives analysts or defenders a structured way to examine evidence, model system behavior, or reason about security state.</p>
+<h2>How It Works</h2>
+<p>Azure Immutable Blob works by turning technical inputs into more interpretable outputs at the system level. Across the source skills, it appears as part of larger analysis, investigation, monitoring, or validation loops rather than as a standalone end state.</p>
+<h2>Core Concepts</h2>
+<ul><li>incident response</li><li>backup</li><li>integrity</li><li>hash verification</li><li>restore testing</li><li>disaster recovery</li></ul>
+<h2>Typical Workflow</h2>
+<ul><li>head -5 /manifests/prod_baseline_20260319.sha256</li><li>restic -r s3:s3.amazonaws.com/backup-bucket check --read-data</li></ul>
+<h2>Use Cases</h2>
+<ul><li>Verifying backup integrity before relying on backups for ransomware recovery</li><li>Building automated backup validation pipelines that run after each backup job</li><li>Auditing backup infrastructure to confirm recoverability for compliance (SOC 2, ISO 27001, NIST CSF RC.RP-03)</li><li>Detecting silent data corruption (bit rot) in backup storage before a disaster occurs</li><li>Validating that immutable or air-gapped backups have not been tampered with</li></ul>
+<h2>Limitations</h2>
+<ul><li>Output still depends on context, data quality, and surrounding analysis.</li><li>The tool should be interpreted as part of a broader workflow, not as a complete answer by itself.</li><li>Capabilities and visibility vary depending on environment, integrations, and available inputs.</li></ul>
+<h2>Related Tools</h2>
+<ul><li>AWS S3 Object Lock, BorgBackup, Pg_restore, Rclone, Restic, Sha256sum</li></ul>
+<h2>Sources</h2>
+<ul><li>validating-backup-integrity-for-recovery</li></ul>
+  <div class="footer-space"></div>
+</article>
+    </main>
+  </body>
+</html>

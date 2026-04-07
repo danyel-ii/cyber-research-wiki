@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>sqlmap | Cyber Research Wiki</title>
+    <meta name="description" content="sqlmap is an automated framework for detecting and exploiting SQL injection vulnerabilities in web applications and services, with extensive DBMS fingerprinting, data enumeration, and post-exploitation capabilities." />
+    <link rel="canonical" href="https://danyel-ii.github.io/cyber-research-wiki/tools/sqlmap/" />
+    <link rel="stylesheet" href="/cyber-research-wiki/assets/wiki.css" />
+  </head>
+  <body>
+    <header class="site-shell">
+      <div class="shell-inner">
+        <a class="brand" href="/cyber-research-wiki/">Cyber Research Wiki</a>
+        <nav class="nav">
+          <a href="/cyber-research-wiki/">Index</a>
+          <a href="https://danyel-ii.github.io/WikiCompanion/">Pocket Atlas</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page-shell">
+      <article class="article">
+  <h1>sqlmap</h1>
+<blockquote><p>sqlmap is an automated framework for detecting and exploiting SQL injection vulnerabilities in web applications and services, with extensive DBMS fingerprinting, data enumeration, and post-exploitation capabilities.</p></blockquote>
+<h2>Overview</h2>
+<p>sqlmap is an open-source project maintained on GitHub (sqlmapproject/sqlmap) and released under GPLv2. Implemented in Python and running cross‑platform, it focuses on web-exposed SQL injection assessment and automation. The project documents broad support for relational and SQL‑compatible database management systems (DBMSs), five primary SQL injection techniques, DBMS and operating system fingerprinting, session handling, proxy support, and optional integration with Metasploit for specific takeover features.</p>
+<h2>What It Is</h2>
+<p>sqlmap is a specialized security testing tool for SQL injection (SQLi). It automates the process of probing HTTP‑accessible inputs—such as query parameters, request bodies, and headers—to determine whether untrusted data is interpreted as SQL by a back‑end DBMS. Upon confirming injection, sqlmap can fingerprint the DBMS, infer privileges, and enumerate or extract data, with optional post‑exploitation actions where DBMS features and privileges permit. Its scope is confined to SQL/relational injection; it is not intended for NoSQL injection, SSRF, or other injection classes.</p>
+<h2>How It Works</h2>
+<p>sqlmap ingests a single URL, raw HTTP requests, proxy capture logs, or lists of targets, and tests multiple request components (e.g., GET, POST, Cookie, User‑Agent, Referer) for injection points. Its detection and exploitation engine implements boolean‑based blind, time‑based blind, error‑based, UNION‑based, and stacked‑query techniques, selecting and optimizing methods adaptively based on observed application behavior. After identifying a viable vector, it fingerprints the back‑end DBMS and version, infers the current user or role, and can enumerate users, schemas, tables, columns, and data where privileges allow; it also supports executing custom SQL statements through identified injection points. For DBMSs that expose file system or command execution interfaces and when authorized privileges exist, sqlmap offers post‑exploitation actions, with some advanced takeover paths optionally leveraging Metasploit. Reliability features include tamper scripts for payload mutation to work around basic WAF or filtering, authenticated session handling, proxy support, and session/cookie management. In certain scenarios, it can operate with direct DBMS credentials to perform selected actions without traversing a web injection path.</p>
+<h2>Core Concepts</h2>
+<ul><li>SQL injection (OWASP Top 10: Injection)</li><li>Five SQLi techniques: boolean‑based blind, time‑based blind, error‑based, UNION‑based, stacked queries</li><li>DBMS fingerprinting and privilege inference</li><li>Data/schema enumeration and selective extraction</li><li>Post‑exploitation via DBMS features (file access, OS command execution)</li><li>Tamper scripts for payload mutation and basic WAF/filter evasion</li><li>Session, authentication, and proxy integration</li><li>Optional integration with Metasploit for advanced takeover paths</li></ul>
+<h2>Typical Workflow</h2>
+<ul><li>Ingest one or more target requests (URL or full HTTP message) and define scope.</li><li>Probe candidate input vectors across query parameters, body fields, and headers for SQLi indicators.</li><li>Fingerprint the DBMS and determine feasible techniques based on application responses and timing.</li><li>If authorized, enumerate schema objects and retrieve constrained data for validation and impact assessment.</li><li>Optionally perform DBMS‑dependent post‑exploitation actions when privileges and rules of engagement allow.</li><li>Store findings and session artifacts for reproducibility, triage, and remediation coordination.</li></ul>
+<h2>Use Cases</h2>
+<ul><li>Authorized penetration testing of web applications and APIs to validate SQLi exposure and impact</li><li>Security verification during pre‑production testing or regression testing of input validation and parameterization controls</li><li>Reproducing and triaging bug bounty or vulnerability scanner reports related to SQLi</li><li>Red‑team exercises simulating database‑level compromise through an application layer (with proper approvals)</li><li>Training and demonstrations of SQLi classes and mitigations in controlled environments</li></ul>
+<h2>Limitations</h2>
+<ul><li>Scope limited to SQL/relational injection; it is not intended for NoSQL, LDAP, template, command injection, or SSRF testing</li><li>Effectiveness may be reduced by strong parameterization/ORM patterns, query whitelisting, strict input validation, or read‑only DB roles</li><li>High latency, rate limits, or aggressive WAF/IPS rules can increase noise or timeouts, and some defenses may still block automated probing</li><li>Time‑based inference can be slow and susceptible to network jitter; results require careful validation</li><li>Requires legal authorization; misuse can violate policy or law</li><li>Complex stateful workflows (CSRF tokens, multi‑step transactions, heavy client‑side logic) may require additional setup or may not be fully automatable</li></ul>
+<h2>Related Tools</h2>
+<ul><li>Burp Suite: Upstream proxy/log source; sqlmap can parse Burp logs and operate through proxies for testing.</li><li>OWASP ZAP: Alternative intercepting proxy often used alongside sqlmap during web testing.</li><li>sqlninja: Related SQLi tool with a focus on Microsoft SQL Server; complementary/alternative for certain environments.</li><li>jSQL Injection: GUI‑oriented SQLi testing tool; alternative interface and workflows.</li><li>BBQSQL: Focused framework for blind SQL injection attacks; complementary for niche scenarios.</li><li>Havij: Legacy SQLi automation tool; historically comparable but not actively recommended.</li></ul>
+<h2>Evidence Gaps</h2>
+<ul><li>Local evidence mentioned NoSQL and SSRF; official sqlmap documentation confines the tool to SQL/relational injection. No authoritative sources indicate native NoSQL or SSRF testing.</li><li>The supported‑DBMS list in the project wiki is extensive and periodically updated; specific coverage may evolve. When exact DBMS support matters, verify against the current wiki revision for that date.</li></ul>
+<h2>Sources</h2>
+<ul><li><a href="https://github.com/sqlmapproject/sqlmap/wiki/features">sqlmap Wiki — Features</a> (sqlmapproject / GitHub)</li><li><a href="https://github.com/sqlmapproject/sqlmap/wiki/Techniques">sqlmap Wiki — Techniques (SQLi types supported)</a> (sqlmapproject / GitHub)</li><li><a href="https://github.com/sqlmapproject/sqlmap/wiki/Usage">sqlmap Wiki — Usage (options, tamper scripts, sessions, proxies)</a> (sqlmapproject / GitHub)</li><li><a href="https://github.com/sqlmapproject/sqlmap/wiki/Dependencies">sqlmap Wiki — Dependencies (language, integrations)</a> (sqlmapproject / GitHub)</li><li><a href="https://owasp.org/Top10/2021/A03_2021-Injection/">OWASP Top 10:2021 — A03: Injection</a> (OWASP Foundation)</li><li><a href="https://sqlmap.sourceforge.net/">sqlmap project site (redirect/legacy)</a> (SourceForge (redirects to official site))</li><li><a href="https://pypi.org/project/sqlmap/">sqlmap (PyPI package index entry)</a> (Python Packaging Index (PyPI))</li><li><a href="https://owasp.org/Top10/2021/es/A03_2021-Injection/">https://owasp.org/Top10/2021/es/A03_2021-Injection/</a> (owasp.org)</li><li><a href="https://owasp.org/Top10/2021/ar/A03_2021-Injection/">https://owasp.org/Top10/2021/ar/A03_2021-Injection/</a> (owasp.org)</li><li><a href="https://blog.glen-thomas.com/security/2025/03/04/owasp-top-10-2021-03.html">https://blog.glen-thomas.com/security/2025/03/04/owasp-top-10-2021-03.html</a> (blog.glen-thomas.com)</li><li><a href="https://www.isgroup.biz/en/owasp/top-ten-2021-a3-injection.html">https://www.isgroup.biz/en/owasp/top-ten-2021-a3-injection.html</a> (isgroup.biz)</li><li><a href="https://en.wikipedia.org/wiki/Sqlmap">https://en.wikipedia.org/wiki/Sqlmap</a> (en.wikipedia.org)</li></ul>
+<h2>Confidence</h2>
+<p>high</p>
+  <div class="footer-space"></div>
+</article>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Enabling Auditing Of Enclave Originated Cryptographic Operations | Cyber Research Wiki</title>
+    <meta name="description" content="Enabling Auditing Of Enclave Originated Cryptographic Operations encyclopedia entry." />
+    <link rel="canonical" href="https://danyel-ii.github.io/cyber-research-wiki/tools/enabling-auditing-of-enclave-originated-cryptographic-operations/" />
+    <link rel="stylesheet" href="/cyber-research-wiki/assets/wiki.css" />
+  </head>
+  <body>
+    <header class="site-shell">
+      <div class="shell-inner">
+        <a class="brand" href="/cyber-research-wiki/">Cyber Research Wiki</a>
+        <nav class="nav">
+          <a href="/cyber-research-wiki/">Index</a>
+          <a href="https://danyel-ii.github.io/WikiCompanion/">Pocket Atlas</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page-shell">
+      <article class="article">
+  <h1>Enabling Auditing Of Enclave Originated Cryptographic Operations</h1>
+<h2>Overview</h2>
+<p>Enabling Auditing Of Enclave Originated Cryptographic Operations is a cloud security tool that appears across cloud security workflows in this knowledge base. It is referenced as part of higher-level security analysis, investigation, monitoring, or validation activity rather than as an end in itself.</p>
+<h2>What It Is</h2>
+<p>Enabling Auditing Of Enclave Originated Cryptographic Operations is best understood as a cloud-security tool in this knowledge base. Its role is conceptual and system-facing rather than procedural: it gives analysts or defenders a structured way to examine evidence, model system behavior, or reason about security state.</p>
+<h2>How It Works</h2>
+<p>Enabling Auditing Of Enclave Originated Cryptographic Operations works by turning technical inputs into more interpretable outputs at the system level. Across the source skills, it appears as part of larger analysis, investigation, monitoring, or validation loops rather than as a standalone end state.</p>
+<h2>Core Concepts</h2>
+<ul><li>AWS Nitro Enclaves</li><li>confidential computing</li><li>attestation</li><li>KMS</li><li>enclave isolation</li><li>vsock</li><li>PCR</li><li>cloud security</li></ul>
+<h2>Typical Workflow</h2>
+<ul><li>sudo amazon-linux-extras install aws-nitro-enclaves-cli</li><li>sudo yum install aws-nitro-enclaves-cli-devel -y</li><li>sudo systemctl enable --now nitro-enclaves-allocator.service</li><li>sudo systemctl enable --now docker</li><li>sudo usermod -aG ne ec2-user</li><li>sudo usermod -aG docker ec2-user</li></ul>
+<h2>Use Cases</h2>
+<ul><li>Processing sensitive data (PII, PHI, financial records, cryptographic secrets) that must be isolated from EC2 instance operators and administrators</li><li>Building confidential computing pipelines where even root-level access on the parent instance cannot read enclave memory or state</li><li>Implementing cryptographic attestation workflows that tie KMS decryption rights to a specific, verified enclave image hash</li><li>Deploying multi-party computation environments where two or more enclaves authenticate each other via attestation before exchanging data</li><li>Hardening existing workloads that currently decrypt secrets on the parent instance by migrating decryption into an enclave boundary</li><li>Running the enclave in debug mode in production, which allows console access and breaks the confidentiality guarantee that regulators require</li><li>Setting the KMS key policy to use only the IAM role without attestation conditions, which allows the parent instance to decrypt directly without the enclave</li><li>Failing to reserve sufficient memory in allocator.yaml, causing the enclave to fail at launch with an opaque &quot;resource not available&quot; error</li></ul>
+<h2>Limitations</h2>
+<ul><li>Output still depends on context, data quality, and surrounding analysis.</li><li>The tool should be interpreted as part of a broader workflow, not as a complete answer by itself.</li><li>Capabilities and visibility vary depending on environment, integrations, and available inputs.</li></ul>
+<h2>Related Tools</h2>
+<ul><li>And Reading Enclave Console Output, AWS KMS, AWS Nitro Enclaves Sdk C, CloudTrail, Encrypting Responses To The Enclave&#39;s Ephemeral Public Key, Kmstool Enclave Cli, Launching, Nitro Cli</li></ul>
+<h2>Sources</h2>
+<ul><li>implementing-aws-nitro-enclave-security</li></ul>
+  <div class="footer-space"></div>
+</article>
+    </main>
+  </body>
+</html>

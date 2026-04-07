@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Nmap | Cyber Research Wiki</title>
+    <meta name="description" content="Nmap is a widely used, open-source scanner for network exploration and security auditing that discovers hosts, enumerates open ports and services, identifies software/OS fingerprints, and supports extensible scripting for higher-level checks." />
+    <link rel="canonical" href="https://danyel-ii.github.io/cyber-research-wiki/tools/nmap/" />
+    <link rel="stylesheet" href="/cyber-research-wiki/assets/wiki.css" />
+  </head>
+  <body>
+    <header class="site-shell">
+      <div class="shell-inner">
+        <a class="brand" href="/cyber-research-wiki/">Cyber Research Wiki</a>
+        <nav class="nav">
+          <a href="/cyber-research-wiki/">Index</a>
+          <a href="https://danyel-ii.github.io/WikiCompanion/">Pocket Atlas</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page-shell">
+      <article class="article">
+  <h1>Nmap</h1>
+<blockquote><p>Nmap is a widely used, open-source scanner for network exploration and security auditing that discovers hosts, enumerates open ports and services, identifies software/OS fingerprints, and supports extensible scripting for higher-level checks.</p></blockquote>
+<h2>Overview</h2>
+<p>Developed by the Nmap Project, Nmap supports core security workflows by conducting host discovery, port and service enumeration, OS and device fingerprinting, and extensible script-driven checks. It is applied in penetration testing, incident response, asset discovery, and control validation. A graphical interface (Zenmap) and companion utilities such as Ndiff assist with visualization and change tracking. Structured outputs, notably XML enriched with CPE tags, facilitate integration with broader security platforms and reporting pipelines.</p>
+<h2>What It Is</h2>
+<p>Nmap is a general-purpose network scanner that uses raw IP packets and targeted application-layer probes to characterize network exposure. It infers service presence and attributes from target responses to crafted probes, consolidates results into per-host findings, and can invoke Lua-based scripts via the Nmap Scripting Engine to perform additional discovery, safety-checked vulnerability detection, and policy validation.</p>
+<h2>How It Works</h2>
+<p>Nmap first performs host discovery using probes such as ARP, ICMP, TCP, and UDP to identify responsive targets. It then conducts port scanning with multiple techniques (e.g., TCP SYN and UDP probes) to classify port states (open, closed, filtered, and related categories). Service and version detection sends protocol-specific probes and matches responses against a maintained signature set. OS detection applies TCP/IP stack fingerprinting to correlate observed behaviors with known operating systems and device types. Integrated traceroute estimates hop count and path characteristics. The Nmap Scripting Engine executes categorized scripts (e.g., discovery, auth, vuln) with optional arguments to extend checks. Output is available in human-readable and machine-parsable forms, including XML annotated with CPE identifiers for downstream correlation and differential analysis.</p>
+<h2>Core Concepts</h2>
+<ul><li>Host discovery vs. port scanning separation</li><li>Port state taxonomy (open, closed, filtered, unfiltered, open|filtered, closed|filtered)</li><li>Scan techniques and probe/response inference (e.g., SYN scan, UDP scan)</li><li>Service/version detection via active probes and signature matching database</li><li>OS and device fingerprinting using TCP/IP stack behaviors</li><li>Nmap Scripting Engine (Lua-based) with categorized scripts (discovery, auth, vuln, etc.)</li><li>Timing and performance tuning to balance speed, accuracy, and network impact</li><li>Integrated traceroute and network distance estimation</li><li>Structured output (XML) and CPE annotation for interoperability</li><li>Zenmap GUI and Ndiff for visualization and change detection</li></ul>
+<h2>Typical Workflow</h2>
+<ul><li>Define authorized scope and objectives; select output formats for auditability and integration</li><li>Perform host discovery to establish a target set appropriate to the environment (e.g., ARP/ICMP on internal segments)</li><li>Enumerate ports and services on targets; adjust timing based on network conditions and monitoring sensitivity</li><li>Enable service/version and OS detection to contextualize exposed services and platforms</li><li>Run targeted NSE scripts to enrich findings (e.g., safe discovery, configuration checks)</li><li>Review traceroute and distance to reason about topology and control placement</li><li>Export structured results (XML with CPE) to other systems; compare historical baselines with Ndiff to detect change</li></ul>
+<h2>Use Cases</h2>
+<ul><li>Security assessment and penetration testing reconnaissance and enumeration</li><li>Asset discovery and continuous exposure management in IT/OT/cloud networks</li><li>Firewall/ACL and segmentation validation by verifying reachability and service exposure</li><li>Incident response triage to quickly map accessible services from relevant vantage points</li><li>Configuration and compliance verification using appropriate NSE scripts and structured output</li><li>Change detection across network services using differential reporting (e.g., Ndiff)</li><li>Research and measurement when detailed per-host service/OS context is required (smaller scope or focused studies)</li></ul>
+<h2>Limitations</h2>
+<ul><li>Results can be influenced by filtering, NAT, proxying, and active defenses; some states are inconclusive by design (e.g., open|filtered)</li><li>UDP and certain protocols are prone to false negatives due to lack of responses or rate limiting</li><li>OS and version fingerprinting rely on signature quality and network conditions; accuracy varies by target behavior and visibility</li><li>High-rate scans may trigger monitoring/defenses and can impact fragile services; always require explicit authorization</li><li>IPv6 address space scale complicates exhaustive discovery; targeted techniques and auxiliary data are often needed</li><li>NSE script quality, coverage, and maintenance vary; some scripts have safety considerations and environmental assumptions</li><li>Not optimized for Internet-wide speed at the scale of specialized scanners (e.g., ZMap, Masscan)</li></ul>
+<h2>Related Tools</h2>
+<ul><li>Zenmap: Official GUI and results viewer for Nmap; supports profiles and visualization.</li><li>Ndiff: Official companion tool that compares Nmap XML results to highlight changes over time.</li><li>Masscan: High-speed Internet-scale TCP SYN scanner; often used to rapidly find candidates that are then profiled in depth with Nmap.</li><li>ZMap: Single-packet Internet-wide scanner used for research-scale measurements; complementary to Nmap’s deeper per-host enumeration.</li><li>Metasploit Framework: Offensive framework that integrates with Nmap outputs; can import Nmap XML and leverage discovered services.</li><li>OpenVAS/Greenbone and Nessus: Vulnerability scanners that may invoke or ingest Nmap-style discovery to seed checks; provide higher-level vulnerability assessment beyond Nmap’s scope.</li><li>Wireshark: Packet analysis complement for validating and interpreting network behaviors observed during scanning.</li></ul>
+<h2>Evidence Gaps</h2>
+<ul><li>The local packet references VLAN/802.1Q and switch segmentation; Nmap itself does not directly validate VLAN boundaries beyond inference from reachability and traceroute—authoritative capabilities for VLAN assessment are outside core Nmap features.</li><li>Exact recency of specific default scripts or signature sets can change between releases; consult the current Nmap Reference Guide and NSE documentation for up-to-date script behavior and safety notes.</li></ul>
+<h2>Sources</h2>
+<ul><li><a href="https://nmap.org/book/man.html">Nmap Reference Guide (Man Page) — features, options, states, OS/service detection, NSE, output</a> (Nmap Project)</li><li><a href="https://nmap.org/book/man-port-scanning-techniques.html">Port Scanning Techniques — conceptual mechanisms and scan types</a> (Nmap Project)</li><li><a href="https://nmap.org/book/vscan-fileformat.html">Nmap Version Detection and service probes (nmap-service-probes format)</a> (Nmap Project)</li><li><a href="https://nmap.org/book/output-formats-cpe.html">Common Platform Enumeration (CPE) in Nmap output</a> (Nmap Project)</li><li><a href="https://nmap.org/zenmap/man.html">Zenmap Reference Guide (GUI and results viewer)</a> (Nmap Project)</li><li><a href="https://nmap.org/book/ndiff-man.html">Ndiff Reference Guide (differential reporting)</a> (Nmap Project)</li><li><a href="https://nmap.org/nmap_doc.html">The Art of Port Scanning (background and design of scanning)</a> (Nmap Project)</li><li><a href="https://attack.mitre.org/techniques/T1046">MITRE ATT&amp;CK T1046: Network Service Discovery (context for detection and use)</a> (MITRE)</li><li><a href="https://zmap.io/">ZMap Project (fast Internet-wide scanning, complementary to Nmap)</a> (ZMap Project)</li><li><a href="https://github.com/robertdavidgraham/masscan">MASSCAN: Mass IP port scanner (complementary high-speed discovery)</a> (GitHub)</li><li><a href="https://nmap.org/docs.html">https://nmap.org/docs.html</a> (nmap.org)</li><li><a href="https://nmap.org/nsedoc/lib/lpeg.html">https://nmap.org/nsedoc/lib/lpeg.html</a> (nmap.org)</li></ul>
+<h2>Confidence</h2>
+<p>high</p>
+  <div class="footer-space"></div>
+</article>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Node Js | Cyber Research Wiki</title>
+    <meta name="description" content="Node Js encyclopedia entry." />
+    <link rel="canonical" href="https://danyel-ii.github.io/cyber-research-wiki/tools/node-js/" />
+    <link rel="stylesheet" href="/cyber-research-wiki/assets/wiki.css" />
+  </head>
+  <body>
+    <header class="site-shell">
+      <div class="shell-inner">
+        <a class="brand" href="/cyber-research-wiki/">Cyber Research Wiki</a>
+        <nav class="nav">
+          <a href="/cyber-research-wiki/">Index</a>
+          <a href="https://danyel-ii.github.io/WikiCompanion/">Pocket Atlas</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page-shell">
+      <article class="article">
+  <h1>Node Js</h1>
+<h2>Overview</h2>
+<p>Node Js is a cloud security tool that appears across cloud security workflows in this knowledge base. It is referenced as part of higher-level security analysis, investigation, monitoring, or validation activity rather than as an end in itself.</p>
+<h2>What It Is</h2>
+<p>Node Js is best understood as a cloud-security tool in this knowledge base. Its role is conceptual and system-facing rather than procedural: it gives analysts or defenders a structured way to examine evidence, model system behavior, or reason about security state.</p>
+<h2>How It Works</h2>
+<p>Node Js works by turning technical inputs into more interpretable outputs at the system level. Across the source skills, it appears as part of larger analysis, investigation, monitoring, or validation loops rather than as a standalone end state.</p>
+<h2>Core Concepts</h2>
+<ul><li>serverless security</li><li>Lambda injection</li><li>event source poisoning</li><li>OWASP serverless</li><li>IAM escalation</li><li>CloudTrail</li><li>cloud security</li></ul>
+<h2>Typical Workflow</h2>
+<ul><li>aws lambda list-functions --query &#39;Functions[*].[FunctionName,Runtime,Role,Handler,Layers]&#39; --output table</li><li>aws apigateway get-rest-apis --query &#39;items[*].[id,name]&#39; --output table</li><li>For each API, enumerate resources and methods to identify which Lambda functions receive user-controlled HTTP input.</li></ul>
+<h2>Use Cases</h2>
+<ul><li>Auditing Lambda/Cloud Functions for code injection vulnerabilities where unsanitized event data flows into dangerous runtime functions (eval, exec, child_process.exec, os.system)</li><li>Investigating incidents where an attacker modified function code or layers to establish persistence or exfiltrate data from the serverless environment</li><li>Detecting privilege escalation paths where an adversary with lambda:UpdateFunctionCode and iam:PassRole can assume higher-privilege execution roles</li><li>Analyzing event source poisoning attacks where malicious payloads are injected through S3 object uploads, SQS messages, DynamoDB stream records, or API Gateway requests that trigger function execution</li><li>Building detection rules for SOC teams monitoring serverless workloads for unauthorized function modifications, layer additions, and suspicious invocation patterns</li><li>Only checking the function code and missing malicious layers that persist even after the function code is reverted</li><li>Failing to check if the attacker created new IAM users, access keys, or roles during the window the credentials were valid</li></ul>
+<h2>Limitations</h2>
+<ul><li>Output still depends on context, data quality, and surrounding analysis.</li><li>The tool should be interpreted as part of a broader workflow, not as a complete answer by itself.</li><li>Capabilities and visibility vary depending on environment, integrations, and available inputs.</li></ul>
+<h2>Related Tools</h2>
+<ul><li>And Function URL Authorization Types, And Go Lambda Runtimes, And Missing Encryption, And Pickle Deserialization, And Suspicious Command Patterns, AWS CloudTrail, AWS Config, Bandit</li></ul>
+<h2>Sources</h2>
+<ul><li>detecting-serverless-function-injection</li></ul>
+  <div class="footer-space"></div>
+</article>
+    </main>
+  </body>
+</html>

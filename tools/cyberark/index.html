@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Cyberark | Cyber Research Wiki</title>
+    <meta name="description" content="Cyberark encyclopedia entry." />
+    <link rel="canonical" href="https://danyel-ii.github.io/cyber-research-wiki/tools/cyberark/" />
+    <link rel="stylesheet" href="/cyber-research-wiki/assets/wiki.css" />
+  </head>
+  <body>
+    <header class="site-shell">
+      <div class="shell-inner">
+        <a class="brand" href="/cyber-research-wiki/">Cyber Research Wiki</a>
+        <nav class="nav">
+          <a href="/cyber-research-wiki/">Index</a>
+          <a href="https://danyel-ii.github.io/WikiCompanion/">Pocket Atlas</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page-shell">
+      <article class="article">
+  <h1>Cyberark</h1>
+<h2>Overview</h2>
+<p>Cyberark is a identity access management tool that appears across identity access management workflows in this knowledge base. It is referenced as part of higher-level security analysis, investigation, monitoring, or validation activity rather than as an end in itself.</p>
+<h2>What It Is</h2>
+<p>Cyberark is best understood as a identity-access-management tool in this knowledge base. Its role is conceptual and system-facing rather than procedural: it gives analysts or defenders a structured way to examine evidence, model system behavior, or reason about security state.</p>
+<h2>How It Works</h2>
+<p>Cyberark works by turning technical inputs into more interpretable outputs at the system level. Across the source skills, it appears as part of larger analysis, investigation, monitoring, or validation loops rather than as a standalone end state.</p>
+<h2>Core Concepts</h2>
+<ul><li><strong>Master Policy</strong>: Global security settings (dual control, exclusive access, one-time passwords)</li><li><strong>Safes</strong>: Logical containers for credentials with granular permissions</li><li><strong>Platforms</strong>: Configuration profiles defining rotation, verification, and reconciliation</li><li><strong>Account Groups</strong>: Link accounts sharing rotation dependencies</li></ul>
+<h2>Typical Workflow</h2>
+<ul><li>1. Deploy primary vault server in secured network segment</li><li>2. Configure vault high availability with DR vault</li><li>3. Harden vault server OS (remove unnecessary services, disable RDP)</li><li>4. Configure firewall rules (only port 1858 from authorized components)</li><li>1. Create safe hierarchy aligned with business units</li><li>Safe Admins: manage safe membership</li><li>Credential Managers: add/modify accounts</li><li>Auditors: view audit logs only</li><li>Users: retrieve/use credentials</li><li>1. Create a CyberArk integration role in AWS IAM</li></ul>
+<h2>Use Cases</h2>
+<ul><li>When deploying or configuring implementing privileged access management with cyberark capabilities in your environment</li><li>When establishing security controls aligned to compliance requirements</li><li>When building or improving security architecture for this domain</li><li>When conducting security assessments that require this implementation</li><li>When deploying or configuring implementing zero standing privilege with cyberark capabilities in your environment</li></ul>
+<h2>Limitations</h2>
+<ul><li>Output still depends on context, data quality, and surrounding analysis.</li><li>The tool should be interpreted as part of a broader workflow, not as a complete answer by itself.</li><li>Capabilities and visibility vary depending on environment, integrations, and available inputs.</li></ul>
+<h2>Related Tools</h2>
+<ul><li>None listed yet</li></ul>
+<h2>Sources</h2>
+<ul><li>implementing-privileged-access-management-with-cyberark</li><li>implementing-zero-standing-privilege-with-cyberark</li></ul>
+  <div class="footer-space"></div>
+</article>
+    </main>
+  </body>
+</html>

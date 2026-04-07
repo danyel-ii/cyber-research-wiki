@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Persistencesniper | Cyber Research Wiki</title>
+    <meta name="description" content="Persistencesniper encyclopedia entry." />
+    <link rel="canonical" href="https://danyel-ii.github.io/cyber-research-wiki/tools/persistencesniper/" />
+    <link rel="stylesheet" href="/cyber-research-wiki/assets/wiki.css" />
+  </head>
+  <body>
+    <header class="site-shell">
+      <div class="shell-inner">
+        <a class="brand" href="/cyber-research-wiki/">Cyber Research Wiki</a>
+        <nav class="nav">
+          <a href="/cyber-research-wiki/">Index</a>
+          <a href="https://danyel-ii.github.io/WikiCompanion/">Pocket Atlas</a>
+        </nav>
+      </div>
+    </header>
+    <main class="page-shell">
+      <article class="article">
+  <h1>Persistencesniper</h1>
+<h2>Overview</h2>
+<p>Persistencesniper is a forensics tool that appears across digital forensics workflows in this knowledge base. It is referenced as part of higher-level security analysis, investigation, monitoring, or validation activity rather than as an end in itself.</p>
+<h2>What It Is</h2>
+<p>Persistencesniper is best understood as a digital-forensics tool in this knowledge base. Its role is conceptual and system-facing rather than procedural: it gives analysts or defenders a structured way to examine evidence, model system behavior, or reason about security state.</p>
+<h2>How It Works</h2>
+<p>Persistencesniper works by turning technical inputs into more interpretable outputs at the system level. Across the source skills, it appears as part of larger analysis, investigation, monitoring, or validation loops rather than as a standalone end state.</p>
+<h2>Core Concepts</h2>
+<ul><li>forensics</li><li>malware persistence</li><li>autoruns</li><li>registry</li><li>scheduled tasks</li><li>rootkit detection</li><li>incident response</li><li>digital forensics</li></ul>
+<h2>Typical Workflow</h2>
+<ul><li>from Registry import Registry</li><li>system_reg = Registry.Registry(&quot;/cases/case-2024-001/registry/SYSTEM&quot;)</li><li>select = system_reg.open(&quot;Select&quot;)</li><li>current = select.value(&quot;Current&quot;).value()</li></ul>
+<h2>Use Cases</h2>
+<ul><li>When investigating how malware maintains presence on a compromised system after reboots</li><li>During incident response to identify all persistence mechanisms for complete remediation</li><li>For threat hunting to discover unauthorized autostart entries across endpoints</li><li>When analyzing malware behavior to understand its persistence strategy</li><li>For verifying that all persistence has been removed after incident remediation</li></ul>
+<h2>Limitations</h2>
+<ul><li>Output still depends on context, data quality, and surrounding analysis.</li><li>The tool should be interpreted as part of a broader workflow, not as a complete answer by itself.</li><li>Capabilities and visibility vary depending on environment, integrations, and available inputs.</li></ul>
+<h2>Related Tools</h2>
+<ul><li>Autoruns, KAPE, OSQuery, RECmd, RegRipper, Velociraptor, Volatility</li></ul>
+<h2>Sources</h2>
+<ul><li>performing-malware-persistence-investigation</li></ul>
+  <div class="footer-space"></div>
+</article>
+    </main>
+  </body>
+</html>
