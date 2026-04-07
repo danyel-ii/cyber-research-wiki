@@ -7,6 +7,12 @@
 - Bridged: local companion corpus through `/Users/danyel-ii/WikiCompanion/output/wiki/schema/` so the flat companion article set can be explored through the same six categories
 - Notes: The app source of truth now matches the public wiki, so future article additions will preserve the six-phase structure instead of regenerating the old eight-category layout.
 
+## [2026-04-07] lint | Bridge refresh and broken-link fix
+- Verified: the live site at `https://danyel-ii.github.io/cyber-research-wiki/` and the main category/article routes returned HTTP 200
+- Fixed: broken relative wiki-links in the Kali article cluster that could route readers to missing pages after the six-phase reorganization
+- Refreshed: category bridge lists from `/Users/danyel-ii/WikiCompanion/output/wiki-openai-oscp-state.json` to include recent companion outputs such as `nmap`, `dnsrecon`, `nikto`, `ffuf`, `impacket`, `enum4linux-ng`, `wireshark`, `tcpdump`, `bettercap`, and `aircrack-ng-suite`
+- Notes: the most likely source of the reported 404 was stale internal article navigation rather than a failed Pages deployment
+
 ## [2026-04-05] structure | Clean category-first reset
 - Deleted: previous topic, source, analysis, entity, path, and template content from the public layer
 - Kept: the eight-category backbone

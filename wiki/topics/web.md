@@ -42,6 +42,8 @@ The companion corpus is richest here. It contains practical articles on proxies,
 - [Altair GraphQL Client](../../../../WikiCompanion/output/wiki/altair-graphql-client.md)
 - [Swagger UI Detector](../../../../WikiCompanion/output/wiki/swagger-ui-detector.md)
 - [Arjun](../../../../WikiCompanion/output/wiki/arjun.md)
+- [Nikto](../../../../WikiCompanion/output/wiki/nikto.md)
+- [ffuf](../../../../WikiCompanion/output/wiki/ffuf.md)
 - [Wfuzz](../../../../WikiCompanion/output/wiki/wfuzz.md)
 - [XSStrike](../../../../WikiCompanion/output/wiki/xsstrike.md)
 - [sqlmap](../../../../WikiCompanion/output/wiki/sqlmap.md)

@@ -44,3 +44,5 @@ The companion corpus gives Post its first serious body of material, especially a
 - [Mimikatz](../../../../WikiCompanion/output/wiki/mimikatz.md)
 - [Sysinternals Autoruns](../../../../WikiCompanion/output/wiki/sysinternals-autoruns.md)
 - [Volatility](../../../../WikiCompanion/output/wiki/volatility.md)
+- [Wireshark](../../../../WikiCompanion/output/wiki/wireshark.md)
+- [tcpdump](../../../../WikiCompanion/output/wiki/tcpdump.md)

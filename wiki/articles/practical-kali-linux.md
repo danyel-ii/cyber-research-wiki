@@ -18,7 +18,7 @@ Practical Kali Linux is not about collecting the longest possible tool list. It 
 
 That matters because Kali is usually introduced through its tools, but real fluency comes from routine. A capable learner can set up a disposable VM, connect it to a clearly isolated training target, update it without breaking it, recognize when privilege level changes a result, capture evidence in an organized way, and write a short explanation of what happened afterward. Those habits transfer to nearly every other security topic in this wiki.
 
-> **Scope note:** This page is about using Kali Linux in **labs, classes, and self-directed training**. It is not a playbook for attacking live systems, and it does not replace authorization, scope, or assessment method. For Kali as a distribution, see [Kali Linux](./kali-linux.md). For workstation design and evidence boundaries, see [Kali as an Assessment Environment](./kali-as-an-assessment-environment.md). For phase-specific material, use the category pages in [[../topics/index]].
+> **Scope note:** This page is about using Kali Linux in **labs, classes, and self-directed training**. It is not a playbook for attacking live systems, and it does not replace authorization, scope, or assessment method. For Kali as a distribution, see [Kali Linux](./kali-linux.md). For workstation design and evidence boundaries, see [Kali as an Assessment Environment](./kali-as-an-assessment-environment.md). For phase-specific material, use the category pages in [Categories](../topics/index.md).
 
 ## What “practical” use actually means
 
@@ -316,9 +316,9 @@ The neighboring pages can then stay cleanly separated:
 
 - [Kali Linux](./kali-linux.md) explains what the distribution is and why it exists.
 - [Kali as an Assessment Environment](./kali-as-an-assessment-environment.md) explains how Kali should be positioned as a controlled workspace.
-- [[../topics/recon]] should hold the discovery and lab-orientation material that comes before deeper testing.
-- [[../topics/web]] should explain how to test web applications, not how to boot the distro.
-- [[../topics/exploit]] should cover controlled validation and payload work once the environment is ready.
+- [Recon](../topics/recon.md) should hold the discovery and lab-orientation material that comes before deeper testing.
+- [Web](../topics/web.md) should explain how to test web applications, not how to boot the distro.
+- [Exploit](../topics/exploit.md) should cover controlled validation and payload work once the environment is ready.
 
 ## Maintenance note
 

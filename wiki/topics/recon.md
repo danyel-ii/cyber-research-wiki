@@ -37,9 +37,12 @@ Start here when the problem is target understanding rather than payload delivery
 The companion corpus contributes asset-discovery, internet-mapping, and early target-enumeration articles that fit naturally under Recon.
 
 - [Open the Recon companion portal](../../../../WikiCompanion/output/wiki/schema/recon.md)
+- [Nmap](../../../../WikiCompanion/output/wiki/nmap.md)
 - [OWASP Amass](../../../../WikiCompanion/output/wiki/amass.md)
 - [Subfinder](../../../../WikiCompanion/output/wiki/subfinder.md)
 - [theHarvester](../../../../WikiCompanion/output/wiki/theharvester.md)
+- [DNSRecon](../../../../WikiCompanion/output/wiki/dnsrecon.md)
+- [Gobuster](../../../../WikiCompanion/output/wiki/gobuster.md)
 - [Shodan](../../../../WikiCompanion/output/wiki/shodan.md)
 - [urlscan.io](../../../../WikiCompanion/output/wiki/urlscan-io.md)
 - [WHOIS](../../../../WikiCompanion/output/wiki/whois.md)

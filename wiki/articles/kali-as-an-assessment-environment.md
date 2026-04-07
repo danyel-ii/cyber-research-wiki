@@ -257,9 +257,9 @@ The neighboring pages can then stay focused:
 
 - [Kali Linux](./kali-linux.md) explains Kali as a distribution.
 - [Practical Kali Linux](./practical-kali-linux.md) can cover setup tasks, day-to-day operation, and lab routines.
-- [[../topics/recon]] should hold early environment, isolation, and target-orientation decisions.
-- [[../topics/post]] and [[../topics/pivot]] should hold the later-phase operational work that depends on a controlled workspace.
-- [[../topics/web]] should cover application methodology rather than workstation design.
+- [Recon](../topics/recon.md) should hold early environment, isolation, and target-orientation decisions.
+- [Post](../topics/post.md) and [Pivot](../topics/pivot.md) should hold the later-phase operational work that depends on a controlled workspace.
+- [Web](../topics/web.md) should cover application methodology rather than workstation design.
 
 ## Maintenance note
 

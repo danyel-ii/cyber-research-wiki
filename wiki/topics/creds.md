@@ -46,3 +46,4 @@ The companion corpus gives this category practical anchors around credential cap
 - [Mimikatz](../../../../WikiCompanion/output/wiki/mimikatz.md)
 - [Impacket](../../../../WikiCompanion/output/wiki/impacket.md)
 - [CrackMapExec](../../../../WikiCompanion/output/wiki/crackmapexec.md)
+- [enum4linux-ng](../../../../WikiCompanion/output/wiki/enum4linux-ng.md)

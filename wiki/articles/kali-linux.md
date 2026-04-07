@@ -103,9 +103,9 @@ The neighboring articles should go deeper into adjacent questions:
 
 - [Practical Kali Linux](./practical-kali-linux.md) can focus on lab usage, setup patterns, and day-to-day operator tasks.
 - [Kali as an Assessment Environment](./kali-as-an-assessment-environment.md) can discuss workstation design, snapshots, isolation, notes, evidence capture, VPNs, browser profiles, and repeatability.
-- [[../topics/recon]] should frame where Kali helps during discovery and target understanding.
-- [[../topics/web]] should hold the application and API testing material that uses Kali without being defined by it.
-- [[../topics/exploit]], [[../topics/creds]], [[../topics/post]], and [[../topics/pivot]] should hold the phase-specific operational material that a Kali workstation supports.
+- [Recon](../topics/recon.md) should frame where Kali helps during discovery and target understanding.
+- [Web](../topics/web.md) should hold the application and API testing material that uses Kali without being defined by it.
+- [Exploit](../topics/exploit.md), [Creds](../topics/creds.md), [Post](../topics/post.md), and [Pivot](../topics/pivot.md) should hold the phase-specific operational material that a Kali workstation supports.
 
 ## Maintenance note
 

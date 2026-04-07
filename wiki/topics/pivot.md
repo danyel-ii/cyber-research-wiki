@@ -42,3 +42,5 @@ Pivot is thinner than the other companion-backed categories, but the companion c
 - [WireGuard](../../../../WikiCompanion/output/wiki/wireguard.md)
 - [SSRFmap](../../../../WikiCompanion/output/wiki/ssrfmap.md)
 - [WinRM](../../../../WikiCompanion/output/wiki/winrm.md)
+- [Impacket](../../../../WikiCompanion/output/wiki/impacket.md)
+- [Bettercap](../../../../WikiCompanion/output/wiki/bettercap.md)
