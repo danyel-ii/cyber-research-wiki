@@ -1,14 +1,17 @@
 ---
 title: "Kali as an Assessment Environment"
-summary: "> **Scope note:** This article is about Kali as a controlled operator workspace. It does **not** grant permission, define scope, or replace testing methodology. Those belong to [Penetration Testing](./penetration-testing.md), [Pentest Workflow](./pentest-workflow.md), and [Rules of Engagement](./rules-of-engagement.md). For step-by-step lab usage, see [Practical Kali Linux](./practical-kali-linux.md)."
+summary: "Kali becomes an assessment environment when it is treated as a controlled, repeatable workspace for evidence capture, toolchain trust, and operator hygiene."
 pageKind: "article"
 categories:
-  - "kali-as-an-assessment-environment"
+  - "recon"
+  - "creds"
+  - "post"
+  - "pivot"
 related:
   - "articles/kali-linux"
   - "articles/practical-kali-linux"
 created: "2026-04-05"
-updated: "2026-04-06"
+updated: "2026-04-07"
 ---
 Kali Linux becomes an **assessment environment** when it is treated as more than a tool catalog. In professional work, the important question is not merely whether a given binary exists on disk. The real question is whether the operating system, packages, network path, browser state, notes, captured artifacts, and update history form a workspace that is **safe to use, easy to reproduce, and defensible when findings are challenged later**.[^downloading][^download-secure][^repos]
 
@@ -254,9 +257,9 @@ The neighboring pages can then stay focused:
 
 - [Kali Linux](./kali-linux.md) explains Kali as a distribution.
 - [Practical Kali Linux](./practical-kali-linux.md) can cover setup tasks, day-to-day operation, and lab routines.
-- [Pentest Workflow](./pentest-workflow.md) should explain evidence handling, validation, and reporting as a professional process.
-- [Rules of Engagement](./rules-of-engagement.md) should define scope, communications, exclusions, escalation paths, and safety.
-- [Web Testing](./web-testing.md) and [OWASP WSTG](../frameworks/owasp-wstg.md) should cover domain methodology rather than workstation design.
+- [[../topics/recon]] should hold early environment, isolation, and target-orientation decisions.
+- [[../topics/post]] and [[../topics/pivot]] should hold the later-phase operational work that depends on a controlled workspace.
+- [[../topics/web]] should cover application methodology rather than workstation design.
 
 ## Maintenance note
 

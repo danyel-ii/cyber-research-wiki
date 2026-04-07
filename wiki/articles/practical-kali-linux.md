@@ -1,14 +1,16 @@
 ---
 title: "Practical Kali Linux"
-summary: "Practical Kali Linux is not about collecting the longest possible tool list. It is about turning Kali into a **repeatable lab workstation** for learning, rehearsing, documenting, and resetting security exercises safely."
+summary: "Practical Kali Linux explains how to turn Kali into a repeatable lab workstation for learning, rehearsing, documenting, and resetting exercises safely."
 pageKind: "article"
 categories:
-  - "practical-kali-linux"
+  - "recon"
+  - "web"
+  - "exploit"
 related:
   - "articles/kali-as-an-assessment-environment"
   - "articles/kali-linux"
 created: "2026-04-06"
-updated: "2026-04-06"
+updated: "2026-04-07"
 ---
 # Practical Kali Linux
 
@@ -16,7 +18,7 @@ Practical Kali Linux is not about collecting the longest possible tool list. It 
 
 That matters because Kali is usually introduced through its tools, but real fluency comes from routine. A capable learner can set up a disposable VM, connect it to a clearly isolated training target, update it without breaking it, recognize when privilege level changes a result, capture evidence in an organized way, and write a short explanation of what happened afterward. Those habits transfer to nearly every other security topic in this wiki.
 
-> **Scope note:** This page is about using Kali Linux in **labs, classes, and self-directed training**. It is not a playbook for attacking live systems, and it does not replace authorization, scope, or methodology. For Kali as a distribution, see [Kali Linux](./kali-linux.md). For workstation design and evidence boundaries, see [Kali as an Assessment Environment](./kali-as-an-assessment-environment.md). For web methodology, see [Web Testing](./web-testing.md) and [OWASP WSTG](../frameworks/owasp-wstg.md).
+> **Scope note:** This page is about using Kali Linux in **labs, classes, and self-directed training**. It is not a playbook for attacking live systems, and it does not replace authorization, scope, or assessment method. For Kali as a distribution, see [Kali Linux](./kali-linux.md). For workstation design and evidence boundaries, see [Kali as an Assessment Environment](./kali-as-an-assessment-environment.md). For phase-specific material, use the category pages in [[../topics/index]].
 
 ## What “practical” use actually means
 
@@ -314,10 +316,9 @@ The neighboring pages can then stay cleanly separated:
 
 - [Kali Linux](./kali-linux.md) explains what the distribution is and why it exists.
 - [Kali as an Assessment Environment](./kali-as-an-assessment-environment.md) explains how Kali should be positioned as a controlled workspace.
-- [Web Testing](./web-testing.md) should explain how to test web applications, not how to boot the distro.
-- [OWASP WSTG](../frameworks/owasp-wstg.md) should anchor web testing methodology and scenario references.
-- [Pentest Workflow](./pentest-workflow.md) should explain sequencing, evidence, validation, and reporting.
-- [Rules of Engagement](./rules-of-engagement.md) should define scope, exclusions, escalation, and safety boundaries.
+- [[../topics/recon]] should hold the discovery and lab-orientation material that comes before deeper testing.
+- [[../topics/web]] should explain how to test web applications, not how to boot the distro.
+- [[../topics/exploit]] should cover controlled validation and payload work once the environment is ready.
 
 ## Maintenance note
 

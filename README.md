@@ -5,20 +5,18 @@ This repo now has two distinct layers:
 - `wiki/` is the published wiki
 - `tools/ingest-app/` is the local authoring app
 
-The content model has been reset. The public wiki keeps only an eight-category backbone, and all substantive content is expected to be added as manually written articles under `wiki/articles/`.
+The content model has been reset. The public wiki now uses a six-phase backbone, and all substantive content is expected to be added as manually written articles under `wiki/articles/`.
 
 ## Wiki model
 
 The stable backbone is:
 
-- `penetration-testing`
-- `pentest-workflow`
-- `rules-of-engagement`
-- `kali-linux`
-- `practical-kali-linux`
-- `kali-as-an-assessment-environment`
-- `web-testing`
-- `owasp-wstg`
+- `recon`
+- `web`
+- `exploit`
+- `creds`
+- `post`
+- `pivot`
 
 Those category pages are the reader-facing map. New articles can belong to multiple categories. When a new article is added, the app updates:
 
@@ -55,7 +53,7 @@ The app is intentionally constrained:
 
 - it does not create new categories
 - it writes new content into `wiki/articles/`
-- it keeps cross-references attached to the existing eight-category map
+- it keeps cross-references attached to the existing six-phase map
 - it is meant to stay private and local rather than publicly writable
 
 ## Quartz site
@@ -70,7 +68,7 @@ npm run serve
 The site chrome is now intentionally minimal:
 
 - top header with navigation and `Add New Article`
-- left sidebar with the eight categories
+- left sidebar with the six categories
 - right sidebar with related articles
 
 The header action points to the private local authoring route. The public site and private authoring flow now share the same visual shell, but only the local route can write content.

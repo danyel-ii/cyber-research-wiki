@@ -4,7 +4,7 @@ This section holds manually authored wiki articles. The article app updates this
 
 ## All articles
 <!-- ARTICLE-INDEX:START -->
-- [[articles/kali-as-an-assessment-environment]] — > **Scope note:** This article is about Kali as a controlled operator workspace. It does **not** grant permission, define scope, or replace testing methodology. Those belong to [Penetration Testing](./penetration-testing.md), [Pentest Workflow](./pentest-workflow.md), and [Rules of Engagement](./rules-of-engagement.md). For step-by-step lab usage, see [Practical Kali Linux](./practical-kali-linux.md).
-- [[articles/kali-linux]] — > **Scope note:** Kali Linux is a platform, not a permission model and not a testing methodology. It does not authorize activity, define scope, or replace evidence handling and reporting. Those belong to [Penetration Testing](./penetration-testing.md), [Pentest Workflow](./pentest-workflow.md), and [Rules of Engagement](./rules-of-engagement.md).
-- [[articles/practical-kali-linux]] — Practical Kali Linux is not about collecting the longest possible tool list. It is about turning Kali into a **repeatable lab workstation** for learning, rehearsing, documenting, and resetting security exercises safely.
+- [[articles/kali-as-an-assessment-environment]] — Kali becomes an assessment environment when it is treated as a controlled, repeatable workspace for evidence capture, toolchain trust, and operator hygiene.
+- [[articles/kali-linux]] — Kali Linux is a Debian-based security distribution used as a portable, curated assessment platform across authorized testing and research work.
+- [[articles/practical-kali-linux]] — Practical Kali Linux explains how to turn Kali into a repeatable lab workstation for learning, rehearsing, documenting, and resetting exercises safely.
 <!-- ARTICLE-INDEX:END -->

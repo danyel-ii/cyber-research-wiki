@@ -8,6 +8,11 @@ export type CanonicalTopic = {
   includes: string[]
   relatedIds: string[]
   keywords: string[]
+  companionSummary: string
+  companionArticles: Array<{
+    fileName: string
+    title: string
+  }>
   kind: "topic" | "framework"
 }
 

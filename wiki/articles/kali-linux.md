@@ -1,14 +1,19 @@
 ---
 title: "Kali Linux"
-summary: "> **Scope note:** Kali Linux is a platform, not a permission model and not a testing methodology. It does not authorize activity, define scope, or replace evidence handling and reporting. Those belong to [Penetration Testing](./penetration-testing.md), [Pentest Workflow](./pentest-workflow.md), and [Rules of Engagement](./rules-of-engagement.md)."
+summary: "Kali Linux is a Debian-based security distribution used as a portable, curated assessment platform across authorized testing and research work."
 pageKind: "article"
 categories:
-  - "kali-linux"
+  - "recon"
+  - "web"
+  - "exploit"
+  - "creds"
+  - "post"
+  - "pivot"
 related:
   - "articles/kali-as-an-assessment-environment"
   - "articles/practical-kali-linux"
 created: "2026-04-05"
-updated: "2026-04-06"
+updated: "2026-04-07"
 ---
 Kali Linux is an open-source, Debian-based Linux distribution built for professional penetration testing, security auditing, computer forensics, and reverse engineering.[^what-is][^home] In practice, it is best understood as a curated security workstation: a distribution that combines a large tool catalog, security-specific defaults, tested packages, and multiple deployment options that make authorized assessment work easier to prepare, standardize, and reproduce.[^what-is][^features]
 
@@ -80,7 +85,7 @@ Kali is appropriate when the goal is authorized security work: penetration testi
 
 Kali is not appropriate as a default recommendation for someone who is merely learning Linux, or for someone who wants a comfortable general-purpose desktop and happens to be curious about security tools.[^should-use] The project says this plainly, and that guidance is worth keeping in a wiki because Kali’s reputation often attracts new users for the wrong reasons.[^should-use]
 
-It is also worth stating the obvious: using Kali does not create legal authority. The official documentation warns that misuse of penetration testing tools without specific authorization can cause serious damage and legal consequences.[^should-use] In professional practice, authorization comes from contracts, scope, and rules of engagement—not from the operating system in front of you. That is why this topic belongs alongside [Rules of Engagement](./rules-of-engagement.md) rather than above it.
+It is also worth stating the obvious: using Kali does not create legal authority. The official documentation warns that misuse of penetration testing tools without specific authorization can cause serious damage and legal consequences.[^should-use] In professional practice, authorization comes from contracts, scope, and operating boundaries, not from the operating system in front of you.
 
 ## Common misconceptions
 
@@ -98,8 +103,9 @@ The neighboring articles should go deeper into adjacent questions:
 
 - [Practical Kali Linux](./practical-kali-linux.md) can focus on lab usage, setup patterns, and day-to-day operator tasks.
 - [Kali as an Assessment Environment](./kali-as-an-assessment-environment.md) can discuss workstation design, snapshots, isolation, notes, evidence capture, VPNs, browser profiles, and repeatability.
-- [Penetration Testing](./penetration-testing.md) and [Pentest Workflow](./pentest-workflow.md) should explain the professional process that Kali supports but does not define.
-- [Web Testing](./web-testing.md) and [OWASP WSTG](../frameworks/owasp-wstg.md) should cover methodology for a specific domain rather than the operating system used to perform it.
+- [[../topics/recon]] should frame where Kali helps during discovery and target understanding.
+- [[../topics/web]] should hold the application and API testing material that uses Kali without being defined by it.
+- [[../topics/exploit]], [[../topics/creds]], [[../topics/post]], and [[../topics/pivot]] should hold the phase-specific operational material that a Kali workstation supports.
 
 ## Maintenance note
 

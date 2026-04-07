@@ -1,5 +1,12 @@
 # Log
 
+## [2026-04-07] structure | Reorganized wiki into six-phase schema
+- Replaced: previous public category backbone with [[topics/recon]], [[topics/web]], [[topics/exploit]], [[topics/creds]], [[topics/post]], and [[topics/pivot]]
+- Removed: legacy topic and framework category pages that no longer fit the phase model
+- Updated: [[index]], [[topics/index]], [[articles/index]], and the Kali article frontmatter to align with the six-phase schema
+- Bridged: local companion corpus through `/Users/danyel-ii/WikiCompanion/output/wiki/schema/` so the flat companion article set can be explored through the same six categories
+- Notes: The app source of truth now matches the public wiki, so future article additions will preserve the six-phase structure instead of regenerating the old eight-category layout.
+
 ## [2026-04-05] structure | Clean category-first reset
 - Deleted: previous topic, source, analysis, entity, path, and template content from the public layer
 - Kept: the eight-category backbone
@@ -9,18 +16,18 @@
 
 ## [2026-04-05] article | Kali Linux
 - Created: [[articles/kali-linux]]
-- Categorized under: [[topics/kali-linux]]
+- Categorized under (current schema): [[topics/recon]], [[topics/web]], [[topics/exploit]], [[topics/creds]], [[topics/post]], [[topics/pivot]]
 - Related: none yet
 - Notes: Added through the article app and propagated into category indexes and related-article metadata.
 
 ## [2026-04-05] article | Kali as an Assessment Environment
 - Created: [[articles/kali-as-an-assessment-environment]]
-- Categorized under: [[topics/kali-as-an-assessment-environment]]
+- Categorized under (current schema): [[topics/recon]], [[topics/creds]], [[topics/post]], [[topics/pivot]]
 - Related: [[articles/kali-linux]]
 - Notes: Added through the article app and propagated into category indexes and related-article metadata.
 
 ## [2026-04-06] article | Practical Kali Linux
 - Created: [[articles/practical-kali-linux]]
-- Categorized under: [[topics/practical-kali-linux]]
+- Categorized under (current schema): [[topics/recon]], [[topics/web]], [[topics/exploit]]
 - Related: [[articles/kali-as-an-assessment-environment]], [[articles/kali-linux]]
 - Notes: Added through the article app and propagated into category indexes and related-article metadata.

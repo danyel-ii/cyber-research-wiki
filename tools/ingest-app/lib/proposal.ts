@@ -14,6 +14,7 @@ const execFileAsync = promisify(execFile)
 const repoRoot = process.cwd()
 const proposalDir = path.join(repoRoot, ".quartz-cache", "article-app", "proposals")
 const applyLocks = new Set<string>()
+const companionWikiRoot = "/Users/danyel-ii/WikiCompanion/output/wiki"
 
 function encodeScalar(value: string): string {
   return JSON.stringify(value)
@@ -84,7 +85,16 @@ function parseFrontmatter(raw: string): { data: Record<string, string | string[]
 
   return { data, content }
 }
+
 const articlesDir = path.join(repoRoot, "wiki", "articles")
+
+function fileToSlug(filePath: string): string {
+  return filePath.replace(/^wiki\//, "").replace(/\.md$/, "")
+}
+
+function toRelativeMarkdownPath(fromRepoFile: string, toAbsolutePath: string): string {
+  return path.relative(path.dirname(path.join(repoRoot, fromRepoFile)), toAbsolutePath).split(path.sep).join("/")
+}
 
 function extractKeywords(text: string): Set<string> {
   const stopwords = new Set([
@@ -233,6 +243,18 @@ function renderCategoryPage(topic: CanonicalTopic, articles: ArticleRecord[]): s
   const relatedSlugs = topic.relatedIds
     .map((id) => getCanonicalTopic(id)?.filePath.replace(/^wiki\//, "").replace(/\.md$/, ""))
     .filter((slug): slug is string => Boolean(slug))
+  const relatedLinks = topic.relatedIds
+    .map((id) => getCanonicalTopic(id))
+    .filter((entry): entry is CanonicalTopic => Boolean(entry))
+    .map((entry) => `- [[${fileToSlug(entry.filePath)}]] — ${entry.summary}`)
+    .join("\n")
+  const companionPortalPath = toRelativeMarkdownPath(topic.filePath, path.join(companionWikiRoot, "schema", `${topic.id}.md`))
+  const companionLinks = topic.companionArticles
+    .map((article) => {
+      const target = toRelativeMarkdownPath(topic.filePath, path.join(companionWikiRoot, article.fileName))
+      return `- [${article.title}](${target})`
+    })
+    .join("\n")
 
   const articleList =
     articles.length > 0
@@ -248,15 +270,15 @@ function renderCategoryPage(topic: CanonicalTopic, articles: ArticleRecord[]): s
       categoryId: topic.id,
       summary: topic.summary,
       related: relatedSlugs,
-    })}# ${topic.title}\n\n${topic.description}\n\n## What belongs here\n${topic.includes.map((item) => `- ${item}`).join("\n")}\n\n## How this category is positioned\n${topic.role}\n\n## Articles in this category\n<!-- ARTICLE-LIST:START -->\n${articleList}\n<!-- ARTICLE-LIST:END -->\n`
+    })}# ${topic.title}\n\n${topic.description}\n\n## How to use this category\n${topic.role}\n\n## What belongs here\n${topic.includes.map((item) => `- ${item}`).join("\n")}\n\n## Related categories\n${relatedLinks}\n\n## Internal articles\n<!-- ARTICLE-LIST:START -->\n${articleList}\n<!-- ARTICLE-LIST:END -->\n\n## Companion bridge\n${topic.companionSummary}\n\n- [Open the ${topic.title} companion portal](${companionPortalPath})\n${companionLinks}\n`
 }
 
 function renderHomePage(): string {
-  return `---\ntitle: Home\naliases:\n  - home\n---\n\n# Cybersecurity Research Wiki\n\nThis wiki has been reset to a clean category-first structure. The public backbone is eight categories, and new articles are added manually through the authoring app. When a new article is created, the app updates category pages, the article index, and related-article metadata automatically.\n\n## Start with the categories\n- [[topics/penetration-testing]]\n- [[topics/pentest-workflow]]\n- [[topics/rules-of-engagement]]\n- [[topics/kali-linux]]\n- [[topics/practical-kali-linux]]\n- [[topics/kali-as-an-assessment-environment]]\n- [[topics/web-testing]]\n- [[frameworks/owasp-wstg]]\n\n## Browse\n- [[topics/index]]\n- [[articles/index]]\n`
+  return `---\ntitle: Home\naliases:\n  - home\n---\n\n# Cybersecurity Research Wiki\n\nThis wiki is organized around six operational categories: Recon, Web, Exploit, Creds, Post, and Pivot. New articles are written manually, then the app updates category pages, related-article links, and the article index automatically.\n\n## Start here\n- [[topics/recon]]\n- [[topics/web]]\n- [[topics/exploit]]\n- [[topics/creds]]\n- [[topics/post]]\n- [[topics/pivot]]\n\n## Browse\n- [[topics/index]]\n- [[articles/index]]\n\n## Companion bridge\nThis wiki is cross-linked with a larger local companion corpus at \`/Users/danyel-ii/WikiCompanion/output/wiki\`. Each category page points into a curated companion portal so you can move between the maintained wiki and the wider article dump without losing the six-phase structure.\n`
 }
 
 function renderTopicsIndex(): string {
-  return `# Categories\n\nThe wiki now starts from a clean eight-category backbone. New articles are written manually, then the app updates category pages, related-article links, and the article index automatically.\n\n## The eight categories\n- [[topics/penetration-testing]]\n- [[topics/pentest-workflow]]\n- [[topics/rules-of-engagement]]\n- [[topics/kali-linux]]\n- [[topics/practical-kali-linux]]\n- [[topics/kali-as-an-assessment-environment]]\n- [[topics/web-testing]]\n- [[frameworks/owasp-wstg]]\n`
+  return `# Categories\n\nThe public wiki now uses a six-phase model. These category pages are the main way to explore the site, and each one also points into a curated slice of the companion corpus.\n\n## The six categories\n- [[topics/recon]]\n- [[topics/web]]\n- [[topics/exploit]]\n- [[topics/creds]]\n- [[topics/post]]\n- [[topics/pivot]]\n`
 }
 
 function renderArticlesIndex(articles: ArticleRecord[]): string {

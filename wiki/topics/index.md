@@ -1,13 +1,11 @@
 # Categories
 
-The wiki now starts from a clean eight-category backbone. New articles are written manually, then the app updates category pages, related-article links, and the article index automatically.
+The public wiki now uses a six-phase model. These category pages are the main way to explore the site, and each one also points into a curated slice of the companion corpus.
 
-## The eight categories
-- [[topics/penetration-testing]]
-- [[topics/pentest-workflow]]
-- [[topics/rules-of-engagement]]
-- [[topics/kali-linux]]
-- [[topics/practical-kali-linux]]
-- [[topics/kali-as-an-assessment-environment]]
-- [[topics/web-testing]]
-- [[frameworks/owasp-wstg]]
+## The six categories
+- [[topics/recon]]
+- [[topics/web]]
+- [[topics/exploit]]
+- [[topics/creds]]
+- [[topics/post]]
+- [[topics/pivot]]
